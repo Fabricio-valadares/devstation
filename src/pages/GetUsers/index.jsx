@@ -8,43 +8,38 @@ const GetUsers = () => {
   const usersList = useSelector((state) => state.users);
   usersList.sort((a, b) => a.id - b.id);
 
-  const api = "https://kabit-api.herokuapp.com/users/";
-
   useEffect(() => {
-    dispatch(getUsersThunk(api));
+    dispatch(getUsersThunk());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <>
       <UsersContainer>
-          <h1>Users</h1>
-  
-          <table>
-            <thead>
-              <th style={{ width: "5%" }}>ID</th>
-              <th style={{ width: "30%" }}>USERNAME</th>
-              <th style={{ width: "30%" }}>EMAIL</th>
-              <th style={{ width: "30%" }}>GROUP</th>
-            </thead>
-  
-            {usersList.map((user, index) => {
-              return (
-                
-                  <tbody key={index}>
-                    <td>{user.id}</td>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                    <td>{user.group}</td>
-                  </tbody>
-                
-              );
-            })}
-          </table>
+        <h1>Users</h1>
+
+        <table>
+          <thead>
+            <th style={{ width: "5%" }}>ID</th>
+            <th style={{ width: "30%" }}>USERNAME</th>
+            <th style={{ width: "30%" }}>EMAIL</th>
+            <th style={{ width: "30%" }}>GROUP</th>
+          </thead>
+
+          {usersList.map((user, index) => {
+            return (
+              <tbody key={index}>
+                <td>{user.id}</td>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
+                <td>{user.group}</td>
+              </tbody>
+            );
+          })}
+        </table>
       </UsersContainer>
     </>
   );
-
-      
 };
-  
+
 export default GetUsers;

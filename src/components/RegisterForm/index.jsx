@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import axios from "axios";
+import api from "../../services";
 
 const RegisterForm = () => {
   const [errorMsg, setErrorMsg] = useState(false);
@@ -36,11 +36,11 @@ const RegisterForm = () => {
   });
 
   const handleForm = (data) => {
-    axios
-      .post("https://kabit-api.herokuapp.com/users/", data)
+    api
+      .post("/users/", data)
       .then(() => {
         reset();
-        history.push("/login");
+        history.push("/");
       })
       .catch((error) => {
         setErrorMsg(true);
