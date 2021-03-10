@@ -1,5 +1,5 @@
 import { loginAction } from "./actions";
-import api from "../../services";
+import api from "../../../services";
 
 export const loginThunk = (data, history) => (dispatch, state) => {
   localStorage.clear();

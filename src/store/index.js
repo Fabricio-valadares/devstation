@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import loginReduces from "../store/dataLogin/reduces";
-import thunk from "redux-thunk";
+import loginReduces from "./modules/dataLogin/reduces";
 import usersReducer from "./modules/get-users/reducer";
+import thunk from "redux-thunk";
 
 const reducers = combineReducers({
   loginReduces: loginReduces,
