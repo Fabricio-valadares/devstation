@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { loginThunk } from "../../store/modules/dataLogin/thunk";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useStyles } from "./styled";
 
 const FormLogin = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,10 +23,6 @@ const FormLogin = () => {
         "Senha deve conter ao menos uma letra maiúscula, uma minúscula, um número e um caracter especial!"
       )
       .required("Campo obrigatório"),
-    // password: yup
-    //   .number()
-    //   .typeError("Somente numero")
-    //   .required("Campo obrigatório"),
   });
 
   const { register, handleSubmit, errors, reset } = useForm({
@@ -40,20 +38,22 @@ const FormLogin = () => {
     <Container>
       <FormStyled onSubmit={handleSubmit(dataForm)}>
         <TextField
+          className={"MuiFormControl-root"}
           name="username"
           inputRef={register}
           error={!!errors.username}
           helperText={errors.username?.message}
-          label="User"
+          placeholder="User"
           variant="outlined"
         />
         <TextField
+          className={"MuiFormControl-root MuiFormHelperText-root"}
           name="password"
           type="password"
           inputRef={register}
           error={!!errors.password}
           helperText={errors.password?.message}
-          label="Senha"
+          placeholder="Password"
           variant="outlined"
         />
         <Button type="submit" variant="contained" color="primary">
