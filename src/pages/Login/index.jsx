@@ -1,7 +1,19 @@
+import { Container, DivImage, DivForm, Image } from "./styled";
 import FormLogin from "../../components/FormLogin";
 
 const Login = () => {
-  return <FormLogin />;
+  return (
+    <>
+      <Container>
+        <DivImage>
+          <Image src={"./assets/login3.svg"} />
+        </DivImage>
+        <DivForm>
+          <FormLogin />
+        </DivForm>
+      </Container>
+    </>
+  );
 };
 
 export default Login;
