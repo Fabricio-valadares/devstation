@@ -3,7 +3,7 @@ import { Button, TextField } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { loginThunk } from "../../store/dataLogin/thunk";
+import { loginThunk } from "../../store/modules/dataLogin/thunk";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 

@@ -3,14 +3,22 @@ import { Button, TextField } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 import * as yup from "yup";
 import api from "../../services";
 import { FormContainer } from "./styled";
 
 const UpdateUserForm = () => {
+  const history = useHistory();
+
   const [token] = useState(() => {
     const localToken = localStorage.getItem("token") || "";
+
+    if (!localToken) {
+      history.push("/login");
+    }
+
     return JSON.parse(localToken);
   });
 
