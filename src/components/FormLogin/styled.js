@@ -29,17 +29,24 @@ export const PStyle = styled.p`
   color: #fff;
   font-size: 1rem;
   margin-left: 3px;
-  text-decoration: underline;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 // Styled Material-UI
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "var(--secondary)",
+    backgroundColor: "#fff",
+    borderRadius: "5px",
+    width: "276px;",
+    height: "50px",
+    padding: "10px",
   },
-  "root:hover": {
-    backgroundColor: "var(--dark-secondary)",
+  error: {
+    color: "#fff",
   },
 }));
