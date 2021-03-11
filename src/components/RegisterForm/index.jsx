@@ -1,18 +1,30 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
-
-import { FormContainer, Img, Register, RegisterCard, DivImg } from "./styled";
-
-import { Button, TextField } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import {
+  FormContainer,
+  Img,
+  RegisterCard,
+  StyledSpan,
+  useStyles,
+} from "./styled";
+
+import {
+  Button,
+  FormHelperText,
+  InputBase,
+  TextField,
+} from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
+
 import api from "../../services";
 
 const RegisterForm = () => {
+  const classes = useStyles();
+
   const [errorMsg, setErrorMsg] = useState(false);
 
   const history = useHistory();
@@ -40,7 +52,7 @@ const RegisterForm = () => {
       .post("/users/", data)
       .then(() => {
         reset();
-        history.push("/");
+        history.push("/login");
       })
       .catch((error) => {
         setErrorMsg(true);
@@ -52,61 +64,75 @@ const RegisterForm = () => {
   };
 
   return (
-    <Register>
-      <form onSubmit={handleSubmit(handleForm)}>
-        {errorMsg && (
-          <Alert severity="error">
-            Seu cadastro falhou, verifique os dados e tente novamente.
-          </Alert>
-        )}
-        <RegisterCard>
-          <FormContainer>
-            <h1>Faça seu cadastro</h1>
-            <TextField
-              margin="dense"
-              variant="outlined"
-              label="User"
-              name="username"
-              size="small"
-              color="primary"
-              inputRef={register}
-              error={!!errors.username}
-              helperText={errors.username?.message}
-            />
-            <TextField
-              margin="dense"
-              variant="outlined"
-              label="Password"
-              name="password"
-              type="password"
-              size="small"
-              color="primary"
-              inputRef={register}
-              error={!!errors.password}
-              helperText={errors.password?.message}
-            />
-            <TextField
-              margin="dense"
-              variant="outlined"
-              label="Email"
-              name="email"
-              size="small"
-              color="primary"
-              inputRef={register}
-              error={!!errors.email}
-              helperText={errors.email?.message}
-            />
-            <div>
-              <Button type="submit" variant="contained" color="primary">
-                Register
-              </Button>
-            </div>
-          </FormContainer>
-          <DivImg></DivImg>
-          {/* <Img src={"./assets/register.svg"} alt="Register" /> */}
-        </RegisterCard>
-      </form>
-    </Register>
+    <>
+      {errorMsg && (
+        <Alert severity="error">
+          Seu cadastro falhou, verifique os dados e tente novamente.
+        </Alert>
+      )}
+      <RegisterCard onSubmit={handleSubmit(handleForm)}>
+        <FormContainer>
+          <h1>Faça seu cadastro</h1>
+          <InputBase
+            className={classes.textField}
+            fullWidth
+            margin="dense"
+            variant="outlined"
+            placeholder="Usuario"
+            name="username"
+            size="medium"
+            // color="primary"
+            inputRef={register}
+            error={!!errors.username}
+            // helperText={errors.username?.message}
+          />
+          <FormHelperText error={!!errors.email}>
+            {errors.username?.message}
+          </FormHelperText>
+          <InputBase
+            className={classes.textField}
+            fullWidth
+            margin="dense"
+            variant="outlined"
+            placeholder="Senha"
+            name="password"
+            type="password"
+            // color="primary"
+            inputRef={register}
+            error={!!errors.password}
+            // helperText={errors.password?.message}
+          />
+          <FormHelperText error={!!errors.email}>
+            {errors.password?.message}
+          </FormHelperText>
+          <InputBase
+            className={classes.textField}
+            fullWidth
+            margin="dense"
+            variant="outlined"
+            placeholder="Email"
+            name="email"
+            size="medium"
+            // color="primary"
+            inputRef={register}
+            error={!!errors.email}
+            // helperText={errors.email?.message}
+          />
+          <FormHelperText error={!!errors.email}>
+            {errors.email?.message}
+          </FormHelperText>
+          <div>
+            <Button type="submit" variant="contained" color="primary">
+              Register
+            </Button>
+          </div>
+          <StyledSpan onClick={() => history.push("/login")}>
+            Faça login
+          </StyledSpan>
+        </FormContainer>
+        <Img src={"./assets/register.svg"} alt="Register" />
+      </RegisterCard>
+    </>
   );
 };
 

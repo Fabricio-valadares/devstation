@@ -1,36 +1,42 @@
+import { makeStyles } from "@material-ui/core";
 import styled from "styled-components";
-
-export const Register = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: var(--soft-primary);
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-`;
 
 export const FormContainer = styled.div`
   flex-direction: column;
   max-width: 30%;
-  margin: 0 auto;
   text-align: center;
   & h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     color: white;
   }
   & button {
     margin-top: 1rem;
-    width: 93%;
+    width: 100%;
   }
 `;
 
-export const RegisterCard = styled.div`
+export const StyledSpan = styled.span`
+  margin-top: 1rem;
+  text-align: left;
+
+  color: white;
+
+  display: block;
+
+  :hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+export const RegisterCard = styled.form`
   display: flex;
   align-items: center;
   align-content: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: var(--dark-primary);
-  width: 80vw;
+  width: 100%;
   max-width: 801px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -43,13 +49,18 @@ export const RegisterCard = styled.div`
 export const Img = styled.img`
   width: 440px;
   height: 440px;
+  -webkit-user-drag: none;
 `;
 
-export const DivImg = styled.div`
-  background-image: url("./assets/register.svg");
-  background-size: 400px 400px;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 440px;
-  height: 440px;
-`;
+export const useStyles = makeStyles((theme) => ({
+  textField: {
+    margin: "0.4rem 0",
+    backgroundColor: "#fff",
+    borderRadius: theme.shape.borderRadius,
+    height: "5vh",
+    padding: "1rem",
+    "&:hover": {
+      border: "1px solid black ",
+    },
+  },
+}));
