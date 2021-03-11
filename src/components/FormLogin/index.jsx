@@ -66,7 +66,12 @@ const FormLogin = () => {
         <FormHelperText className={classes.error}>
           {errors.password?.message}
         </FormHelperText>
-        <ButtonStyled type="submit" variant="contained" color="primary">
+        <ButtonStyled
+          size="large"
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           Entrar
         </ButtonStyled>
         <DivRegister>
