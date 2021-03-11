@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-import { FormContainer } from "./styled";
+import { FormContainer, Img, Register, RegisterCard, DivImg } from "./styled";
 
 import { Button, TextField } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
@@ -52,55 +52,61 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleForm)}>
-      {errorMsg && (
-        <Alert severity="error">
-          Seu cadastro falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
-      <FormContainer>
-        <h1>Registro</h1>
-        <TextField
-          margin="dense"
-          variant="outlined"
-          label="User"
-          name="username"
-          size="small"
-          color="primary"
-          inputRef={register}
-          error={!!errors.username}
-          helperText={errors.username?.message}
-        />
-        <TextField
-          margin="dense"
-          variant="outlined"
-          label="Password"
-          name="password"
-          type="password"
-          size="small"
-          color="primary"
-          inputRef={register}
-          error={!!errors.password}
-          helperText={errors.password?.message}
-        />
-        <TextField
-          margin="dense"
-          variant="outlined"
-          label="Email"
-          name="email"
-          size="small"
-          color="primary"
-          inputRef={register}
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
-        <div>
-          <Button type="submit" variant="contained" color="primary">
-            Register
-          </Button>
-        </div>
-      </FormContainer>
-    </form>
+    <Register>
+      <form onSubmit={handleSubmit(handleForm)}>
+        {errorMsg && (
+          <Alert severity="error">
+            Seu cadastro falhou, verifique os dados e tente novamente.
+          </Alert>
+        )}
+        <RegisterCard>
+          <FormContainer>
+            <h1>Faça seu cadastro</h1>
+            <TextField
+              margin="dense"
+              variant="outlined"
+              label="User"
+              name="username"
+              size="small"
+              color="primary"
+              inputRef={register}
+              error={!!errors.username}
+              helperText={errors.username?.message}
+            />
+            <TextField
+              margin="dense"
+              variant="outlined"
+              label="Password"
+              name="password"
+              type="password"
+              size="small"
+              color="primary"
+              inputRef={register}
+              error={!!errors.password}
+              helperText={errors.password?.message}
+            />
+            <TextField
+              margin="dense"
+              variant="outlined"
+              label="Email"
+              name="email"
+              size="small"
+              color="primary"
+              inputRef={register}
+              error={!!errors.email}
+              helperText={errors.email?.message}
+            />
+            <div>
+              <Button type="submit" variant="contained" color="primary">
+                Register
+              </Button>
+            </div>
+          </FormContainer>
+          <DivImg></DivImg>
+          {/* <Img src={"./assets/register.svg"} alt="Register" /> */}
+        </RegisterCard>
+      </form>
+    </Register>
   );
 };
 
