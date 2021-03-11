@@ -21,8 +21,7 @@ export const DivImage = styled.section`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 670px) {
-    width: 100%;
+  @media (max-width: 770px) {
     height: 43%;
   }
 `;
@@ -34,18 +33,13 @@ export const DivForm = styled.section`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 670px) {
-    height: 43%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  @media (max-width: 1040px) {
+    margin-left: 100px;
   }
 
-  @media (max-width: 875px) {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media (max-width: 770px) {
+    margin-left: 0;
+    height: 50%;
   }
 `;
 
@@ -53,12 +47,12 @@ export const Image = styled.img`
   width: 440px;
   height: 440px;
 
-  @media (max-width: 1026px) {
+  @media (max-width: 1040px) {
     width: 340px;
     height: 340px;
   }
 
-  @media (max-width: 670px) {
+  @media (max-width: 770px) {
     width: 240px;
     height: 240px;
   }
