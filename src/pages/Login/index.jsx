@@ -1,9 +1,9 @@
-import { Container, DivImage, DivForm, Image } from "./styled";
+import { Container, DivImage, DivForm, Image, ContainerPages } from "./styled";
 import FormLogin from "../../components/FormLogin";
 
 const Login = () => {
   return (
-    <>
+    <ContainerPages>
       <Container>
         <DivImage>
           <Image src={"./assets/login3.svg"} />
@@ -12,7 +12,7 @@ const Login = () => {
           <FormLogin />
         </DivForm>
       </Container>
-    </>
+    </ContainerPages>
   );
 };
 

@@ -5,7 +5,7 @@ import {
   PStyle,
   ButtonStyled,
 } from "./styled";
-import { TextField } from "@material-ui/core";
+import { FormHelperText, InputBase } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -14,11 +14,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./styled";
 
-import { useSelector } from "react-redux";
-
 const FormLogin = () => {
-  const { loginReduces } = useSelector((state) => state);
-
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -47,25 +43,29 @@ const FormLogin = () => {
   return (
     <Container>
       <FormStyled onSubmit={handleSubmit(dataForm)}>
-        <TextField
-          className={"MuiFormControl-root"}
+        <InputBase
+          className={classes.root}
           name="username"
           inputRef={register}
           error={!!errors.username}
-          helperText={errors.username?.message}
           placeholder="User"
           variant="outlined"
         />
-        <TextField
-          className={"MuiFormControl-root MuiFormHelperText-root"}
+        <FormHelperText className={classes.error}>
+          {errors.username?.message}
+        </FormHelperText>
+        <InputBase
+          className={classes.root}
           name="password"
           type="password"
           inputRef={register}
           error={!!errors.password}
-          helperText={errors.password?.message}
           placeholder="Password"
           variant="outlined"
         />
+        <FormHelperText className={classes.error}>
+          {errors.password?.message}
+        </FormHelperText>
         <ButtonStyled type="submit" variant="contained" color="primary">
           Entrar
         </ButtonStyled>
