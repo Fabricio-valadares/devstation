@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const FormContainer = styled.div`
   flex-direction: column;
+  min-width: fit-content;
   max-width: 30%;
   text-align: center;
   & h1 {
@@ -12,12 +13,13 @@ export const FormContainer = styled.div`
   }
   & button {
     margin-top: 1rem;
-    width: 100%;
+    width: 96%;
   }
 `;
 
 export const StyledSpan = styled.span`
   margin-top: 1rem;
+  margin-left: 0.3rem;
   text-align: left;
 
   color: white;
@@ -47,20 +49,24 @@ export const RegisterCard = styled.form`
 `;
 
 export const Img = styled.img`
-  width: 440px;
+  width: 400px;
   height: 440px;
   -webkit-user-drag: none;
 `;
 
 export const useStyles = makeStyles((theme) => ({
   textField: {
-    margin: "0.4rem 0",
+    width: "276px",
+    margin: "0.4rem 0.4rem",
     backgroundColor: "#fff",
     borderRadius: theme.shape.borderRadius,
-    height: "5vh",
+    height: "56px",
     padding: "1rem",
     "&:hover": {
       border: "1px solid black ",
     },
+  },
+  helper: {
+    marginLeft: "0.4rem",
   },
 }));

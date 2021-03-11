@@ -75,7 +75,6 @@ const RegisterForm = () => {
           <h1>Faça seu cadastro</h1>
           <InputBase
             className={classes.textField}
-            fullWidth
             margin="dense"
             variant="outlined"
             placeholder="Usuario"
@@ -86,12 +85,11 @@ const RegisterForm = () => {
             error={!!errors.username}
             // helperText={errors.username?.message}
           />
-          <FormHelperText error={!!errors.email}>
+          <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.username?.message}
           </FormHelperText>
           <InputBase
             className={classes.textField}
-            fullWidth
             margin="dense"
             variant="outlined"
             placeholder="Senha"
@@ -102,12 +100,11 @@ const RegisterForm = () => {
             error={!!errors.password}
             // helperText={errors.password?.message}
           />
-          <FormHelperText error={!!errors.email}>
+          <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.password?.message}
           </FormHelperText>
           <InputBase
             className={classes.textField}
-            fullWidth
             margin="dense"
             variant="outlined"
             placeholder="Email"
@@ -118,7 +115,7 @@ const RegisterForm = () => {
             error={!!errors.email}
             // helperText={errors.email?.message}
           />
-          <FormHelperText error={!!errors.email}>
+          <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.email?.message}
           </FormHelperText>
           <div>

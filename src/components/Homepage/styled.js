@@ -57,14 +57,12 @@ export const DivButton = styled.div`
 export const ImagesA = styled.div`
   width: 160px;
   height: 100vh;
-  background-color: yellow;
 `;
 
 export const ImagesB = styled.div`
   width: 160px;
   height: 100vh;
   margin-left: 20px;
-  background-color: purple;
 `;
 
 export const Logo = styled.div`
@@ -137,9 +135,11 @@ export const Button = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   color: var(--text);
+  font-weight: bold;
+  font-size: 1rem;
 
   &:hover {
-    background-color: rgba(230, 0, 126, 0.9);
+    background-color: var(--dark-secondary);
     color: pink;
   }
 `;
