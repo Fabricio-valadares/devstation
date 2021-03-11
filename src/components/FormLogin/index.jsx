@@ -1,5 +1,11 @@
-import { Container, FormStyled } from "./styled";
-import { Button, TextField } from "@material-ui/core";
+import {
+  Container,
+  FormStyled,
+  DivRegister,
+  PStyle,
+  ButtonStyled,
+} from "./styled";
+import { TextField } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -8,7 +14,11 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./styled";
 
+import { useSelector } from "react-redux";
+
 const FormLogin = () => {
+  const { loginReduces } = useSelector((state) => state);
+
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -56,9 +66,12 @@ const FormLogin = () => {
           placeholder="Password"
           variant="outlined"
         />
-        <Button type="submit" variant="contained" color="primary">
+        <ButtonStyled type="submit" variant="contained" color="primary">
           Entrar
-        </Button>
+        </ButtonStyled>
+        <DivRegister>
+          <PStyle onClick={() => history.push("/register")}>Registra-se</PStyle>
+        </DivRegister>
       </FormStyled>
     </Container>
   );
