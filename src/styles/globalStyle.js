@@ -34,28 +34,4 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
-
-  // Material-ui
-
-  .MuiFormControl-root {
-    background-color: #fff;
-    border-radius: 5px;
-  }
-
-  .Mui-error {
-    background-color: var(--dark-primary)
-  }
-
-  .MuiTextField-root {
-    background-color: var(--dark-primary)
-  }
-
-  .MuiOutlinedInput-root {
-    background-color: #fff
-  }
-
-  .MuiFormHelperText-root.Mui-error  {
-    color: #fff !important;
-  }
-
 `;

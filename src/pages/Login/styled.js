@@ -1,13 +1,32 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
-  width: 100vw;
+export const ContainerPages = styled.div`
+  width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    var(--dark-primary),
+    var(--middle-primary),
+    var(--soft-primary)
+  );
+`;
+
+export const Container = styled.main`
+  max-width: 801px;
+  min-width: 698px;
+  height: 440px;
   background-color: var(--dark-primary);
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
   display: flex;
   justify-content: center;
 
   @media (max-width: 770px) {
+    min-height: 88vh;
+    min-width: 90vw;
+    padding: 15px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -15,8 +34,8 @@ export const Container = styled.main`
 `;
 
 export const DivImage = styled.section`
-  width: 40%;
-  height: 100vh;
+  width: 50%;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,25 +46,19 @@ export const DivImage = styled.section`
 `;
 
 export const DivForm = styled.section`
-  width: 30%;
-  height: 100vh;
+  width: 50%;
+  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 1040px) {
-    margin-left: 100px;
-  }
-
   @media (max-width: 770px) {
-    margin-left: 0;
     height: 50%;
   }
 `;
 
 export const Image = styled.img`
-  width: 440px;
-  height: 440px;
+  width: 312px;
 
   @media (max-width: 1040px) {
     width: 340px;
