@@ -14,6 +14,7 @@ export default createGlobalStyle`
     --green-bar: #1DD1A1;
     --yellow-bar: #FFDA79;
     --red-bar: #FF5252;
+    --dash-background: #eee;
   }
 
   body {
