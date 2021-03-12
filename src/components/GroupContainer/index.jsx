@@ -2,7 +2,7 @@ import { CircularProgress } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import api from "../../services/index";
 import GroupCard from "../GroupCard";
-import { CardFlex, CardSolo } from "./styled";
+import { CardFlex, CardSolo, H1Styled, HeaderStyled } from "./styled";
 
 const GroupContainer = () => {
   const id = localStorage.getItem("id") || "";
@@ -27,7 +27,6 @@ const GroupContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-
     // setTimeout(() => {
     api
       .get(`/groups/${user.group}/`)
@@ -44,19 +43,19 @@ const GroupContainer = () => {
   const { name, description, category, users, goals, activities } = group;
 
   return (
-    <div>
+    <>
       {loading ? (
         <CircularProgress color="primary" size={70} />
       ) : (
         <>
-          <header>
+          <HeaderStyled>
             <figure></figure>
-            <h1>{name}</h1>
+            <H1Styled>{name}</H1Styled>
             <h3>{description}</h3>
             <h3>
               Categoria: <span>{category}</span>
             </h3>
-          </header>
+          </HeaderStyled>
           <CardSolo>
             <GroupCard list={users} />
           </CardSolo>
@@ -70,7 +69,7 @@ const GroupContainer = () => {
           </CardFlex>
         </>
       )}
-    </div>
+    </>
   );
 };
 

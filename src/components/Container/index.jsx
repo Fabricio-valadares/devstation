@@ -5,7 +5,7 @@ import { Main } from "./styles";
 const Container = ({ children }) => {
   return (
     <Main>
-      <h1 style={{ color: "#fff" }}>{children}</h1>
+      <div style={{ color: "#fff" }}>{children}</div>
     </Main>
   );
 };

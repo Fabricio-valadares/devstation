@@ -18,10 +18,4 @@ export const MapContainer = styled.div`
   h1 {
     font-size: 1rem;
   }
-  /* display: flex;
-  word-break: break-all;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.9rem; */
 `;

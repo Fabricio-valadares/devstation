@@ -6,8 +6,8 @@ const GroupCard = ({ list }) => {
       {list &&
         list.map((element, index) => (
           <MapContainer key={index}>
-            <div>
-              <h1>{element?.title || element?.username}</h1>{" "}
+            <>
+              <h1>{element?.title || element?.username}</h1>
               {element.realization_time && (
                 <p>
                   Tempo realizado ? <br />
@@ -19,7 +19,7 @@ const GroupCard = ({ list }) => {
               {element.how_much_achieved && (
                 <p>{`${element.how_much_achieved} %`}</p>
               )}
-            </div>
+            </>
           </MapContainer>
         ))}
     </CardInside>
