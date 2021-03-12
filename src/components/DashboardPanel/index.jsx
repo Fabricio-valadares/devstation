@@ -1,5 +1,6 @@
 import { Content } from "./styled";
 import Container from "../../components/Container";
+import GroupContainer from "../GroupContainer";
 
 const DashboardPanel = () => {
   return (
@@ -8,7 +9,9 @@ const DashboardPanel = () => {
         <Container />
       </div>
       <div id="group-card">
-        <Container />
+        <Container>
+          <GroupContainer />
+        </Container>
       </div>
       <div id="activities-card">
         <Container />

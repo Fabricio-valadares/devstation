@@ -11,6 +11,8 @@ export const loginThunk = (data, history) => (dispatch, state) => {
       localStorage.setItem("token", JSON.stringify(response.data.access));
 
       const { user_id } = jwt_decode(JSON.stringify(response.data.access));
+      //para quando recarregar a pagina n ter que logar de novo
+      localStorage.setItem("id", user_id);
 
       dispatch(
         loginAction({
