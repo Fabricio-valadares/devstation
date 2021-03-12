@@ -1,6 +1,8 @@
+import { CardStyled } from "./styled";
+
 const GroupCard = ({ list }) => {
   return (
-    <div style={{ backgroundColor: "black", border: "1px solid white" }}>
+    <div>
       {list &&
         list.map((element, index) => (
           <div key={index}>
