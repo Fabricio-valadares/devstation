@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MdDashboard } from "react-icons/md";
+import { AiFillDashboard } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 
 export const Menu = styled.aside`
@@ -77,7 +77,7 @@ export const Navigation = styled.div`
   }
 `;
 
-export const DashIcon = styled(MdDashboard)`
+export const DashIcon = styled(AiFillDashboard)`
   color: var(--secondary);
   width: 30px;
   height: 30px;
