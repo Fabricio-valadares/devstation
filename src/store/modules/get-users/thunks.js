@@ -1,11 +1,12 @@
-import api from "../../../services";
+//import api from "../../../services";
+import axios from "axios";
 import { getUsersList } from "./actions";
 
-export const getUsersThunk = () => async (dispatch) => {
+export const getUsersThunk = (url) => async (dispatch) => {
   try {
-    const res = await api.get("/users/");
+    const res = await axios.get(url);
     dispatch(getUsersList(res.data));
-    console.log(res);
+    //console.log(res);
     return res.data;
   } catch (error) {
     console.log(error);
