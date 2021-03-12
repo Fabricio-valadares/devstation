@@ -8,9 +8,10 @@ import {
   UserContent,
   Card,
   DivH1,
+  Pname,
 } from "./styled";
 import { getUsersThunk } from "../../store/modules/get-users/thunks";
-import userAvatar from "../../assets/user-avatar.svg";
+import userAvatar from "../../assets/user2.png";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -34,11 +35,11 @@ const GetUsersPage = () => {
 
   return (
     <>
-      <UsersContainer>
+      {/* <UsersContainer> */}
         <UserContent>
-          <DivH1>
-            <h1>GetUsers</h1>
-          </DivH1>
+          {/* <DivH1>
+            <h1>Usuários</h1>
+          </DivH1> */}
           {usersList &&
             users.map((user, index) => {
               return (
@@ -46,8 +47,7 @@ const GetUsersPage = () => {
                   <UserAvatarContainer>
                     <UserAvatar src={userAvatar} />
                   </UserAvatarContainer>
-                  <p>{user.username}</p>
-                  <p>{user.email}</p>
+                  <Pname>{user.username}</Pname>
                   <p>
                     {" "}
                     {user.group && "Grupo:"} {user.group}
@@ -57,7 +57,7 @@ const GetUsersPage = () => {
               );
             })}
         </UserContent>
-      </UsersContainer>
+      {/* </UsersContainer> */}
     </>
   );
 };
