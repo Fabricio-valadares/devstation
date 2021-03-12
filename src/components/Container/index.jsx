@@ -3,11 +3,7 @@ import React from "react";
 import { Main } from "./styles";
 
 const Container = ({ children }) => {
-  return (
-    <Main>
-      <h1 style={{ color: "#fff" }}>{children}</h1>
-    </Main>
-  );
+  return <Main>{children}</Main>;
 };
 
 export default Container;
