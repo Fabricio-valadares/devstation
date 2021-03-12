@@ -1,6 +1,7 @@
-import { Content } from "./styled";
+import { Content, DivH1 } from "./styled";
 import Container from "../../components/Container";
 import GroupContainer from "../GroupContainer";
+import GetUsersPage from "../GetUsersPage";
 
 const DashboardPanel = () => {
   return (
@@ -14,7 +15,12 @@ const DashboardPanel = () => {
         </Container>
       </div>
       <div id="activities-card">
-        <Container />
+        <Container>
+          <DivH1>
+            <h1>Usuários</h1>
+          </DivH1>
+          <GetUsersPage />
+        </Container>
       </div>
     </Content>
   );

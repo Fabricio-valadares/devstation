@@ -34,3 +34,7 @@ export const Content = styled.div`
     height: 100%;
   }
 `;
+
+export const DivH1 = styled.div`
+   padding: 10px;
+`;
