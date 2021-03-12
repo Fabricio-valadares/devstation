@@ -4,6 +4,7 @@ import Register from "../pages/Register";
 import DashBoard from "../pages/DashBoard";
 import GetUsers from "../pages/GetUsers";
 import Home from "../pages/Home";
+import Groups from "../pages/Groups";
 
 const Routes = () => {
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
       <Route exact path="/register" component={Register} />
       <Route exact path="/dashboard" component={DashBoard} />
       <Route exact path="/users" component={GetUsers} />
+      <Route exact path="/groups" component={Groups} />
     </Switch>
   );
 };
