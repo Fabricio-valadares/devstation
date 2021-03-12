@@ -36,5 +36,6 @@ export const Content = styled.div`
 `;
 
 export const DivH1 = styled.div`
-   padding: 10px;
+  padding: 10px;
+  color: var(--text);
 `;

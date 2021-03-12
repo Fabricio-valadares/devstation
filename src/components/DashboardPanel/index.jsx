@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Content } from "./styled";
+import { Content, DivH1 } from "./styled";
 import Container from "../Container";
 import UserHabits from "../UserHabits";
 import GroupContainer from "../GroupContainer";
@@ -39,10 +39,12 @@ const DashboardPanel = () => {
       </div>
       <div id="activities-card">
         <Container>
-          <DivH1>
-            <h1>Usuários</h1>
-          </DivH1>
-          <GetUsersPage />
+          <div>
+            <DivH1>
+              <h1>Usuários</h1>
+            </DivH1>
+            <GetUsersPage />
+          </div>
         </Container>
       </div>
     </Content>

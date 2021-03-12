@@ -12,12 +12,12 @@ export const UsersContainer = styled.div`
 export const UserContent = styled.div`
   position: relative;
   width: 100%;
-  
+
   /* margin: 10px; */
   /* padding-left: 10px;
   padding-right: 10px; */
   /* background-color: yellow; */
-  
+
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -30,7 +30,7 @@ export const UserContent = styled.div`
     border-radius: 50px;
     /* background-color: 0px 0px 4px 4px rgba(0, 0, 0, 0.50); */
   }
-  
+
   h1 {
     top: 0;
     position: relative;
@@ -44,6 +44,7 @@ export const UserContent = styled.div`
     display: block;
     font-size: 0.7rem;
     text-align: center;
+    color: white;
   }
 `;
 
@@ -52,6 +53,7 @@ export const Pname = styled.div`
   margin-top: 5px;
   font-size: 0.7rem;
   text-align: center;
+  color: white;
 `;
 
 export const DivH1 = styled.div`
