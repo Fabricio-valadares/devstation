@@ -99,7 +99,7 @@ export const Navigation = styled.div`
 export const Content = styled.div`
   width: 100%;
   height: 100%;
-  background-color: var(--soft-primary);
+  background-color: var(--dash-background);
   display: grid;
   align-items: center;
   align-content: center;
