@@ -14,6 +14,7 @@ export default createGlobalStyle`
     --green-bar: #1DD1A1;
     --yellow-bar: #FFDA79;
     --red-bar: #FF5252;
+    --dash-background: #eee;
   }
 
   body {
@@ -33,5 +34,41 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+  }
+  ::-webkit-scrollbar {
+      width: 8px;
+      background: #F4F4F4;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: var(--dark-secondary);
+      border-radius: 5px;
+  }
+
+  .MuiPaper-root {
+    background-color: var(--dark-primary) !important
+  }
+
+  .MuiAccordionDetails-root {
+    background-color: #fff;
+    display: flex;
+    border-radius: 0 0 3px 3px;
+    margin-top: 5px;
+    padding: 8px 16px 16px;
+  }
+
+  .MuiAccordion-root:before {
+    left: none;
+  }
+
+  .MuiAccordion-root.Mui-expanded {
+    margin: 0 !important;
+  }
+
+  .MuiAccordionDetails-root {
+    justify-content: space-between;
   }
 `;
