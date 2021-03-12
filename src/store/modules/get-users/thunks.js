@@ -1,4 +1,3 @@
-//import api from "../../../services";
 import axios from "axios";
 import { getUsersList } from "./actions";
 
