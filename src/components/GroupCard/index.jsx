@@ -1,4 +1,4 @@
-const GroupCard = ({ children, list }) => {
+const GroupCard = ({ list }) => {
   return (
     <div style={{ backgroundColor: "black", border: "1px solid white" }}>
       {list &&
@@ -8,7 +8,7 @@ const GroupCard = ({ children, list }) => {
             {element.realization_time && (
               <p>
                 Tempo realizado ? <br />
-                {element?.realization_time}
+                {element.realization_time}
               </p>
             )}
             {element.email && <p> {element?.email}</p>}

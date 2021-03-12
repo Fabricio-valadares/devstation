@@ -27,15 +27,15 @@ const GroupContainer = () => {
   useEffect(() => {
     setLoading(true);
 
-    setTimeout(() => {
-      api
-        .get(`/groups/${user.group}/`)
-        .then((response) => {
-          setGroup(response.data);
-          setLoading(false);
-        })
-        .catch((e) => console.log(e));
-    }, 5000);
+    // setTimeout(() => {
+    api
+      .get(`/groups/${user.group}/`)
+      .then((response) => {
+        setGroup(response.data);
+        setLoading(false);
+      })
+      .catch((e) => console.log(e));
+    // }, 5000);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);

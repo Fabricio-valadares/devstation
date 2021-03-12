@@ -1,51 +1,24 @@
-import {
-  Main,
-  Menu,
-  Profile,
-  Navigation,
-  DashIcon,
-  GroupIcon,
-  Content,
-} from "./styled";
-import User from "../../assets/user-avatar.svg";
-import { Link } from "react-router-dom";
-import Container from "../../components/Container";
-import GroupContainer from "../../components/GroupContainer";
+import { Main } from "./styled";
+import Aside from "../../components/Aside";
+import DashboardPanel from "../../components/DashboardPanel";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
+
 const DashBoard = () => {
+  const token = localStorage.getItem("token");
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!token) {
+      history.push("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Main>
-      <Menu>
-        <Profile>
-          <img src={User} alt="User" />
-          <div className="user-info">
-            <h3>User name</h3>
-            <p>user@email.com</p>
-          </div>
-        </Profile>
-        <Navigation>
-          <Link to="#" className="menu-link">
-            <DashIcon />
-            <p>Dashboard</p>
-          </Link>
-          <Link to="#" className="menu-link">
-            <GroupIcon />
-            <p>Groups</p>
-          </Link>
-        </Navigation>
-      </Menu>
-      <Content>
-        <div id="habits-card">
-          <Container />
-        </div>
-        <div id="group-card">
-          <Container>
-            <GroupContainer />
-          </Container>
-        </div>
-        <div id="activities-card">
-          <Container />
-        </div>
-      </Content>
+      <Aside />
+      <DashboardPanel />
     </Main>
   );
 };
