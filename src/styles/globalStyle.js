@@ -14,7 +14,7 @@ export default createGlobalStyle`
     --green-bar: #1DD1A1;
     --yellow-bar: #FFDA79;
     --red-bar: #FF5252;
-    --dash-background: #eee;
+    --dash-background: #560BAD;
   }
 
   body {
@@ -37,14 +37,14 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
+    background-color: var(--dark-primary);
   }
   ::-webkit-scrollbar {
       width: 8px;
-      background: #F4F4F4;
+      background: var(--soft-primary);
   }
   ::-webkit-scrollbar-thumb {
-      background: var(--dark-secondary);
+      background: var(--soft-primary);
       border-radius: 5px;
   }
 

@@ -36,27 +36,26 @@ const GetUsersPage = () => {
   return (
     <>
       {/* <UsersContainer> */}
-        <UserContent>
-          {/* <DivH1>
+      <UserContent>
+        {/* <DivH1>
             <h1>Usuários</h1>
           </DivH1> */}
-          {usersList &&
-            users.map((user, index) => {
-              return (
-                <Card key={index}>
-                  <UserAvatarContainer>
-                    <UserAvatar src={userAvatar} />
-                  </UserAvatarContainer>
-                  <Pname>{user.username}</Pname>
-                  <p>
-                    {" "}
-                    {user.group && "Grupo:"} {user.group}
-                  </p>
-                  <br />
-                </Card>
-              );
-            })}
-        </UserContent>
+        {usersList &&
+          users.map((user, index) => {
+            return (
+              <Card key={index}>
+                <UserAvatarContainer>
+                  <UserAvatar src={userAvatar} />
+                </UserAvatarContainer>
+                <Pname>{user.username}</Pname>
+                <p>
+                  {user.group && "Grupo:"} {user.group}
+                </p>
+                <br />
+              </Card>
+            );
+          })}
+      </UserContent>
       {/* </UsersContainer> */}
     </>
   );
