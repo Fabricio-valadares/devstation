@@ -61,8 +61,12 @@ const GroupContainer = () => {
             <GroupCard list={users} />
           </CardSolo>
           <CardFlex>
-            <GroupCard list={goals} />
-            <GroupCard list={activities} />
+            <CardSolo>
+              <GroupCard list={goals} />
+            </CardSolo>
+            <CardSolo>
+              <GroupCard list={activities} />
+            </CardSolo>
           </CardFlex>
         </>
       )}

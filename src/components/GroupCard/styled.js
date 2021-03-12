@@ -1,8 +1,27 @@
 import styled from "styled-components";
 
-export const CardStyled = styled.div`
-  background-color: var(--soft-primary);
-  max-height: 30rem;
+export const CardInside = styled.div`
+  display: flex;
+  word-break: break-all;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const MapContainer = styled.div`
   margin: 1rem;
-  overflow: auto;
+  max-width: 40%;
+
+  p {
+    font-size: 0.7rem;
+  }
+  h1 {
+    font-size: 1rem;
+  }
+  /* display: flex;
+  word-break: break-all;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem; */
 `;
