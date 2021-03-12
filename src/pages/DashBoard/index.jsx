@@ -10,6 +10,7 @@ import {
 import User from "../../assets/user-avatar.svg";
 import { Link } from "react-router-dom";
 import Container from "../../components/Container";
+import GroupContainer from "../../components/GroupContainer";
 const DashBoard = () => {
   return (
     <Main>
@@ -22,11 +23,11 @@ const DashBoard = () => {
           </div>
         </Profile>
         <Navigation>
-          <Link className="menu-link">
+          <Link to="#" className="menu-link">
             <DashIcon />
             <p>Dashboard</p>
           </Link>
-          <Link className="menu-link">
+          <Link to="#" className="menu-link">
             <GroupIcon />
             <p>Groups</p>
           </Link>
@@ -37,7 +38,9 @@ const DashBoard = () => {
           <Container />
         </div>
         <div id="group-card">
-          <Container />
+          <Container>
+            <GroupContainer />
+          </Container>
         </div>
         <div id="activities-card">
           <Container />
