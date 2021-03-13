@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Content, DivH1 } from "./styled";
 import Container from "../Container";
-import UserHabits from "../UserHabits";
-import GroupContainer from "../GroupContainer";
-import GetUsersPage from "../GetUsersPage";
+import UserHabits from "../YourHabits/UserHabits";
+import GroupContainer from "../Groups/GroupContainer";
+import GetUsersPage from "../../Users/GetUsersPage";
 
-import api from "../../services";
+import api from "../../../services/index";
 
 const DashboardPanel = () => {
   const storagedToken = localStorage.getItem("token");

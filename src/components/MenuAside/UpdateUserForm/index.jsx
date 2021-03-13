@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 import * as yup from "yup";
-import api from "../../services";
+import api from "../../../services";
 import { FormContainer } from "./styled";
 
 const UpdateUserForm = () => {

@@ -1,6 +1,6 @@
 import { Main } from "./styled";
-import Aside from "../../components/Aside";
-import DashboardPanel from "../../components/DashboardPanel";
+import Aside from "../../components/MenuAside/Aside/index";
+import DashboardPanel from "../../components/DashBoard/DashboardPanel";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 

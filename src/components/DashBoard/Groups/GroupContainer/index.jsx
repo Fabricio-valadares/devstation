@@ -1,6 +1,6 @@
 import { CircularProgress } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import api from "../../services/index";
+import api from "../../../../services/index";
 import GroupCardActivities from "../GroupCardActivities";
 import GroupCardGoals from "../GroupCardGoals";
 import GroupCardUsers from "../GroupCardUsers";

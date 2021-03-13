@@ -1,5 +1,5 @@
 import { Menu, Profile, Navigation, DashIcon, GroupIcon } from "./styled";
-import User from "../../assets/user-avatar.svg";
+import User from "../../../assets/user-avatar.svg";
 import { Link } from "react-router-dom";
 
 const Aside = () => {
