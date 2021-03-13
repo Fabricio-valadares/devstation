@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Content } from "./styled";
 import Container from "../Container";
 import UserHabits from "../YourHabits/UserHabits";
+import Modal from "../../Modal/index";
 import GroupContainer from "../Groups/GroupContainer";
 
 import api from "../../../services/index";
@@ -43,6 +44,7 @@ const DashboardPanel = () => {
       <div id="activities-card">
         <Container>Activities</Container>
       </div>
+      <Modal />
     </Content>
   );
 };
