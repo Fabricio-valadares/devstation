@@ -19,7 +19,6 @@ export const CardSolo = styled.div`
   min-width: 40%;
   margin: 1rem;
   overflow: auto;
-  color: white;
 `;
 
 export const H1Styled = styled.h1`
@@ -31,6 +30,7 @@ export const HeaderStyled = styled.header`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 1rem;
   span {
     font-weight: 400;
   }
@@ -44,5 +44,4 @@ export const Main = styled.div`
   width: 100%;
   height: 100%;
   padding: 24px;
-  /* overflow-y: scroll; */
 `;

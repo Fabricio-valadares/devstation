@@ -4,21 +4,30 @@ export const CardUsers = styled.div`
   background-color: var(--soft-primary);
   color: white;
 
-  /* display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between; */
-
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  padding-top: 1rem;
+  padding: 1rem;
 
-  font-size: 1rem;
+  font-size: 1.3rem;
   width: 100%;
   height: 25%;
-  overflow: auto;
-  word-break: break-all;
+
+  transition: 0.3s;
+  border-radius: 3%;
+
+  overflow-y: auto;
+  ::-webkit-scrollbar-track {
+    background-color: var(--soft-primary);
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    background: var(--middle-primary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a0a0a0;
+    border-radius: 5px;
+  }
 `;
 
 export const WhiteBall = styled.div`

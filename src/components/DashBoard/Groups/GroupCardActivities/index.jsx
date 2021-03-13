@@ -9,7 +9,9 @@ const GroupCardActivities = ({ activities }) => {
       {activities &&
         activities.map((activity, index) => (
           <ActivityDiv key={index}>
-            <WhiteBall />
+            <figure>
+              <WhiteBall />
+            </figure>
             <div>
               <h1>{activity.title}</h1>
               <p>
