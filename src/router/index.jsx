@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import DashBoard from "../pages/DashBoard";
-import GetUsers from "../pages/GetUsers";
+import GetUsers from "../pages/Users";
 import Home from "../pages/Home";
 import Groups from "../pages/Groups";
 

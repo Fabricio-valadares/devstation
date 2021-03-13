@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { AiFillDashboard } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
+import { FaUserFriends } from "react-icons/fa";
 
 export const Menu = styled.aside`
   width: 350px;
@@ -84,6 +85,13 @@ export const DashIcon = styled(AiFillDashboard)`
   margin-right: 10px;
 `;
 export const GroupIcon = styled(HiUserGroup)`
+  color: var(--secondary);
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+`;
+
+export const UsersIcon = styled(FaUserFriends)`
   color: var(--secondary);
   width: 30px;
   height: 30px;

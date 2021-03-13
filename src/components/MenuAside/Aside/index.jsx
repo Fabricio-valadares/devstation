@@ -1,4 +1,11 @@
-import { Menu, Profile, Navigation, DashIcon, GroupIcon } from "./styled";
+import {
+  Menu,
+  Profile,
+  Navigation,
+  DashIcon,
+  GroupIcon,
+  UsersIcon,
+} from "./styled";
 import User from "../../../assets/user-avatar.svg";
 import { Link } from "react-router-dom";
 
@@ -20,6 +27,10 @@ const Aside = () => {
         <Link className="menu-link" to="/groups">
           <GroupIcon />
           <p>Groups</p>
+        </Link>
+        <Link className="menu-link" to="/users">
+          <UsersIcon />
+          <p>Users</p>
         </Link>
       </Navigation>
     </Menu>
