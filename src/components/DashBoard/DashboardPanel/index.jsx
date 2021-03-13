@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Content, DivH1 } from "./styled";
+import { Content } from "./styled";
 import Container from "../Container";
 import UserHabits from "../YourHabits/UserHabits";
 import GroupContainer from "../Groups/GroupContainer";
-import GetUsersPage from "../../Users/GetUsersPage";
 
 import api from "../../../services/index";
 
@@ -32,20 +31,17 @@ const DashboardPanel = () => {
           <UserHabits habits={habits} />
         </Container>
       </div>
-      <div id="group-card">
-        <Container>
-          <GroupContainer />
-        </Container>
+      <div id="graphic-card">
+        <Container>Grafico</Container>
+      </div>
+      <div id="nameGroup-card">
+        <Container>Name Group</Container>
+      </div>
+      <div id="goals-card">
+        <Container>Goals</Container>
       </div>
       <div id="activities-card">
-        <Container>
-          <div>
-            <DivH1>
-              <h1>Usuários</h1>
-            </DivH1>
-            <GetUsersPage />
-          </div>
-        </Container>
+        <Container>Activities</Container>
       </div>
     </Content>
   );

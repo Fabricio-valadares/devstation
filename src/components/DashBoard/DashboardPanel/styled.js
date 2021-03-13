@@ -8,34 +8,46 @@ export const Content = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-  grid-template-columns: 50% 40%;
-  grid-template-rows: 40% 40%;
-  grid-gap: 40px;
+  grid-template-columns: 32.5% 62.5%;
+  grid-template-rows: 2% 20.6% 12.6% 16.6% 16.6% 16.6% 2%;
+  grid-gap: 20px;
 
   grid-template-areas:
-    "H G"
-    "A G";
+    "A B"
+    "HABITS NAMEGROUPS"
+    "HABITS GOALSCARD"
+    "HABITS GOALSCARD"
+    "GRAPHIC ACTIVITIESCARD"
+    "GRAPHIC ACTIVITIESCARD"
+    "C D";
 
   div#habits-card {
-    grid-area: H;
+    grid-area: HABITS;
     width: 100%;
     height: 100%;
   }
 
-  div#group-card {
-    grid-area: G;
+  div#graphic-card {
+    grid-area: GRAPHIC;
+    width: 100%;
+    height: 100%;
+  }
+
+  div#nameGroup-card {
+    grid-area: NAMEGROUPS;
+    width: 100%;
+    height: 100%;
+  }
+
+  div#goals-card {
+    grid-area: GOALSCARD;
     width: 100%;
     height: 100%;
   }
 
   div#activities-card {
-    grid-area: A;
+    grid-area: ACTIVITIESCARD;
     width: 100%;
     height: 100%;
   }
-`;
-
-export const DivH1 = styled.div`
-  padding: 10px;
-  color: var(--text);
 `;
