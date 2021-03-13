@@ -10,8 +10,8 @@ import {
   DivH1,
   Pname,
 } from "./styled";
-import { getUsersThunk } from "../../store/modules/get-users/thunks";
-import userAvatar from "../../assets/user2.png";
+import { getUsersThunk } from "../../../store/modules/get-users/thunks";
+import userAvatar from "../../../assets/user2.png";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);

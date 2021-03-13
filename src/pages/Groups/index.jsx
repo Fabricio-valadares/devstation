@@ -1,5 +1,5 @@
-import Aside from "../../components/Aside";
-import ListUsers from "../../components/ListGroups";
+import Aside from "../../components/MenuAside/Aside";
+import ListUsers from "../../components/Groups/ListGroups";
 import { Main } from "./styled";
 
 const Groups = () => {
