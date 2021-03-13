@@ -1,8 +1,9 @@
 import { CircularProgress } from "@material-ui/core";
+import { Height } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import api from "../../services/index";
 import GroupCard from "../GroupCard";
-import { CardFlex, CardSolo, H1Styled, HeaderStyled } from "./styled";
+import { CardFlex, CardSolo, H1Styled, HeaderStyled, Main } from "./styled";
 
 const GroupContainer = () => {
   const id = localStorage.getItem("id") || "";
@@ -35,7 +36,7 @@ const GroupContainer = () => {
         setLoading(false);
       })
       .catch((e) => console.log(e));
-    // }, 5000);
+    // }, 50000);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
@@ -43,33 +44,36 @@ const GroupContainer = () => {
   const { name, description, category, users, goals, activities } = group;
 
   return (
-    <>
+    <Main>
       {loading ? (
         <CircularProgress color="primary" size={70} />
       ) : (
         <>
           <HeaderStyled>
-            <figure></figure>
+            {/* <figure> */}
+            <div
+              style={{
+                backgroundColor: "white",
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+              }}
+            />
+            {/* </figure> */}
             <H1Styled>{name}</H1Styled>
             <h3>{description}</h3>
             <h3>
               Categoria: <span>{category}</span>
             </h3>
           </HeaderStyled>
-          <CardSolo>
-            <GroupCard list={users} />
-          </CardSolo>
+          <GroupCard users={users} />
           <CardFlex>
-            <CardSolo>
-              <GroupCard list={goals} />
-            </CardSolo>
-            <CardSolo>
-              <GroupCard list={activities} />
-            </CardSolo>
+            <GroupCard goals={goals} />
+            <GroupCard activities={activities} />
           </CardFlex>
         </>
       )}
-    </>
+    </Main>
   );
 };
 

@@ -1,28 +1,55 @@
 import { CardInside, MapContainer } from "./styled";
 
-const GroupCard = ({ list }) => {
+const GroupCard = ({ users, goals, activities }) => {
   return (
-    <CardInside>
-      {list &&
-        list.map((element, index) => (
-          <MapContainer key={index}>
-            <>
-              <h1>{element?.title || element?.username}</h1>
-              {element.realization_time && (
-                <p>
-                  Tempo realizado ? <br />
-                  {element.realization_time}
-                </p>
-              )}
-              {element.email && <p> {element?.email}</p>}
-              {element.difficulty && <p>{element?.difficulty}</p>}
-              {element.how_much_achieved && (
-                <p>{`${element.how_much_achieved} %`}</p>
-              )}
-            </>
-          </MapContainer>
+    <>
+      {users &&
+        users.map((user, index) => (
+          <div key={index}>
+            <div
+              style={{
+                backgroundColor: "white",
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
+              }}
+            />
+            <div>
+              <h1>{user.username}</h1>
+              <p>{user.email}</p>
+            </div>
+          </div>
         ))}
-    </CardInside>
+
+      <div>
+        {goals &&
+          goals.map((goal, index) => (
+            <div key={index}>
+              <h1>{goal.title}</h1>
+              <p>{goal.difficulty}</p>
+            </div>
+          ))}
+      </div>
+      <div>
+        {activities &&
+          activities.map((activity, index) => (
+            <div key={index}>
+              <div
+                style={{
+                  backgroundColor: "white",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                }}
+              />
+              <div>
+                <h1>{activity.title}</h1>
+                <p>{activity.difficulty}</p>
+              </div>
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
 

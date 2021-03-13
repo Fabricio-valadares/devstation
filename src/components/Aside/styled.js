@@ -3,7 +3,7 @@ import { AiFillDashboard } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 
 export const Menu = styled.aside`
-  width: 480px;
+  width: 350px;
   height: 100vh;
   background-color: var(--dark-primary);
   display: flex;
