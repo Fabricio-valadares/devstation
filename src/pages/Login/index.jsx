@@ -1,5 +1,5 @@
 import { Container, DivImage, DivForm, Image, ContainerPages } from "./styled";
-import FormLogin from "../../components/FormLogin";
+import FormLogin from "../../components/Login/FormLogin";
 
 const Login = () => {
   return (

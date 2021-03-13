@@ -4,7 +4,7 @@ import { FaCaretUp } from "react-icons/fa";
 import CardGroup from "../CardGroup";
 
 import { useDispatch } from "react-redux";
-import { groupsThunks } from "../.././store/modules/groups/thunk";
+import { groupsThunks } from "../../../store/modules/groups/thunk";
 
 const ListGroups = () => {
   const dispatch = useDispatch();

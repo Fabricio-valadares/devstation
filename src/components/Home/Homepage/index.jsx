@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
-import logoImage from "../../assets/logo.svg";
-import bikeImage from "../../assets/bike.svg";
-import runImage from "../../assets/run.svg";
-import stretchImage from "../../assets/stretch.svg";
-import styleImage from "../../assets/style.svg";
-import yogaImage from "../../assets/yoga.svg";
-import workoutImage from "../../assets/workout.svg";
+import logoImage from "../../../assets/logo.svg";
+import bikeImage from "../../../assets/bike.svg";
+import runImage from "../../../assets/run.svg";
+import stretchImage from "../../../assets/stretch.svg";
+import styleImage from "../../../assets/style.svg";
+import yogaImage from "../../../assets/yoga.svg";
+import workoutImage from "../../../assets/workout.svg";
 import {
   HomeContainer,
   Content,

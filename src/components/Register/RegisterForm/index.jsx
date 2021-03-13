@@ -20,7 +20,7 @@ import {
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 
-import api from "../../services";
+import api from "../../../services";
 
 const RegisterForm = () => {
   const classes = useStyles();
