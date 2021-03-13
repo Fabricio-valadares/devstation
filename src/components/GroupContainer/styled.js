@@ -2,8 +2,13 @@ import styled from "styled-components";
 
 export const CardFlex = styled.div`
   display: flex;
-  max-height: 60%;
-  overflow: auto;
+`;
+
+export const WhiteBall = styled.div`
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 `;
 
 export const CardSolo = styled.div`

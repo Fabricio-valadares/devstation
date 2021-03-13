@@ -1,9 +1,10 @@
 import { CircularProgress } from "@material-ui/core";
-import { Height } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import api from "../../services/index";
-import GroupCard from "../GroupCard";
-import { CardFlex, CardSolo, H1Styled, HeaderStyled, Main } from "./styled";
+import GroupCardActivities from "../GroupCardActivities";
+import GroupCardGoals from "../GroupCardGoals";
+import GroupCardUsers from "../GroupCardUsers";
+import { CardFlex, H1Styled, HeaderStyled, Main, WhiteBall } from "./styled";
 
 const GroupContainer = () => {
   const id = localStorage.getItem("id") || "";
@@ -50,26 +51,19 @@ const GroupContainer = () => {
       ) : (
         <>
           <HeaderStyled>
-            {/* <figure> */}
-            <div
-              style={{
-                backgroundColor: "white",
-                width: "50px",
-                height: "50px",
-                borderRadius: "50%",
-              }}
-            />
-            {/* </figure> */}
+            <figure>
+              <WhiteBall />
+            </figure>
             <H1Styled>{name}</H1Styled>
             <h3>{description}</h3>
             <h3>
               Categoria: <span>{category}</span>
             </h3>
           </HeaderStyled>
-          <GroupCard users={users} />
+          <GroupCardUsers users={users} />
           <CardFlex>
-            <GroupCard goals={goals} />
-            <GroupCard activities={activities} />
+            <GroupCardGoals goals={goals} />
+            <GroupCardActivities activities={activities} />
           </CardFlex>
         </>
       )}
