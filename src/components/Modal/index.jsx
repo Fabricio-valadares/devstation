@@ -22,18 +22,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({ children }) {
+export default function TransitionsModal({ children, open, handleClose }) {
   const classes = useStyles();
   // const open = true;
 
-  const open = useSelector((state) => state.open);
+  // const open = useSelector((state) => state.open);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleClose = () => {
-    // setOpen(false);
-    dispatch(openModalThunk(false));
-  };
+  // const handleClose = () => {
+  //   // setOpen(false);
+  //   dispatch(openModalThunk(false));
+  // };
 
   return (
     <div>

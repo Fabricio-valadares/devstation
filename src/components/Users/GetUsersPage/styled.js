@@ -77,7 +77,7 @@ export const DivHeader = styled.div`
   }
 
   p {
-    margin-top: 465px;
+    /* margin-top: 465px; */
     margin-left: 2px;
     vertical-align: center;
     font-size: 10px;
@@ -92,8 +92,6 @@ export const DivH1 = styled.div`
   vertical-align: center;
   font-size: 1.25rem;
   color: var(--text);
-
-  
 `;
 
 export const Card = styled.div`
@@ -126,4 +124,14 @@ export const UserAvatar = styled.img`
 
 export const ShowIcon = styled.div`
   width: 80px;
+`;
+
+export const UsersDiv = styled.div`
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+  p {
+    font-size: 0.8rem;
+  }
 `;

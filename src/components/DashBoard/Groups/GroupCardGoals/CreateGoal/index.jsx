@@ -13,50 +13,29 @@ import { FiTrash } from "react-icons/fi";
 import { DivFlex } from "./styled";
 import { FormStyled } from "./styled";
 
-const EditGoal = ({ goalId, handleChanged, handleClose }) => {
+const CreateGoal = ({ groupId, handleClose }) => {
   const classes = useStyles();
 
   const [errorMsg, setErrorMsg] = useState(false);
-  const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
 
-  const [goal, setGoal] = useState({});
-
   const schema = yup.object().shape({
-    title: yup.string(),
-    difficulty: yup.string(),
-    // how_much_achieved: yup.string().matches(/\d/, "apenas digitos"),
+    title: yup.string().required("Campo Obrigatório"),
+    difficulty: yup.string().required("Campo Obrigatório"),
   });
 
   const { handleSubmit, register, errors, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
-  useEffect(() => {
-    //consumindo rota get one goals
-    api
-      .get(`/goals/${goalId}/`)
-      .then((response) => setGoal(response.data))
-      .catch((e) => console.log(e));
-  }, [goalId]);
-
   const handleForm = (data) => {
-    if (data.title === "") {
-      data.title = goal.title;
-    }
-    if (data.difficulty === "") {
-      data.difficulty = goal.difficulty;
-    }
-    if (data.how_much_achieved === "") {
-      data.how_much_achieved = goal.how_much_achieved;
-    }
-    console.log(data);
-
-    //consumindo a rota update goal
+    //consumindo a rota create goal
+    data["group"] = groupId;
+    data["how_much_achieved"] = 0;
 
     api
-      .patch(`/goals/${goalId}/`, data, {
+      .post(`/goals/`, data, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
@@ -74,39 +53,17 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
       });
   };
 
-  const handleDelete = () => {
-    //consumindo rota de deletar goals
-    api
-      .delete(`/goals/${goal.id}/`, {
-        headers: {
-          Authorization: `Bearer  ${JSON.parse(token)}`,
-        },
-      })
-      .then((response) => {
-        handleChanged();
-
-        dispatch(openModalThunk(false));
-
-        console.log(response);
-      })
-      .catch((e) => console.log(e));
-  };
-
   return (
     <Main>
       {errorMsg && (
         <Alert severity="error">
-          Sua edição falhou, verifique os dados e tente novamente.
+          Sua criação falhou, verifique os dados e tente novamente.
         </Alert>
       )}
       <FormStyled onSubmit={handleSubmit(handleForm)}>
+        <h1>Criar Goal</h1>
         <div>
-          <DivFlex>
-            <h1>Titulo: {goal.title}</h1>
-            <span>
-              <FiTrash onClick={handleDelete} />
-            </span>
-          </DivFlex>
+          <h1>Titulo:</h1>
 
           <InputBase
             className={classes.textField}
@@ -122,7 +79,7 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
           </FormHelperText>
         </div>
         <div>
-          <h1>Dificuldade: {goal.difficulty}</h1>
+          <h1>Dificuldade: </h1>
           <InputBase
             className={classes.textField}
             margin="dense"
@@ -136,26 +93,10 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
             {errors.difficulty?.message}
           </FormHelperText>
         </div>
-        <div>
-          <h1>Completo: {goal.how_much_achieved}</h1>
-          <InputBase
-            className={classes.textField}
-            type="number"
-            margin="dense"
-            variant="outlined"
-            placeholder="Progresso"
-            name="how_much_achieved"
-            inputRef={register}
-            error={!!errors.how_much_achieved}
-          />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.how_much_achieved?.message}
-          </FormHelperText>
-        </div>
 
         <div>
           <Button type="submit" variant="contained" color="primary">
-            Alterar
+            Criar
           </Button>
         </div>
       </FormStyled>
@@ -163,4 +104,4 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   );
 };
 
-export default EditGoal;
+export default CreateGoal;

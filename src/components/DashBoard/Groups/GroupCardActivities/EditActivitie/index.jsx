@@ -13,20 +13,17 @@ import { FiTrash } from "react-icons/fi";
 import { DivFlex } from "./styled";
 import { FormStyled } from "./styled";
 
-const EditGoal = ({ goalId, handleChanged, handleClose }) => {
+const EditActivity = ({ activityId, handleChanged, handleClose }) => {
   const classes = useStyles();
 
   const [errorMsg, setErrorMsg] = useState(false);
-  const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
 
-  const [goal, setGoal] = useState({});
+  const [activity, setActivity] = useState({});
 
   const schema = yup.object().shape({
     title: yup.string(),
-    difficulty: yup.string(),
-    // how_much_achieved: yup.string().matches(/\d/, "apenas digitos"),
   });
 
   const { handleSubmit, register, errors, reset } = useForm({
@@ -34,29 +31,22 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   });
 
   useEffect(() => {
-    //consumindo rota get one goals
+    //consumindo rota get one activity
     api
-      .get(`/goals/${goalId}/`)
-      .then((response) => setGoal(response.data))
+      .get(`/activities/${activityId}/`)
+      .then((response) => setActivity(response.data))
       .catch((e) => console.log(e));
-  }, [goalId]);
+  }, [activityId]);
 
   const handleForm = (data) => {
     if (data.title === "") {
-      data.title = goal.title;
+      data.title = activity.title;
     }
-    if (data.difficulty === "") {
-      data.difficulty = goal.difficulty;
-    }
-    if (data.how_much_achieved === "") {
-      data.how_much_achieved = goal.how_much_achieved;
-    }
-    console.log(data);
 
-    //consumindo a rota update goal
+    //consumindo a rota update activity
 
     api
-      .patch(`/goals/${goalId}/`, data, {
+      .patch(`/activities/${activityId}/`, data, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
@@ -75,18 +65,16 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   };
 
   const handleDelete = () => {
-    //consumindo rota de deletar goals
+    //consumindo rota de deletar activity
     api
-      .delete(`/goals/${goal.id}/`, {
+      .delete(`/activities/${activity.id}/`, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(token)}`,
         },
       })
       .then((response) => {
-        handleChanged();
-
-        dispatch(openModalThunk(false));
-
+        // handleChanged();
+        handleClose();
         console.log(response);
       })
       .catch((e) => console.log(e));
@@ -102,7 +90,7 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
       <FormStyled onSubmit={handleSubmit(handleForm)}>
         <div>
           <DivFlex>
-            <h1>Titulo: {goal.title}</h1>
+            <h1>Titulo: {activity.title}</h1>
             <span>
               <FiTrash onClick={handleDelete} />
             </span>
@@ -121,46 +109,14 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
             {errors.title?.message}
           </FormHelperText>
         </div>
-        <div>
-          <h1>Dificuldade: {goal.difficulty}</h1>
-          <InputBase
-            className={classes.textField}
-            margin="dense"
-            variant="outlined"
-            placeholder="Dificuldade"
-            name="difficulty"
-            inputRef={register}
-            error={!!errors.difficulty}
-          />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.difficulty?.message}
-          </FormHelperText>
-        </div>
-        <div>
-          <h1>Completo: {goal.how_much_achieved}</h1>
-          <InputBase
-            className={classes.textField}
-            type="number"
-            margin="dense"
-            variant="outlined"
-            placeholder="Progresso"
-            name="how_much_achieved"
-            inputRef={register}
-            error={!!errors.how_much_achieved}
-          />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.how_much_achieved?.message}
-          </FormHelperText>
-        </div>
-
-        <div>
+        <>
           <Button type="submit" variant="contained" color="primary">
             Alterar
           </Button>
-        </div>
+        </>
       </FormStyled>
     </Main>
   );
 };
 
-export default EditGoal;
+export default EditActivity;
