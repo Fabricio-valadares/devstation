@@ -2,38 +2,43 @@ import { useState, useEffect } from "react";
 import { Content } from "./styled";
 import Container from "../Container";
 import UserHabits from "../YourHabits/UserHabits";
+import Graphic from "../Graphic";
 import Modal from "../../Modal/index";
-import GroupContainer from "../Groups/GroupContainer";
+// import GroupContainer from "../Groups/GroupContainer";
 
-import api from "../../../services/index";
+import axios from "axios";
 
 const DashboardPanel = () => {
-  const storagedToken = localStorage.getItem("token");
-  const token = JSON.parse(storagedToken);
+  const [next, setNext] = useState("https://kabit-api.herokuapp.com/habits/");
   const [habits, setHabits] = useState([]);
+  const storagedId = localStorage.getItem("id");
+  const userId = JSON.parse(storagedId);
 
   useEffect(() => {
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setHabits(response.data))
-      .catch((error) => console.log(error));
-
+    if (next) {
+      axios
+        .get(`${next}`)
+        .then((response) => {
+          setHabits([...habits, ...response.data.results]);
+          setNext(response.data.next);
+        })
+        .catch((error) => console.log(error));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [next]);
 
+  const filterdHabits = habits.filter((habit) => habit.user === userId);
   return (
     <Content>
       <div id="habits-card">
         <Container>
-          <UserHabits habits={habits} />
+          <UserHabits habits={filterdHabits} />
         </Container>
       </div>
       <div id="graphic-card">
-        <Container>Grafico</Container>
+        <Container>
+          <Graphic habits={filterdHabits} />
+        </Container>
       </div>
       <div id="nameGroup-card">
         <Container>Name Group</Container>
