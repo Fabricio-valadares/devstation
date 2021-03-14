@@ -5,6 +5,7 @@ import DashBoard from "../pages/DashBoard";
 import GetUsers from "../pages/Users";
 import Home from "../pages/Home";
 import Groups from "../pages/Groups";
+import CardUser from "../components/Users/CardUser";
 
 const Routes = () => {
   return (
