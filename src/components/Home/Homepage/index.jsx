@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
 import logoImage from "../../../assets/logo.svg";
-import bikeImage from "../../../assets/bike.svg";
-import runImage from "../../../assets/run.svg";
-import stretchImage from "../../../assets/stretch.svg";
-import styleImage from "../../../assets/style.svg";
-import yogaImage from "../../../assets/yoga.svg";
-import workoutImage from "../../../assets/workout.svg";
+import designNotes from "../../../assets/design-notes.svg";
+import designTools from "../../../assets/design-tools.svg";
+import devWork from "../../../assets/dev-activity.svg";
+import kanban from "../../../assets/kanban.svg";
+import server from "../../../assets/server.svg";
+import versionControl from "../../../assets/version-control.svg";
 import {
   HomeContainer,
   Content,
@@ -64,14 +64,14 @@ const Homepage = () => {
         </DivContent>
       </Content>
       <ImagesA>
-        <BikeImage src={bikeImage} />
-        <RunImage src={runImage} />
-        <StretchImage src={stretchImage} />
+        <BikeImage src={designNotes} />
+        <RunImage src={designTools} />
+        <StretchImage src={devWork} />
       </ImagesA>
       <ImagesB>
-        <WorkoutImage src={workoutImage} />
-        <YogaImage src={yogaImage} />
-        <StyleImage src={styleImage} />
+        <WorkoutImage src={versionControl} />
+        <YogaImage src={server} />
+        <StyleImage src={kanban} />
       </ImagesB>
     </HomeContainer>
   );
