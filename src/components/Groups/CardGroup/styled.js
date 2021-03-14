@@ -6,13 +6,32 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
     backgroundColor: "#eee",
     borderRadius: "3px ",
+    display: "flex",
+    justifyContent: "space-between",
+    "& > div#Icon": {
+      width: "10%",
+      display: "flex",
+      alignItems: "center",
+    },
   },
   container: {
     width: "95%",
     borderBottom: "none",
   },
   heading: {
+    padding: "10px",
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
+    "& > img": {
+      marginRight: "20px",
+      borderRadius: "50%",
+    },
+    "& > span": {
+      margin: "0 20px",
+      fontWeight: "bold",
+    },
+    "& > span#nameGroups": {
+      fontWeight: 500,
+    },
   },
 }));

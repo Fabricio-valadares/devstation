@@ -1,34 +1,73 @@
+import { useState, useEffect } from "react";
 import { useStyles } from "./styled";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useSelector } from "react-redux";
-import { FaCheckSquare } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
 
-const CardGroup = () => {
+const CardGroup = ({
+  valueInput,
+  booleanValue,
+  valueFilter,
+  setBooleanValue,
+}) => {
   const classes = useStyles();
   const { groupsReduces } = useSelector((state) => state);
 
+  const [stringSearch, setStringSearch] = useState([]);
+
+  const funUpadateCardGroups = () => {
+    const filterGroups = groupsReduces.filter((ele) => ele.name === valueInput);
+    if (filterGroups.length !== 0) {
+      setStringSearch(filterGroups);
+    }
+  };
+
+  useEffect(() => {
+    if (valueInput.length > 1 && valueFilter.length > 0) {
+      setBooleanValue(false);
+    }
+
+    setStringSearch(valueFilter);
+  }, [valueFilter]);
+
+  useEffect(() => {
+    if (valueInput.length < 1000) {
+      setStringSearch(groupsReduces);
+    }
+
+    funUpadateCardGroups();
+  }, [valueInput]);
+
+  useEffect(() => {
+    setStringSearch(groupsReduces);
+  }, [groupsReduces]);
+
   return (
     <>
-      {groupsReduces.map((ele, index) => (
-        <Accordion key={index} className={classes.container}>
-          <AccordionSummary
-            className={classes.root}
-            expandIcon={<ExpandMoreIcon />}
-          >
-            <Typography className={classes.heading}>
-              {ele.name} - {ele.category}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>{ele.description}</Typography>
-            <FaCheckSquare color="#06a595" size="24" />
-          </AccordionDetails>
-        </Accordion>
-      ))}
+      {booleanValue ? (
+        <h1 style={{ color: "#fff", margin: "40px 0 0 0" }}>
+          Esse grupo não existe !
+        </h1>
+      ) : (
+        stringSearch.map((ele, index) => (
+          <div key={index} className={classes.container}>
+            <div className={classes.root}>
+              <Typography className={classes.heading}>
+                <img
+                  id="imgAccordon"
+                  src="https://picsum.photos/40/40"
+                  alt="imgRandom"
+                />
+                <span id="nameGroups">{ele.name}</span> <span>Categoria:</span>{" "}
+                {ele.category}
+              </Typography>
+              <div id="Icon">
+                <FaRegEye style={{ cursor: "pointer" }} size="22" />
+              </div>
+            </div>
+          </div>
+        ))
+      )}
     </>
   );
 };

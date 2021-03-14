@@ -1,9 +1,9 @@
 import { groupsAction } from "./actions";
-import api from "../../../services";
+import axios from "axios";
 
-export const groupsThunks = (data) => (dispatch, state) => {
-  api
-    .get("/groups/", data)
+export const groupsThunks = (url, setNumberRota) => (dispatch, state) => {
+  axios
+    .get(`${url}`)
     .then((response) => {
       dispatch(groupsAction(response.data.results));
     })
