@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { FiInfo, FiTag, FiBarChart, FiActivity, FiSave } from "react-icons/fi";
 import { HiOutlineFire } from "react-icons/hi";
-import { shade } from "polished";
 
 export const Form = styled.form`
   width: 30vw;
