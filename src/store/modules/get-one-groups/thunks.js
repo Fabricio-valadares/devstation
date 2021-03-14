@@ -1,10 +1,10 @@
 import axios from "axios";
-import { getUsersList } from "./actions";
+import { getOneGroup } from "./actions";
 
-export const getUsersThunk = (url) => async (dispatch) => {
+export const getOneGroupThunk = (url) => async (dispatch) => {
   try {
     const res = await axios.get(url);
-    dispatch(getUsersList(res.data));
+    dispatch(getOneGroup(res.data));
     console.log(res.data);
     return res.data;
   } catch (error) {
