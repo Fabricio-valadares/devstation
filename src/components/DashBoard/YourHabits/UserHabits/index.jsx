@@ -1,4 +1,8 @@
 import Habit from "../Habit/index";
+import Modal from "../../../Modal";
+import CreateHabit from "../../CreateHabit";
+import { useDispatch } from "react-redux";
+import { openModalThunk } from "../../../../store/modules/Modal/thunks";
 
 import {
   UserCard,
@@ -9,12 +13,21 @@ import {
 } from "./styled";
 
 const UserHabits = ({ habits }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(openModalThunk(true));
+  };
+
   return (
     <UserCard>
+      <Modal>
+        <CreateHabit />
+      </Modal>
       <PersonalHabits>
         <HabitsHeader>
           <h3>Seus hábitos</h3>
-          <button>
+          <button onClick={handleClick}>
             <PlusIcon />
           </button>
         </HabitsHeader>

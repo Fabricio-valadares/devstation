@@ -16,11 +16,13 @@ const DashboardPanel = () => {
   const handleOpen = () => {
     setOpen(true);
   };
+
   const storagedToken = localStorage.getItem("token");
   const token = JSON.parse(storagedToken);
 
   const [next, setNext] = useState("/habits/");
   const [habits, setHabits] = useState([]);
+  const [personalHabits, setPersonalHabits] = useState([]);
   const storagedId = localStorage.getItem("id");
   const userId = JSON.parse(storagedId);
 
@@ -37,19 +39,29 @@ const DashboardPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  const filterdHabits = habits.filter((habit) => habit.user === userId);
+  useEffect(() => {
+    api
+      .get("/habits/personal/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => setPersonalHabits(response.data))
+      .catch((error) => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const filteredHabits = habits.filter((habit) => habit.user === userId);
 
   return (
     <Content>
       <Modal setOpen={setOpen} open={open} />
       <div id="habits-card">
         <Container>
-          <UserHabits habits={filterdHabits} />
+          <UserHabits habits={filteredHabits} />
         </Container>
       </div>
       <div id="graphic-card">
         <Container>
-          <Graphic habits={filterdHabits} />
+          <Graphic habits={personalHabits} />
         </Container>
       </div>
       <div id="nameGroup-card">
