@@ -13,9 +13,6 @@ import GroupCardActivities from "../Groups/GroupCardActivities";
 const DashboardPanel = () => {
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
   const storagedToken = localStorage.getItem("token");
   const token = JSON.parse(storagedToken);
 
@@ -41,7 +38,7 @@ const DashboardPanel = () => {
 
   return (
     <Content>
-      <Modal setOpen={setOpen} open={open} />
+      {/* <Modal /> */}
       <div id="habits-card">
         <Container>
           <UserHabits habits={filterdHabits} />

@@ -5,9 +5,15 @@ import api from "../../../../services";
 import { useDispatch, useSelector } from "react-redux";
 import { FiEdit } from "react-icons/fi";
 import { openModalThunk } from "../../../../store/modules/Modal/thunks";
+import Modal from "../../../Modal/index";
+import EditGoal from "./EditGoal";
 
 const GroupCardGoals = () => {
   const [goals, setGoals] = useState([]);
+
+  const [next, setNext] = useState("/goals/");
+
+  const [goal, setGoal] = useState({});
   const user = useSelector((state) => state.user);
   const groupId = user.group;
   const dispatch = useDispatch();
@@ -15,19 +21,26 @@ const GroupCardGoals = () => {
   useEffect(() => {
     //consumindo rota get goals
     api
-      .get("/goals/", {
+      .get(next, {
         params: { group: groupId },
       })
-      .then((response) => setGoals(response.data.results))
+      .then((response) => {
+        setGoals([...goals, ...response.data.results]);
+        setNext(response.data.next);
+      })
       .catch((e) => console.log(e));
-  }, []);
+  }, [next, goals]);
 
-  const handleClick = () => {
+  const handleClick = (goal) => {
     dispatch(openModalThunk(true));
+    setGoal(goal);
   };
 
   return (
     <Main>
+      <Modal>
+        <EditGoal goalId={goal.id} />
+      </Modal>
       <h1>Goals</h1>
       <CardGoals>
         {goals &&
@@ -39,7 +52,7 @@ const GroupCardGoals = () => {
                   <p>
                     <GiStairsGoal /> {goal.title}
                   </p>
-                  <FiEdit onClick={handleClick} />
+                  <FiEdit onClick={() => handleClick(goal)} />
                 </div>
                 <p>
                   <GiStairsGoal /> {goal.difficulty}

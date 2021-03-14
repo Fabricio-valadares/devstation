@@ -5,6 +5,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { useDispatch, useSelector } from "react-redux";
 import { openModalThunk } from "../../store/modules/Modal/thunks";
+import EditGoal from "../DashBoard/Groups/GroupCardGoals/EditGoal";
+import { WhiteBall } from "../DashBoard/Groups/GroupCardUsers/styled";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -13,15 +15,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
-    // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "#560BAD",
-    // border: "2px solid #000",
+    backgroundColor: "#130F40",
+    color: "white",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
 }));
 
-export default function TransitionsModal({ children, setOpen }) {
+export default function TransitionsModal({ children }) {
   const classes = useStyles();
   // const open = true;
 
