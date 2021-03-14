@@ -58,7 +58,7 @@ export const DivForm = styled.section`
 `;
 
 export const Image = styled.img`
-  width: 312px;
+  width: 250px;
 
   @media (max-width: 1040px) {
     width: 340px;

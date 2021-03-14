@@ -4,7 +4,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaUserFriends } from "react-icons/fa";
 
 export const Menu = styled.aside`
-  width: 350px;
+  width: 380px;
   height: 100vh;
   background-color: var(--dark-primary);
   display: flex;
@@ -43,11 +43,13 @@ export const Profile = styled.div`
 export const Navigation = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 120px;
 
+  width: 100%;
+
   a.menu-link {
-    width: 280px;
+    width: 80%;
     height: 60px;
     padding: 8px 16px;
     border-radius: 25px;
