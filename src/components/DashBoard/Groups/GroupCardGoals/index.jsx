@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { CardGoals, GoalDiv, Main, ProgressBar } from "./styled";
 import { GiStairsGoal } from "react-icons/gi";
 import api from "../../../../services";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FiEdit } from "react-icons/fi";
+import { openModalThunk } from "../../../../store/modules/Modal/thunks";
 
 const GroupCardGoals = () => {
   const [goals, setGoals] = useState([]);
   const user = useSelector((state) => state.user);
   const groupId = user.group;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //consumindo rota get goals
@@ -19,6 +21,10 @@ const GroupCardGoals = () => {
       .then((response) => setGoals(response.data.results))
       .catch((e) => console.log(e));
   }, []);
+
+  const handleClick = () => {
+    dispatch(openModalThunk(true));
+  };
 
   return (
     <Main>
@@ -33,7 +39,7 @@ const GroupCardGoals = () => {
                   <p>
                     <GiStairsGoal /> {goal.title}
                   </p>
-                  <FiEdit />
+                  <FiEdit onClick={handleClick} />
                 </div>
                 <p>
                   <GiStairsGoal /> {goal.difficulty}
