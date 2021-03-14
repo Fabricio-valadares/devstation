@@ -3,7 +3,6 @@ import Habit from "../Habit/index";
 import {
   UserCard,
   PersonalHabits,
-  HabitsGraph,
   HabitsHeader,
   PlusIcon,
   Habits,
@@ -14,7 +13,7 @@ const UserHabits = ({ habits }) => {
     <UserCard>
       <PersonalHabits>
         <HabitsHeader>
-          <h3>Your Habits</h3>
+          <h3>Seus hábitos</h3>
           <button>
             <PlusIcon />
           </button>
@@ -25,7 +24,6 @@ const UserHabits = ({ habits }) => {
           ))}
         </Habits>
       </PersonalHabits>
-      <HabitsGraph></HabitsGraph>
     </UserCard>
   );
 };

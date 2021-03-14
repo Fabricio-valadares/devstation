@@ -1,43 +1,20 @@
 import styled from "styled-components";
 
 export const CardActivities = styled.div`
-  background-color: var(--soft-primary);
-  color: white;
-  font-size: 1vw;
-  width: 50%;
-  height: 47vh;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  text-align: center;
-  border-radius: 3%;
-
-  h1 {
-    font-size: 1.1rem;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: var(--text);
+  width: 100%;
+  height: 100%;
+  margin: 1vw;
 
   overflow-y: auto;
-
-  ::-webkit-scrollbar-track {
-    background-color: var(--soft-primary);
-  }
-  ::-webkit-scrollbar {
-    width: 8px;
-    background: var(--middle-primary);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #a0a0a0;
-    border-radius: 5px;
-  }
-`;
-
-export const Flex = -styled.div`
-  display: flex;
 `;
 
 export const WhiteBall = styled.div`
-  background-color: white;
-  width: 20px;
-  height: 20px;
+  background-color: var(--text);
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 `;
 

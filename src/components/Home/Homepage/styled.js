@@ -137,6 +137,7 @@ export const Button = styled.button`
   color: var(--text);
   font-weight: bold;
   font-size: 1rem;
+  transition: all 400ms ease-in;
 
   &:hover {
     background-color: var(--dark-secondary);

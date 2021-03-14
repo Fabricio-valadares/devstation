@@ -3,9 +3,9 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
 
   #root {
-    --dark-primary: #3A0CA3;
-    --middle-primary: #480CA8;
-    --soft-primary: #560BAD;
+    --dark-primary: #130F40;
+    --middle-primary: #30336B;
+    --soft-primary: #30336B;
     --secondary: #F72585;
     --dark-secondary: #B5179E;
     --tertiary: #4CC9F0;
@@ -14,7 +14,7 @@ export default createGlobalStyle`
     --green-bar: #1DD1A1;
     --yellow-bar: #FFDA79;
     --red-bar: #FF5252;
-    --dash-background: #560BAD;
+    --dash-background: #30336B;
   }
 
   body {
@@ -40,7 +40,7 @@ export default createGlobalStyle`
     background-color: var(--dark-primary);
   }
   ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
       background: var(--soft-primary);
   }
   ::-webkit-scrollbar-thumb {

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Menu,
   Profile,
@@ -9,14 +10,32 @@ import {
 import User from "../../../assets/user-avatar.svg";
 import { Link } from "react-router-dom";
 
+import api from "../../../services";
+
 const Aside = () => {
+  const storagedId = localStorage.getItem("id");
+  const userId = JSON.parse(storagedId);
+  const [user, setUser] = useState({});
+  const getUser = async () => {
+    try {
+      const response = await api.get(`/users/${userId}/`);
+      setUser(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <Menu>
       <Profile>
         <img src={User} alt="User" />
         <div className="user-info">
-          <h3>User name</h3>
-          <p>user@email.com</p>
+          <h3>{user.username}</h3>
+          <p>{user.email}</p>
         </div>
       </Profile>
       <Navigation>

@@ -2,11 +2,9 @@ import styled from "styled-components";
 import { FaEdit } from "react-icons/fa";
 
 export const Card = styled.div`
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--soft-primary);
-  /* & + div {
-    margin-top: 14px;
-  } */
+  & + div {
+    margin-top: 24px;
+  }
 `;
 
 export const Title = styled.div`

@@ -3,11 +3,13 @@ import loginReduces from "./modules/dataLogin/reduces";
 import usersReducer from "./modules/get-users/reducer";
 import groupsReduces from "./modules/groups/reduces";
 import thunk from "redux-thunk";
+import setUserReducers from "./modules/User/reducers";
 
 const reducers = combineReducers({
   loginReduces: loginReduces,
   groupsReduces: groupsReduces,
   users: usersReducer,
+  user: setUserReducers,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));
