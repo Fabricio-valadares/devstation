@@ -5,15 +5,10 @@ export const UserCard = styled.div`
   width: 100%;
   height: 100%;
   padding: 24px;
-  overflow-y: scroll;
-
-  /* ::-webkit-scrollbar {
-    display: none;
-  } */
 `;
 
 export const PersonalHabits = styled.div`
-  width: 60%;
+  width: 100%;
   height: 100%;
 `;
 
@@ -54,6 +49,9 @@ export const PlusIcon = styled(FiPlus)`
 
 export const Habits = styled.div`
   width: 100%;
+  max-height: 85%;
+  overflow-y: scroll;
+  padding-right: 14px;
 `;
 
 export const HabitsGraph = styled.div``;

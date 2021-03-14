@@ -5,16 +5,16 @@ import userAvatar from "../../../assets/avatardefault.svg";
 import { UserAvatar } from "./styled";
 import { getOneGroupThunk } from "../../../store/modules/get-one-groups/thunks";
 
-const CardUser = () => {
+const CardUser = ({user}) => {
 
   const dispatch = useDispatch();
-  let user = useSelector((state) => state.users);
+//   let user = useSelector((state) => state.users);
   let group = useSelector((state) => state.group);
 
-  useEffect(() => {
-    dispatch(getUsersThunk(`https://kabit-api.herokuapp.com/users/${19}/`));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+//   useEffect(() => {
+//     dispatch(getUsersThunk(`https://kabit-api.herokuapp.com/users/${id}/`));
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
   useEffect(() => {
     dispatch(getOneGroupThunk(`https://kabit-api.herokuapp.com/groups/${user.group}/`));

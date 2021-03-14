@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { useDispatch, useSelector } from "react-redux";
+import { openModalThunk } from "../../store/modules/Modal/thunks";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -19,16 +21,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({ children }) {
+export default function TransitionsModal({ children, setOpen }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  // const open = true;
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  const open = useSelector((state) => state.open);
+
+  const dispatch = useDispatch();
 
   const handleClose = () => {
-    setOpen(false);
+    // setOpen(false);
+    dispatch(openModalThunk(false));
   };
 
   return (

@@ -17,15 +17,22 @@ import {
 } from "./styled";
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import userAvatar from "../../../assets/avatardefault.svg";
+import Modal from "../../Modal";
+import {openModalThunk} from "../../../store/modules/Modal/thunks";
+import CardUser from "../CardUser";
+
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
   const [number, setNumber] = useState(0);
+  const [user, setUser] = useState({});
 
   const dispatch = useDispatch();
-  let usersList = useSelector((state) => state.users.results);
+  const usersList = useSelector((state) => state.users.results);
+  const open = useSelector((state) => state.open);
   const next = useSelector((state) => state.users.next);
+  console.log(open);
 
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
@@ -47,8 +54,16 @@ const GetUsersPage = () => {
     setInput(e.target.value);
   };
 
+  const handleClick = (user) => {
+    dispatch(openModalThunk(true));
+    setUser(user)
+  };
+
   return (
     <>
+    <Modal>
+      <CardUser user={user}/>
+    </Modal>
       <UsersContainer>
         <DivHeader>
           <DivH1>
@@ -91,9 +106,7 @@ const GetUsersPage = () => {
                     </DivPname>
                     <ShowIcon>
                       <BiShow
-                        onClick={() => {
-                          console.log(user.id);
-                        }}
+                        onClick={() => handleClick(user)}
                         style={{
                           fontSize: "35px",
                           color: "white",
