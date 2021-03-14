@@ -4,19 +4,29 @@ import Container from "../Container";
 import UserHabits from "../YourHabits/UserHabits";
 import Graphic from "../Graphic";
 import Modal from "../../Modal/index";
-// import GroupContainer from "../Groups/GroupContainer";
 
-import axios from "axios";
+import api from "../../../services/index";
+import GroupCardUsers from "../Groups/GroupCardUsers";
+import GroupCardGoals from "../Groups/GroupCardGoals";
+import GroupCardActivities from "../Groups/GroupCardActivities";
 
 const DashboardPanel = () => {
-  const [next, setNext] = useState("https://kabit-api.herokuapp.com/habits/");
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const storagedToken = localStorage.getItem("token");
+  const token = JSON.parse(storagedToken);
+
+  const [next, setNext] = useState("/habits/");
   const [habits, setHabits] = useState([]);
   const storagedId = localStorage.getItem("id");
   const userId = JSON.parse(storagedId);
 
   useEffect(() => {
     if (next) {
-      axios
+      api
         .get(`${next}`)
         .then((response) => {
           setHabits([...habits, ...response.data.results]);
@@ -28,8 +38,10 @@ const DashboardPanel = () => {
   }, [next]);
 
   const filterdHabits = habits.filter((habit) => habit.user === userId);
+
   return (
     <Content>
+      <Modal setOpen={setOpen} open={open} />
       <div id="habits-card">
         <Container>
           <UserHabits habits={filterdHabits} />
@@ -41,15 +53,20 @@ const DashboardPanel = () => {
         </Container>
       </div>
       <div id="nameGroup-card">
-        <Container>Name Group</Container>
+        <Container>
+          <GroupCardUsers />
+        </Container>
       </div>
       <div id="goals-card">
-        <Container>Goals</Container>
+        <Container>
+          <GroupCardGoals />
+        </Container>
       </div>
       <div id="activities-card">
-        <Container>Activities</Container>
+        <Container>
+          <GroupCardActivities />
+        </Container>
       </div>
-      <Modal />
     </Content>
   );
 };
