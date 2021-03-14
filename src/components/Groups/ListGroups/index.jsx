@@ -6,17 +6,18 @@ import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { groupsThunks } from "../../../store/modules/groups/thunk";
 import { useSelector } from "react-redux";
-import api from "../../../services";
+import axios from "axios";
 
 const ListGroups = () => {
-  const [valueInput, setValueInput] = useState("");
-  const [numberRota, setNumberRota] = useState(1);
+  const [url, setUrl] = useState(
+    "https://kabit-api.herokuapp.com/groups/?page=1"
+  );
 
-  const [next, setNext] = useState("");
-  const [previ, setPrevi] = useState("");
+  const [valueInput, setValueInput] = useState("");
 
   const [valueFilter, setValueFilter] = useState([]);
   const [booleanValue, setBooleanValue] = useState(false);
+
   const { groupsReduces } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -28,62 +29,44 @@ const ListGroups = () => {
     setValueFilter(filterGroups);
   };
 
-  const nextFunction = () => {
-    if (typeof next === "string") {
-      api
-        .get(`https://kabit-api.herokuapp.com/groups/?page=${numberRota}`)
-        .then((response) => {
-          setNext(response.data.next);
-          dispatch(
-            groupsThunks(
-              `https://kabit-api.herokuapp.com/groups/?page=${numberRota}`
-            )
-          );
-        });
-    }
-  };
-
-  const previFunction = () => {
-    if (typeof setPrevi === "string") {
-      api
-        .get(`https://kabit-api.herokuapp.com/groups/?page=${numberRota}`)
-        .then((response) => {
-          setPrevi(response.data.previous);
-          dispatch(
-            groupsThunks(
-              `https://kabit-api.herokuapp.com/groups/?page=${numberRota}`
-            )
-          );
-        });
+  const nextPrevPage = (urlPage, string) => {
+    if (string === "next") {
+      axios.get(`${urlPage}`).then((response) => {
+        if (response.data.next !== null) {
+          setUrl(response.data.next);
+          dispatch(groupsThunks(response.data.next));
+        }
+      });
+    } else {
+      axios.get(`${urlPage}`).then((response) => {
+        if (response.data.previous !== null) {
+          setUrl(response.data.previous);
+          dispatch(groupsThunks(response.data.previous));
+        }
+      });
     }
   };
 
   useEffect(() => {
-    dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
+    dispatch(groupsThunks(url));
   }, []);
 
   return (
     <Content>
       <div id="container">
         <div id="containerButton">
-          <div
-            id="buttonOne"
-            onClick={() => {
-              numberRota > 1 && setNumberRota(numberRota - 1);
-              nextFunction();
-            }}
-          >
-            <FaCaretLeft color="#fff" />
-          </div>
-          <div
-            id="buttonTwo"
-            onClick={() => {
-              setNumberRota(numberRota + 1);
-              previFunction();
-            }}
-          >
-            <FaCaretRight color="#fff" />
-          </div>
+          <button id="buttonOne">
+            <FaCaretLeft
+              color="#fff"
+              onClick={() => nextPrevPage(url, "prev")}
+            />
+          </button>
+          <button id="buttonTwo">
+            <FaCaretRight
+              color="#fff"
+              onClick={() => nextPrevPage(url, "next")}
+            />
+          </button>
         </div>
         <div id="buttonAdd">+</div>
       </div>

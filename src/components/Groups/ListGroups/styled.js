@@ -31,53 +31,77 @@ export const Content = styled.div`
     margin-left: 3px;
   }
 
-  div#buttonOne {
-    width: 36px;
-    height: 35px;
+  button#buttonOne {
+    width: 35px;
+    height: 36px;
     border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #130f40;
-    cursor: pointer;
+    background-color: #130f40;
+    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+      6px 6px 16px rgba(0, 0, 0, 0.2);
+    transition: all 200ms ease-in;
+    &:hover {
+      background-color: rgba(19, 15, 64, 0.5);
+    }
 
-    /* &:hover {
-      background-color: var(--middle-primary);
-    } */
+    &:active {
+      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+        6px 6px 16px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
+        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
+    }
   }
 
-  div#buttonTwo {
-    width: 36px;
-    height: 35px;
+  button#buttonTwo {
+    width: 35px;
+    height: 36px;
     border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #130f40;
-    cursor: pointer;
+    background-color: #130f40;
+    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+      6px 6px 16px rgba(0, 0, 0, 0.2);
+    transition: all 200ms ease-in;
+    &:hover {
+      background-color: rgba(19, 15, 64, 0.5);
+    }
 
-    /* &:hover {
-      background-color: var(--middle-primary);
-    } */
+    &:active {
+      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+        6px 6px 16px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
+        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
+    }
   }
 
   div#buttonAdd {
-    margin-right: 3px;
     width: 40px;
-    border-radius: 50%;
     height: 40px;
-    background: #130f40;
+    border-radius: 50%;
     display: flex;
+    color: var(--text);
     align-items: center;
     justify-content: center;
-    color: var(--text);
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
+    background-color: #130f40;
+    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+      6px 6px 16px rgba(0, 0, 0, 0.2);
+    transition: all 200ms ease-in;
+    &:hover {
+      background-color: rgba(19, 15, 64, 0.5);
+    }
 
-    /* &:hover {
-      background-color: var(--middle-primary);
-    } */
+    &:active {
+      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+        6px 6px 16px rgba(0, 0, 0, 0.2),
+        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
+        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
+    }
   }
 
   div#searchGroup {
@@ -87,7 +111,6 @@ export const Content = styled.div`
   }
 
   input#search {
-    /* background-color: yellow; */
     padding: 18px 0 18px 18px;
     border-radius: 5px 0 0 5px;
     width: 85%;
