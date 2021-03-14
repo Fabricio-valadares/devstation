@@ -1,40 +1,37 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import userAvatar from "../../../assets/avatardefault.svg";
-import { UserAvatar } from "./styled";
+import { DivCardUser, UserAvatar, UserAvatarContainer } from "./styled";
 import { getOneGroupThunk } from "../../../store/modules/get-one-groups/thunks";
 
-const CardUser = ({user}) => {
-
+const CardUser = ({ user }) => {
   const dispatch = useDispatch();
-//   let user = useSelector((state) => state.users);
   let group = useSelector((state) => state.group);
 
-//   useEffect(() => {
-//     dispatch(getUsersThunk(`https://kabit-api.herokuapp.com/users/${id}/`));
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
   useEffect(() => {
-    dispatch(getOneGroupThunk(`https://kabit-api.herokuapp.com/groups/${user.group}/`));
+    dispatch(
+      getOneGroupThunk(`https://kabit-api.herokuapp.com/groups/${user.group}/`)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div>
-      <p>ID: {user.id}</p>
-      <p>Nome do usuário: {user.username}</p>
-      <p>Email: {user.email}</p>
-    {user.group && 
-    <> 
-        <p>Grupo: {user.group}</p>
-        <p>Name: {group.name}</p>
-        <p>Descrição: {group.description}</p>
-        <p>Categoria: {group.category}</p>
-    </>
-    }
-    </div>
+    <DivCardUser>
+      <UserAvatarContainer>
+        <UserAvatar src={userAvatar} />
+      </UserAvatarContainer>
+      <p><b>Id:</b> {user.id}</p>
+      <p><b>Nome do usuário:</b> {user.username}</p>
+      <p><b>Email:</b> {user.email}</p>
+      {user.group && (
+        <>
+          <p><b>Grupo:</b> {user.group}</p>
+          <p><b>Name:</b> {group.name}</p>
+          <p><b>Descrição:</b> {group.description}</p>
+          <p><b>Categoria:</b> {group.category}</p>
+        </>
+      )}
+    </DivCardUser>
   );
 };
 

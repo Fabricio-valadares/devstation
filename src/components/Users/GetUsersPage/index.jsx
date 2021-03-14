@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiShow } from "react-icons/bi";
 import { FcSearch } from "react-icons/fc";
-import { FaUsers } from "react-icons/fa"
+import { FaUsers } from "react-icons/fa";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -18,9 +18,8 @@ import {
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import userAvatar from "../../../assets/avatardefault.svg";
 import Modal from "../../Modal";
-import {openModalThunk} from "../../../store/modules/Modal/thunks";
+import { openModalThunk } from "../../../store/modules/Modal/thunks";
 import CardUser from "../CardUser";
-
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -56,14 +55,14 @@ const GetUsersPage = () => {
 
   const handleClick = (user) => {
     dispatch(openModalThunk(true));
-    setUser(user)
+    setUser(user);
   };
 
   return (
     <>
-    <Modal>
-      <CardUser user={user}/>
-    </Modal>
+      <Modal>
+        <CardUser user={user} />
+      </Modal>
       <UsersContainer>
         <DivHeader>
           <DivH1>
@@ -72,7 +71,7 @@ const GetUsersPage = () => {
           <FcSearch
             style={{
               fontSize: "40px",
-              verticalAlign: "center"
+              verticalAlign: "center",
             }}
           />
           <input
@@ -80,11 +79,13 @@ const GetUsersPage = () => {
             value={input}
             onChange={handleInput}
           />
-          <FaUsers style={{
-            fontSize: "20px",
-            marginTop: "460px",
-            color: "white"
-          }}/>
+          <FaUsers
+            style={{
+              fontSize: "20px",
+              marginTop: "460px",
+              color: "white",
+            }}
+          />
           <p>{number}</p>
         </DivHeader>
         <UserContent>
