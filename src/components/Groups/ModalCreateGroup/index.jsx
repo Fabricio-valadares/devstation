@@ -1,41 +1,28 @@
 import { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import { DivButtonAdd } from "./styled";
-
 import api from "../../../services";
 import { FormHelperText, InputBase, Button } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { FormStyled } from "./styled";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    top: "33vh",
-    left: "35vw",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+import {
+  InputBox,
+  IconBox,
+  ErrorIcon,
+  InfoIcon,
+  InputStyled,
+  TagIcon,
+  DescriotionIcon,
+  SaveButton,
+  Title,
+  Message,
+} from "./styled";
 
-export default function ModalCreateGroup() {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+const ModalCreateGroup = () => {
+  const [messageSuccess, setMessageSuccess] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("token"));
-
-  const subscribeInGroup = () => {};
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo Obrigatório"),
@@ -55,58 +42,75 @@ export default function ModalCreateGroup() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        setMessageSuccess(true);
         console.log(response);
       })
       .catch((error) => console.log(error));
 
     console.log(data);
   };
-
   return (
-    <div>
-      <DivButtonAdd type="button" id="buttonAdd" onClick={handleOpen}>
-        +
-      </DivButtonAdd>
-      <Modal open={open} onClose={handleClose}>
-        <div className={classes.paper}>
-          <form onSubmit={handleSubmit(dataForm)}>
-            <InputBase
+    <>
+      <div>
+        <Title>Criar um novo grupo</Title>
+
+        <form onSubmit={handleSubmit(dataForm)}>
+          <InputBox>
+            <IconBox>{errors.name ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+            <InputStyled
               name="name"
               inputRef={register}
+              placeholder={errors.name ? errors.name.message : "Title"}
               error={!!errors.username}
-              placeholder="Title"
               variant="outlined"
             />
-            <FormHelperText>{errors.name?.message}</FormHelperText>
-            <InputBase
+          </InputBox>
+          {/* <FormHelperText>{errors.name?.message}</FormHelperText> */}
+          <InputBox>
+            <IconBox>
+              {errors.description ? <ErrorIcon /> : <DescriotionIcon />}
+            </IconBox>
+            <InputStyled
               name="description"
               inputRef={register}
               error={!!errors.description}
-              placeholder="Descrição"
+              placeholder={
+                errors.description ? errors.description.message : "Descrição"
+              }
               variant="outlined"
             />
-            <FormHelperText>{errors.description?.message}</FormHelperText>
-            <InputBase
+          </InputBox>
+          <InputBox>
+            {/* <FormHelperText>{errors.description?.message}</FormHelperText> */}
+            <IconBox>{errors.category ? <ErrorIcon /> : <TagIcon />}</IconBox>
+            <InputStyled
               name="category"
               inputRef={register}
               error={!!errors.category}
-              placeholder="Categoria"
+              placeholder={
+                errors.category ? errors.category.message : "Categoria"
+              }
               variant="outlined"
             />
-            <FormHelperText>{errors.category?.message}</FormHelperText>
-            <Button type="submit">Criar</Button>
-          </form>
-        </div>
-      </Modal>
-    </div>
+          </InputBox>
+          {/* <FormHelperText>{errors.category?.message}</FormHelperText> */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {messageSuccess ? (
+              <Message>Grupo cadastrado com sucesso !</Message>
+            ) : (
+              <SaveButton type="submit">Criar</SaveButton>
+            )}
+          </div>
+        </form>
+      </div>
+    </>
   );
-}
+};
 
-//   return (
-//     <>
-
-//     </>
-//   );
-// };
-
-// export default ModalCreateGroup;
+export default ModalCreateGroup;

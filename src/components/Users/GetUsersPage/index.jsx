@@ -100,7 +100,7 @@ const GetUsersPage = () => {
           {usersList &&
             users
               .filter((user) =>
-                user.username?.toLowerCase().includes(input.toLocaleLowerCase())
+                user.username?.toLowerCase().includes(input.toLowerCase())
               )
               .sort((a, b) => a.id - b.id)
               .map((user, index) => {
@@ -117,7 +117,7 @@ const GetUsersPage = () => {
                       <FaRegEye
                         onClick={() => handleClick(user)}
                         size={22}
-                        color="#000"
+                        color="#fff"
                         style={{ cursor: "pointer" }}
                       />
                     </ShowIcon>
