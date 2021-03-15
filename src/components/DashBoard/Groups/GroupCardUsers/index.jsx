@@ -6,6 +6,8 @@ import Modal from "../../../Modal";
 
 import EditGroup from "./EditGroup";
 
+import profilePicture from "../../../../assets/profile-man.svg";
+
 import {
   CardUsers,
   EditIcon,
@@ -77,7 +79,10 @@ const GroupCardUsers = () => {
           {users &&
             users.map((user, index) => (
               <UserCardDiv key={index}>
-                <WhiteBall />
+                {/* <WhiteBall /> */}
+                <figure>
+                  <img src={profilePicture} />
+                </figure>
                 <UserDiv>
                   <h1>{user.username}</h1>
                   <p>{user.email}</p>

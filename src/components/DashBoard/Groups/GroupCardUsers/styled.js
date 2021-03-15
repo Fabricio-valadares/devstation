@@ -72,6 +72,10 @@ export const CardUsers = styled.div`
   transition: 0.3s;
   border-radius: 3%;
 
+  figure img {
+    width: 3.6rem;
+  }
+
   overflow-y: auto;
   ::-webkit-scrollbar-track {
     background-color: var(--soft-primary);

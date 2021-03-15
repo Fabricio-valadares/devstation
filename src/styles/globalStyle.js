@@ -26,6 +26,10 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  .makeStyles-paper-2:focus {
+    outline: none ;
+  }
+
   input, button, textarea {
     outline: none;
     border: none;
