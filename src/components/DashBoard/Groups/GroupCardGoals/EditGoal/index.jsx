@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
 
-import { Button, FormHelperText, InputBase } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
-import { FiTrash } from "react-icons/fi";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import api from "../../../../../services";
 
-import { Main, useStyles, DivFlex, FormStyled } from "./styled";
+import {
+  BarIcon,
+  DeleteButton,
+  DeleteIcon,
+  ErrorIcon,
+  FireIcon,
+  IconBox,
+  InfoIcon,
+  Input,
+  InputBox,
+  InputsContainer,
+  Main,
+  SaveButton,
+  SaveIcon,
+} from "../../../EditHabit/styled";
 
 const EditGoal = ({ goalId, handleChanged, handleClose }) => {
-  const classes = useStyles();
-
-  const [errorMsg, setErrorMsg] = useState(false);
-
   const token = localStorage.getItem("token");
 
   const [goal, setGoal] = useState({});
@@ -61,12 +67,7 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
         reset();
         handleClose();
       })
-      .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
-      });
+      .catch((error) => console.log(error));
   };
 
   const handleDelete = () => {
@@ -87,71 +88,59 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
 
   return (
     <Main>
-      {errorMsg && (
-        <Alert severity="error">
-          Sua edição falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
-      <FormStyled onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <DivFlex>
-            <h1>Titulo: {goal.title}</h1>
-            <span>
-              <FiTrash onClick={handleDelete} />
-            </span>
-          </DivFlex>
+      <h1>Editar Goal</h1>
+      <InputsContainer onSubmit={handleSubmit(handleForm)}>
+        <InputBox>
+          <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
 
-          <InputBase
-            className={classes.textField}
-            margin="dense"
-            variant="outlined"
-            placeholder="Titulo"
+          <Input
             name="title"
-            inputRef={register}
-            error={!!errors.title}
+            ref={register}
+            type="text"
+            placeholder={errors.title ? errors.title.message : goal.title}
           />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.title?.message}
-          </FormHelperText>
-        </div>
-        <div>
-          <h1>Dificuldade: {goal.difficulty}</h1>
-          <InputBase
-            className={classes.textField}
-            margin="dense"
-            variant="outlined"
-            placeholder="Dificuldade"
-            name="difficulty"
-            inputRef={register}
-            error={!!errors.difficulty}
-          />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.difficulty?.message}
-          </FormHelperText>
-        </div>
-        <div>
-          <h1>Completo: {goal.how_much_achieved}</h1>
-          <InputBase
-            className={classes.textField}
-            type="number"
-            margin="dense"
-            variant="outlined"
-            placeholder="Progresso"
-            name="how_much_achieved"
-            inputRef={register}
-            error={!!errors.how_much_achieved}
-          />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.how_much_achieved?.message}
-          </FormHelperText>
-        </div>
+        </InputBox>
 
-        <div>
-          <Button type="submit" variant="contained" color="primary">
-            Alterar
-          </Button>
-        </div>
-      </FormStyled>
+        <InputBox>
+          <IconBox>{errors.category ? <ErrorIcon /> : <BarIcon />}</IconBox>
+
+          <Input
+            name="difficulty"
+            ref={register}
+            type="text"
+            placeholder={
+              errors.difficulty ? errors.difficulty.message : goal.difficulty
+            }
+          />
+        </InputBox>
+
+        <InputBox>
+          <IconBox>{errors.difficulty ? <ErrorIcon /> : <FireIcon />}</IconBox>
+          <Input
+            name="how_much_achieved"
+            ref={register}
+            type="number"
+            placeholder={
+              errors.how_much_achieved
+                ? errors.how_much_achieved.message
+                : goal.how_much_achieved
+            }
+          />
+        </InputBox>
+
+        <InputBox>
+          <IconBox>
+            <SaveIcon />
+          </IconBox>
+          <SaveButton type="submit">Atualizar</SaveButton>
+        </InputBox>
+        <InputBox>
+          <IconBox>
+            <DeleteIcon />
+          </IconBox>
+          <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
+        </InputBox>
+      </InputsContainer>
     </Main>
   );
 };

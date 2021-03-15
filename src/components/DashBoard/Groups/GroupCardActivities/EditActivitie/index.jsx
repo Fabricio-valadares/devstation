@@ -1,23 +1,25 @@
-import { Button, FormHelperText, InputBase } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
-import { useDebugValue, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../../../../services";
-import { Main, useStyles } from "./styled";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { openModalThunk } from "../../../../../store/modules/Modal/thunks";
-import { useDispatch } from "react-redux";
-import { FiTrash } from "react-icons/fi";
-import { DivFlex } from "./styled";
-import { FormStyled } from "./styled";
 
-const EditActivity = ({ activityId, handleChanged, handleClose }) => {
-  const classes = useStyles();
+import {
+  DeleteButton,
+  DeleteIcon,
+  ErrorIcon,
+  IconBox,
+  InfoIcon,
+  Input,
+  InputBox,
+  InputsContainer,
+  Main,
+  SaveButton,
+  SaveIcon,
+} from "../../../EditHabit/styled";
 
-  const [errorMsg, setErrorMsg] = useState(false);
-
+const EditActivity = ({ activityId, handleClose }) => {
   const token = localStorage.getItem("token");
 
   const [activity, setActivity] = useState({});
@@ -55,13 +57,7 @@ const EditActivity = ({ activityId, handleChanged, handleClose }) => {
         reset();
         handleClose();
       })
-      .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
 
   const handleDelete = () => {
@@ -73,7 +69,6 @@ const EditActivity = ({ activityId, handleChanged, handleClose }) => {
         },
       })
       .then((response) => {
-        // handleChanged();
         handleClose();
         console.log(response);
       })
@@ -82,39 +77,32 @@ const EditActivity = ({ activityId, handleChanged, handleClose }) => {
 
   return (
     <Main>
-      {errorMsg && (
-        <Alert severity="error">
-          Sua edição falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
-      <FormStyled onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <DivFlex>
-            <h1>Titulo: {activity.title}</h1>
-            <span>
-              <FiTrash onClick={handleDelete} />
-            </span>
-          </DivFlex>
-
-          <InputBase
-            className={classes.textField}
-            margin="dense"
-            variant="outlined"
-            placeholder="Titulo"
+      <h1>Editar Atividade</h1>
+      <InputsContainer onSubmit={handleSubmit(handleForm)}>
+        <InputBox>
+          <IconBox>
+            {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
+          </IconBox>
+          <Input
             name="title"
-            inputRef={register}
-            error={!!errors.title}
+            ref={register}
+            placeholder={errors.title ? errors.title.message : activity.title}
           />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.title?.message}
-          </FormHelperText>
-        </div>
-        <>
-          <Button type="submit" variant="contained" color="primary">
-            Alterar
-          </Button>
-        </>
-      </FormStyled>
+        </InputBox>
+
+        <InputBox>
+          <IconBox>
+            <SaveIcon />
+          </IconBox>
+          <SaveButton type="submit">Atualizar</SaveButton>
+        </InputBox>
+        <InputBox>
+          <IconBox>
+            <DeleteIcon />
+          </IconBox>
+          <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
+        </InputBox>
+      </InputsContainer>
     </Main>
   );
 };
