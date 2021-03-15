@@ -10,6 +10,7 @@ import {
   FiTrash2,
 } from "react-icons/fi";
 import { HiOutlineFire } from "react-icons/hi";
+
 import { shade } from "polished";
 
 export const Main = styled.article`
