@@ -67,7 +67,7 @@ export const Pmail = styled.div`
   margin-top: 5px;
   font-size: 1rem;
   text-align: left;
-  color: #000;
+  color: #fff;
   font-weight: 100;
 `;
 
@@ -76,7 +76,7 @@ export const PnameUser = styled.div`
   font-size: 1rem;
   font-weight: 500;
   text-align: left;
-  color: #000;
+  color: #fff;
 `;
 
 export const DivHeader = styled.div`
@@ -90,13 +90,13 @@ export const DivHeader = styled.div`
   } */
 
   p {
-    /* margin-top: 465px; */
     margin-left: 2px;
     vertical-align: center;
     font-size: 10px;
     color: var(--text);
   }
-  */ div#dataNumberUser {
+
+  div#dataNumberUser {
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
@@ -112,7 +112,12 @@ export const DivHeader = styled.div`
   input#search {
     padding: 18px 0 18px 18px;
     border-radius: 5px 0 0 5px;
+    background-color: var(--middle-primary);
     width: 85%;
+
+    ::-webkit-input-placeholder {
+      color: #eee;
+    }
   }
 
   div#buttonSearch {
@@ -147,7 +152,7 @@ export const Card = styled.div`
   margin-left: 27px;
   margin-bottom: 10px;
 
-  background-color: #d8d5d5;
+  background-color: var(--middle-primary);
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   border-radius: 5px;
 `;

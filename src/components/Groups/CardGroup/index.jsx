@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useStyles } from "./styled";
 import Typography from "@material-ui/core/Typography";
-import { useSelector, useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { FaRegEye } from "react-icons/fa";
 import Modal from "../../Modal";
-import { openModalThunk } from "../../../store/modules/Modal/thunks";
 import ModalGroup from "../ModalGroup";
 
 const CardGroup = ({ groupsData, valueInput }) => {
@@ -13,10 +12,7 @@ const CardGroup = ({ groupsData, valueInput }) => {
   const [dataGroup, setDataGroup] = useState({});
   const [open, setOpen] = useState();
 
-  const dispatch = useDispatch();
-
   const handleClick = (ele) => {
-    // dispatch(openModalThunk(true));
     setDataGroup(ele);
     setOpen(true);
   };
@@ -32,7 +28,7 @@ const CardGroup = ({ groupsData, valueInput }) => {
       </Modal>
       {groupsData
         .filter((user) =>
-          user.name?.toLowerCase().includes(valueInput.toLocaleLowerCase())
+          user.name?.toLowerCase().includes(valueInput.toLowerCase())
         )
         .map((ele, index) => (
           <div key={index} className={classes.container}>
@@ -48,7 +44,7 @@ const CardGroup = ({ groupsData, valueInput }) => {
               </Typography>
               <div id="Icon">
                 <FaRegEye
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", color: "#fff" }}
                   size="22"
                   onClick={() => handleClick(ele)}
                 />

@@ -1,21 +1,27 @@
 import { useState } from "react";
 import api from "../../../services";
+import {
+  DivNameCategory,
+  DivDescription,
+  DivWarning,
+  DivSpan,
+  MessageSuccess,
+  Container,
+  ButtonStyled,
+} from "./styled";
 
 const ModalGroup = ({ ele }) => {
-  const token = localStorage.getItem("token");
-
-  const sd = JSON.parse(token);
+  const token = JSON.parse(localStorage.getItem("token"));
 
   const [message, setMessage] = useState(true);
 
   const subscribeInGroup = () => {
-    console.log(sd);
     api
       .post(
         `/groups/${ele.id}/subscribe/`,
         { key: true },
         {
-          headers: { Authorization: `Bearer ${sd}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((response) => {
@@ -26,19 +32,33 @@ const ModalGroup = ({ ele }) => {
   };
   return (
     <>
-      <div>
-        <h1>{ele.name}</h1>
-        <h3>{ele.id}</h3>
-
+      <Container>
+        <DivNameCategory>
+          <h1 style={{ marginRight: "20px" }}>
+            <span style={{ fontWeight: "600" }}>Name: </span>
+            {ele.name}
+          </h1>
+          <h3>
+            <span style={{ fontWeight: "600" }}>Categoria: </span>
+            {ele.category}
+          </h3>
+        </DivNameCategory>
+        <DivDescription>
+          <h3>
+            <span style={{ fontWeight: "600" }}>Descrição: </span>
+            {ele.description}
+          </h3>
+        </DivDescription>
+        {console.log(ele)}
         {message ? (
-          <>
-            <span>Sair do grupo onde estou para entrar nesse !</span>
-            <button onClick={subscribeInGroup}>Increver-se</button>
-          </>
+          <DivWarning>
+            <DivSpan>Sair do grupo onde estou para entrar nesse !</DivSpan>
+            <ButtonStyled onClick={subscribeInGroup}>Increver-se</ButtonStyled>
+          </DivWarning>
         ) : (
-          <h1>Incrição realizada com sucesso !</h1>
+          <MessageSuccess>Inscrição realizada com sucesso !</MessageSuccess>
         )}
-      </div>
+      </Container>
     </>
   );
 };
