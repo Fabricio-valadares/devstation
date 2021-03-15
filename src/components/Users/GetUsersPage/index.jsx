@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BiShow } from "react-icons/bi";
 import { FcSearch } from "react-icons/fc";
-import { FaUsers } from "react-icons/fa";
+import { FaUsers, FaRegEye } from "react-icons/fa";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -14,6 +14,7 @@ import {
   ShowIcon,
   DivPname,
   DivHeader,
+  UsersDiv,
 } from "./styled";
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import userAvatar from "../../../assets/avatardefault.svg";
@@ -67,6 +68,16 @@ const GetUsersPage = () => {
         <DivHeader>
           <DivH1>
             <h1>Usuários</h1>
+            <UsersDiv>
+              <FaUsers
+                style={{
+                  fontSize: "20px",
+                  // marginTop: "460px",
+                  color: "white",
+                }}
+              />
+              <p>{number}</p>
+            </UsersDiv>
           </DivH1>
           <FcSearch
             style={{
@@ -79,14 +90,6 @@ const GetUsersPage = () => {
             value={input}
             onChange={handleInput}
           />
-          <FaUsers
-            style={{
-              fontSize: "20px",
-              marginTop: "460px",
-              color: "white",
-            }}
-          />
-          <p>{number}</p>
         </DivHeader>
         <UserContent>
           {usersList &&
