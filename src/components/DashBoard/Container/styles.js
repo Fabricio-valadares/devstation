@@ -12,4 +12,11 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1000px) {
+    width: 80%;
+    height: 50%;
+
+    margin: 3vh auto;
+  }
 `;
