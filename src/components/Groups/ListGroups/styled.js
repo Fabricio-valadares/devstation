@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Content = styled.div`
   width: 80%;
   height: 100%;
-  background-color: var(--dash-background);
+  background-color: #30336b;
   display: grid;
   align-items: center;
   align-content: center;
@@ -31,59 +31,33 @@ export const Content = styled.div`
     margin-left: 3px;
   }
 
-  div#buttonOne {
-    width: 36px;
-    height: 35px;
-    border-radius: 7px;
+  div#searchGroup {
+    width: 95%;
+    margin: 15px 0;
+    display: flex;
+  }
+
+  input#search {
+    padding: 18px 0 18px 18px;
+    border-radius: 5px 0 0 5px;
+    width: 85%;
+  }
+
+  div#buttonSearch {
+    background-color: var(--secondary);
+    border-radius: 0 5px 5px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--dark-primary);
+    width: 15%;
     cursor: pointer;
-
-    &:hover {
-      background-color: var(--middle-primary);
-    }
   }
 
-  div#buttonTwo {
-    width: 36px;
-    height: 35px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--dark-primary);
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--middle-primary);
-    }
-  }
-
-  div#buttonAdd {
-    margin-right: 3px;
-    width: 40px;
-    border-radius: 50%;
-    height: 40px;
-    background: var(--dark-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text);
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--middle-primary);
-    }
-  }
   div#group-users {
     grid-area: D;
     width: 100%;
     height: 100%;
-    background-color: var(--dark-primary);
+    background-color: #130f40;
     border-radius: 8px;
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;

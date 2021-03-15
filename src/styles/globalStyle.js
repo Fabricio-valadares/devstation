@@ -49,7 +49,7 @@ export default createGlobalStyle`
   }
 
   .MuiPaper-root {
-    background-color: var(--dark-primary) !important
+    background-color: #130F40 !important
   }
 
   .MuiAccordionDetails-root {
@@ -71,4 +71,17 @@ export default createGlobalStyle`
   .MuiAccordionDetails-root {
     justify-content: space-between;
   }
+
+  .MuiAccordionSummary-content {
+    margin: 7px 0 !important;
+  }
+
+.MuiTypography-body1 {
+    display: flex;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    align-items: center;
+    background-color: #d8d5d5;
+    border-radius: 5px;
+}
 `;

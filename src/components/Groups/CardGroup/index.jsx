@@ -1,34 +1,61 @@
+import { useState, useEffect } from "react";
 import { useStyles } from "./styled";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { useSelector } from "react-redux";
-import { FaCheckSquare } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { FaRegEye } from "react-icons/fa";
+import Modal from "../../Modal";
+import { openModalThunk } from "../../../store/modules/Modal/thunks";
+import ModalGroup from "../ModalGroup";
 
-const CardGroup = () => {
+const CardGroup = ({ groupsData, valueInput }) => {
   const classes = useStyles();
-  const { groupsReduces } = useSelector((state) => state);
+
+  const [dataGroup, setDataGroup] = useState({});
+  const [open, setOpen] = useState();
+
+  const dispatch = useDispatch();
+
+  const handleClick = (ele) => {
+    // dispatch(openModalThunk(true));
+    setDataGroup(ele);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
-      {groupsReduces.map((ele, index) => (
-        <Accordion key={index} className={classes.container}>
-          <AccordionSummary
-            className={classes.root}
-            expandIcon={<ExpandMoreIcon />}
-          >
-            <Typography className={classes.heading}>
-              {ele.name} - {ele.category}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>{ele.description}</Typography>
-            <FaCheckSquare color="#06a595" size="24" />
-          </AccordionDetails>
-        </Accordion>
-      ))}
+      <Modal open={open} handleClose={handleClose}>
+        <ModalGroup ele={dataGroup} />
+      </Modal>
+      {groupsData
+        .filter((user) =>
+          user.name?.toLowerCase().includes(valueInput.toLocaleLowerCase())
+        )
+        .map((ele, index) => (
+          <div key={index} className={classes.container}>
+            <div className={classes.root}>
+              <Typography className={classes.heading}>
+                <img
+                  id="imgAccordon"
+                  src="https://picsum.photos/40/40"
+                  alt="imgRandom"
+                />
+                <span id="nameGroups">{ele.name}</span> <span>Categoria:</span>{" "}
+                {ele.category}
+              </Typography>
+              <div id="Icon">
+                <FaRegEye
+                  style={{ cursor: "pointer" }}
+                  size="22"
+                  onClick={() => handleClick(ele)}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
     </>
   );
 };

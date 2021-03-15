@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import { FcSearch } from "react-icons/fc";
+import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
+
 import { BiShow } from "react-icons/bi";
 import { FcSearch } from "react-icons/fc";
-import { FaUsers, FaRegEye } from "react-icons/fa";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -10,7 +12,8 @@ import {
   UserContent,
   Card,
   DivH1,
-  Pname,
+  PnameUser,
+  Pmail,
   ShowIcon,
   DivPname,
   DivHeader,
@@ -28,15 +31,19 @@ const GetUsersPage = () => {
   const [number, setNumber] = useState(0);
   const [user, setUser] = useState({});
 
+  const [open, setOpen] = useState(false);
+
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
-  const open = useSelector((state) => state.open);
+  // const open = useSelector((state) => state.open);
   const next = useSelector((state) => state.users.next);
+  const count = useSelector((state) => state.users.count);
+
   console.log(open);
 
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
-    setNumber(users.length);
+    setNumber(count);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,8 +51,6 @@ const GetUsersPage = () => {
     if (next) {
       dispatch(getUsersThunk(next));
       setUsers([...users, ...usersList]);
-      setNumber(0);
-      setNumber(users.length);
     }
     // eslint-disable-next-line
   }, [next]);
@@ -55,41 +60,41 @@ const GetUsersPage = () => {
   };
 
   const handleClick = (user) => {
-    dispatch(openModalThunk(true));
+    // dispatch(openModalThunk(true));
     setUser(user);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <>
-      <Modal>
+      <Modal handleClose={handleClose} open={open}>
         <CardUser user={user} />
       </Modal>
       <UsersContainer>
         <DivHeader>
           <DivH1>
             <h1>Usuários</h1>
-            <UsersDiv>
-              <FaUsers
-                style={{
-                  fontSize: "20px",
-                  // marginTop: "460px",
-                  color: "white",
-                }}
-              />
-              <p>{number}</p>
-            </UsersDiv>
+            <div id="dataNumberUser">
+              <FaUsers />
+              <p>{number && number}</p>
+            </div>
           </DivH1>
-          <FcSearch
-            style={{
-              fontSize: "40px",
-              verticalAlign: "center",
-            }}
-          />
-          <input
-            placeholder="Buscar usuário"
-            value={input}
-            onChange={handleInput}
-          />
+          <div id="searchGroup">
+            <input
+              id="search"
+              type="text"
+              placeholder="Buscar usuário"
+              value={input}
+              onChange={handleInput}
+            />
+            <div id="buttonSearch">
+              <FaSearch size="20" color="#fff" />
+            </div>
+          </div>
         </DivHeader>
         <UserContent>
           {usersList &&
@@ -102,19 +107,18 @@ const GetUsersPage = () => {
                 return (
                   <Card key={index}>
                     <UserAvatarContainer>
-                      <UserAvatar src={userAvatar} />
+                      <UserAvatar src="https://picsum.photos/200/200" />
                     </UserAvatarContainer>
                     <DivPname>
-                      <Pname>{user.username}</Pname>
-                      <Pname>{user.email}</Pname>
+                      <PnameUser>{user.username}</PnameUser>
+                      <Pmail>{user.email}</Pmail>
                     </DivPname>
                     <ShowIcon>
-                      <BiShow
+                      <FaRegEye
                         onClick={() => handleClick(user)}
-                        style={{
-                          fontSize: "35px",
-                          color: "white",
-                        }}
+                        size={22}
+                        color="#000"
+                        style={{ cursor: "pointer" }}
                       />
                     </ShowIcon>
                   </Card>
