@@ -1,94 +1,68 @@
 import { Content } from "./styled";
 import { useEffect, useState } from "react";
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import CardGroup from "../CardGroup";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { groupsThunks } from "../../../store/modules/groups/thunk";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import Modal from "../../Modal";
+import ModalCreateGroup from "../ModalCreateGroup";
+import { openModalThunk } from "../../../store/modules/Modal/thunks";
 
 const ListGroups = () => {
-  const [url, setUrl] = useState(
-    "https://kabit-api.herokuapp.com/groups/?page=1"
-  );
+  const dispatch = useDispatch();
 
   const [valueInput, setValueInput] = useState("");
 
-  const [valueFilter, setValueFilter] = useState([]);
-  const [booleanValue, setBooleanValue] = useState(false);
+  const [groupsData, setGroupsData] = useState([]);
+  const [groupsItem, setGroupsItem] = useState([]);
+  const [cardGroup, setCardGroup] = useState([]);
 
-  const { groupsReduces } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  const GroupIncludes = () => {
-    const filterGroups = groupsReduces.filter((ele) => ele.name === valueInput);
-    if (filterGroups.length === 0) {
-      setBooleanValue(true);
-    }
-    setValueFilter(filterGroups);
-  };
-
-  const nextPrevPage = (urlPage, string) => {
-    if (string === "next") {
-      axios.get(`${urlPage}`).then((response) => {
-        if (response.data.next !== null) {
-          setUrl(response.data.next);
-          dispatch(groupsThunks(response.data.next));
-        }
-      });
-    } else {
-      axios.get(`${urlPage}`).then((response) => {
-        if (response.data.previous !== null) {
-          setUrl(response.data.previous);
-          dispatch(groupsThunks(response.data.previous));
-        }
-      });
-    }
-  };
+  const { next, results } = useSelector((state) => state.groupsReduces);
 
   useEffect(() => {
-    dispatch(groupsThunks(url));
+    dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
   }, []);
 
+  useEffect(() => {
+    if (results !== undefined) {
+      dispatch(groupsThunks(`${next}`));
+      setGroupsData([...groupsData, ...results]);
+      setCardGroup(groupsData);
+    }
+
+    // if (next !== null && results !== undefined) {
+
+    // }
+  }, [next]);
+
+  const handleClickInput = (e) => {
+    setValueInput(e.target.value);
+  };
+
   return (
-    <Content>
-      <div id="container">
-        <div id="containerButton">
-          <button id="buttonOne">
-            <FaCaretLeft
-              color="#fff"
-              onClick={() => nextPrevPage(url, "prev")}
-            />
-          </button>
-          <button id="buttonTwo">
-            <FaCaretRight
-              color="#fff"
-              onClick={() => nextPrevPage(url, "next")}
-            />
-          </button>
+    <>
+      <Content>
+        <div id="container">
+          <div id="containerButton"></div>
+          <ModalCreateGroup />
         </div>
-        <div id="buttonAdd">+</div>
-      </div>
-      <div id="group-users">
-        <div id="searchGroup">
-          <input
-            id="search"
-            type="text"
-            onChange={(e) => setValueInput(e.target.value)}
-          />
-          <div id="buttonSearch" onClick={GroupIncludes}>
-            <FaSearch size="20" color="#fff" />
+        <div id="group-users">
+          <div id="searchGroup">
+            <input
+              id="search"
+              type="text"
+              placeholder="Buscar Grupo"
+              onChange={handleClickInput}
+            />
+            <div id="buttonSearch">
+              <FaSearch size="20" color="#fff" />
+            </div>
           </div>
+          <CardGroup groupsData={groupsData} valueInput={valueInput} />
         </div>
-        <CardGroup
-          valueFilter={valueFilter}
-          valueInput={valueInput}
-          booleanValue={booleanValue}
-          setBooleanValue={setBooleanValue}
-        />
-      </div>
-    </Content>
+      </Content>
+    </>
   );
 };
 

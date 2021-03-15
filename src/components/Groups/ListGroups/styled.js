@@ -31,79 +31,6 @@ export const Content = styled.div`
     margin-left: 3px;
   }
 
-  button#buttonOne {
-    width: 35px;
-    height: 36px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #130f40;
-    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-      6px 6px 16px rgba(0, 0, 0, 0.2);
-    transition: all 200ms ease-in;
-    &:hover {
-      background-color: rgba(19, 15, 64, 0.5);
-    }
-
-    &:active {
-      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-        6px 6px 16px rgba(0, 0, 0, 0.2),
-        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
-        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  button#buttonTwo {
-    width: 35px;
-    height: 36px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #130f40;
-    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-      6px 6px 16px rgba(0, 0, 0, 0.2);
-    transition: all 200ms ease-in;
-    &:hover {
-      background-color: rgba(19, 15, 64, 0.5);
-    }
-
-    &:active {
-      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-        6px 6px 16px rgba(0, 0, 0, 0.2),
-        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
-        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  div#buttonAdd {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    color: var(--text);
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #130f40;
-    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-      6px 6px 16px rgba(0, 0, 0, 0.2);
-    transition: all 200ms ease-in;
-    &:hover {
-      background-color: rgba(19, 15, 64, 0.5);
-    }
-
-    &:active {
-      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-        6px 6px 16px rgba(0, 0, 0, 0.2),
-        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
-        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
-    }
-  }
-
   div#searchGroup {
     width: 95%;
     margin: 15px 0;
@@ -117,7 +44,7 @@ export const Content = styled.div`
   }
 
   div#buttonSearch {
-    background-color: purple;
+    background-color: var(--secondary);
     border-radius: 0 5px 5px 0;
     display: flex;
     align-items: center;

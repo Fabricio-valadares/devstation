@@ -1,55 +1,34 @@
 import { useState, useEffect } from "react";
 import { useStyles } from "./styled";
 import Typography from "@material-ui/core/Typography";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FaRegEye } from "react-icons/fa";
+import Modal from "../../Modal";
+import { openModalThunk } from "../../../store/modules/Modal/thunks";
+import ModalGroup from "../ModalGroup";
 
-const CardGroup = ({
-  valueInput,
-  booleanValue,
-  valueFilter,
-  setBooleanValue,
-}) => {
+const CardGroup = ({ groupsData, valueInput }) => {
   const classes = useStyles();
-  const { groupsReduces } = useSelector((state) => state);
 
-  const [stringSearch, setStringSearch] = useState([]);
+  const [dataGroup, setDataGroup] = useState({});
 
-  const funUpadateCardGroups = () => {
-    const filterGroups = groupsReduces.filter((ele) => ele.name === valueInput);
-    if (filterGroups.length !== 0) {
-      setStringSearch(filterGroups);
-    }
+  const dispatch = useDispatch();
+
+  const handleClick = (ele) => {
+    dispatch(openModalThunk(true));
+    setDataGroup(ele);
   };
-
-  useEffect(() => {
-    if (valueInput.length > 1 && valueFilter.length > 0) {
-      setBooleanValue(false);
-    }
-
-    setStringSearch(valueFilter);
-  }, [valueFilter]);
-
-  useEffect(() => {
-    if (valueInput.length < 1000) {
-      setStringSearch(groupsReduces);
-    }
-
-    funUpadateCardGroups();
-  }, [valueInput]);
-
-  useEffect(() => {
-    setStringSearch(groupsReduces);
-  }, [groupsReduces]);
 
   return (
     <>
-      {booleanValue ? (
-        <h1 style={{ color: "#fff", margin: "40px 0 0 0" }}>
-          Esse grupo não existe !
-        </h1>
-      ) : (
-        stringSearch.map((ele, index) => (
+      <Modal>
+        <ModalGroup ele={dataGroup} />
+      </Modal>
+      {groupsData
+        .filter((user) =>
+          user.name?.toLowerCase().includes(valueInput.toLocaleLowerCase())
+        )
+        .map((ele, index) => (
           <div key={index} className={classes.container}>
             <div className={classes.root}>
               <Typography className={classes.heading}>
@@ -62,12 +41,15 @@ const CardGroup = ({
                 {ele.category}
               </Typography>
               <div id="Icon">
-                <FaRegEye style={{ cursor: "pointer" }} size="22" />
+                <FaRegEye
+                  style={{ cursor: "pointer" }}
+                  size="22"
+                  onClick={() => handleClick(ele)}
+                />
               </div>
             </div>
           </div>
-        ))
-      )}
+        ))}
     </>
   );
 };

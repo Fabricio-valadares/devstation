@@ -81,5 +81,7 @@ export default createGlobalStyle`
     font-size: 0.9375rem;
     font-weight: 400;
     align-items: center;
+    background-color: #d8d5d5;
+    border-radius: 5px;
 }
 `;
