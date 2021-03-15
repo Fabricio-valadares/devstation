@@ -31,9 +31,11 @@ const GetUsersPage = () => {
   const [number, setNumber] = useState(0);
   const [user, setUser] = useState({});
 
+  const [open, setOpen] = useState(false);
+
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
-  const open = useSelector((state) => state.open);
+  // const open = useSelector((state) => state.open);
   const next = useSelector((state) => state.users.next);
   const count = useSelector((state) => state.users.count);
 
@@ -58,13 +60,18 @@ const GetUsersPage = () => {
   };
 
   const handleClick = (user) => {
-    dispatch(openModalThunk(true));
+    // dispatch(openModalThunk(true));
     setUser(user);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <>
-      <Modal>
+      <Modal handleClose={handleClose} open={open}>
         <CardUser user={user} />
       </Modal>
       <UsersContainer>
@@ -73,7 +80,7 @@ const GetUsersPage = () => {
             <h1>Usuários</h1>
             <div id="dataNumberUser">
               <FaUsers />
-              <p>{number}</p>
+              <p>{number && number}</p>
             </div>
           </DivH1>
           <div id="searchGroup">

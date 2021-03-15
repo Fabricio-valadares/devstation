@@ -11,17 +11,23 @@ const CardGroup = ({ groupsData, valueInput }) => {
   const classes = useStyles();
 
   const [dataGroup, setDataGroup] = useState({});
+  const [open, setOpen] = useState();
 
   const dispatch = useDispatch();
 
   const handleClick = (ele) => {
-    dispatch(openModalThunk(true));
+    // dispatch(openModalThunk(true));
     setDataGroup(ele);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <>
-      <Modal>
+      <Modal open={open} handleClose={handleClose}>
         <ModalGroup ele={dataGroup} />
       </Modal>
       {groupsData
