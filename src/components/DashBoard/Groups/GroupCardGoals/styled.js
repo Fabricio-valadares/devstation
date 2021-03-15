@@ -1,15 +1,47 @@
+import { FiPlus } from "react-icons/fi";
 import styled from "styled-components";
 
 export const Main = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   color: var(--text);
-  font-size: 1.2vw;
+  font-size: 1rem;
+  padding: 24px;
+`;
 
-  h1 {
-    font-size: 1.5vw;
-    margin: 1vw;
+export const GoalsHeader = styled.header`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+
+  h3 {
+    font-size: 24px;
+    color: var(--secondary);
+    font-weight: bold;
   }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+    transition: all 400ms ease-in;
+
+    &:hover {
+      background-color: var(--dark-secondary);
+    }
+  }
+`;
+
+export const PlusIcon = styled(FiPlus)`
+  color: var(--text);
+  font-size: 18px;
 `;
 
 export const CardGoals = styled.div`
@@ -21,7 +53,7 @@ export const CardGoals = styled.div`
 
 export const GoalDiv = styled.div`
   text-align: left;
-  margin: 2vw 0.5rem;
+  margin: 1vw 0;
   div {
     display: flex;
     widows: 100%;

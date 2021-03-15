@@ -8,13 +8,16 @@ import {
   UsersIcon,
 } from "./styled";
 import User from "../../../assets/user-avatar.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import api from "../../../services";
+import { Button } from "@material-ui/core";
+import { FiLogOut } from "react-icons/fi";
 
 const Aside = () => {
   const storagedId = localStorage.getItem("id");
   const userId = JSON.parse(storagedId);
+  const history = useHistory();
   const [user, setUser] = useState({});
   const getUser = async () => {
     try {
@@ -27,15 +30,27 @@ const Aside = () => {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push("/login");
+  };
 
   return (
     <Menu>
       <Profile>
         <img src={User} alt="User" />
         <div className="user-info">
-          <h3>{user.username}</h3>
+          <h3>
+            {user.username &&
+              user.username[0].toUpperCase() + user.username.slice(1)}
+          </h3>
           <p>{user.email}</p>
+          <Button onClick={handleLogout}>
+            <FiLogOut />
+          </Button>
         </div>
       </Profile>
       <Navigation>

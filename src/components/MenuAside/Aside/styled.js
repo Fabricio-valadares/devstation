@@ -4,7 +4,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaUserFriends } from "react-icons/fa";
 
 export const Menu = styled.aside`
-  width: 380px;
+  width: 20vw;
   height: 100vh;
   background-color: var(--dark-primary);
   display: flex;
@@ -35,7 +35,11 @@ export const Profile = styled.div`
     }
 
     p {
-      font-size: 18px;
+      font-size: 0.8rem;
+    }
+    button {
+      color: var(--secondary);
+      font-size: 2rem;
     }
   }
 `;
