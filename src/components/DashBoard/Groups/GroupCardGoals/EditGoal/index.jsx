@@ -1,23 +1,21 @@
+import { useEffect, useState } from "react";
+
 import { Button, FormHelperText, InputBase } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import { useDebugValue, useEffect, useState } from "react";
-import api from "../../../../../services";
-import { Main, useStyles } from "./styled";
+import { FiTrash } from "react-icons/fi";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { openModalThunk } from "../../../../../store/modules/Modal/thunks";
-import { useDispatch } from "react-redux";
-import { FiTrash } from "react-icons/fi";
-import { DivFlex } from "./styled";
-import { FormStyled } from "./styled";
+
+import api from "../../../../../services";
+
+import { Main, useStyles, DivFlex, FormStyled } from "./styled";
 
 const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   const classes = useStyles();
 
   const [errorMsg, setErrorMsg] = useState(false);
-  const dispatch = useDispatch();
 
   const token = localStorage.getItem("token");
 
@@ -26,7 +24,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   const schema = yup.object().shape({
     title: yup.string(),
     difficulty: yup.string(),
-    // how_much_achieved: yup.string().matches(/\d/, "apenas digitos"),
   });
 
   const { handleSubmit, register, errors, reset } = useForm({
@@ -51,7 +48,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
     if (data.how_much_achieved === "") {
       data.how_much_achieved = goal.how_much_achieved;
     }
-    console.log(data);
 
     //consumindo a rota update goal
 
@@ -70,7 +66,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
         setTimeout(() => {
           setErrorMsg(false);
         }, 3000);
-        console.log(error);
       });
   };
 
@@ -85,9 +80,7 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
       .then((response) => {
         handleChanged();
 
-        dispatch(openModalThunk(false));
-
-        console.log(response);
+        handleClose();
       })
       .catch((e) => console.log(e));
   };

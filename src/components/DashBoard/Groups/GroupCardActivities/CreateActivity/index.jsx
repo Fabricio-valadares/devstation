@@ -60,7 +60,7 @@ const CreateActivity = ({ groupId, handleClose, setOpen }) => {
         </Alert>
       )}
       <FormStyled onSubmit={handleSubmit(handleForm)}>
-        <h1>Criar Goal</h1>
+        <h1>Criar Atividade</h1>
         <div>
           <h1>Titulo:</h1>
 

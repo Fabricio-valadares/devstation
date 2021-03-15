@@ -95,8 +95,8 @@ export const WhiteBall = styled.div`
 export const ActivityDiv = styled.div`
   display: flex;
   align-items: center;
-  margin: 2rem 0;
-  font-size: 1rem;
+  margin: 1rem 0;
+  font-size: 0.8rem;
   figure {
     margin-right: 0.7rem;
   }

@@ -21,28 +21,30 @@ const GroupCardGoals = () => {
   // const [newGoal, setNewGoal] = useState(false);
   const [editGoal, setEditGoal] = useState(false);
 
-  const [next, setNext] = useState("/goals/");
-
   const [goal, setGoal] = useState({});
-  const user = useSelector((state) => state.user);
   const [changed, setChanged] = useState(false);
 
-  const groupId = user.group;
+  const groupId = localStorage.getItem("groupId");
+
+  // const [next, setNext] = useState(`/goals/?group=${groupId}`);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
-    console.log("lol");
     //consumindo rota get goals
     api
-      .get(next, {
-        params: { group: groupId },
-      })
+      .get(`/goals/?group=${groupId}`)
       .then((response) => {
         const results = response.data.results;
-        setGoals([...goals, ...results]);
-        setNext(response.data.next);
+        setGoals(results);
+        // setNext(response.data.next);
       })
       .catch((e) => console.log(e));
-  }, [next]);
+  }, [open]);
 
   const handleClick = (goal) => {
     if (goal.title) {
@@ -57,12 +59,6 @@ const GroupCardGoals = () => {
 
   const handleChanged = () => {
     setChanged(!changed);
-  };
-
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (

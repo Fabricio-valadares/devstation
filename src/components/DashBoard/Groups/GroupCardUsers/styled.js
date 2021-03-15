@@ -5,12 +5,12 @@ export const Main = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
-  font-size: 1.3vw;
+  font-size: 1rem;
 
   color: var(--text);
 
   justify-content: space-between;
-  padding: 1vw;
+  padding: 1.5vw;
 `;
 
 export const DivFlex = styled.div`
@@ -37,7 +37,7 @@ export const CardUsers = styled.div`
 
   padding: 1rem;
 
-  font-size: 1.3vw;
+  font-size: 1rem;
   width: 50%;
   height: 100%;
 
@@ -60,8 +60,8 @@ export const CardUsers = styled.div`
 
 export const WhiteBall = styled.div`
   background-color: var(--text);
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 `;
 

@@ -35,7 +35,11 @@ export const Profile = styled.div`
     }
 
     p {
-      font-size: 18px;
+      font-size: 0.8rem;
+    }
+    button {
+      color: var(--secondary);
+      font-size: 2rem;
     }
   }
 `;

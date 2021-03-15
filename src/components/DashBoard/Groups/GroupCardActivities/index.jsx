@@ -1,7 +1,9 @@
-import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+
+import { format } from "date-fns";
+
 import api from "../../../../services";
+
 import {
   ActivityDiv,
   CardActivities,
@@ -14,30 +16,34 @@ import {
 } from "./styled";
 
 import Modal from "../../../Modal";
+
 import EditActivity from "./EditActivitie";
 import CreateActivity from "./CreateActivity";
 
 const GroupCardActivities = () => {
   const [activities, setActivities] = useState([]);
+
   const [activity, setActivity] = useState({});
 
   const [editActivity, setEditActivity] = useState(false);
-  const [next, setNext] = useState("/activities/");
-  const user = useSelector((state) => state.user);
-  const groupId = user.group;
+  // const [next, setNext] = useState("/activities/");
+
+  const groupId = localStorage.getItem("groupId");
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     //consumindo rota get activities
     api
-      .get(next, {
+      .get(`/activities/?group=${groupId}`, {
         params: { group: groupId },
       })
       .then((response) => {
-        setActivities([...activities, ...response.data.results]);
-        setNext(response.data.next);
+        setActivities(response.data.results);
       })
       .catch((e) => console.log(e));
-  }, [next]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const handleClick = (activity) => {
     if (activity.title) {
@@ -50,8 +56,6 @@ const GroupCardActivities = () => {
     }
   };
 
-  const [open, setOpen] = useState(false);
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -62,14 +66,12 @@ const GroupCardActivities = () => {
         {editActivity ? (
           <EditActivity
             setOpen={setOpen}
-            // handleChanged={handleChanged}
             handleClose={handleClose}
             activityId={activity.id}
           />
         ) : (
           <CreateActivity
             setOpen={setOpen}
-            // handleChanged={handleChanged}
             handleClose={handleClose}
             groupId={groupId}
           />
