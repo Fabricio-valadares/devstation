@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { FcSearch } from "react-icons/fc";
 import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
 
-import { BiShow } from "react-icons/bi";
-import { FcSearch } from "react-icons/fc";
+// import { BiShow } from "react-icons/bi";
+// import { FcSearch } from "react-icons/fc";
 import {
   UsersContainer,
   UserAvatarContainer,
