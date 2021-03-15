@@ -2,12 +2,12 @@ import React from "react";
 
 import { Card, Title, CardInfo, ProgressBar, EditIcon } from "./styled";
 
-const Habit = ({ habit }) => {
+const Habit = ({ habit, open }) => {
   return (
     <Card>
       <Title>
         <h4>{habit.title}</h4>
-        <button>
+        <button onClick={() => open(habit.id)}>
           <EditIcon />
         </button>
       </Title>

@@ -89,14 +89,14 @@ export const DivHeader = styled.div`
     height: 30px;
   } */
 
-  /* p {
-    margin-top: 465px;
+  p {
+    /* margin-top: 465px; */
     margin-left: 2px;
     vertical-align: center;
     font-size: 10px;
     color: var(--text);
-  } */
-  div#dataNumberUser {
+  }
+  */ div#dataNumberUser {
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
@@ -167,4 +167,14 @@ export const UserAvatar = styled.img`
 
 export const ShowIcon = styled.div`
   width: 80px;
+`;
+
+export const UsersDiv = styled.div`
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 14px;
+  p {
+    font-size: 0.8rem;
+  }
 `;

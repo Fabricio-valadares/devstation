@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import api from "../../../../services";
 import {
   CardUsers,
@@ -13,13 +14,17 @@ import {
 const GroupCardUsers = () => {
   const [group, setGroup] = useState([]);
 
+  const groupId = localStorage.getItem("groupId");
+
   useEffect(() => {
     //consumindo rota get one group
     api
-      .get(`groups/${2}/`)
+      .get(`groups/${groupId}/`)
       .then((response) => setGroup(response.data))
       .catch((e) => console.log(e));
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [groupId]);
+
   const { users, name, description, category } = group;
 
   return (

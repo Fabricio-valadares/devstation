@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-  width: 100%;
+  width: 80vw;
   height: 100%;
   background-color: var(--dash-background);
   display: grid;
