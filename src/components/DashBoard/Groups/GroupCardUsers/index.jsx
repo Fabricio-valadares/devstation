@@ -32,7 +32,7 @@ const GroupCardUsers = () => {
       <DivFlex>
         <WhiteBall />
         <HeaderStyled>
-          <h1>{name}</h1>
+          <h4>{name}</h4>
           <p>Categoria: {category}</p>
           <p>Descrição: {description}</p>
         </HeaderStyled>

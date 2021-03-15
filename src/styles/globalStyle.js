@@ -20,6 +20,9 @@ export default createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif; 
     color: var(--text);
+    
+    background-color: #30336B ;
+
     -webkit-font-smoothing: antialiased;
   }
 

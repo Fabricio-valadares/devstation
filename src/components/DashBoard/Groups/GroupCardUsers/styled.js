@@ -5,12 +5,30 @@ export const Main = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
-  font-size: 1rem;
 
   color: var(--text);
 
   justify-content: space-between;
   padding: 1.5vw;
+
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  /* @media (max-width: 1650px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 1450px) {
+    font-size: 0.7rem;
+  }
+  @media (max-width: 1250px) {
+    font-size: 0.6rem;
+  } */
 `;
 
 export const DivFlex = styled.div`
@@ -63,6 +81,9 @@ export const WhiteBall = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+
+  @media (max-width: 1600px) {
+  } ;
 `;
 
 export const UserDiv = styled.div`
