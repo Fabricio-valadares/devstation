@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+
+import { Button } from "@material-ui/core";
+
+import { EditIcon } from "../GroupCardActivities/styled";
 import {
   CardGoals,
   GoalDiv,
@@ -7,26 +11,22 @@ import {
   GoalsHeader,
   PlusIcon,
 } from "./styled";
+
 import { GiStairsGoal } from "react-icons/gi";
 import api from "../../../../services";
-import { useDispatch, useSelector } from "react-redux";
-import { FiEdit } from "react-icons/fi";
-import { openModalThunk } from "../../../../store/modules/Modal/thunks";
 import Modal from "../../../Modal/index";
 import EditGoal from "./EditGoal";
 import CreateGoal from "./CreateGoal";
 
 const GroupCardGoals = () => {
   const [goals, setGoals] = useState([]);
-  // const [newGoal, setNewGoal] = useState(false);
+
   const [editGoal, setEditGoal] = useState(false);
 
   const [goal, setGoal] = useState({});
   const [changed, setChanged] = useState(false);
 
   const groupId = localStorage.getItem("groupId");
-
-  // const [next, setNext] = useState(`/goals/?group=${groupId}`);
 
   const [open, setOpen] = useState(false);
 
@@ -41,7 +41,6 @@ const GroupCardGoals = () => {
       .then((response) => {
         const results = response.data.results;
         setGoals(results);
-        // setNext(response.data.next);
       })
       .catch((e) => console.log(e));
   }, [open, groupId]);
@@ -91,10 +90,10 @@ const GroupCardGoals = () => {
           goals.map((goal, index) => (
             <GoalDiv key={index}>
               <div>
-                <p>
-                  <GiStairsGoal /> {goal.title}
-                </p>
-                <FiEdit onClick={() => handleClick(goal)} />
+                <p>{goal.title}</p>
+                <Button onClick={() => handleClick(goal)}>
+                  <EditIcon />
+                </Button>
               </div>
               <p>
                 <GiStairsGoal /> {goal.difficulty}

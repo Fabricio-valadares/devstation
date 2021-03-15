@@ -44,8 +44,10 @@ export const DivFlex = styled.div`
 export const useStyles = makeStyles((theme) => ({
   textField: {
     width: "276px",
+    fontWeight: "bold",
+    color: "#dedede",
     margin: "0.4rem 0.4rem",
-    backgroundColor: "#fff",
+    backgroundColor: "#30336B",
     borderRadius: theme.shape.borderRadius,
     height: "40px",
     padding: "1rem",

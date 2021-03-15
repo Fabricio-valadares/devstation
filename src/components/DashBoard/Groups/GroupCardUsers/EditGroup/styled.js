@@ -44,14 +44,13 @@ export const DivFlex = styled.div`
 export const useStyles = makeStyles((theme) => ({
   textField: {
     width: "276px",
-    color: "#dedede",
+    color: "#dedede;",
     fontWeight: "bold",
     margin: "0.4rem 0.4rem",
     backgroundColor: "#30336B",
     borderRadius: theme.shape.borderRadius,
     height: "40px",
     padding: "1rem",
-
     "&:hover": {
       border: "1px solid black ",
     },

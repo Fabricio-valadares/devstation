@@ -1,23 +1,22 @@
-import { Button, FormHelperText, InputBase } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
-import { useDebugValue, useEffect, useState } from "react";
 import api from "../../../../../services";
-import { Main, useStyles } from "./styled";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { openModalThunk } from "../../../../../store/modules/Modal/thunks";
-import { useDispatch } from "react-redux";
-import { FiTrash } from "react-icons/fi";
-import { DivFlex } from "./styled";
-import { FormStyled } from "./styled";
 
-const CreateActivity = ({ groupId, handleClose, setOpen }) => {
-  const classes = useStyles();
+import {
+  IconBox,
+  InfoIcon,
+  Input,
+  InputBox,
+  InputsContainer,
+  Main,
+  SaveButton,
+  SaveIcon,
+  ErrorIcon,
+} from "../../../CreateHabit/styled";
 
-  const [errorMsg, setErrorMsg] = useState(false);
-
+const CreateActivity = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
 
   const schema = yup.object().shape({
@@ -43,47 +42,32 @@ const CreateActivity = ({ groupId, handleClose, setOpen }) => {
         reset();
         handleClose();
       })
-      .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
 
   return (
     <Main>
-      {errorMsg && (
-        <Alert severity="error">
-          Sua criação falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
-      <FormStyled onSubmit={handleSubmit(handleForm)}>
-        <h1>Criar Atividade</h1>
-        <div>
-          <h1>Titulo:</h1>
-
-          <InputBase
-            className={classes.textField}
-            margin="dense"
-            variant="outlined"
-            placeholder="Titulo"
+      <h1>Criar Atividade</h1>
+      <InputsContainer onSubmit={handleSubmit(handleForm)}>
+        <InputBox>
+          <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+          <Input
             name="title"
-            inputRef={register}
-            error={!!errors.title}
+            type="text"
+            ref={register}
+            placeholder={
+              errors.title ? errors.title.message : "Título da Atividade"
+            }
           />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
-            {errors.title?.message}
-          </FormHelperText>
-        </div>
+        </InputBox>
 
-        <div>
-          <Button type="submit" variant="contained" color="primary">
-            Criar
-          </Button>
-        </div>
-      </FormStyled>
+        <InputBox>
+          <IconBox>
+            <SaveIcon />
+          </IconBox>
+          <SaveButton type="submit">Salvar Atividade</SaveButton>
+        </InputBox>
+      </InputsContainer>
     </Main>
   );
 };
