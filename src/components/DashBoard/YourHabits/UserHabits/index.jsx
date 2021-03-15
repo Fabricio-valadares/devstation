@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import Habit from "../Habit/index";
-import Modal from "../../../Modal";
+import MyModal from "../../MyModal";
 import CreateHabit from "../../CreateHabit";
-import { useDispatch } from "react-redux";
-import { openModalThunk } from "../../../../store/modules/Modal/thunks";
+import EditHabit from "../../EditHabit";
+import api from "../../../../services";
 
 import {
   UserCard,
@@ -12,28 +13,72 @@ import {
   Habits,
 } from "./styled";
 
-const UserHabits = ({ habits }) => {
-  const dispatch = useDispatch();
+const UserHabits = ({ user }) => {
+  const [createView, setCreateView] = useState(false);
+  const [editView, setEditView] = useState(false);
+  const [currentHabitId, setCurrentHabitId] = useState({});
+  const [personalHabits, setPersonalHabits] = useState([]);
+  const storagedToken = localStorage.getItem("token");
+  const token = JSON.parse(storagedToken);
 
-  const handleClick = () => {
-    dispatch(openModalThunk(true));
+  const handleCreateOpen = () => {
+    setCreateView(true);
   };
+
+  const handleCreateClose = () => {
+    setCreateView(false);
+  };
+
+  const handleEditOpen = (habitId) => {
+    setCurrentHabitId(habitId);
+    setEditView(true);
+  };
+
+  const handleEditClose = () => {
+    setEditView(false);
+  };
+
+  useEffect(() => {
+    api
+      .get("/habits/personal/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => setPersonalHabits(response.data))
+      .catch((error) => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [createView, editView]);
 
   return (
     <UserCard>
-      <Modal>
-        <CreateHabit />
-      </Modal>
+      {createView && (
+        <MyModal>
+          <CreateHabit userId={user} close={handleCreateClose} token={token} />
+        </MyModal>
+      )}
+      {editView && (
+        <MyModal>
+          <EditHabit
+            close={handleEditClose}
+            token={token}
+            habitId={currentHabitId}
+          />
+        </MyModal>
+      )}
       <PersonalHabits>
         <HabitsHeader>
           <h3>Seus hábitos</h3>
-          <button onClick={handleClick}>
+          <button onClick={handleCreateOpen}>
             <PlusIcon />
           </button>
         </HabitsHeader>
         <Habits>
-          {habits.map((habit) => (
-            <Habit key={habit.id} habit={habit} />
+          {personalHabits.map((habit) => (
+            <Habit
+              key={habit.id}
+              habit={habit}
+              open={handleEditOpen}
+              close={handleEditClose}
+            />
           ))}
         </Habits>
       </PersonalHabits>

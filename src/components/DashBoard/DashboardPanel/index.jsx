@@ -13,16 +13,8 @@ import GroupCardActivities from "../Groups/GroupCardActivities";
 const DashboardPanel = () => {
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const storagedToken = localStorage.getItem("token");
-  const token = JSON.parse(storagedToken);
-
   const [next, setNext] = useState("/habits/");
   const [habits, setHabits] = useState([]);
-  const [personalHabits, setPersonalHabits] = useState([]);
   const storagedId = localStorage.getItem("id");
   const userId = JSON.parse(storagedId);
 
@@ -39,16 +31,6 @@ const DashboardPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  useEffect(() => {
-    api
-      .get("/habits/personal/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => setPersonalHabits(response.data))
-      .catch((error) => console.log(error));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const filteredHabits = habits.filter((habit) => habit.user === userId);
 
   return (
@@ -56,12 +38,12 @@ const DashboardPanel = () => {
       <Modal setOpen={setOpen} open={open} />
       <div id="habits-card">
         <Container>
-          <UserHabits habits={filteredHabits} />
+          <UserHabits user={userId} />
         </Container>
       </div>
       <div id="graphic-card">
         <Container>
-          <Graphic habits={personalHabits} />
+          <Graphic habits={filteredHabits} />
         </Container>
       </div>
       <div id="nameGroup-card">

@@ -7,8 +7,10 @@ import {
   FiSave,
   FiAlertTriangle,
   FiX,
+  FiTrash2,
 } from "react-icons/fi";
 import { HiOutlineFire } from "react-icons/hi";
+import { shade } from "polished";
 
 export const Main = styled.article`
   width: 30vw;
@@ -53,13 +55,13 @@ export const IconBox = styled.div`
 `;
 
 export const InfoIcon = styled(FiInfo)`
-  color: #f72585;
+  color: #dff9fb;
   width: 80%;
   height: 80%;
 `;
 
 export const TagIcon = styled(FiTag)`
-  color: #f72585;
+  color: #f0932b;
   width: 80%;
   height: 80%;
 `;
@@ -71,13 +73,13 @@ export const BarIcon = styled(FiBarChart)`
 `;
 
 export const FrequencyIcon = styled(FiActivity)`
-  color: #f72585;
+  color: #e056fd;
   width: 80%;
   height: 80%;
 `;
 
 export const FireIcon = styled(HiOutlineFire)`
-  color: #f72585;
+  color: #f9ca24;
   width: 80%;
   height: 80%;
 `;
@@ -94,10 +96,17 @@ export const CloseIcon = styled(FiX)`
   height: 80%;
 `;
 
+export const DeleteIcon = styled(FiTrash2)`
+  color: #ff5252;
+  width: 80%;
+  height: 80%;
+`;
+
 export const SaveIcon = styled(FiSave)`
   color: #1dd1a1;
   width: 80%;
   height: 80%;
+  margin-top: 24px;
 `;
 
 export const Input = styled.input`
@@ -122,10 +131,11 @@ export const SaveButton = styled.button`
   color: white;
   font-weight: bold;
   transition: all 200ms ease-in;
-  border: 2px solid #1dd1a1;
+  background-color: #1dd1a1;
+  margin-top: 24px;
 
   &:hover {
-    background-color: #1dd1a1;
+    background-color: ${shade(0.2, "#1dd1a1")};
   }
 `;
 
@@ -144,5 +154,23 @@ export const CloseButton = styled.button`
 
   &:hover {
     background-color: #f72585;
+  }
+`;
+
+export const DeleteButton = styled.button`
+  flex: 1;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  transition: all 200ms ease-in;
+  border: 2px solid #ff5252;
+
+  &:hover {
+    background-color: #ff5252;
   }
 `;

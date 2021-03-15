@@ -12,27 +12,27 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  // paper: {
-  //   // backgroundColor: theme.palette.background.paper,
-  //   backgroundColor: "#560BAD",
-  //   // border: "2px solid #000",
-  //   boxShadow: theme.shadows[5],
-  //   padding: theme.spacing(2, 4, 3),
-  // },
+  paper: {
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#560BAD",
+    // border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
-export default function TransitionsModal({ children, setOpen }) {
+export default function TransitionsModal({ children, open, handleClose }) {
   const classes = useStyles();
-  // const open = true;
+  // // const open = true;
 
-  const open = useSelector((state) => state.open);
+  // const open = useSelector((state) => state.open);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleClose = () => {
-    // setOpen(false);
-    dispatch(openModalThunk(false));
-  };
+  // const handleClose = () => {
+  //   // setOpen(false);
+  //   dispatch(openModalThunk(false));
+  // };
 
   return (
     <div>

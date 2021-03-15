@@ -1,5 +1,4 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -22,10 +21,19 @@ import {
   ErrorIcon,
   CloseButton,
   CloseIcon,
+  DeleteButton,
+  DeleteIcon,
 } from "./styled";
 
-const CreateHabit = ({ userId, close, token }) => {
-  const history = useHistory();
+const EditHabit = ({ close, token, habitId }) => {
+  const [habit, setHabit] = useState(async () => {
+    try {
+      const response = await api.get(`/habits/${habitId}/`);
+      setHabit(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  });
 
   const schema = yup.object().shape({
     title: yup.string().required("Defina um título"),
@@ -46,16 +54,25 @@ const CreateHabit = ({ userId, close, token }) => {
   const handleForm = async (data) => {
     const formData = {
       ...data,
-      achieved: false,
-      user: userId,
+      achieved: data.how_much_achieved === 100 ? true : false,
     };
 
     try {
-      await api.post("/habits/", formData, {
+      await api.patch(`/habits/${habitId}/`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       reset();
-      history.push("/dashboard");
+      close();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteHabit = async () => {
+    try {
+      await api.delete(`/habits/${habitId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       close();
     } catch (err) {
       console.log(err);
@@ -64,7 +81,7 @@ const CreateHabit = ({ userId, close, token }) => {
 
   return (
     <Main>
-      <h1>Adicione um novo hábito</h1>
+      <h1>Editar hábito</h1>
 
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>
@@ -73,9 +90,7 @@ const CreateHabit = ({ userId, close, token }) => {
             name="title"
             ref={register}
             type="text"
-            placeholder={
-              errors.title ? errors.title.message : "Título do hábito"
-            }
+            placeholder={errors.title ? errors.title.message : habit.title}
           />
         </InputBox>
         <InputBox>
@@ -85,7 +100,7 @@ const CreateHabit = ({ userId, close, token }) => {
             ref={register}
             type="text"
             placeholder={
-              errors.category ? errors.category.message : "Categoria do hábito"
+              errors.category ? errors.category.message : habit.category
             }
           />
         </InputBox>
@@ -96,9 +111,7 @@ const CreateHabit = ({ userId, close, token }) => {
             ref={register}
             type="text"
             placeholder={
-              errors.difficulty
-                ? errors.difficulty.message
-                : "Dificuldade do hábito"
+              errors.difficulty ? errors.difficulty.message : habit.difficulty
             }
           />
         </InputBox>
@@ -111,9 +124,7 @@ const CreateHabit = ({ userId, close, token }) => {
             ref={register}
             type="text"
             placeholder={
-              errors.frequency
-                ? errors.frequency.message
-                : "Frequência do hábito"
+              errors.frequency ? errors.frequency.message : habit.frequency
             }
           />
         </InputBox>
@@ -128,7 +139,7 @@ const CreateHabit = ({ userId, close, token }) => {
             placeholder={
               errors.how_much_achieved
                 ? errors.how_much_achieved.message
-                : "Quanto já evoliu"
+                : habit.how_much_achieved
             }
           />
         </InputBox>
@@ -136,7 +147,13 @@ const CreateHabit = ({ userId, close, token }) => {
           <IconBox>
             <SaveIcon />
           </IconBox>
-          <SaveButton type="submit">Salvar hábito</SaveButton>
+          <SaveButton type="submit">Atualizar</SaveButton>
+        </InputBox>
+        <InputBox>
+          <IconBox>
+            <DeleteIcon />
+          </IconBox>
+          <DeleteButton onClick={deleteHabit}>Deletar</DeleteButton>
         </InputBox>
       </InputsContainer>
       <CloseButton onClick={close}>
@@ -146,4 +163,4 @@ const CreateHabit = ({ userId, close, token }) => {
   );
 };
 
-export default CreateHabit;
+export default EditHabit;
