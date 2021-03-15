@@ -44,7 +44,7 @@ const GroupCardGoals = () => {
         // setNext(response.data.next);
       })
       .catch((e) => console.log(e));
-  }, [open]);
+  }, [open, groupId]);
 
   const handleClick = (goal) => {
     if (goal.title) {

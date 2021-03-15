@@ -43,7 +43,7 @@ const GroupCardActivities = () => {
       })
       .catch((e) => console.log(e));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open, groupId]);
 
   const handleClick = (activity) => {
     if (activity.title) {
