@@ -23,7 +23,7 @@ const GroupCardUsers = () => {
       .then((response) => setGroup(response.data))
       .catch((e) => console.log(e));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [groupId]);
 
   const { users, name, description, category } = group;
 

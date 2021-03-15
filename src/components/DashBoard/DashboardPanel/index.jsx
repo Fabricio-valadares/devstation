@@ -33,19 +33,19 @@ const DashboardPanel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  const filterdHabits = habits.filter((habit) => habit.user === userId);
+  const filteredHabits = habits.filter((habit) => habit.user === userId);
 
   return (
     <Content>
       {/* <Modal /> */}
       <div id="habits-card">
         <Container>
-          <UserHabits habits={filterdHabits} />
+          <UserHabits user={userId} />
         </Container>
       </div>
       <div id="graphic-card">
         <Container>
-          <Graphic habits={filterdHabits} />
+          <Graphic habits={filteredHabits} />
         </Container>
       </div>
       <div id="nameGroup-card">

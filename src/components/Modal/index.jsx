@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TransitionsModal({ children, open, handleClose }) {
   const classes = useStyles();
-  // const open = true;
+  // // const open = true;
 
   // const open = useSelector((state) => state.open);
 
