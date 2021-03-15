@@ -16,7 +16,6 @@ import {
   Title,
   UserCardDiv,
   UserDiv,
-  WhiteBall,
   Margin,
 } from "./styled";
 
@@ -79,9 +78,8 @@ const GroupCardUsers = () => {
           {users &&
             users.map((user, index) => (
               <UserCardDiv key={index}>
-                {/* <WhiteBall /> */}
                 <figure>
-                  <img src={profilePicture} />
+                  <img src={profilePicture} alt="Profile" />
                 </figure>
                 <UserDiv>
                   <h1>{user.username}</h1>

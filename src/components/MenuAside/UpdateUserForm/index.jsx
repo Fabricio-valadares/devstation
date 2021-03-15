@@ -34,8 +34,7 @@ const UpdateUserForm = () => {
   });
 
   const handleForm = (data) => {
-    //receber id pelo redirect do login
-    const id = 17;
+    const id = localStorage.getItem("id");
 
     api
       .patch(`/users/${id}/`, data, {
