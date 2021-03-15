@@ -1,12 +1,13 @@
 import { groupsAction } from "./actions";
-import api from "../../../services";
+import axios from "axios";
 
-export const groupsThunks = (data) => (dispatch, state) => {
-  // consumindo rota de get groups
-  api
-    .get("/groups/", data)
-    .then((response) => {
-      dispatch(groupsAction(response.data.results));
-    })
-    .catch((error) => console.log(error));
+export const groupsThunks = (url) => (dispatch, state) => {
+  if (url !== null) {
+    axios
+      .get(`${url}`)
+      .then((response) => {
+        dispatch(groupsAction(response.data));
+      })
+      .catch((error) => console.log(error));
+  }
 };

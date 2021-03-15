@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const UsersContainer = styled.div`
-  display: block;
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 65vw;
-  height: 80vh;
-  margin: 8vh auto;
+  height: 93vh;
+  margin: 4vh auto;
   background-color: var(--dark-primary);
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -30,7 +34,7 @@ export const UserContent = styled.div`
   justify-content: space-between;
 
   max-height: 69vh;
-  height: 80%;
+  /* height: 80%; */
   overflow-y: scroll;
   ::-webkit-scrollbar {
     border-radius: 50px;
@@ -59,22 +63,31 @@ export const DivPname = styled.div`
   width: 50vw;
 `;
 
-export const Pname = styled.div`
+export const Pmail = styled.div`
   margin-top: 5px;
   font-size: 1rem;
   text-align: left;
-  color: var(--text);
+  color: #000;
+  font-weight: 100;
+`;
+
+export const PnameUser = styled.div`
+  margin-top: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: #000;
 `;
 
 export const DivHeader = styled.div`
-  display: flex;
-  padding: 20px 30px 40px 30px;
+  /* display: flex; */
+  padding: 24px 25px 5px 25px;
   width: 100%;
-  height: 20px;
+  /* height: 20px; */
 
-  input {
+  /* input {
     height: 30px;
-  }
+  } */
 
   p {
     /* margin-top: 465px; */
@@ -82,6 +95,34 @@ export const DivHeader = styled.div`
     vertical-align: center;
     font-size: 10px;
     color: var(--text);
+  }
+  */ div#dataNumberUser {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    width: 60px;
+  }
+
+  div#searchGroup {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+  }
+
+  input#search {
+    padding: 18px 0 18px 18px;
+    border-radius: 5px 0 0 5px;
+    width: 85%;
+  }
+
+  div#buttonSearch {
+    background-color: var(--secondary);
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    cursor: pointer;
   }
 `;
 
@@ -92,33 +133,35 @@ export const DivH1 = styled.div`
   vertical-align: center;
   font-size: 1.25rem;
   color: var(--text);
+  margin-bottom: 20px;
 `;
 
 export const Card = styled.div`
   display: flex;
-  flex-direction: how;
   align-items: center;
   /* Rectangle 49 */
 
-  width: 61vw;
-  height: 15vh;
-  margin-left: 30px;
+  /* height: 15vh; */
+  width: 60.4vw;
+  height: 72px;
+  margin-left: 27px;
   margin-bottom: 10px;
 
-  background: #560bad;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+  background-color: #d8d5d5;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  border-radius: 5px;
 `;
 
 export const UserAvatarContainer = styled.div`
-  margin: 16px;
-  width: 66px;
-  height: 68px;
+  width: 43px;
+  padding: 8px 10px;
+  margin-right: 20px;
 `;
 
 export const UserAvatar = styled.img`
-  width: 66px;
-  height: 68px;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
   border: none;
 `;
 
