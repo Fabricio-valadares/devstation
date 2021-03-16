@@ -30,7 +30,7 @@ export const FormContainer = styled.div`
       width: 95%;
     }
   }
-  
+
   @media (max-width: 400px) {
     margin: 0.2rem;
     width: 100vw;
@@ -57,7 +57,6 @@ export const StyledSpan = styled.span`
     text-decoration: underline;
     cursor: pointer;
   }
-
 `;
 
 export const RegisterCard = styled.form`
@@ -72,13 +71,13 @@ export const RegisterCard = styled.form`
   border-radius: 8px;
 
   @media (max-width: 800px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 80%;
     height: 90%;
   }
 
   @media (max-width: 400px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 70%;
     height: 80%;
   }
@@ -90,8 +89,8 @@ export const Img = styled.img`
   -webkit-user-drag: none;
 
   @media (max-width: 800px) {
-    width: 160px;
-    height: 200px;
+    width: 210px;
+    height: 269px;
   }
 `;
 
@@ -113,6 +112,4 @@ export const useStyles = makeStyles((theme) => ({
   helper: {
     marginLeft: "0.4rem",
   },
-  
-  
 }));
