@@ -10,10 +10,10 @@ export const Main = styled.div`
   color: var(--text);
 
   justify-content: space-around;
-  padding: 2vw;
+  padding: 1rem;
 
-  div {
-    width: 100%;
+  #info {
+    height: 90%;
   }
 
   div h3#category,
@@ -45,11 +45,9 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 5px;
 
   h4 {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
     font-weight: 500;
     color: var(--secondary);
   }
@@ -106,5 +104,4 @@ export const UserDiv = styled.div`
 
 export const UserCardDiv = styled.div`
   display: flex;
-  align-items: center;
 `;
