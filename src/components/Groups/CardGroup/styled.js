@@ -9,9 +9,21 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     "& > div#Icon": {
-      width: "10%",
+      width: "30%",
       display: "flex",
       alignItems: "center",
+
+      "& svg": {
+        width: "3rem",
+        height: "3rem",
+      },
+      "@media(min-width: 600px)": {
+        width: "10%",
+        "& svg": {
+          width: "2rem",
+          height: "2rem",
+        },
+      },
     },
   },
   container: {
@@ -19,6 +31,7 @@ export const useStyles = makeStyles((theme) => ({
     borderBottom: "none",
   },
   heading: {
+    flexDirection: "column",
     padding: "10px",
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
@@ -26,12 +39,14 @@ export const useStyles = makeStyles((theme) => ({
       marginRight: "20px",
       borderRadius: "50%",
     },
-    "& > span": {
-      margin: "0 20px",
-      fontWeight: "bold",
-    },
-    "& > span#nameGroups": {
-      fontWeight: 500,
+    "@media(min-width: 600px)": {
+      "& > span": {
+        margin: "0 20px",
+        fontWeight: "bold",
+      },
+      "& > span#nameGroups": {
+        fontWeight: 500,
+      },
     },
   },
 }));
