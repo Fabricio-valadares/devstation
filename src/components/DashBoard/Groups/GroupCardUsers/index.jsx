@@ -52,7 +52,7 @@ const GroupCardUsers = () => {
         <EditGroup groupId={groupId} handleClose={handleClose} />
       </Modal>
       <Main>
-        <div>
+        <div id="info">
           <Title>
             <h4>Seu Grupo</h4>
           </Title>
