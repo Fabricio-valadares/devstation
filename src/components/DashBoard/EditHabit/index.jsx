@@ -36,15 +36,11 @@ const EditHabit = ({ close, token, habitId }) => {
   });
 
   const schema = yup.object().shape({
-    title: yup.string().required("Defina um título"),
-    category: yup.string().required("Defina uma categoria"),
-    difficulty: yup.string().required("Defina uma dificuldade"),
-    frequency: yup.string().required("Defina sua frequência"),
-    how_much_achieved: yup
-      .number()
-      .positive()
-      .integer()
-      .required("Defina quanto já evoluiu nesse hábito"),
+    title: yup.string(),
+    category: yup.string(),
+    difficulty: yup.string(),
+    frequency: yup.string(),
+    how_much_achieved: yup.string().matches(/^[0-9]*$/),
   });
 
   const { register, handleSubmit, errors, reset } = useForm({
@@ -53,7 +49,14 @@ const EditHabit = ({ close, token, habitId }) => {
 
   const handleForm = async (data) => {
     const formData = {
-      ...data,
+      title: data.title === "" ? habit.title : data.title,
+      category: data.category === "" ? habit.category : data.category,
+      difficulty: data.difficulty === "" ? habit.difficulty : data.difficulty,
+      frequency: data.frequency === "" ? habit.frequency : data.frequency,
+      how_much_achieved:
+        data.how_much_achieved === ""
+          ? habit.how_much_achieved
+          : data.how_much_achieved,
       achieved: data.how_much_achieved === 100 ? true : false,
     };
 
@@ -135,7 +138,7 @@ const EditHabit = ({ close, token, habitId }) => {
           <Input
             name="how_much_achieved"
             ref={register}
-            type="number"
+            type="text"
             placeholder={
               errors.how_much_achieved
                 ? errors.how_much_achieved.message
