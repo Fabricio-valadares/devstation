@@ -30,7 +30,7 @@ export const UserContent = styled.div`
   padding-right: 30px; */
   /* background-color: yellow; */
 
-  width: 70%;
+  width: 90%;
   flex-direction: column;
 
   overflow-y: scroll;
@@ -197,11 +197,20 @@ export const ShowIcon = styled.div`
   /* width: 80px; */
   display: flex;
   align-items: center;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  margin-right: 1rem;
 
   @media (min-width: 700px) {
     display: block;
 
-    margin-right: 1rem;
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 `;
 

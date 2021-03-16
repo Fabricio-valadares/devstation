@@ -14,14 +14,14 @@ export const useStyles = makeStyles((theme) => ({
       alignItems: "center",
 
       "& svg": {
-        width: "3rem",
-        height: "3rem",
+        width: "2rem",
+        height: "2rem",
       },
       "@media(min-width: 600px)": {
         width: "10%",
         "& svg": {
-          width: "2rem",
-          height: "2rem",
+          width: "1.5rem",
+          height: "1.5rem",
         },
       },
     },

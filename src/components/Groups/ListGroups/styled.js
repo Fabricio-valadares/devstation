@@ -18,6 +18,13 @@ export const Content = styled.div`
     margin: 15px 0;
     display: flex;
   }
+  div#group-users {
+    height: 90vh;
+
+    align-items: center;
+    overflow: auto;
+    overflow-y: auto;
+  }
 
   input#search {
     padding: 18px 0 18px 18px;
