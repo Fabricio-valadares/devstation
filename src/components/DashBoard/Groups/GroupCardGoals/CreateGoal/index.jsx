@@ -30,7 +30,6 @@ const CreateGoal = ({ groupId, handleClose }) => {
   });
 
   const handleForm = (data) => {
-    //consumindo a rota create goal
     data["group"] = groupId;
     data["how_much_achieved"] = 0;
 
