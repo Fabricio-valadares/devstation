@@ -86,7 +86,7 @@ export const CardUsers = styled.div`
     background: var(--dark-primary);
   }
   ::-webkit-scrollbar-thumb {
-    background: #a0a0a0;
+    background: var(--dark-primary);
     border-radius: 5px;
   }
 `;
