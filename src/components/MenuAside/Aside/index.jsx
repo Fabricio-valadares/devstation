@@ -6,6 +6,7 @@ import {
   DashIcon,
   GroupIcon,
   UsersIcon,
+  MobileDiv,
 } from "./styled";
 import User from "../../../assets/user-avatar.svg";
 import { Link, useHistory } from "react-router-dom";
@@ -13,6 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 import api from "../../../services";
 import { Button } from "@material-ui/core";
 import { FiLogOut } from "react-icons/fi";
+import MobileMenu from "../MobileMenu";
 
 const Aside = () => {
   const storagedId = localStorage.getItem("id");
@@ -53,6 +55,9 @@ const Aside = () => {
           </Button>
         </div>
       </Profile>
+      <MobileDiv>
+        <MobileMenu />
+      </MobileDiv>
       <Navigation>
         <Link className="menu-link" to="/dashboard">
           <DashIcon />
