@@ -9,6 +9,7 @@ export const Menu = styled.aside`
   align-items: center;
   height: 10vh;
   padding: 80px 0;
+  justify-content: space-around;
 
   background-color: var(--dark-primary);
 
@@ -16,6 +17,8 @@ export const Menu = styled.aside`
     width: 20vw;
     height: 100vh;
     flex-direction: column;
+    justify-content: start;
+
     padding: 80px 0;
   }
 `;
@@ -30,8 +33,6 @@ export const Profile = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  @media (min-width: 1100px) {
-  }
 
   img {
     width: 60px;
@@ -60,38 +61,48 @@ export const Profile = styled.div`
     }
   }
 `;
+export const MobileDiv = styled.div`
+  display: block;
+  @media (min-width: 900px) {
+    display: none;
+  }
+`;
 
 export const Navigation = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 80%;
+  display: none;
 
-  a.menu-link {
-    padding: 8px 16px;
-    border-radius: 25px;
+  @media (min-width: 900px) {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    background-color: var(--soft-primary);
-    box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-      6px 6px 16px rgba(0, 0, 0, 0.2);
-    transition: all 200ms ease-in;
+    justify-content: space-evenly;
+    width: 80%;
 
-    &:hover {
-      background-color: var(--middle-primary);
-    }
-
-    &:active {
+    a.menu-link {
+      padding: 8px 16px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: var(--soft-primary);
       box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-        6px 6px 16px rgba(0, 0, 0, 0.2),
-        inset -6px -6px 16px rgba(255, 255, 255, 0.09),
-        inset 6px 6px 16px rgba(0, 0, 0, 0.2);
-    }
-    p {
-      font-size: 10px;
-      color: var(--text);
-      font-weight: bold;
+        6px 6px 16px rgba(0, 0, 0, 0.2);
+      transition: all 200ms ease-in;
+
+      &:hover {
+        background-color: var(--middle-primary);
+      }
+
+      &:active {
+        box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
+          6px 6px 16px rgba(0, 0, 0, 0.2),
+          inset -6px -6px 16px rgba(255, 255, 255, 0.09),
+          inset 6px 6px 16px rgba(0, 0, 0, 0.2);
+      }
+      p {
+        font-size: 10px;
+        color: var(--text);
+        font-weight: bold;
+      }
     }
   }
 

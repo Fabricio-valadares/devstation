@@ -4,7 +4,7 @@ export const Content = styled.div`
   display: block;
   width: 100%;
 
-  @media (min-width: 1000px) {
+  @media (min-width: 900px) {
     width: 80vw;
     height: 100%;
     background-color: var(--dash-background);
