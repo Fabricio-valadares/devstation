@@ -22,7 +22,6 @@ import CardUser from "../CardUser";
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
-  const [number, setNumber] = useState(0);
   const [user, setUser] = useState({});
 
   const [open, setOpen] = useState(false);
@@ -30,26 +29,26 @@ const GetUsersPage = () => {
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
   const next = useSelector((state) => state.users.next);
+  const previous = useSelector((state) => state.users.previous);
   const count = useSelector((state) => state.users.count);
+  const total = users.length;
 
   console.log(open);
 
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
-    setNumber(count);
-    if (usersList){
-      setUsers([...users, ...usersList]);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (next) {
-      dispatch(getUsersThunk(next));
-      setUsers([...users, ...usersList]);
-    }
+      if (next) {
+        dispatch(getUsersThunk(next));
+        setUsers([...users, ...usersList]);
+      } else if (previous) {
+        setUsers([...users, ...usersList]);
+      } 
     // eslint-disable-next-line
-  }, [next]);
+  }, [next, previous]);
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -75,7 +74,7 @@ const GetUsersPage = () => {
             <h1>Usuários</h1>
             <div id="dataNumberUser">
               <FaUsers />
-              <p>{number && number}</p>
+              <p>{count && count}</p>
             </div>
           </DivH1>
           <div id="searchGroup">

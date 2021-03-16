@@ -17,24 +17,29 @@ const ListGroups = () => {
   const [open, setOpen] = useState(false);
 
   const [groupsData, setGroupsData] = useState([]);
-  const [cardGroup, setCardGroup] = useState([]);
+  // const [cardGroup, setCardGroup] = useState([]);
 
-  const { next, results } = useSelector((state) => state.groupsReduces);
+  // const { previous, next, results } = useSelector((state) => state.groupsReduces);
+  const results = useSelector((state) => state.groupsReduces.results);
+  const next = useSelector((state) => state.groupsReduces.next);
+  const previous = useSelector((state) => state.groupsReduces.previous);
+  
 
   useEffect(() => {
     dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
-    if (results) {
-      setGroupsData([...groupsData, ...results]);
-    }
   }, []);
 
   useEffect(() => {
-    if (results !== undefined) {
+    if (next) {
       dispatch(groupsThunks(`${next}`));
       setGroupsData([...groupsData, ...results]);
-      setCardGroup(groupsData);
+    } else if (previous) {
+      setGroupsData([...groupsData, ...results]);
     }
-  }, [next]);
+      
+      // setCardGroup(groupsData);
+  
+  }, [next, previous]);
 
   const handleClickInput = (e) => {
     setValueInput(e.target.value);
