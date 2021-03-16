@@ -107,6 +107,7 @@ export const DivHeader = styled.div`
   div#dataNumberUser {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-left: 20px;
     width: 60px;
   }

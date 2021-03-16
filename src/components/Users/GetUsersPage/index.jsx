@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { FcSearch } from "react-icons/fc";
 import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
 
-// import { BiShow } from "react-icons/bi";
-// import { FcSearch } from "react-icons/fc";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -17,50 +14,47 @@ import {
   ShowIcon,
   DivPname,
   DivHeader,
-  UsersDiv,
 } from "./styled";
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
-import userAvatar from "../../../assets/avatardefault.svg";
 import Modal from "../../Modal";
-import { openModalThunk } from "../../../store/modules/Modal/thunks";
 import CardUser from "../CardUser";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
-  const [number, setNumber] = useState(0);
   const [user, setUser] = useState({});
 
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
-  // const open = useSelector((state) => state.open);
   const next = useSelector((state) => state.users.next);
+  const previous = useSelector((state) => state.users.previous);
   const count = useSelector((state) => state.users.count);
+  const total = users.length;
 
   console.log(open);
 
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
-    setNumber(count);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (next) {
-      dispatch(getUsersThunk(next));
-      setUsers([...users, ...usersList]);
-    }
+      if (next) {
+        dispatch(getUsersThunk(next));
+        setUsers([...users, ...usersList]);
+      } else if (previous) {
+        setUsers([...users, ...usersList]);
+      } 
     // eslint-disable-next-line
-  }, [next]);
+  }, [next, previous]);
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleClick = (user) => {
-    // dispatch(openModalThunk(true));
     setUser(user);
     setOpen(true);
   };
@@ -80,7 +74,7 @@ const GetUsersPage = () => {
             <h1>Usuários</h1>
             <div id="dataNumberUser">
               <FaUsers />
-              <p>{number && number}</p>
+              <p>{count && count}</p>
             </div>
           </DivH1>
           <div id="searchGroup">
