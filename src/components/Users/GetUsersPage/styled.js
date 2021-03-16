@@ -18,7 +18,7 @@ export const UsersContainer = styled.div`
 
   @media (min-width: 700px) {
     justify-content: flex-start;
-    width: 65vw;
+    width: 76%;
     height: 93vh;
   }
 `;
@@ -168,7 +168,7 @@ export const Card = styled.div`
     /* Rectangle 49 */
 
     /* height: 15vh; */
-    width: 60.4vw;
+    width: 95%;
     height: 72px;
     margin-left: 27px;
 

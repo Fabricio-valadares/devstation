@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Content = styled.div`
   display: block;
+  width: 100%;
 
   @media (min-width: 1000px) {
     width: 80vw;
