@@ -23,6 +23,9 @@ const ListGroups = () => {
 
   useEffect(() => {
     dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
+    if (results) {
+      setGroupsData([...groupsData, ...results]);
+    }
   }, []);
 
   useEffect(() => {

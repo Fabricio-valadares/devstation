@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { FcSearch } from "react-icons/fc";
 import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
 
-// import { BiShow } from "react-icons/bi";
-// import { FcSearch } from "react-icons/fc";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -17,12 +14,9 @@ import {
   ShowIcon,
   DivPname,
   DivHeader,
-  UsersDiv,
 } from "./styled";
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
-import userAvatar from "../../../assets/avatardefault.svg";
 import Modal from "../../Modal";
-import { openModalThunk } from "../../../store/modules/Modal/thunks";
 import CardUser from "../CardUser";
 
 const GetUsersPage = () => {
@@ -35,7 +29,6 @@ const GetUsersPage = () => {
 
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
-  // const open = useSelector((state) => state.open);
   const next = useSelector((state) => state.users.next);
   const count = useSelector((state) => state.users.count);
 
@@ -44,6 +37,9 @@ const GetUsersPage = () => {
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
     setNumber(count);
+    if (usersList){
+      setUsers([...users, ...usersList]);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -60,7 +56,6 @@ const GetUsersPage = () => {
   };
 
   const handleClick = (user) => {
-    // dispatch(openModalThunk(true));
     setUser(user);
     setOpen(true);
   };
