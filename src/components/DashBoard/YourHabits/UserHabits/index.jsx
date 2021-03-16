@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Habit from "../Habit/index";
-import MyModal from "../../MyModal";
+import Modal from "../../../Modal";
 import CreateHabit from "../../CreateHabit";
 import EditHabit from "../../EditHabit";
 import api from "../../../../services";
@@ -51,18 +51,18 @@ const UserHabits = ({ user }) => {
   return (
     <UserCard>
       {createView && (
-        <MyModal>
+        <Modal open={createView} handleClose={handleCreateClose}>
           <CreateHabit userId={user} close={handleCreateClose} token={token} />
-        </MyModal>
+        </Modal>
       )}
       {editView && (
-        <MyModal>
+        <Modal open={editView} handleClose={handleEditClose}>
           <EditHabit
             close={handleEditClose}
             token={token}
             habitId={currentHabitId}
           />
-        </MyModal>
+        </Modal>
       )}
       <PersonalHabits>
         <HabitsHeader>

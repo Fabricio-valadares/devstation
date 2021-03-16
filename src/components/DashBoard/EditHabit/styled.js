@@ -23,11 +23,19 @@ export const Main = styled.article`
   z-index: 2;
   position: relative;
 
+  @media (max-width: 990px) {
+    width: 320px;
+  }
+
   h1 {
     color: #f72585;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 24px;
+
+    @media (max-width: 990px) {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -111,7 +119,7 @@ export const SaveIcon = styled(FiSave)`
 `;
 
 export const Input = styled.input`
-  flex: 1;
+  width: 90%;
   height: 40px;
   background-color: #30336b;
   border-radius: 8px;
