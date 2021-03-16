@@ -2,65 +2,73 @@ import styled from "styled-components";
 
 export const UsersContainer = styled.div`
   /* display: block; */
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  width: 65vw;
-  height: 93vh;
+  width: 90vw;
+  height: 100vh;
   margin: 4vh auto;
+  padding-bottom: 1rem;
   background-color: var(--dark-primary);
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
   /* box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
     6px 6px 16px rgba(0, 0, 0, 0.2); */
 
-  @media (max-width: 1000px) {
+  @media (min-width: 700px) {
+    justify-content: flex-start;
+    width: 65vw;
+    height: 93vh;
   }
 `;
 
 export const UserContent = styled.div`
   /* position: relative; */
-  width: 100%;
-
   /* margin: 10px;
   padding-left: 35px;
   padding-right: 30px; */
   /* background-color: yellow; */
 
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
+  width: 70%;
+  flex-direction: column;
 
-  max-height: 69vh;
-  /* height: 80%; */
   overflow-y: scroll;
   ::-webkit-scrollbar {
     border-radius: 50px;
     /* background-color: 0px 0px 4px 4px rgba(0, 0, 0, 0.50); */
   }
+  @media (min-width: 700px) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
 
-  h1 {
-    top: 0;
-    position: relative;
-    text-align: left;
-    font-size: 1.25rem;
-    width: 30%;
-    background-color: var(--dark-primary);
-    color: var(--text);
-  }
+    max-height: 69vh;
+    /* height: 80%; */
 
-  p {
-    display: block;
-    font-size: 0.7rem;
-    text-align: center;
-    color: var(--text);
+    h1 {
+      top: 0;
+      position: relative;
+      text-align: left;
+      font-size: 1.25rem;
+      width: 30%;
+      background-color: var(--dark-primary);
+      color: var(--text);
+    }
+
+    p {
+      display: block;
+      font-size: 0.7rem;
+      text-align: center;
+      color: var(--text);
+    }
   }
 `;
 
 export const DivPname = styled.div`
-  width: 50vw;
+  /* width: 50vw; */
 `;
 
 export const Pmail = styled.div`
@@ -143,18 +151,33 @@ export const DivH1 = styled.div`
 
 export const Card = styled.div`
   display: flex;
-  align-items: center;
-  /* Rectangle 49 */
-
-  /* height: 15vh; */
-  width: 60.4vw;
-  height: 72px;
-  margin-left: 27px;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   background-color: var(--middle-primary);
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  margin-bottom: 10px;
+
   border-radius: 5px;
+
+  div#user {
+    margin: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    align-items: center;
+    /* Rectangle 49 */
+
+    /* height: 15vh; */
+    width: 60.4vw;
+    height: 72px;
+    margin-left: 27px;
+
+    div#user {
+      display: flex;
+    }
+
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  }
 `;
 
 export const UserAvatarContainer = styled.div`
@@ -171,7 +194,15 @@ export const UserAvatar = styled.img`
 `;
 
 export const ShowIcon = styled.div`
-  width: 80px;
+  /* width: 80px; */
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 700px) {
+    display: block;
+
+    margin-right: 1rem;
+  }
 `;
 
 export const UsersDiv = styled.div`

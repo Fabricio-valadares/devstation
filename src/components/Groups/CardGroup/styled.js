@@ -40,6 +40,7 @@ export const useStyles = makeStyles((theme) => ({
       borderRadius: "50%",
     },
     "@media(min-width: 600px)": {
+      flexDirection: "row",
       "& > span": {
         margin: "0 20px",
         fontWeight: "bold",

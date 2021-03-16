@@ -8,17 +8,9 @@ export const Content = styled.div`
   background-color: #30336b;
 
   div#container {
-    width: 100%;
     margin: 1rem 0;
     display: flex;
     justify-content: space-between;
-  }
-
-  div#containerButton {
-    display: flex;
-    justify-content: space-between;
-    width: 90px;
-    margin-left: 3px;
   }
 
   div#searchGroup {
@@ -50,8 +42,6 @@ export const Content = styled.div`
   }
 
   div#group-users {
-    width: 100%;
-    height: 100%;
     background-color: #130f40;
     border-radius: 8px;
     box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -59,14 +49,16 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    padding-bottom: 20px;
   }
 
   @media (min-width: 900px) {
     width: 80%;
     height: 100%;
+    background-color: #30336b;
     display: grid;
-
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     grid-template-columns: 95%;
     grid-template-rows: 5% 8% 82% 5%;
 
@@ -79,8 +71,6 @@ export const Content = styled.div`
     div#container {
       grid-area: A;
       width: 100%;
-      display: flex;
-      justify-content: space-between;
     }
 
     div#containerButton {
@@ -90,45 +80,10 @@ export const Content = styled.div`
       margin-left: 3px;
     }
 
-    div#searchGroup {
-      width: 95%;
-      margin: 15px 0;
-      display: flex;
-    }
-
-    input#search {
-      padding: 18px 0 18px 18px;
-      border-radius: 5px 0 0 5px;
-      background-color: var(--middle-primary);
-      width: 85%;
-      color: #fff;
-
-      ::-webkit-input-placeholder {
-        color: #eee;
-      }
-    }
-
-    div#buttonSearch {
-      background-color: var(--secondary);
-      border-radius: 0 5px 5px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 15%;
-      cursor: pointer;
-    }
-
     div#group-users {
       grid-area: D;
       width: 100%;
       height: 100%;
-      background-color: #130f40;
-      border-radius: 8px;
-      box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow: auto;
       padding-bottom: 20px;
     }
   }

@@ -106,13 +106,16 @@ const GetUsersPage = () => {
               .map((user, index) => {
                 return (
                   <Card key={index}>
-                    <UserAvatarContainer>
-                      <UserAvatar src="https://picsum.photos/200/200" />
-                    </UserAvatarContainer>
-                    <DivPname>
-                      <PnameUser>{user.username}</PnameUser>
-                      <Pmail>{user.email}</Pmail>
-                    </DivPname>
+                    <div id="user">
+                      <UserAvatarContainer>
+                        <UserAvatar src="https://picsum.photos/200/200" />
+                      </UserAvatarContainer>
+                      <DivPname>
+                        <PnameUser>{user.username}</PnameUser>
+                        <Pmail>{user.email}</Pmail>
+                      </DivPname>
+                    </div>
+
                     <ShowIcon>
                       <FaRegEye
                         onClick={() => handleClick(user)}
