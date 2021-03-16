@@ -12,11 +12,7 @@ import {
   useStyles,
 } from "./styled";
 
-import {
-  Button,
-  FormHelperText,
-  InputBase,
-} from "@material-ui/core";
+import { Button, FormHelperText, InputBase } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 
 import api from "../../../services";
@@ -79,10 +75,8 @@ const RegisterForm = () => {
             placeholder="Usuario"
             name="username"
             size="medium"
-            // color="primary"
             inputRef={register}
             error={!!errors.username}
-            // helperText={errors.username?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.username?.message}
@@ -94,10 +88,8 @@ const RegisterForm = () => {
             placeholder="Senha"
             name="password"
             type="password"
-            // color="primary"
             inputRef={register}
             error={!!errors.password}
-            // helperText={errors.password?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.password?.message}
@@ -109,10 +101,8 @@ const RegisterForm = () => {
             placeholder="Email"
             name="email"
             size="medium"
-            // color="primary"
             inputRef={register}
             error={!!errors.email}
-            // helperText={errors.email?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.email?.message}
