@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import userAvatar from "../../../assets/avatardefault.svg";
 import {
   DivCardUser,
   DivDataGroupUser,
   DivUserDataBase,
   DivTitleUser,
   DivTitleGroup,
-  UserAvatar,
-  UserAvatarContainer,
 } from "./styled";
 import { getOneGroupThunk } from "../../../store/modules/get-one-groups/thunks";
 
@@ -31,7 +28,7 @@ const CardUser = ({ user }) => {
           <span style={{ fontWeight: 600, marginRight: "2px", lineHeight: 2 }}>
             Nome do usuário:
           </span>{" "}
-          {user.username}
+          {user.username} - {user.id}
         </p>
         <p>
           <span style={{ fontWeight: "600", lineHeight: 2 }}>Email: </span>{" "}
