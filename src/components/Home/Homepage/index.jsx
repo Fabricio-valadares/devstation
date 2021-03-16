@@ -27,6 +27,8 @@ import {
   DivTextPrincipal,
   DivContent,
   DivButton,
+  ContainerImageOne,
+  ContainerImagemTwo,
 } from "./styled";
 
 const Homepage = () => {
@@ -56,23 +58,26 @@ const Homepage = () => {
               Entre na plataforma, defina um conjunto de hábitos, encontre uma
               equipe e realizem suas conquistas
             </Description>
+            <DivButton>
+              <Button onClick={redirectTo}>COMECE A EVOLUIR</Button>
+            </DivButton>
           </DivTextPrincipal>
-
-          <DivButton>
-            <Button onClick={redirectTo}>COMECE A EVOLUIR</Button>
-          </DivButton>
         </DivContent>
       </Content>
-      <ImagesA>
-        <BikeImage src={designNotes} />
-        <RunImage src={designTools} />
-        <StretchImage src={devWork} />
-      </ImagesA>
-      <ImagesB>
-        <WorkoutImage src={versionControl} />
-        <YogaImage src={server} />
-        <StyleImage src={kanban} />
-      </ImagesB>
+      <ContainerImageOne>
+        <ImagesA>
+          <BikeImage src={designNotes} />
+          <RunImage src={designTools} />
+          <StretchImage src={devWork} />
+        </ImagesA>
+      </ContainerImageOne>
+      <ContainerImagemTwo>
+        <ImagesB>
+          <WorkoutImage src={versionControl} />
+          <YogaImage src={server} />
+          <StyleImage src={kanban} />
+        </ImagesB>
+      </ContainerImagemTwo>
     </HomeContainer>
   );
 };
