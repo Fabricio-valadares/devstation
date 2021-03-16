@@ -14,6 +14,9 @@ export const Main = styled.div`
 
   #info {
     height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 
   div h3#category,
@@ -80,7 +83,7 @@ export const CardUsers = styled.div`
   }
   ::-webkit-scrollbar {
     width: 8px;
-    background: var(--middle-primary);
+    background: var(--dark-primary);
   }
   ::-webkit-scrollbar-thumb {
     background: #a0a0a0;

@@ -67,11 +67,6 @@ const GroupCardUsers = () => {
               Categoria: <span>{category}</span>
             </h3>
           </Margin>
-          <Margin>
-            <h3 id="description">
-              Descrição: <span>{description}</span>
-            </h3>
-          </Margin>
         </div>
 
         <CardUsers>
