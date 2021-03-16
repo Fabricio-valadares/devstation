@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { AiFillDashboard } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { FaUserFriends } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { FiSettings } from "react-icons/fi";
 
 export const Menu = styled.aside`
   width: 100%;
@@ -24,7 +26,10 @@ export const Menu = styled.aside`
 `;
 
 export const Profile = styled.div`
-  @media (min-width: 900px) {
+  @media (max-width: 900px) {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
   }
   width: auto;
   height: auto;
@@ -34,17 +39,48 @@ export const Profile = styled.div`
   flex-direction: column;
   text-align: center;
 
-  img {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
+  figure {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 14px;
+    position: relative;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+
+    @media (max-width: 900px) {
+      width: 70px;
+      height: 70px;
+      margin-right: 14px;
+    }
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background-color: var(--green-bar);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   div.user-info {
     color: var(--text);
 
     h3 {
-      font-size: 20px;
+      font-size: 18px;
+      margin-bottom: 8px;
       @media (min-width: 1000px) {
         font-size: 24px;
         font-weight: bold;
@@ -54,6 +90,7 @@ export const Profile = styled.div`
 
     p {
       font-size: 0.8rem;
+      margin-bottom: 14px;
     }
     button {
       color: var(--secondary);
@@ -61,6 +98,41 @@ export const Profile = styled.div`
     }
   }
 `;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Button = styled.button`
+  background-color: var(--soft-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease-in;
+
+  @media (max-width: 900px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  &:hover > svg {
+    color: var(--dark-secondary);
+  }
+`;
+
+export const LogOutIcon = styled(FiLogOut)`
+  width: 20px;
+`;
+
+export const ConfigIcon = styled(FiSettings)`
+  width: 20px;
+`;
+
 export const MobileDiv = styled.div`
   display: block;
   @media (min-width: 900px) {
@@ -84,8 +156,8 @@ export const Navigation = styled.div`
       align-items: center;
       justify-content: space-around;
       background-color: var(--soft-primary);
-      box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-        6px 6px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: -10px -10px 16px rgba(255, 255, 255, 0.09),
+        10px 10px 16px rgba(0, 0, 0, 0.2);
       transition: all 200ms ease-in;
 
       &:hover {

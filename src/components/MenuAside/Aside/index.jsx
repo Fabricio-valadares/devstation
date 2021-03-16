@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import {
   Menu,
   Profile,
+  ButtonBox,
+  Button,
+  ConfigIcon,
+  LogOutIcon,
   Navigation,
   DashIcon,
   GroupIcon,
@@ -12,8 +16,8 @@ import User from "../../../assets/user-avatar.svg";
 import { Link, useHistory } from "react-router-dom";
 
 import api from "../../../services";
-import { Button } from "@material-ui/core";
-import { FiLogOut } from "react-icons/fi";
+// import { Button } from "@material-ui/core";
+
 import MobileMenu from "../MobileMenu";
 
 const Aside = () => {
@@ -43,16 +47,23 @@ const Aside = () => {
   return (
     <Menu>
       <Profile>
-        <img src={User} alt="User" />
+        <figure>
+          <img src={User} alt="User" />
+        </figure>
         <div className="user-info">
           <h3>
             {user.username &&
               user.username[0].toUpperCase() + user.username.slice(1)}
           </h3>
           <p>{user.email}</p>
-          <Button onClick={handleLogout}>
-            <FiLogOut />
-          </Button>
+          <ButtonBox>
+            <Button onClick={handleLogout}>
+              <ConfigIcon />
+            </Button>
+            <Button onClick={handleLogout}>
+              <LogOutIcon />
+            </Button>
+          </ButtonBox>
         </div>
       </Profile>
       <MobileDiv>
@@ -65,11 +76,11 @@ const Aside = () => {
         </Link>
         <Link className="menu-link" to="/groups">
           <GroupIcon />
-          <p>Groups</p>
+          <p>Grupos</p>
         </Link>
         <Link className="menu-link" to="/users">
           <UsersIcon />
-          <p>Users</p>
+          <p>Devs</p>
         </Link>
       </Navigation>
     </Menu>
