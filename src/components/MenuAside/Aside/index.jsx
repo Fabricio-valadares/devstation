@@ -16,7 +16,6 @@ import User from "../../../assets/user-avatar.svg";
 import { Link, useHistory } from "react-router-dom";
 
 import api from "../../../services";
-// import { Button } from "@material-ui/core";
 
 import MobileMenu from "../MobileMenu";
 
@@ -80,7 +79,7 @@ const Aside = () => {
         </Link>
         <Link className="menu-link" to="/users">
           <UsersIcon />
-          <p>Devs</p>
+          <p>Usuários</p>
         </Link>
       </Navigation>
     </Menu>

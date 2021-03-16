@@ -77,10 +77,15 @@ export const Profile = styled.div`
 
   div.user-info {
     color: var(--text);
-
+    @media (max-width: 900px) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
     h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 16px;
+      margin-bottom: 4px;
       @media (min-width: 1000px) {
         font-size: 24px;
         font-weight: bold;
@@ -91,6 +96,10 @@ export const Profile = styled.div`
     p {
       font-size: 0.8rem;
       margin-bottom: 14px;
+
+      @media (max-width: 900px) {
+        margin-bottom: 4px;
+      }
     }
     button {
       color: var(--secondary);
@@ -116,8 +125,13 @@ export const Button = styled.button`
   transition: all 200ms ease-in;
 
   @media (max-width: 900px) {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+
+    &:hover > svg {
+      color: var(--soft-primary);
+    }
   }
 
   &:hover > svg {
