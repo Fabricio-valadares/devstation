@@ -2,72 +2,80 @@ import styled from "styled-components";
 
 export const UsersContainer = styled.div`
   /* display: block; */
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  width: 65vw;
-  height: 93vh;
+  width: 90vw;
+  height: 100vh;
   margin: 4vh auto;
+  padding-bottom: 1rem;
   background-color: var(--dark-primary);
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
   /* box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
     6px 6px 16px rgba(0, 0, 0, 0.2); */
 
-  @media (max-width: 1000px) {
+  @media (min-width: 700px) {
+    justify-content: flex-start;
+    width: 76%;
+    height: 93vh;
   }
 `;
 
 export const UserContent = styled.div`
   /* position: relative; */
-  width: 100%;
-
   /* margin: 10px;
   padding-left: 35px;
   padding-right: 30px; */
   /* background-color: yellow; */
 
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
+  width: 90%;
+  flex-direction: column;
 
-  max-height: 69vh;
-  /* height: 80%; */
   overflow-y: scroll;
   ::-webkit-scrollbar {
     border-radius: 50px;
     /* background-color: 0px 0px 4px 4px rgba(0, 0, 0, 0.50); */
   }
+  @media (min-width: 700px) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
 
-  h1 {
-    top: 0;
-    position: relative;
-    text-align: left;
-    font-size: 1.25rem;
-    width: 30%;
-    background-color: var(--dark-primary);
-    color: var(--text);
-  }
+    max-height: 69vh;
+    /* height: 80%; */
 
-  p {
-    display: block;
-    font-size: 0.7rem;
-    text-align: center;
-    color: var(--text);
+    h1 {
+      top: 0;
+      position: relative;
+      text-align: left;
+      font-size: 1.25rem;
+      width: 30%;
+      background-color: var(--dark-primary);
+      color: var(--text);
+    }
+
+    p {
+      display: block;
+      font-size: 0.7rem;
+      text-align: center;
+      color: var(--text);
+    }
   }
 `;
 
 export const DivPname = styled.div`
-  width: 50vw;
+  /* width: 50vw; */
 `;
 
 export const Pmail = styled.div`
   margin-top: 5px;
   font-size: 1rem;
   text-align: left;
-  color: #000;
+  color: #fff;
   font-weight: 100;
 `;
 
@@ -76,7 +84,7 @@ export const PnameUser = styled.div`
   font-size: 1rem;
   font-weight: 500;
   text-align: left;
-  color: #000;
+  color: #fff;
 `;
 
 export const DivHeader = styled.div`
@@ -90,13 +98,13 @@ export const DivHeader = styled.div`
   } */
 
   p {
-    /* margin-top: 465px; */
     margin-left: 2px;
     vertical-align: center;
     font-size: 10px;
     color: var(--text);
   }
-  */ div#dataNumberUser {
+
+  div#dataNumberUser {
     display: flex;
     justify-content: space-between;
     margin-left: 20px;
@@ -112,7 +120,12 @@ export const DivHeader = styled.div`
   input#search {
     padding: 18px 0 18px 18px;
     border-radius: 5px 0 0 5px;
+    background-color: var(--middle-primary);
     width: 85%;
+
+    ::-webkit-input-placeholder {
+      color: #eee;
+    }
   }
 
   div#buttonSearch {
@@ -138,18 +151,33 @@ export const DivH1 = styled.div`
 
 export const Card = styled.div`
   display: flex;
-  align-items: center;
-  /* Rectangle 49 */
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  /* height: 15vh; */
-  width: 60.4vw;
-  height: 72px;
-  margin-left: 27px;
+  background-color: var(--middle-primary);
   margin-bottom: 10px;
 
-  background-color: #d8d5d5;
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   border-radius: 5px;
+
+  div#user {
+    margin: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    align-items: center;
+    /* Rectangle 49 */
+
+    /* height: 15vh; */
+    width: 95%;
+    height: 72px;
+    margin-left: 27px;
+
+    div#user {
+      display: flex;
+    }
+
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  }
 `;
 
 export const UserAvatarContainer = styled.div`
@@ -166,7 +194,24 @@ export const UserAvatar = styled.img`
 `;
 
 export const ShowIcon = styled.div`
-  width: 80px;
+  /* width: 80px; */
+  display: flex;
+  align-items: center;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  margin-right: 1rem;
+
+  @media (min-width: 700px) {
+    display: block;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
 `;
 
 export const UsersDiv = styled.div`

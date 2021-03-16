@@ -1,21 +1,22 @@
-import { Content } from "./styled";
+import { Content, DivButtonAdd } from "./styled";
 import { useEffect, useState } from "react";
 import CardGroup from "../CardGroup";
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { groupsThunks } from "../../../store/modules/groups/thunk";
 import { useSelector } from "react-redux";
-import Modal from "../../Modal";
 import ModalCreateGroup from "../ModalCreateGroup";
-import { openModalThunk } from "../../../store/modules/Modal/thunks";
+
+import Modal from "../../Modal";
 
 const ListGroups = () => {
   const dispatch = useDispatch();
 
   const [valueInput, setValueInput] = useState("");
 
+  const [open, setOpen] = useState(false);
+
   const [groupsData, setGroupsData] = useState([]);
-  const [groupsItem, setGroupsItem] = useState([]);
   const [cardGroup, setCardGroup] = useState([]);
 
   const { next, results } = useSelector((state) => state.groupsReduces);
@@ -30,22 +31,29 @@ const ListGroups = () => {
       setGroupsData([...groupsData, ...results]);
       setCardGroup(groupsData);
     }
-
-    // if (next !== null && results !== undefined) {
-
-    // }
   }, [next]);
 
   const handleClickInput = (e) => {
     setValueInput(e.target.value);
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
+      <Modal open={open} handleClose={handleClose}>
+        <ModalCreateGroup />
+      </Modal>
       <Content>
         <div id="container">
           <div id="containerButton"></div>
-          <ModalCreateGroup />
+          <DivButtonAdd onClick={handleOpen}>+</DivButtonAdd>
         </div>
         <div id="group-users">
           <div id="searchGroup">

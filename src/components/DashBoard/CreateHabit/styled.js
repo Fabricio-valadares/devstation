@@ -11,8 +11,7 @@ import {
 import { HiOutlineFire } from "react-icons/hi";
 
 export const Main = styled.article`
-  width: 30%;
-  max-width: 450px;
+  width: 100%;
   height: auto;
   background-color: #130f40;
   border-radius: 8px;
@@ -31,6 +30,7 @@ export const Main = styled.article`
 
 export const InputsContainer = styled.form`
   width: 100%;
+
   height: auto;
 `;
 

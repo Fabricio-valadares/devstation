@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { FcSearch } from "react-icons/fc";
 import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
 
-import { BiShow } from "react-icons/bi";
-import { FcSearch } from "react-icons/fc";
+// import { BiShow } from "react-icons/bi";
+// import { FcSearch } from "react-icons/fc";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -100,24 +100,27 @@ const GetUsersPage = () => {
           {usersList &&
             users
               .filter((user) =>
-                user.username?.toLowerCase().includes(input.toLocaleLowerCase())
+                user.username?.toLowerCase().includes(input.toLowerCase())
               )
               .sort((a, b) => a.id - b.id)
               .map((user, index) => {
                 return (
                   <Card key={index}>
-                    <UserAvatarContainer>
-                      <UserAvatar src="https://picsum.photos/200/200" />
-                    </UserAvatarContainer>
-                    <DivPname>
-                      <PnameUser>{user.username}</PnameUser>
-                      <Pmail>{user.email}</Pmail>
-                    </DivPname>
+                    <div id="user">
+                      <UserAvatarContainer>
+                        <UserAvatar src="https://picsum.photos/200/200" />
+                      </UserAvatarContainer>
+                      <DivPname>
+                        <PnameUser>{user.username}</PnameUser>
+                        <Pmail>{user.email}</Pmail>
+                      </DivPname>
+                    </div>
+
                     <ShowIcon>
                       <FaRegEye
                         onClick={() => handleClick(user)}
                         size={22}
-                        color="#000"
+                        color="#fff"
                         style={{ cursor: "pointer" }}
                       />
                     </ShowIcon>

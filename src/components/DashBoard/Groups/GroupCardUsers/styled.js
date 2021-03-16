@@ -1,3 +1,4 @@
+import { FaEdit } from "react-icons/fa";
 import styled from "styled-components";
 
 export const Main = styled.div`
@@ -8,46 +9,53 @@ export const Main = styled.div`
 
   color: var(--text);
 
-  justify-content: space-between;
-  padding: 1.5vw;
+  justify-content: space-around;
+  padding: 1rem;
 
-  h4 {
-    font-size: 18px;
+  #info {
+    height: 90%;
+  }
+
+  div h3#category,
+  div h3#description {
+    font-size: 1.1rem;
     font-weight: bold;
   }
-
-  p {
-    font-size: 16px;
+  div h3#description span,
+  div h3#category span {
+    font-size: 1rem;
+    font-weight: normal;
   }
-
-  /* @media (max-width: 1650px) {
-    font-size: 0.8rem;
-  }
-  @media (max-width: 1450px) {
-    font-size: 0.7rem;
-  }
-  @media (max-width: 1250px) {
-    font-size: 0.6rem;
-  } */
 `;
 
-export const DivFlex = styled.div`
-  display: grid;
-  grid-template-columns: 4vw 20vw;
-  align-items: center;
-  width: 50%;
-  height: 100%;
+export const Margin = styled.div`
+  margin-bottom: 1rem;
 `;
 
-export const HeaderStyled = styled.div`
-  height: 50%;
+export const GroupName = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  h1 {
-    font-weight: 600;
+  align-items: center;
+  h4 {
+    color: var(--text);
   }
+`;
+
+export const Title = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--secondary);
+  }
+`;
+
+export const EditIcon = styled(FaEdit)`
+  color: var(--secondary);
+  font-size: 18px;
 `;
 
 export const CardUsers = styled.div`
@@ -61,6 +69,10 @@ export const CardUsers = styled.div`
 
   transition: 0.3s;
   border-radius: 3%;
+
+  figure img {
+    width: 3.6rem;
+  }
 
   overflow-y: auto;
   ::-webkit-scrollbar-track {
@@ -92,5 +104,4 @@ export const UserDiv = styled.div`
 
 export const UserCardDiv = styled.div`
   display: flex;
-  align-items: center;
 `;

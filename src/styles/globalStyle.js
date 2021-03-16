@@ -26,6 +26,10 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  .makeStyles-paper-2:focus {
+    outline: none ;
+  }
+
   input, button, textarea {
     outline: none;
     border: none;
@@ -84,7 +88,8 @@ export default createGlobalStyle`
     font-size: 0.9375rem;
     font-weight: 400;
     align-items: center;
-    background-color: #d8d5d5;
+    background-color: var(--middle-primary);
+    color: #fff;
     border-radius: 5px;
 }
 `;
