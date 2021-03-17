@@ -7,12 +7,13 @@ import api from "../../../../services";
 import {
   ActivityDiv,
   CardActivities,
-  WhiteBall,
   ActivitiesHeader,
   PlusIcon,
   Main,
   EditIcon,
   Title,
+  ActivitieIcon,
+  CalendarIcon,
 } from "./styled";
 
 import Modal from "../../../Modal";
@@ -88,7 +89,7 @@ const GroupCardActivities = () => {
           activities.map((activity, index) => (
             <ActivityDiv key={index}>
               <figure>
-                <WhiteBall />
+                <ActivitieIcon />
               </figure>
               <div>
                 <Title>
@@ -98,6 +99,7 @@ const GroupCardActivities = () => {
                   </button>
                 </Title>
                 <p>
+                  <CalendarIcon />
                   {format(new Date(activity.realization_time), "dd/MM/yyy")}
                 </p>
               </div>

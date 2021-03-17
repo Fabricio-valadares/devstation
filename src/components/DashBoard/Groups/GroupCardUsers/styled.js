@@ -23,6 +23,7 @@ export const Main = styled.div`
   div h3#category {
     display: flex;
     align-items: center;
+    margin-top: 4px;
   }
 
   div h3#category,
@@ -44,12 +45,19 @@ export const Margin = styled.div`
 export const GroupName = styled.div`
   display: flex;
   align-items: center;
+
+  h3 {
+    display: flex;
+    align-items: center;
+  }
   h4 {
     color: var(--text);
   }
 `;
 
 export const GroupIcon = styled(FiInfo)`
+  width: 24px;
+  height: 24px;
   color: #dff9fb;
   margin-right: 4px;
 `;
@@ -57,6 +65,8 @@ export const GroupIcon = styled(FiInfo)`
 export const CategoryIcon = styled(FiTag)`
   color: #f0932b;
   margin-right: 4px;
+  width: 24px;
+  height: 24px;
 `;
 
 export const Title = styled.div`

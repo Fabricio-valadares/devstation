@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { FiPlus } from "react-icons/fi";
-import { FaEdit } from "react-icons/fa";
+import { FiPlus, FiAward } from "react-icons/fi";
+import { FaEdit, FaCalendarAlt } from "react-icons/fa";
 
 export const Main = styled.div`
   width: 100%;
@@ -8,6 +8,17 @@ export const Main = styled.div`
   color: var(--text);
   font-size: 1rem;
   padding: 24px;
+`;
+
+export const ActivitieIcon = styled(FiAward)`
+  font-size: 18px;
+  color: var(--yellow-bar);
+`;
+
+export const CalendarIcon = styled(FaCalendarAlt)`
+  font-size: 14px;
+  color: #f0932b;
+  margin-right: 4px;
 `;
 
 export const ActivitiesHeader = styled.header`
@@ -101,10 +112,22 @@ export const ActivityDiv = styled.div`
   margin: 1rem 0;
   font-size: 0.8rem;
   figure {
+    background-color: var(--soft-primary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
     margin-right: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   div > h1 {
     margin-bottom: 0.5rem;
     font-size: 1rem;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
   }
 `;
