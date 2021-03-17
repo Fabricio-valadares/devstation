@@ -1,4 +1,28 @@
 import { makeStyles } from "@material-ui/core/styles";
+import styled from "styled-components";
+
+export const Container = styled.div`
+  overflow-y: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ContainerTitle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  @media (max-width: 700px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+`;
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +46,9 @@ export const useStyles = makeStyles((theme) => ({
           width: "1.5rem",
           height: "1.5rem",
         },
+      },
+      "& > div#ContainerCard": {
+        backgroundColor: "red",
       },
     },
   },

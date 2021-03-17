@@ -20,9 +20,9 @@ const ListGroups = () => {
 
   const results = useSelector((state) => state.groupsReduces.results);
   const next = useSelector((state) => state.groupsReduces.next);
-  const previous = useSelector((state) => state.groupsReduces.previous);
 
   useEffect(() => {
+    setGroupsData([]);
     dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -31,13 +31,16 @@ const ListGroups = () => {
     if (next) {
       dispatch(groupsThunks(`${next}`));
       setGroupsData([...groupsData, ...results]);
-    } else if (previous) {
-      setGroupsData([...groupsData, ...results]);
+    } else {
+      if (results) {
+        setTimeout(() => {
+          setGroupsData([...groupsData, ...results]);
+        }, 1000);
+      }
     }
 
-    // setCardGroup(groupsData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [next, previous]);
+  }, [next]);
 
   const handleClickInput = (e) => {
     setValueInput(e.target.value);
@@ -54,7 +57,10 @@ const ListGroups = () => {
   return (
     <>
       <Modal open={open} handleClose={handleClose}>
-        <ModalCreateGroup />
+        <ModalCreateGroup
+          groupsData={groupsData}
+          setGroupsData={setGroupsData}
+        />
       </Modal>
       <Content>
         <div id="container">
