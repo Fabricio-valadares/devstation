@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 const Login = () => {
   return (
     <motion.div
-      initial={{ translateY: "-100%" }}
-      animate={{ translateY: "0%" }}
+      initial={{ translateX: "-100%" }}
+      animate={{ translateX: "0%" }}
       // exit={{ translateX: "50%" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.7 }}
     >
       <ContainerPages>
         <Container>

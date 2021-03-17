@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 const Register = () => {
   return (
     <motion.div
-      initial={{ opacity: 0.6 }}
-      animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
-      transition={{ duration: { delay: 0.3 } }}
+      initial={{ translateX: "100%" }}
+      animate={{ translateX: "0%" }}
+      // exit={{ translateX: "50%" }}
+      transition={{ duration: 0.7 }}
     >
       <RegisterPage>
         <RegisterForm />

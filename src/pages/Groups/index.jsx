@@ -9,7 +9,7 @@ const Groups = () => {
       initial={{ translateX: "100%" }}
       animate={{ translateX: "0%" }}
       // exit={{ translateX: "50%" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.7 }}
     >
       <Main>
         <Aside />
