@@ -21,6 +21,7 @@ const Aside = () => {
   const userId = JSON.parse(storagedId);
   const history = useHistory();
   const [user, setUser] = useState({});
+
   const getUser = async () => {
     try {
       const response = await api.get(`/users/${userId}/`);
