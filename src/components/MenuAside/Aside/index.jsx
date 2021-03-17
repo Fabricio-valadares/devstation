@@ -66,7 +66,7 @@ const Aside = () => {
           </Modal>
         )}
         <figure>
-          <img src={User} alt="User" />
+          <img src={User} alt="User" draggable="false" />
         </figure>
         {user ? (
           <div className="user-info">

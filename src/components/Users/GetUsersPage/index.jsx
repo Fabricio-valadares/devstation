@@ -108,7 +108,7 @@ const GetUsersPage = () => {
                   <Card key={index}>
                     <div id="user">
                       <UserAvatarContainer>
-                        <UserAvatar src="https://picsum.photos/200/200" />
+                        <UserAvatar src="https://picsum.photos/200/200" draggable="false" />
                       </UserAvatarContainer>
                       <DivPname>
                         <PnameUser>{user.username}</PnameUser>

@@ -121,7 +121,7 @@ const RegisterForm = () => {
             Faça login
           </StyledSpan>
         </FormContainer>
-        <Img src={"./assets/register.svg"} alt="Register" />
+        <Img src={"./assets/register.svg"} alt="Register" draggable="false"/>
       </RegisterCard>
     </>
   );
