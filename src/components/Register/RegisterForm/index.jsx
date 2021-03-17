@@ -1,8 +1,10 @@
+import { useState } from "react";
+
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { BsCodeStyled } from "./styled";
 import {
   FormContainer,
   Img,
@@ -17,6 +19,8 @@ import api from "../../../services";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
+  const [viewIcon, setViewIcon] = useState(false);
+
   const classes = useStyles();
 
   const history = useHistory();
@@ -40,9 +44,12 @@ const RegisterForm = () => {
   });
 
   const handleForm = (data) => {
+    setViewIcon(true);
+
     api
       .post("/users/", data)
       .then(() => {
+        setViewIcon(false);
         toast.success(`🚀 Registro completo, bora fazer login ?`, {
           position: "top-right",
           autoClose: 5000,
@@ -56,6 +63,7 @@ const RegisterForm = () => {
         history.push("/login");
       })
       .catch((error) => {
+        setViewIcon(false);
         toast.error(`😵 Seu registro falhou `, {
           position: "top-right",
           autoClose: 5000,
@@ -114,7 +122,7 @@ const RegisterForm = () => {
           </FormHelperText>
           <div>
             <Button type="submit" variant="contained" color="primary">
-              Register
+              {!viewIcon ? "Register" : <BsCodeStyled size={27} />}
             </Button>
           </div>
           <StyledSpan onClick={() => history.push("/login")}>

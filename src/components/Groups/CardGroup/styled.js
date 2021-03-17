@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
+import { FaRegEye } from "react-icons/fa";
 
 export const Container = styled.div`
   overflow-y: auto;
@@ -8,6 +9,11 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 96px;
+
+  @media (max-width: 890px) {
+    padding-top: 0;
+  }
 `;
 
 export const ContainerTitle = styled.div`
@@ -24,6 +30,48 @@ export const ContainerTitle = styled.div`
   }
 `;
 
+export const TitleMobile = styled.div`
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 38px;
+  }
+`;
+
+export const DivIcon = styled.div`
+  width: 30%;
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  & > div#ContainerCard {
+    background-color: red;
+  }
+
+  @media (min-width: 600px) {
+    width: 10%;
+    flex-direction: center;
+    & svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
+`;
+
+export const FaRegEyeStyled = styled(FaRegEye)`
+  cursor: "pointer";
+  color: "#fff";
+`;
+
 export const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: "20px",
@@ -31,26 +79,7 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "3px ",
     display: "flex",
     justifyContent: "space-between",
-    "& > div#Icon": {
-      width: "30%",
-      display: "flex",
-      alignItems: "center",
-
-      "& svg": {
-        width: "2rem",
-        height: "2rem",
-      },
-      "@media(min-width: 600px)": {
-        width: "10%",
-        "& svg": {
-          width: "1.5rem",
-          height: "1.5rem",
-        },
-      },
-      "& > div#ContainerCard": {
-        backgroundColor: "red",
-      },
-    },
+    "& > div#Icon": {},
   },
   container: {
     width: "95%",

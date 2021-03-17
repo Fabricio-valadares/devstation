@@ -1,7 +1,13 @@
 import { useState } from "react";
-import { useStyles, Container, ContainerTitle } from "./styled";
+import {
+  useStyles,
+  Container,
+  ContainerTitle,
+  TitleMobile,
+  FaRegEyeStyled,
+  DivIcon,
+} from "./styled";
 import Typography from "@material-ui/core/Typography";
-import { FaRegEye } from "react-icons/fa";
 import Modal from "../../Modal";
 import ModalGroup from "../ModalGroup";
 
@@ -41,24 +47,24 @@ const CardGroup = ({ groupsData, valueInput }) => {
                       alt="imgRandom"
                     />
                   </Typography>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <TitleMobile>
                     <span id="nameGroups" style={{ marginRight: "16px" }}>
                       {ele.name}
                     </span>
 
-                    <div style={{ display: "flex" }}>
+                    <span style={{ fontWeight: "600" }}>
                       Categoria: {ele.category}
-                    </div>
-                  </div>
+                    </span>
+                  </TitleMobile>
                 </ContainerTitle>
 
-                <div id="Icon">
-                  <FaRegEye
-                    style={{ cursor: "pointer", color: "#fff" }}
+                <DivIcon>
+                  <FaRegEyeStyled
+                    color={"#fff"}
                     size="22"
                     onClick={() => handleClick(ele)}
                   />
-                </div>
+                </DivIcon>
               </div>
             </div>
           ))}

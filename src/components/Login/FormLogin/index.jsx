@@ -4,6 +4,7 @@ import {
   DivRegister,
   PStyle,
   ButtonStyled,
+  BsCodeStyled,
 } from "./styled";
 import { FormHelperText, InputBase } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -24,6 +25,8 @@ const FormLogin = () => {
   const [error, setError] = useState(false);
   const [valid, setValid] = useState(false);
 
+  const [viewIcon, setViewIcon] = useState(false);
+
   const schema = yup.object().shape({
     username: yup.string("Somente texto").required("Campo obrigatório"),
     password: yup
@@ -41,11 +44,13 @@ const FormLogin = () => {
   });
 
   const dataForm = (data) => {
+    setViewIcon(true);
     reset();
     dispatch(loginThunk(data, history, setError, setValid));
   };
 
   useEffect(() => {
+    setViewIcon(false);
     if (error) {
       toast.error(`😵 Seu login falhou `, {
         position: "top-right",
@@ -105,7 +110,7 @@ const FormLogin = () => {
           variant="contained"
           color="primary"
         >
-          Entrar
+          {!viewIcon ? "Entrar" : <BsCodeStyled size={27} />}
         </ButtonStyled>
         <DivRegister>
           <PStyle onClick={() => history.push("/register")}>Registra-se</PStyle>
