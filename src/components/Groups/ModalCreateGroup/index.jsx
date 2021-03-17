@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../../../services";
-import { FormHelperText, InputBase, Button } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { FormStyled } from "./styled";
 
 import {
   InputBox,
@@ -43,11 +41,8 @@ const ModalCreateGroup = () => {
       })
       .then((response) => {
         setMessageSuccess(true);
-        console.log(response);
       })
       .catch((error) => console.log(error));
-
-    console.log(data);
   };
   return (
     <>
@@ -65,7 +60,6 @@ const ModalCreateGroup = () => {
               variant="outlined"
             />
           </InputBox>
-          {/* <FormHelperText>{errors.name?.message}</FormHelperText> */}
           <InputBox>
             <IconBox>
               {errors.description ? <ErrorIcon /> : <DescriotionIcon />}
@@ -81,7 +75,6 @@ const ModalCreateGroup = () => {
             />
           </InputBox>
           <InputBox>
-            {/* <FormHelperText>{errors.description?.message}</FormHelperText> */}
             <IconBox>{errors.category ? <ErrorIcon /> : <TagIcon />}</IconBox>
             <InputStyled
               name="category"
@@ -93,7 +86,6 @@ const ModalCreateGroup = () => {
               variant="outlined"
             />
           </InputBox>
-          {/* <FormHelperText>{errors.category?.message}</FormHelperText> */}
           <div
             style={{
               display: "flex",

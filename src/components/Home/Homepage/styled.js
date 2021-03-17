@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: wrap;
-  /* background-color: red; */
   width: 100vw;
   height: 100vh;
   left: 0px;
@@ -67,7 +66,6 @@ export const DivTextPrincipal = styled.div`
 
   @media (min-width: 1920px) {
     width: 521px;
-    /* height: 305px; */
   }
 
   @media (max-width: 390px) {
@@ -82,7 +80,6 @@ export const DivButton = styled.div`
 `;
 
 export const ContainerImageOne = styled.div`
-  /* background-color: green; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -98,7 +95,6 @@ export const ContainerImageOne = styled.div`
   }
 `;
 export const ContainerImagemTwo = styled.div`
-  /* background-color: aqua; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -113,7 +109,6 @@ export const ContainerImagemTwo = styled.div`
 export const ImagesA = styled.div`
   width: 160px;
   height: 500px;
-  /* background-color: blue; */
 
   @media (min-width: 1920px) {
     margin-top: -107px;
@@ -128,7 +123,6 @@ export const ImagesB = styled.div`
   width: 160px;
   height: 500px;
   margin-left: 20px;
-  /* background-color: yellow; */
 
   @media (min-width: 1920px) {
     margin-top: -107px;
@@ -141,10 +135,6 @@ export const Logo = styled.div`
   @media (max-width: 390px) {
     margin-left: 20px;
   }
-  /* width: 7vw;
-  height: 7vh; */
-  /* margin-left: 15vw;
-  margin-top: 12vh; */
 `;
 
 export const LogoImage = styled.img`
@@ -161,10 +151,6 @@ export const LogoImage = styled.img`
 
 export const Title = styled.div`
   width: 48vw;
-  /* height: 3.11vh; */
-  /* margin-left: 22vw;
-  margin-top: -1.5vh; */
-
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -183,15 +169,11 @@ export const Title = styled.div`
 `;
 
 export const TextPrincipal = styled.div`
-  /* margin-left: 15vw;
-  margin-top: 6.22vh; */
-
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 2rem;
   line-height: 6vh;
-  /* or 133% */
 
   color: var(--text);
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -206,15 +188,12 @@ export const Description = styled.div`
   margin-top: 25px;
   width: 80%;
   height: 7.5vh;
-  /* margin-left: 15vw;
-  margin-top: 15vh; */
 
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 0.9rem;
   line-height: 2.8vh;
-  /* or 133% */
 
   color: var(--text);
 
@@ -225,15 +204,12 @@ export const Description = styled.div`
 
   @media (max-width: 390px) {
     font-size: 0.8rem;
-    /* padding: 0 20px; */
   }
 `;
 
 export const Button = styled.button`
-  /* width: 23vw; */
   height: 8vh;
   padding: 0 21px;
-  /* margin-left: 15vw; */
 
   background: var(--secondary);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -260,7 +236,6 @@ export const Button = styled.button`
 
 // imagens A
 export const BikeImage = styled.img`
-  /* margin-left: 60px; */
   margin-top: 8px;
   width: 150px;
   height: 150px;
@@ -268,7 +243,6 @@ export const BikeImage = styled.img`
 `;
 
 export const RunImage = styled.img`
-  /* margin-left: 60px; */
   margin-top: 11px;
   width: 150px;
   height: 150px;
@@ -276,7 +250,6 @@ export const RunImage = styled.img`
 `;
 
 export const StretchImage = styled.img`
-  /* margin-left: 60px; */
   margin-top: 11px;
   width: 150px;
   height: 150px;

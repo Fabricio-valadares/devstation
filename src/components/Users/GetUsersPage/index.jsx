@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
-
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -31,9 +30,6 @@ const GetUsersPage = () => {
   const next = useSelector((state) => state.users.next);
   const previous = useSelector((state) => state.users.previous);
   const count = useSelector((state) => state.users.count);
-  const total = users.length;
-
-  console.log(open);
 
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
@@ -41,12 +37,12 @@ const GetUsersPage = () => {
   }, []);
 
   useEffect(() => {
-      if (next) {
-        dispatch(getUsersThunk(next));
-        setUsers([...users, ...usersList]);
-      } else if (previous) {
-        setUsers([...users, ...usersList]);
-      } 
+    if (next) {
+      dispatch(getUsersThunk(next));
+      setUsers([...users, ...usersList]);
+    } else if (previous) {
+      setUsers([...users, ...usersList]);
+    }
     // eslint-disable-next-line
   }, [next, previous]);
 

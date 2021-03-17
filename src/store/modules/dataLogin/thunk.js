@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 
 export const loginThunk = (data, history) => (dispatch, state) => {
   localStorage.clear();
-  console.log(data);
   api
     .post("/sessions/", data)
     .then((response) => {

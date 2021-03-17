@@ -60,7 +60,6 @@ const UpdateUserForm = ({ close }) => {
           setValidMsg(false);
         }, 3000);
         reset();
-        close();
       })
       .catch((error) => {
         setErrorMsg(true);
