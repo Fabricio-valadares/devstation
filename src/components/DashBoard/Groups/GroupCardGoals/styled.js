@@ -1,5 +1,7 @@
-import { FiPlus } from "react-icons/fi";
 import styled from "styled-components";
+
+import { FiPlus, FiInfo, FiBarChart } from "react-icons/fi";
+import { HiOutlineFire } from "react-icons/hi";
 
 export const Main = styled.div`
   width: 100%;
@@ -64,7 +66,35 @@ export const GoalDiv = styled.div`
   }
   p {
     margin-bottom: 1vw;
+    display: flex;
+    align-items: center;
   }
+`;
+
+export const InfoIcon = styled(FiInfo)`
+  color: #dff9fb;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+`;
+
+export const BarIcon = styled(FiBarChart)`
+  color: #f72585;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+`;
+
+export const FireIcon = styled(HiOutlineFire)`
+  color: #f9ca24;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+`;
+
+export const ProgressBox = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const ProgressBar = styled.div`

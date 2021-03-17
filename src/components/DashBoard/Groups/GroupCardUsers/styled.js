@@ -69,6 +69,7 @@ export const Title = styled.div`
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--secondary);
+    margin-bottom: 24px;
   }
 `;
 
