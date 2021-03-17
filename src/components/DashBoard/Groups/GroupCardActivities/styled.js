@@ -76,13 +76,16 @@ export const EditIcon = styled(FaEdit)`
 `;
 
 export const CardActivities = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  color: var(--text);
-  width: 100%;
-  height: 80%;
-
   overflow-y: auto;
+  width: 100%;
+
+  color: var(--text);
+
+  height: 80%;
+  @media (min-width: 406px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 export const WhiteBall = styled.div`

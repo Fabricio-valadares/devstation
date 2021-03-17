@@ -62,6 +62,10 @@ export const EditIcon = styled(FaEdit)`
 `;
 
 export const CardUsers = styled.div`
+  @media (max-width: 500px) {
+    display: none;
+  }
+
   background-color: var(--soft-primary);
 
   padding: 1rem;
@@ -91,20 +95,15 @@ export const CardUsers = styled.div`
   }
 `;
 
-export const WhiteBall = styled.div`
-  background-color: var(--text);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  @media (max-width: 1600px) {
-  } ;
-`;
-
 export const UserDiv = styled.div`
   margin: 1rem;
 `;
 
 export const UserCardDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  @media (max-width: 1000px) {
+    font-size: 0.8rem;
+  }
 `;

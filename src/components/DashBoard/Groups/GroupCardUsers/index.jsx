@@ -28,7 +28,6 @@ const GroupCardUsers = () => {
   const groupId = localStorage.getItem("groupId");
 
   useEffect(() => {
-    //consumindo rota get one group
     api
       .get(`groups/${groupId}/`)
       .then((response) => setGroup(response.data))
@@ -36,7 +35,7 @@ const GroupCardUsers = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groupId, open]);
 
-  const { users, name, description, category } = group;
+  const { users, name, category } = group;
 
   const handleClick = () => {
     setOpen(true);
