@@ -24,6 +24,7 @@ import {
   DeleteButton,
   DeleteIcon,
 } from "./styled";
+import { toast } from "react-toastify";
 
 const EditHabit = ({ close, token, habitId }) => {
   const [habit, setHabit] = useState(async () => {
@@ -64,9 +65,27 @@ const EditHabit = ({ close, token, habitId }) => {
       await api.patch(`/habits/${habitId}/`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      toast.success(`🚀   Habito editado!!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       reset();
       close();
     } catch (err) {
+      toast.error(`😵 Sua edição falhou `, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(err);
     }
   };
@@ -76,8 +95,27 @@ const EditHabit = ({ close, token, habitId }) => {
       await api.delete(`/habits/${habitId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      toast.dark(`🚀   Habito deletado!!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
       close();
     } catch (err) {
+      toast.error(`😵 Habito nao deletado`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(err);
     }
   };

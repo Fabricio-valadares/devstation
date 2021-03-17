@@ -21,6 +21,7 @@ import {
   SaveButton,
   SaveIcon,
 } from "../../../EditHabit/styled";
+import { toast } from "react-toastify";
 
 const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   const token = localStorage.getItem("token");
@@ -37,7 +38,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   });
 
   useEffect(() => {
-    //consumindo rota get one goals
     api
       .get(`/goals/${goalId}/`)
       .then((response) => setGoal(response.data))
@@ -55,8 +55,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
       data.how_much_achieved = goal.how_much_achieved;
     }
 
-    //consumindo a rota update goal
-
     api
       .patch(`/goals/${goalId}/`, data, {
         headers: {
@@ -64,14 +62,35 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Objetivo editado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   const handleDelete = () => {
-    //consumindo rota de deletar goals
     api
       .delete(`/goals/${goal.id}/`, {
         headers: {
@@ -79,11 +98,31 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
         },
       })
       .then((response) => {
-        handleChanged();
+        toast.dark(`🚀   Objetivo deletado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
         handleClose();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(e);
+      });
   };
 
   return (

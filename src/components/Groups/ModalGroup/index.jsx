@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../../services";
 import {
   DivNameCategory,
@@ -25,9 +26,31 @@ const ModalGroup = ({ ele }) => {
         }
       )
       .then((response) => {
+        toast.dark(`🚀   Inscrição realizada com sucesso `, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         setMessage(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
   return (
     <>

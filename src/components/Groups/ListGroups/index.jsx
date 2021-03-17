@@ -24,6 +24,7 @@ const ListGroups = () => {
 
   useEffect(() => {
     dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const ListGroups = () => {
     } else if (previous) {
       setGroupsData([...groupsData, ...results]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next, previous]);
 
   const handleClickInput = (e) => {

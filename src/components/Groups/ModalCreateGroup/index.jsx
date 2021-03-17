@@ -16,6 +16,7 @@ import {
   Title,
   Message,
 } from "./styled";
+import { toast } from "react-toastify";
 
 const ModalCreateGroup = () => {
   const [messageSuccess, setMessageSuccess] = useState(false);
@@ -40,9 +41,30 @@ const ModalCreateGroup = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        toast.dark(`🚀   Grupo criado com sucesso!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         setMessageSuccess(true);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.log(error);
+      });
   };
   return (
     <>

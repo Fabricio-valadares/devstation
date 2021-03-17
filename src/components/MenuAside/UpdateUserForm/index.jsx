@@ -1,8 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Alert } from "@material-ui/lab";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import * as yup from "yup";
 import api from "../../../services";
@@ -33,9 +33,6 @@ const UpdateUserForm = ({ close }) => {
     return JSON.parse(localToken);
   });
 
-  const [errorMsg, setErrorMsg] = useState(false);
-  const [validMsg, setValidMsg] = useState(false);
-
   const schema = yup.object().shape({
     username: yup.string().required("Campo Obrigatório"),
   });
@@ -54,32 +51,35 @@ const UpdateUserForm = ({ close }) => {
           Authorization: `Bearer ${token} `,
         },
       })
-      .then((response) => {
-        setValidMsg(true);
-        setTimeout(() => {
-          setValidMsg(false);
-        }, 3000);
+      .then(() => {
+        toast.success("🚀 Nome de usuario alterado !!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
       })
-      .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
+      .catch(() => {
+        toast.error(`😵 Sua edição falhou `, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
   return (
     <Main>
       <h1>Atualizar username</h1>
-      {errorMsg && (
-        <Alert severity="error">
-          Atualização falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
-      {validMsg && (
-        <Alert severity="success">Atualização realizada com sucesso.</Alert>
-      )}
+
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>
           <IconBox>{errors.username ? <ErrorIcon /> : <InfoIcon />}</IconBox>
