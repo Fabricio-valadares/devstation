@@ -26,6 +26,12 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+
+.MuiSkeleton-text, .MuiSkeleton-circle {
+  background-color: #cdcdcd !important;
+}
+
+
   .makeStyles-paper-2:focus {
     outline: none ;
   }
