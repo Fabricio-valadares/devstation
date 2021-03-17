@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Main = styled.div`
   width: 90%;
   height: 100%;
-
-  margin: 3vh auto;
+  //essa linha empurrava todo layout para baixo
+  /* margin: 3vh auto; */
 
   background-color: var(--dark-primary);
 
