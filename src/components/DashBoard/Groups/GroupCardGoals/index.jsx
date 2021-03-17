@@ -42,7 +42,7 @@ const GroupCardGoals = () => {
         const results = response.data.results;
         setGoals(results);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => setGoals([]));
   }, [open, groupId]);
 
   const handleClick = (goal) => {
