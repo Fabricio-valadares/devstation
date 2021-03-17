@@ -43,7 +43,7 @@ const RegisterForm = () => {
     api
       .post("/users/", data)
       .then(() => {
-        toast.success(`🚀 Registro completo, bora fazer login ?`, {
+        toast.dark(`🚀 Registro completo, bora fazer login ?`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

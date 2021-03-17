@@ -56,7 +56,7 @@ const CreateHabit = ({ userId, close, token }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      toast.success(`🚀   Habito cadastrado!!`, {
+      toast.dark(`🚀   Habito cadastrado!!`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

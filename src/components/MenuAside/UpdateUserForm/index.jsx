@@ -52,7 +52,7 @@ const UpdateUserForm = ({ close }) => {
         },
       })
       .then(() => {
-        toast.success("🚀 Nome de usuario alterado !!", {
+        toast.dark("🚀 Nome de usuario alterado !!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
