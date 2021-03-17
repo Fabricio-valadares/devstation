@@ -17,6 +17,8 @@ import {
   UserCardDiv,
   UserDiv,
   Margin,
+  GroupIcon,
+  CategoryIcon,
 } from "./styled";
 
 import { Button } from "@material-ui/core";
@@ -56,14 +58,17 @@ const GroupCardUsers = () => {
             <h4>Seu Grupo</h4>
           </Title>
           <GroupName>
-            <h3>{name}</h3>
+            <h3>
+              <GroupIcon />
+              {name}
+            </h3>
             <Button onClick={handleClick}>
               <EditIcon />
             </Button>
           </GroupName>
           <Margin>
             <h3 id="category">
-              Categoria: <span>{category}</span>
+              <CategoryIcon /> <span>{category}</span>
             </h3>
           </Margin>
         </div>
