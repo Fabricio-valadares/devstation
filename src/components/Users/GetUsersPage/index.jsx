@@ -43,19 +43,18 @@ const GetUsersPage = () => {
       setTimeout(() => {
         dispatch(getUsersThunk(next));
         setUsers([...users, ...usersList]);
-        console.log('next',users.length);
+        console.log("next", users.length);
       }, 1000);
     } else {
       if (usersList) {
         setTimeout(() => {
           setUsers([...users, ...usersList]);
-          console.log('Ultimo', users.length + usersList.length);
+          console.log("Ultimo", users.length + usersList.length);
         }, 1000);
       }
     }
     // eslint-disable-next-line
   }, [next]);
-
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -98,7 +97,7 @@ const GetUsersPage = () => {
           </div>
         </DivHeader>
         <UserContent>
-          {usersList ? (
+          {users[0] ? (
             users
               .filter((user) =>
                 user.username?.toLowerCase().includes(input.toLowerCase())
