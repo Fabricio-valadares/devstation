@@ -29,23 +29,33 @@ const GetUsersPage = () => {
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
   const next = useSelector((state) => state.users.next);
-  const previous = useSelector((state) => state.users.previous);
+  // const previous = useSelector((state) => state.users.previous);
   const count = useSelector((state) => state.users.count);
 
   useEffect(() => {
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (next) {
-      dispatch(getUsersThunk(next));
-      setUsers([...users, ...usersList]);
-    } else if (previous) {
-      setUsers([...users, ...usersList]);
+      setTimeout(() => {
+        dispatch(getUsersThunk(next));
+        setUsers([...users, ...usersList]);
+        console.log('next',users.length);
+      }, 1000);
+    } else {
+      if (usersList) {
+        setTimeout(() => {
+          setUsers([...users, ...usersList]);
+          console.log('Ultimo', users.length + usersList.length);
+        }, 1000);
+      }
     }
     // eslint-disable-next-line
-  }, [next, previous]);
+  }, [next]);
+
 
   const handleInput = (e) => {
     setInput(e.target.value);

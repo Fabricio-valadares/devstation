@@ -104,6 +104,7 @@ export const DivHeader = styled.div`
     padding: 18px 0 18px 18px;
     border-radius: 5px 0 0 5px;
     background-color: var(--middle-primary);
+    color: var(--text);
     width: 85%;
 
     ::-webkit-input-placeholder {
