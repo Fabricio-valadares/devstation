@@ -21,6 +21,7 @@ import api from "../../../services";
 
 import MobileMenu from "../MobileMenu";
 import { SkeletonUser } from "../SkeletonUser";
+import { motion } from "framer-motion";
 
 const Aside = () => {
   const storagedId = localStorage.getItem("id");
@@ -58,54 +59,60 @@ const Aside = () => {
   };
 
   return (
-    <Menu>
-      <Profile>
-        {updateView && (
-          <Modal open={updateView} handleClose={handleClose}>
-            <UpdateUserForm close={handleClose} />
-          </Modal>
-        )}
-        <figure>
-          <img src={User} alt="User" draggable="false" />
-        </figure>
-        {user ? (
-          <div className="user-info">
-            <h3>
-              {user.username &&
-                user.username[0].toUpperCase() + user.username.slice(1)}
-            </h3>
-            <p>{user.email}</p>
-            <ButtonBox>
-              <Button title="Configuração" onClick={handleOpen}>
-                <ConfigIcon />
-              </Button>
-              <Button title="Sair" onClick={handleLogout}>
-                <LogOutIcon />
-              </Button>
-            </ButtonBox>
-          </div>
-        ) : (
-          <SkeletonUser />
-        )}
-      </Profile>
-      <MobileDiv>
-        <MobileMenu />
-      </MobileDiv>
-      <Navigation>
-        <Link className="menu-link" to="/dashboard">
-          <DashIcon />
-          <p>Dashboard</p>
-        </Link>
-        <Link className="menu-link" to="/groups">
-          <GroupIcon />
-          <p>Grupos</p>
-        </Link>
-        <Link className="menu-link" to="/users">
-          <UsersIcon />
-          <p>Usuários</p>
-        </Link>
-      </Navigation>
-    </Menu>
+    <motion.div
+      initial={{ translateX: "-100%" }}
+      animate={{ translateX: "0%" }}
+      transition={{ duration: 0.7 }}
+    >
+      <Menu>
+        <Profile>
+          {updateView && (
+            <Modal open={updateView} handleClose={handleClose}>
+              <UpdateUserForm close={handleClose} />
+            </Modal>
+          )}
+          <figure>
+            <img src={User} alt="User" draggable="false" />
+          </figure>
+          {user ? (
+            <div className="user-info">
+              <h3>
+                {user.username &&
+                  user.username[0].toUpperCase() + user.username.slice(1)}
+              </h3>
+              <p>{user.email}</p>
+              <ButtonBox>
+                <Button title="Configuração" onClick={handleOpen}>
+                  <ConfigIcon />
+                </Button>
+                <Button title="Sair" onClick={handleLogout}>
+                  <LogOutIcon />
+                </Button>
+              </ButtonBox>
+            </div>
+          ) : (
+            <SkeletonUser />
+          )}
+        </Profile>
+        <MobileDiv>
+          <MobileMenu />
+        </MobileDiv>
+        <Navigation>
+          <Link className="menu-link" to="/dashboard">
+            <DashIcon />
+            <p>Dashboard</p>
+          </Link>
+          <Link className="menu-link" to="/groups">
+            <GroupIcon />
+            <p>Grupos</p>
+          </Link>
+          <Link className="menu-link" to="/users">
+            <UsersIcon />
+            <p>Usuários</p>
+          </Link>
+        </Navigation>
+      </Menu>
+    </motion.div>
   );
 };
 
