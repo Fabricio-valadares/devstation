@@ -20,6 +20,11 @@ import {
 } from "./styled";
 
 import { Button } from "@material-ui/core";
+import {
+  SkeletonGroup,
+  SkeletonGroupName,
+  SkeletonGroupCategory,
+} from "./SkeletonGroup";
 
 const GroupCardUsers = () => {
   const [group, setGroup] = useState([]);
@@ -56,31 +61,45 @@ const GroupCardUsers = () => {
             <h4>Seu Grupo</h4>
           </Title>
           <GroupName>
-            <h3>{name}</h3>
-            <Button onClick={handleClick}>
-              <EditIcon />
-            </Button>
+            {name ? (
+              <>
+                <h3>{name}</h3>
+                <Button onClick={handleClick}>
+                  <EditIcon />
+                </Button>
+              </>
+            ) : (
+              <SkeletonGroupName />
+            )}
           </GroupName>
-          <Margin>
-            <h3 id="category">
-              Categoria: <span>{category}</span>
-            </h3>
-          </Margin>
+
+          {category ? (
+            <Margin>
+              <h3 id="category">
+                Categoria: <span>{category}</span>
+              </h3>
+            </Margin>
+          ) : (
+            <SkeletonGroupCategory />
+          )}
         </div>
 
         <CardUsers>
-          {users &&
+          {users ? (
             users.map((user, index) => (
               <UserCardDiv key={index}>
                 <figure>
-                  <img src={profilePicture} alt="Profile" />
+                  <img src={profilePicture} alt="Profile" draggable="false"/>
                 </figure>
                 <UserDiv>
                   <h1>{user.username}</h1>
                   <p>{user.email}</p>
                 </UserDiv>
               </UserCardDiv>
-            ))}
+            ))
+          ) : (
+            <SkeletonGroup />
+          )}
         </CardUsers>
       </Main>
     </>

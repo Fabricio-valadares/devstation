@@ -50,7 +50,7 @@ const RegisterForm = () => {
       .post("/users/", data)
       .then(() => {
         setViewIcon(false);
-        toast.success(`🚀 Registro completo, bora fazer login ?`, {
+        toast.dark(`🚀 Registro completo, bora fazer login ?`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -129,7 +129,7 @@ const RegisterForm = () => {
             Faça login
           </StyledSpan>
         </FormContainer>
-        <Img src={"./assets/register.svg"} alt="Register" />
+        <Img src={"./assets/register.svg"} alt="Register" draggable="false" />
       </RegisterCard>
     </>
   );

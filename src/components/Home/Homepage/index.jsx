@@ -44,7 +44,7 @@ const Homepage = () => {
         <DivContent>
           <DivTitle>
             <Logo>
-              <LogoImage src={logoImage} />
+              <LogoImage src={logoImage} draggable="false" />
             </Logo>
             <Title>Generic Name</Title>
           </DivTitle>
@@ -66,16 +66,16 @@ const Homepage = () => {
       </Content>
       <ContainerImageOne>
         <ImagesA>
-          <BikeImage src={designNotes} />
-          <RunImage src={designTools} />
-          <StretchImage src={devWork} />
+          <BikeImage src={designNotes} draggable="false" />
+          <RunImage src={designTools} draggable="false" />
+          <StretchImage src={devWork} draggable="false" />
         </ImagesA>
       </ContainerImageOne>
       <ContainerImagemTwo>
         <ImagesB>
-          <WorkoutImage src={versionControl} />
-          <YogaImage src={server} />
-          <StyleImage src={kanban} />
+          <WorkoutImage src={versionControl} draggable="false" />
+          <YogaImage src={server} draggable="false" />
+          <StyleImage src={kanban} draggable="false" />
         </ImagesB>
       </ContainerImagemTwo>
     </HomeContainer>

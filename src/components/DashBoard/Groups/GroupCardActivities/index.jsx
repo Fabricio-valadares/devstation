@@ -19,9 +19,10 @@ import Modal from "../../../Modal";
 
 import EditActivity from "./EditActivitie";
 import CreateActivity from "./CreateActivity";
+import { SkeletonActivities } from "./SkeletonActivities";
 
 const GroupCardActivities = () => {
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState();
 
   const [activity, setActivity] = useState({});
 
@@ -84,7 +85,7 @@ const GroupCardActivities = () => {
       </ActivitiesHeader>
 
       <CardActivities>
-        {activities &&
+        {activities ? (
           activities.map((activity, index) => (
             <ActivityDiv key={index}>
               <figure>
@@ -102,7 +103,10 @@ const GroupCardActivities = () => {
                 </p>
               </div>
             </ActivityDiv>
-          ))}
+          ))
+        ) : (
+          <SkeletonActivities />
+        )}
       </CardActivities>
     </Main>
   );
