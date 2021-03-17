@@ -89,7 +89,7 @@ const GroupCardUsers = () => {
             users.map((user, index) => (
               <UserCardDiv key={index}>
                 <figure>
-                  <img src={profilePicture} alt="Profile" />
+                  <img src={profilePicture} alt="Profile" draggable="false"/>
                 </figure>
                 <UserDiv>
                   <h1>{user.username}</h1>
