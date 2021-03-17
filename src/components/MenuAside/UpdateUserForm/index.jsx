@@ -49,7 +49,6 @@ const UpdateUserForm = () => {
           setValidMsg(false);
         }, 3000);
         reset();
-        console.log(response.data);
       })
       .catch((error) => {
         setErrorMsg(true);

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const UsersContainer = styled.div`
-  /* display: block; */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,8 +11,6 @@ export const UsersContainer = styled.div`
   background-color: var(--dark-primary);
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
-  /* box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-    6px 6px 16px rgba(0, 0, 0, 0.2); */
 
   @media (min-width: 700px) {
     justify-content: flex-start;
@@ -24,20 +20,15 @@ export const UsersContainer = styled.div`
 `;
 
 export const UserContent = styled.div`
-  /* position: relative; */
-  /* margin: 10px;
-  padding-left: 35px;
-  padding-right: 30px; */
-  /* background-color: yellow; */
-
   width: 90%;
   flex-direction: column;
 
   overflow-y: scroll;
+
   ::-webkit-scrollbar {
     border-radius: 50px;
-    /* background-color: 0px 0px 4px 4px rgba(0, 0, 0, 0.50); */
   }
+
   @media (min-width: 700px) {
     width: 100%;
     display: flex;
@@ -46,7 +37,6 @@ export const UserContent = styled.div`
     justify-content: space-between;
 
     max-height: 69vh;
-    /* height: 80%; */
 
     h1 {
       top: 0;
@@ -67,9 +57,7 @@ export const UserContent = styled.div`
   }
 `;
 
-export const DivPname = styled.div`
-  /* width: 50vw; */
-`;
+export const DivPname = styled.div``;
 
 export const Pmail = styled.div`
   margin-top: 5px;
@@ -88,14 +76,8 @@ export const PnameUser = styled.div`
 `;
 
 export const DivHeader = styled.div`
-  /* display: flex; */
   padding: 24px 25px 5px 25px;
   width: 100%;
-  /* height: 20px; */
-
-  /* input {
-    height: 30px;
-  } */
 
   p {
     margin-left: 2px;
@@ -166,9 +148,6 @@ export const Card = styled.div`
 
   @media (min-width: 700px) {
     align-items: center;
-    /* Rectangle 49 */
-
-    /* height: 15vh; */
     width: 95%;
     height: 72px;
     margin-left: 27px;
@@ -176,8 +155,6 @@ export const Card = styled.div`
     div#user {
       display: flex;
     }
-
-    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   }
 `;
 
@@ -195,7 +172,6 @@ export const UserAvatar = styled.img`
 `;
 
 export const ShowIcon = styled.div`
-  /* width: 80px; */
   display: flex;
   align-items: center;
   svg {

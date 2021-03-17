@@ -17,7 +17,6 @@ export const UserAvatarContainer = styled.div`
 
 export const DivTitleUser = styled.div`
   font-size: 23px;
-  /* text-align: center; */
   margin-bottom: 26px;
   color: #f72585;
   width: 100%;

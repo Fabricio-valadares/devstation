@@ -25,7 +25,6 @@ const ModalGroup = ({ ele }) => {
         }
       )
       .then((response) => {
-        console.log(response);
         setMessage(false);
       })
       .catch((error) => console.log(error));
@@ -49,7 +48,6 @@ const ModalGroup = ({ ele }) => {
             {ele.description}
           </h3>
         </DivDescription>
-        {console.log(ele)}
         {message ? (
           <DivWarning>
             <DivSpan>Sair do grupo onde estou para entrar nesse !</DivSpan>

@@ -2,13 +2,10 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import SendIcon from "@material-ui/icons/Send";
 import { StyledMenu, StyledMenuItem } from "./styled";
 import { FiMenu } from "react-icons/fi";
 import { DashIcon, GroupIcon, UsersIcon } from "../Aside/styled";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
