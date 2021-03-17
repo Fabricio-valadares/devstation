@@ -19,11 +19,12 @@ import {
   SaveIcon,
 } from "../../../EditHabit/styled";
 import { toast } from "react-toastify";
+import { SkeletonForm } from "../../GroupCardUsers/SkeletonGroup";
 
 const EditActivity = ({ activityId, handleClose }) => {
   const token = localStorage.getItem("token");
 
-  const [activity, setActivity] = useState({});
+  const [activity, setActivity] = useState();
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -120,31 +121,36 @@ const EditActivity = ({ activityId, handleClose }) => {
   return (
     <Main>
       <h1>Editar Atividade</h1>
-      <InputsContainer onSubmit={handleSubmit(handleForm)}>
-        <InputBox>
-          <IconBox>
-            {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
-          </IconBox>
-          <Input
-            name="title"
-            ref={register}
-            placeholder={errors.title ? errors.title.message : activity.title}
-          />
-        </InputBox>
 
-        <InputBox>
-          <IconBox>
-            <SaveIcon />
-          </IconBox>
-          <SaveButton type="submit">Atualizar</SaveButton>
-        </InputBox>
-        <InputBox>
-          <IconBox>
-            <DeleteIcon />
-          </IconBox>
-          <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
-        </InputBox>
-      </InputsContainer>
+      {activity ? (
+        <InputsContainer onSubmit={handleSubmit(handleForm)}>
+          <InputBox>
+            <IconBox>
+              {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
+            </IconBox>
+            <Input
+              name="title"
+              ref={register}
+              placeholder={errors.title ? errors.title.message : activity.title}
+            />
+          </InputBox>
+
+          <InputBox>
+            <IconBox>
+              <SaveIcon />
+            </IconBox>
+            <SaveButton type="submit">Atualizar</SaveButton>
+          </InputBox>
+          <InputBox>
+            <IconBox>
+              <DeleteIcon />
+            </IconBox>
+            <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
+          </InputBox>
+        </InputsContainer>
+      ) : (
+        <SkeletonForm />
+      )}
     </Main>
   );
 };

@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import ModalCreateGroup from "../ModalCreateGroup";
 
 import Modal from "../../Modal";
+import { SkeletonGroups } from "../SkeletonGroups";
 
 const ListGroups = () => {
   const dispatch = useDispatch();
@@ -79,7 +80,12 @@ const ListGroups = () => {
               <FaSearch size="20" color="#fff" />
             </div>
           </div>
-          <CardGroup groupsData={groupsData} valueInput={valueInput} />
+
+          {groupsData[0] ? (
+            <CardGroup groupsData={groupsData} valueInput={valueInput} />
+          ) : (
+            <SkeletonGroups />
+          )}
         </div>
       </Content>
     </>

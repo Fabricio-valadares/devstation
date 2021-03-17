@@ -21,11 +21,12 @@ import {
 
 import { FiActivity } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { SkeletonForm } from "../SkeletonGroup";
 
 const EditGroup = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
 
-  const [group, setGroup] = useState({});
+  const [group, setGroup] = useState();
 
   const schema = yup.object().shape({});
 
@@ -61,7 +62,7 @@ const EditGroup = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
-        toast.success(`🚀  Grupo editado!!`, {
+        toast.dark(`🚀  Grupo editado!!`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -91,52 +92,55 @@ const EditGroup = ({ groupId, handleClose }) => {
   return (
     <Main>
       <h1>Editar Grupo</h1>
+      {group ? (
+        <InputsContainer onSubmit={handleSubmit(handleForm)}>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+            <Input
+              name="name"
+              ref={register}
+              type="text"
+              placeholder={errors.name ? errors.name.message : group.name}
+            />
+          </InputBox>
 
-      <InputsContainer onSubmit={handleSubmit(handleForm)}>
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
-          <Input
-            name="name"
-            ref={register}
-            type="text"
-            placeholder={errors.name ? errors.name.message : group.name}
-          />
-        </InputBox>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <TagIcon />}</IconBox>
+            <Input
+              name="description"
+              ref={register}
+              type="text"
+              placeholder={
+                errors.description
+                  ? errors.description.message
+                  : group.description
+              }
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <TagIcon />}</IconBox>
-          <Input
-            name="description"
-            ref={register}
-            type="text"
-            placeholder={
-              errors.description
-                ? errors.description.message
-                : group.description
-            }
-          />
-        </InputBox>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <FiActivity />}</IconBox>
 
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <FiActivity />}</IconBox>
+            <Input
+              name="category"
+              ref={register}
+              type="text"
+              placeholder={
+                errors.category ? errors.category.message : group.category
+              }
+            />
+          </InputBox>
 
-          <Input
-            name="category"
-            ref={register}
-            type="text"
-            placeholder={
-              errors.category ? errors.category.message : group.category
-            }
-          />
-        </InputBox>
-
-        <InputBox>
-          <IconBox>
-            <SaveIcon />
-          </IconBox>
-          <SaveButton type="submit">Atualizar</SaveButton>
-        </InputBox>
-      </InputsContainer>
+          <InputBox>
+            <IconBox>
+              <SaveIcon />
+            </IconBox>
+            <SaveButton type="submit">Atualizar</SaveButton>
+          </InputBox>
+        </InputsContainer>
+      ) : (
+        <SkeletonForm />
+      )}
     </Main>
   );
 };

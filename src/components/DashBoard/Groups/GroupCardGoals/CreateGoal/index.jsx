@@ -41,7 +41,7 @@ const CreateGoal = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
-        toast.success(`🚀   Objetivo criado!!`, {
+        toast.dark(`🚀   Objetivo criado!!`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
