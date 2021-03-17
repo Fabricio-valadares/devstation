@@ -22,11 +22,12 @@ import {
   SaveIcon,
 } from "../../../EditHabit/styled";
 import { toast } from "react-toastify";
+import { SkeletonForm } from "../../GroupCardUsers/SkeletonGroup";
 
 const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   const token = localStorage.getItem("token");
 
-  const [goal, setGoal] = useState({});
+  const [goal, setGoal] = useState();
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -128,58 +129,64 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   return (
     <Main>
       <h1>Editar Goal</h1>
-      <InputsContainer onSubmit={handleSubmit(handleForm)}>
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+      {goal ? (
+        <InputsContainer onSubmit={handleSubmit(handleForm)}>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
 
-          <Input
-            name="title"
-            ref={register}
-            type="text"
-            placeholder={errors.title ? errors.title.message : goal.title}
-          />
-        </InputBox>
+            <Input
+              name="title"
+              ref={register}
+              type="text"
+              placeholder={errors.title ? errors.title.message : goal.title}
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>{errors.category ? <ErrorIcon /> : <BarIcon />}</IconBox>
+          <InputBox>
+            <IconBox>{errors.category ? <ErrorIcon /> : <BarIcon />}</IconBox>
 
-          <Input
-            name="difficulty"
-            ref={register}
-            type="text"
-            placeholder={
-              errors.difficulty ? errors.difficulty.message : goal.difficulty
-            }
-          />
-        </InputBox>
+            <Input
+              name="difficulty"
+              ref={register}
+              type="text"
+              placeholder={
+                errors.difficulty ? errors.difficulty.message : goal.difficulty
+              }
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>{errors.difficulty ? <ErrorIcon /> : <FireIcon />}</IconBox>
-          <Input
-            name="how_much_achieved"
-            ref={register}
-            type="number"
-            placeholder={
-              errors.how_much_achieved
-                ? errors.how_much_achieved.message
-                : goal.how_much_achieved
-            }
-          />
-        </InputBox>
+          <InputBox>
+            <IconBox>
+              {errors.difficulty ? <ErrorIcon /> : <FireIcon />}
+            </IconBox>
+            <Input
+              name="how_much_achieved"
+              ref={register}
+              type="number"
+              placeholder={
+                errors.how_much_achieved
+                  ? errors.how_much_achieved.message
+                  : goal.how_much_achieved
+              }
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>
-            <SaveIcon />
-          </IconBox>
-          <SaveButton type="submit">Atualizar</SaveButton>
-        </InputBox>
-        <InputBox>
-          <IconBox>
-            <DeleteIcon />
-          </IconBox>
-          <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
-        </InputBox>
-      </InputsContainer>
+          <InputBox>
+            <IconBox>
+              <SaveIcon />
+            </IconBox>
+            <SaveButton type="submit">Atualizar</SaveButton>
+          </InputBox>
+          <InputBox>
+            <IconBox>
+              <DeleteIcon />
+            </IconBox>
+            <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
+          </InputBox>
+        </InputsContainer>
+      ) : (
+        <SkeletonForm />
+      )}
     </Main>
   );
 };
