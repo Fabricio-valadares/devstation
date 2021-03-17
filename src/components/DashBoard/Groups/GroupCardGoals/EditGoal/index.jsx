@@ -181,7 +181,9 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
             <IconBox>
               <DeleteIcon />
             </IconBox>
-            <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
+            <DeleteButton type="button" onClick={handleDelete}>
+              Deletar
+            </DeleteButton>
           </InputBox>
         </InputsContainer>
       ) : (

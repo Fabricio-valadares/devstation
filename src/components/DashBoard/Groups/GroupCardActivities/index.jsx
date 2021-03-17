@@ -78,7 +78,7 @@ const GroupCardActivities = () => {
         )}
       </Modal>
       <ActivitiesHeader>
-        <h3>Activities</h3>
+        <h3>Atividades</h3>
         <button onClick={handleClick}>
           <PlusIcon />
         </button>

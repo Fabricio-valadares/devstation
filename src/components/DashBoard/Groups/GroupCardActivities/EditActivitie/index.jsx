@@ -123,31 +123,37 @@ const EditActivity = ({ activityId, handleClose }) => {
       <h1>Editar Atividade</h1>
 
       {activity ? (
-        <InputsContainer onSubmit={handleSubmit(handleForm)}>
-          <InputBox>
-            <IconBox>
-              {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
-            </IconBox>
-            <Input
-              name="title"
-              ref={register}
-              placeholder={errors.title ? errors.title.message : activity.title}
-            />
-          </InputBox>
+        <>
+          <InputsContainer onSubmit={handleSubmit(handleForm)}>
+            <InputBox>
+              <IconBox>
+                {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
+              </IconBox>
+              <Input
+                name="title"
+                ref={register}
+                placeholder={
+                  errors.title ? errors.title.message : activity.title
+                }
+              />
+            </InputBox>
 
-          <InputBox>
-            <IconBox>
-              <SaveIcon />
-            </IconBox>
-            <SaveButton type="submit">Atualizar</SaveButton>
-          </InputBox>
-          <InputBox>
-            <IconBox>
-              <DeleteIcon />
-            </IconBox>
-            <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
-          </InputBox>
-        </InputsContainer>
+            <InputBox>
+              <IconBox>
+                <SaveIcon />
+              </IconBox>
+              <SaveButton type="submit">Atualizar</SaveButton>
+            </InputBox>
+            <InputBox>
+              <IconBox>
+                <DeleteIcon />
+              </IconBox>
+              <DeleteButton type="button" onClick={handleDelete}>
+                Deletar
+              </DeleteButton>
+            </InputBox>
+          </InputsContainer>
+        </>
       ) : (
         <SkeletonForm />
       )}

@@ -194,7 +194,9 @@ const EditHabit = ({ close, token, habitId }) => {
           <IconBox>
             <DeleteIcon />
           </IconBox>
-          <DeleteButton onClick={deleteHabit}>Deletar</DeleteButton>
+          <DeleteButton type="button" onClick={deleteHabit}>
+            Deletar
+          </DeleteButton>
         </InputBox>
       </InputsContainer>
       <CloseButton onClick={close}>

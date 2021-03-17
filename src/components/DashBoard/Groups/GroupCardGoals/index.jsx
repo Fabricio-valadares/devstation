@@ -80,7 +80,7 @@ const GroupCardGoals = () => {
         )}
       </Modal>
       <GoalsHeader>
-        <h3>Goals</h3>
+        <h3>Objetivos</h3>
         <button onClick={handleClick}>
           <PlusIcon />
         </button>
