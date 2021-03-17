@@ -69,6 +69,10 @@ export const GoalDiv = styled.div`
     margin-bottom: 0.4vw;
     display: flex;
     align-items: center;
+
+    @media (max-width: 900px) {
+      font-size: 14px;
+    }
   }
 `;
 

@@ -67,6 +67,9 @@ export const Title = styled.div`
     font-size: 18px;
     font-weight: 500;
     color: var(--text);
+    @media (max-width: 900px) {
+      font-size: 14px;
+    }
   }
 
   button {
