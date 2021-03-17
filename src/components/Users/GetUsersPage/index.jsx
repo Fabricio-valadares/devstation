@@ -17,6 +17,7 @@ import {
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import Modal from "../../Modal";
 import CardUser from "../CardUser";
+import { SkeletonGroups } from "../../Groups/SkeletonGroups";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -87,7 +88,7 @@ const GetUsersPage = () => {
           </div>
         </DivHeader>
         <UserContent>
-          {usersList &&
+          {usersList ? (
             users
               .filter((user) =>
                 user.username?.toLowerCase().includes(input.toLowerCase())
@@ -116,7 +117,10 @@ const GetUsersPage = () => {
                     </ShowIcon>
                   </Card>
                 );
-              })}
+              })
+          ) : (
+            <SkeletonGroups />
+          )}
         </UserContent>
       </UsersContainer>
     </>

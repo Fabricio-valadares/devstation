@@ -1,8 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
 export const ContainerFlex = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  margin: 1rem 0;
+
+  div {
+    margin: 0;
+    margin-left: 0.5rem;
+  }
+  div span {
+    margin: 0 0.5rem;
+  }
 `;

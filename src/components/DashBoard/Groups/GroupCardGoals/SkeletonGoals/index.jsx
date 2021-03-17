@@ -28,21 +28,3 @@ export const SkeletonGoals = () => {
     </Container>
   );
 };
-
-export const SkeletonGroupName = () => {
-  return (
-    <ContainerFlex>
-      <Skeleton style={{ marginRight: "1rem" }} variant="text" width={70} />
-      <Skeleton variant="text" height={20} width={20} />
-    </ContainerFlex>
-  );
-};
-
-export const SkeletonGroupCategory = () => {
-  return (
-    <ContainerFlex>
-      <Skeleton style={{ marginRight: "1rem" }} variant="text" width={70} />
-      <Skeleton variant="text" width={70} />
-    </ContainerFlex>
-  );
-};

@@ -20,7 +20,7 @@ import CreateGoal from "./CreateGoal";
 import { SkeletonGoals } from "./SkeletonGoals/index";
 
 const GroupCardGoals = () => {
-  const [goals, setGoals] = useState([]);
+  const [goals, setGoals] = useState();
 
   const [editGoal, setEditGoal] = useState(false);
 
@@ -86,7 +86,7 @@ const GroupCardGoals = () => {
         </button>
       </GoalsHeader>
       <CardGoals>
-        {goals[0] ? (
+        {goals ? (
           goals.map((goal, index) => (
             <GoalDiv key={index}>
               <div>

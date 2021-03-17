@@ -12,12 +12,13 @@ import {
   PlusIcon,
   Habits,
 } from "./styled";
+import { SkeletonHabits } from "../SkeletonHabits";
 
 const UserHabits = ({ user }) => {
   const [createView, setCreateView] = useState(false);
   const [editView, setEditView] = useState(false);
   const [currentHabitId, setCurrentHabitId] = useState({});
-  const [personalHabits, setPersonalHabits] = useState([]);
+  const [personalHabits, setPersonalHabits] = useState();
   const storagedToken = localStorage.getItem("token");
   const token = JSON.parse(storagedToken);
 
@@ -72,14 +73,18 @@ const UserHabits = ({ user }) => {
           </button>
         </HabitsHeader>
         <Habits>
-          {personalHabits.map((habit) => (
-            <Habit
-              key={habit.id}
-              habit={habit}
-              open={handleEditOpen}
-              close={handleEditClose}
-            />
-          ))}
+          {personalHabits ? (
+            personalHabits.map((habit) => (
+              <Habit
+                key={habit.id}
+                habit={habit}
+                open={handleEditOpen}
+                close={handleEditClose}
+              />
+            ))
+          ) : (
+            <SkeletonHabits />
+          )}
         </Habits>
       </PersonalHabits>
     </UserCard>

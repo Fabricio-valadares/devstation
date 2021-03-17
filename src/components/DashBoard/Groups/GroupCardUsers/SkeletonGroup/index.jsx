@@ -40,3 +40,22 @@ export const SkeletonGroupCategory = () => {
     </ContainerFlex>
   );
 };
+
+export const SkeletonForm = () => {
+  return (
+    <Container>
+      <ContainerFlex>
+        <Skeleton variant="rect" height={30} width="80%" />
+      </ContainerFlex>
+      <ContainerFlex>
+        <Skeleton variant="rect" height={30} width="80%" />
+      </ContainerFlex>
+      <ContainerFlex>
+        <Skeleton variant="rect" height={30} width="80%" />
+      </ContainerFlex>
+      <ContainerFlex>
+        <Skeleton variant="rect" height={30} width="80%" />
+      </ContainerFlex>
+    </Container>
+  );
+};

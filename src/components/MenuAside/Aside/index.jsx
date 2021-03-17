@@ -20,12 +20,13 @@ import { Link, useHistory } from "react-router-dom";
 import api from "../../../services";
 
 import MobileMenu from "../MobileMenu";
+import { SkeletonUser } from "../SkeletonUser";
 
 const Aside = () => {
   const storagedId = localStorage.getItem("id");
   const userId = JSON.parse(storagedId);
   const history = useHistory();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
   const [updateView, setUpdateView] = useState(false);
 
@@ -67,21 +68,25 @@ const Aside = () => {
         <figure>
           <img src={User} alt="User" />
         </figure>
-        <div className="user-info">
-          <h3>
-            {user.username &&
-              user.username[0].toUpperCase() + user.username.slice(1)}
-          </h3>
-          <p>{user.email}</p>
-          <ButtonBox>
-            <Button onClick={handleOpen}>
-              <ConfigIcon />
-            </Button>
-            <Button onClick={handleLogout}>
-              <LogOutIcon />
-            </Button>
-          </ButtonBox>
-        </div>
+        {user ? (
+          <div className="user-info">
+            <h3>
+              {user.username &&
+                user.username[0].toUpperCase() + user.username.slice(1)}
+            </h3>
+            <p>{user.email}</p>
+            <ButtonBox>
+              <Button onClick={handleOpen}>
+                <ConfigIcon />
+              </Button>
+              <Button onClick={handleLogout}>
+                <LogOutIcon />
+              </Button>
+            </ButtonBox>
+          </div>
+        ) : (
+          <SkeletonUser />
+        )}
       </Profile>
       <MobileDiv>
         <MobileMenu />

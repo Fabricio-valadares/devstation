@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 export default createGlobalStyle`
 
@@ -31,6 +33,9 @@ export default createGlobalStyle`
   background-color: #cdcdcd !important;
 }
 
+.MuiSkeleton-rect {
+  background-color: #30336B !important;
+}
 
   .makeStyles-paper-2:focus {
     outline: none ;
@@ -98,4 +103,25 @@ export default createGlobalStyle`
     color: #fff;
     border-radius: 5px;
 }
+`;
+
+export const StyledContainer = styled(ToastContainer).attrs({
+  // custom props
+})`
+  .Toastify__toast-container {
+  }
+  .Toastify__toast {
+  }
+  .Toastify__toast--error {
+    background-color: #600;
+  }
+  .Toastify__toast--warning {
+  }
+  .Toastify__toast--success {
+    background-color: #060;
+  }
+  .Toastify__toast-body {
+  }
+  .Toastify__progress-bar {
+  }
 `;
