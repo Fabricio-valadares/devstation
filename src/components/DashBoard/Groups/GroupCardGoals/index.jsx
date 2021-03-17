@@ -20,9 +20,10 @@ import api from "../../../../services";
 import Modal from "../../../Modal/index";
 import EditGoal from "./EditGoal";
 import CreateGoal from "./CreateGoal";
+import { SkeletonGoals } from "./SkeletonGoals/index";
 
 const GroupCardGoals = () => {
-  const [goals, setGoals] = useState([]);
+  const [goals, setGoals] = useState();
 
   const [editGoal, setEditGoal] = useState(false);
 
@@ -38,7 +39,6 @@ const GroupCardGoals = () => {
   };
 
   useEffect(() => {
-    //consumindo rota get goals
     api
       .get(`/goals/?group=${groupId}`)
       .then((response) => {
@@ -89,7 +89,7 @@ const GroupCardGoals = () => {
         </button>
       </GoalsHeader>
       <CardGoals>
-        {goals &&
+        {goals ? (
           goals.map((goal, index) => (
             <GoalDiv key={index}>
               <div>
@@ -113,7 +113,10 @@ const GroupCardGoals = () => {
                 />
               </ProgressBox>
             </GoalDiv>
-          ))}
+          ))
+        ) : (
+          <SkeletonGoals />
+        )}
       </CardGoals>
     </Main>
   );

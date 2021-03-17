@@ -71,6 +71,7 @@ const CreateActivity = ({ groupId, handleClose }) => {
   return (
     <Main>
       <h1>Criar Atividade</h1>
+
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>
           <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
