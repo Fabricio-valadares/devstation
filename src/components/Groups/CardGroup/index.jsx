@@ -37,6 +37,7 @@ const CardGroup = ({ groupsData, valueInput }) => {
                   id="imgAccordon"
                   src="https://picsum.photos/40/40"
                   alt="imgRandom"
+                  draggable="false"
                 />
                 <span id="nameGroups">{ele.name}</span> <span>Categoria:</span>{" "}
                 {ele.category}
