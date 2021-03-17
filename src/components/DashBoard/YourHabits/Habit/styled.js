@@ -18,7 +18,7 @@ export const TagIcon = styled(FiTag)`
 `;
 
 export const BarIcon = styled(FiBarChart)`
-  color: #f72585;
+  color: var(--red-bar);
   width: 24px;
   height: 24px;
   margin-right: 4px;

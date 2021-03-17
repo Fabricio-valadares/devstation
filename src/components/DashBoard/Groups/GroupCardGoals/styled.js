@@ -56,6 +56,7 @@ export const CardGoals = styled.div`
 export const GoalDiv = styled.div`
   text-align: left;
   margin: 1vw 0;
+  margin-bottom: 24px;
   div {
     display: flex;
     widows: 100%;
@@ -65,7 +66,7 @@ export const GoalDiv = styled.div`
     }
   }
   p {
-    margin-bottom: 1vw;
+    margin-bottom: 0.4vw;
     display: flex;
     align-items: center;
   }
@@ -75,11 +76,11 @@ export const InfoIcon = styled(FiInfo)`
   color: #dff9fb;
   width: 24px;
   height: 24px;
-  margin-right: 4px;
+  margin-right: 6px;
 `;
 
 export const BarIcon = styled(FiBarChart)`
-  color: #f72585;
+  color: var(--red-bar);
   width: 24px;
   height: 24px;
   margin-right: 4px;
