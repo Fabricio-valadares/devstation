@@ -77,6 +77,11 @@ export const DivTextPrincipal = styled.div`
 export const DivButton = styled.div`
   width: 100%;
   height: auto;
+
+  @media (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const ContainerImageOne = styled.div`
@@ -166,6 +171,10 @@ export const Title = styled.div`
     width: 65vw;
     font-size: 1.8rem;
   }
+
+  @media (max-width: 600px) {
+    width: 51vw;
+  }
 `;
 
 export const TextPrincipal = styled.div`
@@ -181,6 +190,11 @@ export const TextPrincipal = styled.div`
   @media (min-width: 1920px) {
     font-size: 2.7rem;
     line-height: 1.4;
+  }
+
+  @media (max-width: 600px) {
+    text-align: center;
+    font-size: 1.8rem;
   }
 `;
 
@@ -204,6 +218,11 @@ export const Description = styled.div`
 
   @media (max-width: 390px) {
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    text-align: center;
+    width: auto;
   }
 `;
 

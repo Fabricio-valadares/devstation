@@ -18,7 +18,7 @@ import {
 } from "./styled";
 import { toast } from "react-toastify";
 
-const ModalCreateGroup = () => {
+const ModalCreateGroup = ({ groupsData, setGroupsData }) => {
   const [messageSuccess, setMessageSuccess] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("token"));
@@ -50,7 +50,7 @@ const ModalCreateGroup = () => {
           draggable: true,
           progress: undefined,
         });
-
+        setGroupsData([...groupsData, data]);
         setMessageSuccess(true);
       })
       .catch((error) => {

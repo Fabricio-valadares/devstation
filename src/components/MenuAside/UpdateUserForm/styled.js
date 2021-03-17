@@ -1,10 +1,40 @@
 import styled from "styled-components";
-import { FiInfo, FiSave, FiAlertTriangle, FiX } from "react-icons/fi";
+import {
+  FiInfo,
+  FiSave,
+  FiAlertTriangle,
+  FiX,
+  FiAlertOctagon,
+} from "react-icons/fi";
 
 export const FormContainer = styled.div`
   flex-direction: column;
   max-width: 30vw;
   margin: 0 auto;
+`;
+
+export const DeleteButton = styled.button`
+  flex: 1;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  transition: all 200ms ease-in;
+  border: 2px solid #ff5252;
+
+  &:hover {
+    background-color: #ff5252;
+  }
+`;
+
+export const DeleteIcon = styled(FiAlertOctagon)`
+  color: #ff5252;
+  width: 80%;
+  height: 80%;
 `;
 
 export const Main = styled.article`
