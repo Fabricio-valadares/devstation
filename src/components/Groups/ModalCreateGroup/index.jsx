@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../../../services";
-import { FormHelperText, InputBase, Button } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { FormStyled } from "./styled";
 
 import {
   InputBox,
@@ -18,6 +16,7 @@ import {
   Title,
   Message,
 } from "./styled";
+import { toast } from "react-toastify";
 
 const ModalCreateGroup = () => {
   const [messageSuccess, setMessageSuccess] = useState(false);
@@ -42,12 +41,30 @@ const ModalCreateGroup = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setMessageSuccess(true);
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
+        toast.dark(`🚀   Grupo criado com sucesso!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
-    console.log(data);
+        setMessageSuccess(true);
+      })
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.log(error);
+      });
   };
   return (
     <>
@@ -65,7 +82,6 @@ const ModalCreateGroup = () => {
               variant="outlined"
             />
           </InputBox>
-          {/* <FormHelperText>{errors.name?.message}</FormHelperText> */}
           <InputBox>
             <IconBox>
               {errors.description ? <ErrorIcon /> : <DescriotionIcon />}
@@ -81,7 +97,6 @@ const ModalCreateGroup = () => {
             />
           </InputBox>
           <InputBox>
-            {/* <FormHelperText>{errors.description?.message}</FormHelperText> */}
             <IconBox>{errors.category ? <ErrorIcon /> : <TagIcon />}</IconBox>
             <InputStyled
               name="category"
@@ -93,7 +108,6 @@ const ModalCreateGroup = () => {
               variant="outlined"
             />
           </InputBox>
-          {/* <FormHelperText>{errors.category?.message}</FormHelperText> */}
           <div
             style={{
               display: "flex",

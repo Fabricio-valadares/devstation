@@ -18,6 +18,7 @@ import {
   SaveButton,
   SaveIcon,
 } from "../../../EditHabit/styled";
+import { toast } from "react-toastify";
 
 const EditActivity = ({ activityId, handleClose }) => {
   const token = localStorage.getItem("token");
@@ -54,14 +55,34 @@ const EditActivity = ({ activityId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Atividade alterada!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   const handleDelete = () => {
-    //consumindo rota de deletar activity
     api
       .delete(`/activities/${activity.id}/`, {
         headers: {
@@ -69,10 +90,31 @@ const EditActivity = ({ activityId, handleClose }) => {
         },
       })
       .then((response) => {
+        toast.dark(`🚀   Atividade deletada!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         handleClose();
         console.log(response);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(e);
+      });
   };
 
   return (

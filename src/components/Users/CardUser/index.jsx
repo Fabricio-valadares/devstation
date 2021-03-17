@@ -44,13 +44,13 @@ const CardUser = ({ user }) => {
               <span style={{ fontWeight: "600" }}>Name: </span> {group.name}
             </p>
             <p>
-              <span style={{ fontWeight: "600" }}>Categoria: </span>{" "}
+              <span style={{ fontWeight: "600" }}>Categoria: </span>
               {group.category}
             </p>
           </DivDataGroupUser>
 
           <p>
-            <span style={{ fontWeight: "600" }}>Descrição: </span>{" "}
+            <span style={{ fontWeight: "600" }}>Descrição: </span>
             {group.description}
           </p>
         </>

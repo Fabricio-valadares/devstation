@@ -15,6 +15,7 @@ import {
   SaveIcon,
   ErrorIcon,
 } from "../../../CreateHabit/styled";
+import { toast } from "react-toastify";
 
 const CreateActivity = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
@@ -39,10 +40,32 @@ const CreateActivity = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Atividade criada!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   return (

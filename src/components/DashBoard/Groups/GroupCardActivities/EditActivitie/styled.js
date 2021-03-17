@@ -9,7 +9,6 @@ export const Main = styled.div`
 `;
 
 export const FormStyled = styled.form`
-  /* padding: 0.5rem */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,9 +35,6 @@ export const DivFlex = styled.div`
   svg:hover {
     cursor: pointer;
   }
-  /* h1 {
-    width: 80%;
-  } */
 `;
 
 export const useStyles = makeStyles((theme) => ({
