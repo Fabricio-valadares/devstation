@@ -23,6 +23,7 @@ import {
   CloseButton,
   CloseIcon,
 } from "./styled";
+import { toast } from "react-toastify";
 
 const CreateHabit = ({ userId, close, token }) => {
   const history = useHistory();
@@ -54,10 +55,29 @@ const CreateHabit = ({ userId, close, token }) => {
       await api.post("/habits/", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
+      toast.success(`🚀   Habito cadastrado!!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       reset();
       history.push("/dashboard");
       close();
     } catch (err) {
+      toast.error(`😵 Seu cadastro falhou `, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(err);
     }
   };

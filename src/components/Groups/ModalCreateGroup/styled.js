@@ -3,9 +3,7 @@ import { FiInfo, FiAlertTriangle, FiFileText, FiTag } from "react-icons/fi";
 import { shade } from "polished";
 import { InputBase } from "@material-ui/core";
 
-export const FormStyled = styled.form`
-  /* background-color: red; */
-`;
+export const FormStyled = styled.form``;
 
 export const Message = styled.p`
   color: #1dd1a1;
@@ -88,6 +86,5 @@ export const IconBox = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  /* background-color: #30336b; */
   margin-right: 8px;
 `;

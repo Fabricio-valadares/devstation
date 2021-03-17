@@ -1,15 +1,26 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, TextField } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import * as yup from "yup";
 import api from "../../../services";
-import { FormContainer } from "./styled";
+import {
+  Main,
+  InputsContainer,
+  InputBox,
+  Input,
+  InfoIcon,
+  ErrorIcon,
+  IconBox,
+  SaveButton,
+  SaveIcon,
+  CloseButton,
+  CloseIcon,
+} from "./styled";
 
-const UpdateUserForm = () => {
+const UpdateUserForm = ({ close }) => {
   const history = useHistory();
 
   const [token] = useState(() => {
@@ -21,9 +32,6 @@ const UpdateUserForm = () => {
 
     return JSON.parse(localToken);
   });
-
-  const [errorMsg, setErrorMsg] = useState(false);
-  const [validMsg, setValidMsg] = useState(false);
 
   const schema = yup.object().shape({
     username: yup.string().required("Campo Obrigatório"),
@@ -43,51 +51,58 @@ const UpdateUserForm = () => {
           Authorization: `Bearer ${token} `,
         },
       })
-      .then((response) => {
-        setValidMsg(true);
-        setTimeout(() => {
-          setValidMsg(false);
-        }, 3000);
+      .then(() => {
+        toast.success("🚀 Nome de usuario alterado !!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
-        console.log(response.data);
       })
-      .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
-        console.error(error);
+      .catch(() => {
+        toast.error(`😵 Sua edição falhou `, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
   return (
-    <FormContainer>
-      {errorMsg && (
-        <Alert severity="error">
-          Atualização falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
-      {validMsg && (
-        <Alert severity="success">Atualização realizada com sucesso.</Alert>
-      )}
-      <form onSubmit={handleSubmit(handleForm)}>
-        <h1>Atualizar username</h1>
-        <TextField
-          margin="normal"
-          variant="outlined"
-          label="New username"
-          name="username"
-          size="small"
-          color="primary"
-          inputRef={register}
-          error={!!errors.username}
-          helperText={errors.username?.message}
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Atualizar
-        </Button>
-      </form>
-    </FormContainer>
+    <Main>
+      <h1>Atualizar username</h1>
+
+      <InputsContainer onSubmit={handleSubmit(handleForm)}>
+        <InputBox>
+          <IconBox>{errors.username ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+          <Input
+            name="username"
+            ref={register}
+            type="text"
+            placeholder={
+              errors.username ? errors.username.message : "Seu nome de usuário"
+            }
+          />
+        </InputBox>
+        <InputBox>
+          <IconBox>
+            <SaveIcon />
+          </IconBox>
+          <SaveButton type="submit">Atualizar nome</SaveButton>
+        </InputBox>
+      </InputsContainer>
+      <CloseButton onClick={close}>
+        <CloseIcon />
+      </CloseButton>
+    </Main>
   );
 };
 

@@ -13,13 +13,16 @@ import { loginThunk } from "../../../store/modules/dataLogin/thunk";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./styled";
-
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const FormLogin = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const [error, setError] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const schema = yup.object().shape({
     username: yup.string("Somente texto").required("Campo obrigatório"),
@@ -39,63 +42,36 @@ const FormLogin = () => {
 
   const dataForm = (data) => {
     reset();
-    dispatch(loginThunk(data, history));
+    dispatch(loginThunk(data, history, setError, setValid));
   };
 
-  toast.success("🦄 Wow so easy!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
-  toast.error("🦄 Wow so easy!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
-  toast.dark("🦄 Wow so easy!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
-  toast.info("🦄 Wow so easy!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
-  toast("🦄 Wow so easy!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
-  toast.warning("🦄 Wow so easy!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
+  useEffect(() => {
+    if (error) {
+      toast.error(`😵 Seu login falhou `, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setError(false);
+    }
+    if (valid) {
+      toast.dark(`🚀   Bem vindo `, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setValid(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, valid]);
 
   return (
     <Container>

@@ -57,7 +57,6 @@ export const IconBox = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  /* background-color: #30336b; */
   margin-right: 8px;
 `;
 

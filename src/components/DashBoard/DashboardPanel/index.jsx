@@ -10,11 +10,6 @@ import GroupCardGoals from "../Groups/GroupCardGoals";
 import GroupCardActivities from "../Groups/GroupCardActivities";
 
 const DashboardPanel = () => {
-  // const [open, setOpen] = useState(false);
-
-  // const storagedToken = localStorage.getItem("token");
-  // const token = JSON.parse(storagedToken);
-
   const [next, setNext] = useState("/habits/");
   const [habits, setHabits] = useState([]);
   const storagedId = localStorage.getItem("id");
@@ -37,7 +32,6 @@ const DashboardPanel = () => {
 
   return (
     <Content>
-      {/* <Modal /> */}
       <div id="habits-card">
         <Container>
           <UserHabits user={userId} />

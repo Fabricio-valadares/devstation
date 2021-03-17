@@ -20,22 +20,20 @@ import {
 } from "../../../EditHabit/styled";
 
 import { FiActivity } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const EditGroup = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
 
   const [group, setGroup] = useState({});
 
-  const schema = yup.object().shape({
-    // title: yup.string(),
-  });
+  const schema = yup.object().shape({});
 
   const { handleSubmit, register, errors, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
   useEffect(() => {
-    //consumindo rota get one group
     api
       .get(`/groups/${groupId}/`)
       .then((response) => setGroup(response.data))
@@ -56,7 +54,6 @@ const EditGroup = ({ groupId, handleClose }) => {
       data.category = group.category;
     }
 
-    //consumindo a rota update group
     api
       .patch(`/groups/${groupId}/`, data, {
         headers: {
@@ -64,10 +61,31 @@ const EditGroup = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.success(`🚀  Grupo editado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.log(error);
+      });
   };
 
   return (

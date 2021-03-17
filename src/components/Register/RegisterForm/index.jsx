@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,19 +11,13 @@ import {
   useStyles,
 } from "./styled";
 
-import {
-  Button,
-  FormHelperText,
-  InputBase,
-} from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
+import { Button, FormHelperText, InputBase } from "@material-ui/core";
 
 import api from "../../../services";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const classes = useStyles();
-
-  const [errorMsg, setErrorMsg] = useState(false);
 
   const history = useHistory();
   const required = "Campo obrigatório";
@@ -50,25 +43,33 @@ const RegisterForm = () => {
     api
       .post("/users/", data)
       .then(() => {
+        toast.success(`🚀 Registro completo, bora fazer login ?`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
         history.push("/login");
       })
       .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
-        console.log(error);
+        toast.error(`😵 Seu registro falhou `, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
   return (
     <>
-      {errorMsg && (
-        <Alert severity="error">
-          Seu cadastro falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
       <RegisterCard onSubmit={handleSubmit(handleForm)}>
         <FormContainer>
           <h1>Faça seu cadastro</h1>
@@ -79,10 +80,8 @@ const RegisterForm = () => {
             placeholder="Usuario"
             name="username"
             size="medium"
-            // color="primary"
             inputRef={register}
             error={!!errors.username}
-            // helperText={errors.username?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.username?.message}
@@ -94,10 +93,8 @@ const RegisterForm = () => {
             placeholder="Senha"
             name="password"
             type="password"
-            // color="primary"
             inputRef={register}
             error={!!errors.password}
-            // helperText={errors.password?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.password?.message}
@@ -109,10 +106,8 @@ const RegisterForm = () => {
             placeholder="Email"
             name="email"
             size="medium"
-            // color="primary"
             inputRef={register}
             error={!!errors.email}
-            // helperText={errors.email?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.email?.message}

@@ -26,7 +26,6 @@ const GroupCardActivities = () => {
   const [activity, setActivity] = useState({});
 
   const [editActivity, setEditActivity] = useState(false);
-  // const [next, setNext] = useState("/activities/");
 
   const groupId = localStorage.getItem("groupId");
 
