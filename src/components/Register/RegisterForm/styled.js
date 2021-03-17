@@ -1,5 +1,19 @@
 import { makeStyles } from "@material-ui/core";
 import styled from "styled-components";
+import { BsCode } from "react-icons/bs";
+
+export const BsCodeStyled = styled(BsCode)`
+  animation: rotationIcon 2s linear infinite;
+
+  @keyframes rotationIcon {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
 
 export const FormContainer = styled.div`
   flex-direction: column;
