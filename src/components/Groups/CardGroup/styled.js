@@ -4,7 +4,8 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: "20px",
     backgroundColor: "var(--middle-primary)",
-    borderRadius: "3px ",
+    padding: "4px 8px",
+    borderRadius: "8px ",
     display: "flex",
     justifyContent: "space-between",
     "& > div#Icon": {
@@ -30,10 +31,16 @@ export const useStyles = makeStyles((theme) => ({
     borderBottom: "none",
   },
   heading: {
+    display: "flex",
     flexDirection: "column",
     padding: "10px",
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
+
+    "& div#groupInfo": {
+      display: "flex",
+      flexDirection: "column",
+    },
     "& > img": {
       marginRight: "20px",
       borderRadius: "50%",
@@ -42,7 +49,6 @@ export const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
       "& > span": {
         margin: "0 20px",
-        fontWeight: "bold",
       },
       "& > span#nameGroups": {
         fontWeight: 500,

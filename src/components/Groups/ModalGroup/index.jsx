@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../services";
+
 import {
   DivNameCategory,
   DivDescription,
   DivWarning,
   DivSpan,
   MessageSuccess,
-  Container,
+  Main,
   ButtonStyled,
+  InfoIcon,
+  TagIcon,
+  DescriptionIcon,
+  OutIcon,
+  CloseIcon,
+  CloseButton,
 } from "./styled";
 
-const ModalGroup = ({ ele }) => {
+const ModalGroup = ({ ele, close }) => {
   const token = JSON.parse(localStorage.getItem("token"));
 
   const [message, setMessage] = useState(true);
@@ -54,32 +61,38 @@ const ModalGroup = ({ ele }) => {
   };
   return (
     <>
-      <Container>
+      <Main>
         <DivNameCategory>
-          <h1 style={{ marginRight: "20px" }}>
-            <span style={{ fontWeight: "600" }}>Name: </span>
+          <h1>
+            <InfoIcon />
             {ele.name}
           </h1>
           <h3>
-            <span style={{ fontWeight: "600" }}>Categoria: </span>
+            <TagIcon />
             {ele.category}
           </h3>
         </DivNameCategory>
         <DivDescription>
           <h3>
-            <span style={{ fontWeight: "600" }}>Descrição: </span>
+            <DescriptionIcon />
             {ele.description}
           </h3>
         </DivDescription>
         {message ? (
           <DivWarning>
-            <DivSpan>Sair do grupo onde estou para entrar nesse !</DivSpan>
+            <DivSpan>
+              <OutIcon />
+              Deseja sair de seu grupo atual para entrar neste?
+            </DivSpan>
             <ButtonStyled onClick={subscribeInGroup}>Increver-se</ButtonStyled>
           </DivWarning>
         ) : (
           <MessageSuccess>Inscrição realizada com sucesso !</MessageSuccess>
         )}
-      </Container>
+        <CloseButton onClick={close}>
+          <CloseIcon />
+        </CloseButton>
+      </Main>
     </>
   );
 };

@@ -23,7 +23,7 @@ const CardGroup = ({ groupsData, valueInput }) => {
   return (
     <>
       <Modal open={open} handleClose={handleClose}>
-        <ModalGroup ele={dataGroup} />
+        <ModalGroup ele={dataGroup} close={handleClose} />
       </Modal>
       {groupsData
         .filter((user) =>
@@ -38,8 +38,10 @@ const CardGroup = ({ groupsData, valueInput }) => {
                   src="https://picsum.photos/40/40"
                   alt="imgRandom"
                 />
-                <span id="nameGroups">{ele.name}</span> <span>Categoria:</span>{" "}
-                {ele.category}
+                <div id="groupInfo">
+                  <span id="nameGroups">{ele.name}</span>{" "}
+                  <span>Categoria: {ele.category}</span>{" "}
+                </div>
               </Typography>
               <div id="Icon">
                 <FaRegEye

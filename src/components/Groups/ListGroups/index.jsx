@@ -53,7 +53,7 @@ const ListGroups = () => {
   return (
     <>
       <Modal open={open} handleClose={handleClose}>
-        <ModalCreateGroup />
+        <ModalCreateGroup close={handleClose} />
       </Modal>
       <Content>
         <div id="container">
