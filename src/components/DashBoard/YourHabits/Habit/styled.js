@@ -1,9 +1,39 @@
 import styled from "styled-components";
 import { FaEdit } from "react-icons/fa";
+import { FiBookmark, FiTag, FiBarChart } from "react-icons/fi";
+import { HiOutlineFire } from "react-icons/hi";
+
+export const InfoIcon = styled(FiBookmark)`
+  color: #dff9fb;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+`;
+
+export const TagIcon = styled(FiTag)`
+  color: #f0932b;
+  width: 23px;
+  height: 23px;
+  margin-right: 4px;
+`;
+
+export const BarIcon = styled(FiBarChart)`
+  color: #f72585;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+`;
+
+export const FireIcon = styled(HiOutlineFire)`
+  color: #f9ca24;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+`;
 
 export const Card = styled.div`
   & + div {
-    margin-top: 24px;
+    margin-top: 28px;
   }
 `;
 
@@ -18,6 +48,8 @@ export const Title = styled.div`
     font-size: 18px;
     font-weight: 500;
     color: var(--text);
+    display: flex;
+    margin-bottom: 4px;
   }
 
   button {
@@ -46,7 +78,23 @@ export const CardInfo = styled.div`
   margin-bottom: 14px;
   p {
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
   }
+
+  span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+`;
+
+export const ProgressBox = styled.div`
+  width: 100%;
+  height: 10px;
+  display: flex;
+  align-items: center;
 `;
 
 export const ProgressBar = styled.div`
