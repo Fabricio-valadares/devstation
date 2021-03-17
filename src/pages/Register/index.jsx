@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 const Register = () => {
   return (
     <motion.div
-      initial={{ translateX: "100%" }}
-      animate={{ translateX: "0%" }}
-      // exit={{ translateX: "50%" }}
+      initial={{ translateY: "-100%" }}
+      animate={{ translateY: "0%" }}
       transition={{ duration: 0.7 }}
     >
       <RegisterPage>
