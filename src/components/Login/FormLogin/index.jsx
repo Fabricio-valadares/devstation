@@ -4,6 +4,7 @@ import {
   DivRegister,
   PStyle,
   ButtonStyled,
+  RegisterIcon,
   BsCodeStyled,
 } from "./styled";
 import { FormHelperText, InputBase } from "@material-ui/core";
@@ -113,7 +114,10 @@ const FormLogin = () => {
           {!viewIcon ? "Entrar" : <BsCodeStyled size={27} />}
         </ButtonStyled>
         <DivRegister>
-          <PStyle onClick={() => history.push("/register")}>Registra-se</PStyle>
+          <RegisterIcon />
+          <PStyle onClick={() => history.push("/register")}>
+            Não está registrado? Entra aqui!
+          </PStyle>
         </DivRegister>
       </FormStyled>
     </Container>

@@ -10,9 +10,12 @@ import {
   ProgressBar,
   GoalsHeader,
   PlusIcon,
+  InfoIcon,
+  BarIcon,
+  FireIcon,
+  ProgressBox,
 } from "./styled";
 
-import { GiStairsGoal } from "react-icons/gi";
 import api from "../../../../services";
 import Modal from "../../../Modal/index";
 import EditGoal from "./EditGoal";
@@ -90,19 +93,25 @@ const GroupCardGoals = () => {
           goals.map((goal, index) => (
             <GoalDiv key={index}>
               <div>
-                <p>{goal.title}</p>
+                <p>
+                  <InfoIcon />
+                  {goal.title}
+                </p>
                 <Button onClick={() => handleClick(goal)}>
                   <EditIcon />
                 </Button>
               </div>
               <p>
-                <GiStairsGoal /> {goal.difficulty}
+                <BarIcon /> {goal.difficulty}
               </p>
-              <ProgressBar
-                progress={
-                  goal.how_much_achieved > 100 ? 100 : goal.how_much_achieved
-                }
-              />
+              <ProgressBox>
+                <FireIcon />
+                <ProgressBar
+                  progress={
+                    goal.how_much_achieved > 100 ? 100 : goal.how_much_achieved
+                  }
+                />
+              </ProgressBox>
             </GoalDiv>
           ))
         ) : (

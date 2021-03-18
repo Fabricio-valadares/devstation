@@ -1,4 +1,5 @@
 import { FaEdit } from "react-icons/fa";
+import { FiInfo, FiTag } from "react-icons/fi";
 import styled from "styled-components";
 
 export const Main = styled.div`
@@ -17,6 +18,12 @@ export const Main = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+  }
+
+  div h3#category {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
   }
 
   div h3#category,
@@ -38,9 +45,28 @@ export const Margin = styled.div`
 export const GroupName = styled.div`
   display: flex;
   align-items: center;
+
+  h3 {
+    display: flex;
+    align-items: center;
+  }
   h4 {
     color: var(--text);
   }
+`;
+
+export const GroupIcon = styled(FiInfo)`
+  width: 24px;
+  height: 24px;
+  color: #dff9fb;
+  margin-right: 4px;
+`;
+
+export const CategoryIcon = styled(FiTag)`
+  color: #f0932b;
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
 `;
 
 export const Title = styled.div`
@@ -53,6 +79,7 @@ export const Title = styled.div`
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--secondary);
+    margin-bottom: 24px;
   }
 `;
 
@@ -76,6 +103,21 @@ export const CardUsers = styled.div`
 
   transition: 0.3s;
   border-radius: 3%;
+
+  figure {
+    position: relative;
+    &:after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background-color: var(--green-bar);
+    }
+  }
 
   figure img {
     width: 3.6rem;
@@ -103,6 +145,7 @@ export const UserCardDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 14px;
   @media (max-width: 1000px) {
     font-size: 0.8rem;
   }

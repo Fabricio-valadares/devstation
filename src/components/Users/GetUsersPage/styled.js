@@ -12,6 +12,16 @@ export const UsersContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  h1 {
+    color: #f72585;
+    font-size: 24px;
+    font-weight: bold;
+
+    @media (max-width: 990px) {
+      font-size: 20px;
+    }
+  }
+
   @media (min-width: 700px) {
     justify-content: flex-start;
     width: 76%;
@@ -57,7 +67,12 @@ export const UserContent = styled.div`
   }
 `;
 
-export const DivPname = styled.div``;
+export const DivPname = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
 
 export const Pmail = styled.div`
   margin-top: 5px;
@@ -92,6 +107,11 @@ export const DivHeader = styled.div`
     align-items: center;
     margin-left: 20px;
     width: 60px;
+
+    p {
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 
   div#searchGroup {
@@ -105,7 +125,7 @@ export const DivHeader = styled.div`
     border-radius: 5px 0 0 5px;
     background-color: var(--middle-primary);
     color: var(--text);
-    width: 85%;
+    flex: 1;
 
     ::-webkit-input-placeholder {
       color: #eee;
@@ -125,9 +145,9 @@ export const DivHeader = styled.div`
 
 export const DivH1 = styled.div`
   display: flex;
+  align-items: center;
   width: 60%;
   height: 20px;
-  vertical-align: center;
   font-size: 1.25rem;
   color: var(--text);
   margin-bottom: 20px;
@@ -135,7 +155,7 @@ export const DivH1 = styled.div`
 
 export const Card = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
 
   background-color: var(--middle-primary);
@@ -167,7 +187,6 @@ export const Card = styled.div`
 
 export const UserAvatarContainer = styled.div`
   width: 43px;
-  padding: 8px 10px;
   margin-right: 20px;
 `;
 
