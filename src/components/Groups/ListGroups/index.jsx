@@ -1,9 +1,6 @@
 import {
-  Content,
   DivButtonAdd,
-  ContainerCard,
   DivH1,
-  ContaineOne,
   DivHeader,
   UserContent,
   GroupsContainer,
