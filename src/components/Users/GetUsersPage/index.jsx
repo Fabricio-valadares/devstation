@@ -114,7 +114,7 @@ const GetUsersPage = () => {
                           borderRadius: "50%",
                         }}
                       >
-                        <UserAvatar src={UserImage} />
+                        <UserAvatar src={UserImage} draggable="false"/>
                       </UserAvatarContainer>
                       <DivPname>
                         <PnameUser>{user.username}</PnameUser>
