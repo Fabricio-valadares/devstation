@@ -6,7 +6,7 @@ const GetUsers = () => {
   return (
     <Main>
       <Aside />
-      <GetUsersPage></GetUsersPage>
+      <GetUsersPage />
     </Main>
   );
 };

@@ -17,7 +17,6 @@ import {
 } from "./styled";
 
 import { FormHelperText, InputBase } from "@material-ui/core";
-// import RegisterImage from "../../../../assets/register.svg";
 
 import api from "../../../services";
 import { toast } from "react-toastify";

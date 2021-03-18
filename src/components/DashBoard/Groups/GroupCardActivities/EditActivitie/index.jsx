@@ -35,7 +35,6 @@ const EditActivity = ({ activityId, handleClose }) => {
   });
 
   useEffect(() => {
-    //consumindo rota get one activity
     api
       .get(`/activities/${activityId}/`)
       .then((response) => setActivity(response.data))
@@ -46,8 +45,6 @@ const EditActivity = ({ activityId, handleClose }) => {
     if (data.title === "") {
       data.title = activity.title;
     }
-
-    //consumindo a rota update activity
 
     api
       .patch(`/activities/${activityId}/`, data, {
@@ -90,7 +87,7 @@ const EditActivity = ({ activityId, handleClose }) => {
           Authorization: `Bearer  ${JSON.parse(token)}`,
         },
       })
-      .then((response) => {
+      .then(() => {
         toast.dark(`🚀   Atividade deletada!!`, {
           position: "top-right",
           autoClose: 5000,
@@ -102,7 +99,7 @@ const EditActivity = ({ activityId, handleClose }) => {
         });
         handleClose();
       })
-      .catch((e) => {
+      .catch(() => {
         toast.error(`😵 Ocorreu um erro`, {
           position: "top-right",
           autoClose: 5000,

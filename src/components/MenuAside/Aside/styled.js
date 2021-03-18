@@ -189,7 +189,6 @@ export const Navigation = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-around;
-      /* background-color: var(--soft-primary); */
       box-shadow: -10px -10px 16px rgba(255, 255, 255, 0.09),
         10px 10px 16px rgba(0, 0, 0, 0.2);
       transition: all 200ms ease-in;
@@ -226,7 +225,6 @@ export const Navigation = styled.div`
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
-      /* background-color: var(--soft-primary); */
       box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
         6px 6px 16px rgba(0, 0, 0, 0.2);
       transition: all 200ms ease-in;

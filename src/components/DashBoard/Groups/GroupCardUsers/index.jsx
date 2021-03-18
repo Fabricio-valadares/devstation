@@ -6,8 +6,6 @@ import Modal from "../../../Modal";
 
 import EditGroup from "./EditGroup";
 
-// import profilePicture from "../../../../../public/assets/profile-man.svg";
-
 import {
   CardUsers,
   EditIcon,
@@ -42,8 +40,9 @@ const GroupCardUsers = () => {
           setGroup(response.data);
         })
         .catch(() => setGroup({ name: "", category: "", users: [] }));
+    } else {
+      setGroup({ name: "", category: "", users: [] });
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groupId, open]);
 

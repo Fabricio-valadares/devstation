@@ -1,11 +1,5 @@
 import { useHistory } from "react-router-dom";
-// import logoImage from "../../../../assets/favicon.png";
-// import designNotes from "../../../../assets/design-notes.svg";
-// import designTools from "../../../../assets/design-tools.svg";
-// import devWork from "../../../../assets/dev-activity.svg";
-// import kanban from "../../../../assets/kanban.svg";
-// import server from "../../../../assets/server.svg";
-// import versionControl from "../../../../assets/version-control.svg";
+
 import {
   HomeContainer,
   Content,

@@ -82,33 +82,6 @@ export default createGlobalStyle`
       border-radius: 5px;
   }
 
-  /* .MuiPaper-root {
-    background-color: #130F40 !important
-  }
-
-  .MuiAccordionDetails-root {
-    background-color: #fff;
-    display: flex;
-    border-radius: 0 0 3px 3px;
-    margin-top: 5px;
-    padding: 8px 16px 16px;
-  }
-
-  .MuiAccordion-root:before {
-    left: none;
-  }
-
-  .MuiAccordion-root.Mui-expanded {
-    margin: 0 !important;
-  }
-
-  .MuiAccordionDetails-root {
-    justify-content: space-between;
-  }
-
-  .MuiAccordionSummary-content {
-    margin: 7px 0 !important;
-  } */
 
   .makeStyles-container-11 {
     width: 98%;
@@ -128,9 +101,7 @@ export default createGlobalStyle`
 }
 `;
 
-export const StyledContainer = styled(ToastContainer).attrs({
-  // custom props
-})`
+export const StyledContainer = styled(ToastContainer).attrs({})`
   .Toastify__toast--error {
     background-color: #600;
   }

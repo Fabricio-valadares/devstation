@@ -19,7 +19,6 @@ import Modal from "../../Modal";
 import CardUser from "../CardUser";
 import { SkeletonGroups } from "../../Groups/SkeletonGroups";
 import { useHistory } from "react-router";
-// import UserImage from "../../../../assets/user-image.svg";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);

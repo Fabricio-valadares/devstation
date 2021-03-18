@@ -6,10 +6,9 @@ const Home = () => {
     <motion.div
       initial={{ translateY: "-100%" }}
       animate={{ translateY: "0%" }}
-      // exit={{ translateX: "50%" }}
       transition={{ duration: 0.5 }}
     >
-      <Homepage></Homepage>
+      <Homepage />
     </motion.div>
   );
 };

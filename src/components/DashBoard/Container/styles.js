@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Main = styled.div`
   width: 90%;
   height: 100%;
-  //essa linha empurrava todo layout para baixo
   @media (max-width: 899px) {
     margin: 3vh auto;
   }

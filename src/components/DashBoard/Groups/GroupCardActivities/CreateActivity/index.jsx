@@ -32,7 +32,6 @@ const CreateActivity = ({ groupId, handleClose }) => {
     data["group"] = groupId;
     data["realization_time"] = "2021-03-10T15:00:00Z";
 
-    //consumindo a rota create activity
     api
       .post(`/activities/`, data, {
         headers: {

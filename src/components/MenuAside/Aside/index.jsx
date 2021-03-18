@@ -15,7 +15,6 @@ import {
   LinkGroups,
   LinkUsers,
 } from "./styled";
-// import User from "../../../../assets/user-avatar.svg";
 import UpdateUserForm from "../UpdateUserForm";
 import Modal from "../../Modal";
 import { useHistory } from "react-router-dom";

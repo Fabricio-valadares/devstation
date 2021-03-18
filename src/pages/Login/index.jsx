@@ -1,7 +1,6 @@
 import { Container, DivImage, DivForm, Image, ContainerPages } from "./styled";
 import FormLogin from "../../components/Login/FormLogin";
 import { motion } from "framer-motion";
-// import LoginImage from "../../../assets/login.svg";
 
 const Login = () => {
   return (

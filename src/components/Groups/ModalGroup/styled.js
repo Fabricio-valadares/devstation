@@ -47,7 +47,6 @@ export const ButtonStyled = styled.button`
   border-radius: 3px;
   padding: 12px;
   font-size: 15px;
-  /* font-weight: 700; */
   color: #fff;
 `;
 
@@ -55,17 +54,14 @@ export const DivNameCategory = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: red; */
 `;
 
 export const DivDescription = styled.div`
-  /* background-color: blue; */
   width: 100%;
   margin-bottom: 24px;
 `;
 
 export const DivWarning = styled.div`
-  /* background-color: yellow; */
   display: flex;
   justify-content: space-between;
   border-top: 1px solid #30336b;

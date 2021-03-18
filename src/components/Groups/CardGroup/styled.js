@@ -96,7 +96,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginTop: "10px",
     backgroundColor: "var(--middle-primary)",
-    // padding: "4px 8px",
     borderRadius: "8px ",
     display: "flex",
     justifyContent: "space-between",
@@ -113,7 +112,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   heading: {
     display: "flex",
-    // flexDirection: "column",
     padding: "10px",
     color: "white",
     fontSize: theme.typography.pxToRem(15),

@@ -92,7 +92,7 @@ const FormLogin = () => {
             name="username"
             inputRef={register}
             error={!!errors.username}
-            placeholder="User"
+            placeholder="Usuario"
             variant="outlined"
           />
           <FormHelperText className={classes.error}>
@@ -104,7 +104,7 @@ const FormLogin = () => {
             type="password"
             inputRef={register}
             error={!!errors.password}
-            placeholder="Password"
+            placeholder="Senha"
             variant="outlined"
           />
           <FormHelperText className={classes.error}>

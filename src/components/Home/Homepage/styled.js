@@ -260,7 +260,6 @@ export const Button = styled.button`
   }
 `;
 
-// imagens A
 export const BikeImage = styled.img`
   margin-top: 8px;
   width: 150px;
@@ -282,7 +281,6 @@ export const StretchImage = styled.img`
   border: none;
 `;
 
-// imagens B
 export const WorkoutImage = styled.img`
   margin-left: 0px;
   margin-top: 32px;
