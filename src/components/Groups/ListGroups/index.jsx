@@ -43,8 +43,10 @@ const ListGroups = () => {
 
   useEffect(() => {
     if (next) {
-      dispatch(groupsThunks(`${next}`));
-      setGroupsData([...groupsData, ...results]);
+      setTimeout(() => {
+        dispatch(groupsThunks(`${next}`));
+        setGroupsData([...groupsData, ...results]);
+      }, 1000);
     } else {
       if (results) {
         setTimeout(() => {
