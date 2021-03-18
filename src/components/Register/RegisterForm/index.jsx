@@ -135,7 +135,7 @@ const RegisterForm = () => {
             Já tem uma conta? Faça o login
           </StyledSpan>
         </FormContainer>
-        <Img src={RegisterImage} alt="Register" />
+        <Img src={RegisterImage} alt="Register" draggable="false"/>
       </RegisterCard>
     </>
   );
