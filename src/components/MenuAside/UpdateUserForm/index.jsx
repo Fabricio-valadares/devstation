@@ -96,7 +96,7 @@ const UpdateUserForm = ({ close }) => {
 
   return (
     <Main>
-      <h1>Atualizar username</h1>
+      <h1>Atualizar nome de usuario</h1>
 
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>

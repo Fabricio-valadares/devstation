@@ -71,7 +71,7 @@ const CreateGoal = ({ groupId, handleClose }) => {
 
   return (
     <Main>
-      <h1>Criar Goal</h1>
+      <h1>Criar objetivo</h1>
 
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>
