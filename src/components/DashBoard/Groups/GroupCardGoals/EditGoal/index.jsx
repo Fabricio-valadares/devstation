@@ -128,7 +128,7 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
 
   return (
     <Main>
-      <h1>Editar Goal</h1>
+      <h1>Editar Objetivo</h1>
       {goal ? (
         <InputsContainer onSubmit={handleSubmit(handleForm)}>
           <InputBox>
