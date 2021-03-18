@@ -73,7 +73,7 @@ export default createGlobalStyle`
       border-radius: 5px;
   }
 
-  .MuiPaper-root {
+  /* .MuiPaper-root {
     background-color: #130F40 !important
   }
 
@@ -99,7 +99,14 @@ export default createGlobalStyle`
 
   .MuiAccordionSummary-content {
     margin: 7px 0 !important;
-  }
+  } */
+
+  .makeStyles-container-11 {
+    width: 98%;
+    display: flex;
+    border-bottom: none;
+    justify-content: center;
+}
 
 .MuiTypography-body1 {
     display: flex;

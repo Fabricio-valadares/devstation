@@ -6,6 +6,8 @@ import {
   ButtonStyled,
   RegisterIcon,
   BsCodeStyled,
+  TitleStyled,
+  ContainerMain,
 } from "./styled";
 import { FormHelperText, InputBase } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -80,47 +82,51 @@ const FormLogin = () => {
   }, [error, valid]);
 
   return (
-    <Container>
-      <FormStyled onSubmit={handleSubmit(dataForm)}>
-        <InputBase
-          className={classes.root}
-          name="username"
-          inputRef={register}
-          error={!!errors.username}
-          placeholder="User"
-          variant="outlined"
-        />
-        <FormHelperText className={classes.error}>
-          {errors.username?.message}
-        </FormHelperText>
-        <InputBase
-          className={classes.root}
-          name="password"
-          type="password"
-          inputRef={register}
-          error={!!errors.password}
-          placeholder="Password"
-          variant="outlined"
-        />
-        <FormHelperText className={classes.error}>
-          {errors.password?.message}
-        </FormHelperText>
-        <ButtonStyled
-          size="large"
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          {!viewIcon ? "Entrar" : <BsCodeStyled size={27} />}
-        </ButtonStyled>
-        <DivRegister>
-          <RegisterIcon  />
-          <PStyle onClick={() => history.push("/register")} >
-            Não está registrado? Entra aqui!
-          </PStyle>
-        </DivRegister>
-      </FormStyled>
-    </Container>
+    <ContainerMain>
+      <TitleStyled>Faça seu login</TitleStyled>
+
+      <Container>
+        <FormStyled onSubmit={handleSubmit(dataForm)}>
+          <InputBase
+            className={classes.root}
+            name="username"
+            inputRef={register}
+            error={!!errors.username}
+            placeholder="User"
+            variant="outlined"
+          />
+          <FormHelperText className={classes.error}>
+            {errors.username?.message}
+          </FormHelperText>
+          <InputBase
+            className={classes.root}
+            name="password"
+            type="password"
+            inputRef={register}
+            error={!!errors.password}
+            placeholder="Password"
+            variant="outlined"
+          />
+          <FormHelperText className={classes.error}>
+            {errors.password?.message}
+          </FormHelperText>
+          <ButtonStyled
+            size="large"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            {!viewIcon ? "Entrar" : <BsCodeStyled size={27} />}
+          </ButtonStyled>
+          <DivRegister>
+            <RegisterIcon />
+            <PStyle onClick={() => history.push("/register")}>
+              Não está registrado? Entra aqui!
+            </PStyle>
+          </DivRegister>
+        </FormStyled>
+      </Container>
+    </ContainerMain>
   );
 };
 

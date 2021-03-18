@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useStyles } from "./styled";
+import { useStyles, SpanName, SpanCategory } from "./styled";
+import Typography from "@material-ui/core/Typography";
 import { FaRegEye } from "react-icons/fa";
 import { FiGitBranch } from "react-icons/fi";
 import Modal from "../../Modal";
@@ -39,8 +40,8 @@ const CardGroup = ({ groupsData, valueInput }) => {
                 </span>
 
                 <div id="groupInfo">
-                  <span id="nameGroups">{ele.name}</span>{" "}
-                  <span>Categoria: {ele.category}</span>{" "}
+                  <SpanName id="nameGroups">{ele.name}</SpanName>
+                  <SpanCategory>Categoria: {ele.category}</SpanCategory>{" "}
                 </div>
               </div>
               <div id="Icon">

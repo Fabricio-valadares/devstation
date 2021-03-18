@@ -8,7 +8,6 @@ const Login = () => {
     <motion.div
       initial={{ translateY: "-100%" }}
       animate={{ translateY: "0%" }}
-      // exit={{ translateX: "50%" }}
       transition={{ duration: 0.7 }}
     >
       <ContainerPages>

@@ -119,7 +119,7 @@ const ModalCreateGroup = ({ groupsData, setGroupsData, close }) => {
               <IconBox>
                 <SaveIcon />
               </IconBox>
-              <SaveButton type="submit">Salvar hábito</SaveButton>
+              <SaveButton type="submit">Criar Grupo</SaveButton>
             </InputBox>
           )}
         </InputsContainer>
