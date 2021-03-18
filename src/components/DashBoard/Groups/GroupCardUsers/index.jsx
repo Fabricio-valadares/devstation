@@ -35,12 +35,14 @@ const GroupCardUsers = () => {
   const groupId = JSON.parse(localStorage.getItem("groupId"));
 
   useEffect(() => {
-    api
-      .get(`groups/${groupId}/`)
-      .then((response) => {
-        setGroup(response.data);
-      })
-      .catch(() => setGroup({ name: "", category: "", users: [] }));
+    if (groupId) {
+      api
+        .get(`groups/${groupId}/`)
+        .then((response) => {
+          setGroup(response.data);
+        })
+        .catch(() => setGroup({ name: "", category: "", users: [] }));
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groupId, open]);

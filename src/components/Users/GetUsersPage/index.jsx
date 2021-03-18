@@ -44,13 +44,11 @@ const GetUsersPage = () => {
       setTimeout(() => {
         dispatch(getUsersThunk(next));
         setUsers([...users, ...usersList]);
-        console.log("next", users.length);
       }, 1000);
     } else {
       if (usersList) {
         setTimeout(() => {
           setUsers([...users, ...usersList]);
-          console.log("Ultimo", users.length + usersList.length);
         }, 1000);
       }
     }
@@ -114,7 +112,7 @@ const GetUsersPage = () => {
                           borderRadius: "50%",
                         }}
                       >
-                        <UserAvatar src={UserImage} />
+                        <UserAvatar src={UserImage} draggable="false"/>
                       </UserAvatarContainer>
                       <DivPname>
                         <PnameUser>{user.username}</PnameUser>

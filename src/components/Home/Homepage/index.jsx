@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import logoImage from "../../../assets/logo.svg";
+import logoImage from "../../../assets/favicon.png";
 import designNotes from "../../../assets/design-notes.svg";
 import designTools from "../../../assets/design-tools.svg";
 import devWork from "../../../assets/dev-activity.svg";
@@ -46,7 +46,7 @@ const Homepage = () => {
             <Logo>
               <LogoImage src={logoImage} draggable="false" />
             </Logo>
-            <Title>Generic Name</Title>
+            <Title>Dev Station</Title>
           </DivTitle>
 
           <DivTextPrincipal>

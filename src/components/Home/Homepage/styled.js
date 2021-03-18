@@ -16,6 +16,7 @@ export const HomeContainer = styled.div`
     linear-gradient(0deg, var(--text), var(--text));
 
   @media (max-width: 1000px) {
+    padding-top: 2rem;
   }
 `;
 
@@ -144,8 +145,8 @@ export const Logo = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  width: 75px;
-  height: 72px;
+  width: 100px;
+  height: 100px;
   border: none;
 
   @media (min-width: 1920px) {

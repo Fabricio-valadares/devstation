@@ -4,6 +4,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaUserFriends } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { FiSettings } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export const Menu = styled.aside`
   width: 100%;
@@ -154,6 +155,25 @@ export const MobileDiv = styled.div`
   }
 `;
 
+export const LinkDashBoard = styled(Link)`
+  background-color: ${(props) =>
+    props.location === "/dashboard" ? "#30336B" : "transparent"};
+  width: 100%;
+  height: 100%;
+`;
+export const LinkGroups = styled(Link)`
+  background-color: ${(props) =>
+    props.location === "/groups" ? "#30336B" : "transparent"};
+  width: 100%;
+  height: 100%;
+`;
+export const LinkUsers = styled(Link)`
+  background-color: ${(props) =>
+    props.location === "/users" ? "#30336B" : "transparent"};
+  width: 100%;
+  height: 100%;
+`;
+
 export const Navigation = styled.div`
   display: none;
 
@@ -169,7 +189,7 @@ export const Navigation = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-around;
-      background-color: var(--soft-primary);
+      /* background-color: var(--soft-primary); */
       box-shadow: -10px -10px 16px rgba(255, 255, 255, 0.09),
         10px 10px 16px rgba(0, 0, 0, 0.2);
       transition: all 200ms ease-in;
@@ -206,7 +226,7 @@ export const Navigation = styled.div`
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
-      background-color: var(--soft-primary);
+      /* background-color: var(--soft-primary); */
       box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
         6px 6px 16px rgba(0, 0, 0, 0.2);
       transition: all 200ms ease-in;

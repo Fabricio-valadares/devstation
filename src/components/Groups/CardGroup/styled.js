@@ -115,6 +115,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     // flexDirection: "column",
     padding: "10px",
+    color: "white",
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
 
@@ -137,6 +138,7 @@ export const useStyles = makeStyles((theme) => ({
     "& div#groupInfo": {
       display: "flex",
       flexDirection: "column",
+      justifyContent: "space-evenly",
     },
     "& > img": {
       marginRight: "20px",

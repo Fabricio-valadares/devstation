@@ -10,7 +10,8 @@ const CardGroup = ({ groupsData, valueInput }) => {
   const classes = useStyles();
 
   const [dataGroup, setDataGroup] = useState({});
-  const [open, setOpen] = useState();
+
+  const [open, setOpen] = useState(false);
 
   const handleClick = (ele) => {
     setDataGroup(ele);
@@ -33,15 +34,16 @@ const CardGroup = ({ groupsData, valueInput }) => {
         .map((ele, index) => (
           <div key={index} className={classes.container}>
             <div className={classes.root}>
-              <Typography className={classes.heading}>
+              <div className={classes.heading}>
                 <span id="groupImage">
                   <FiGitBranch />
                 </span>
+
                 <div id="groupInfo">
                   <SpanName id="nameGroups">{ele.name}</SpanName>
                   <SpanCategory>Categoria: {ele.category}</SpanCategory>{" "}
                 </div>
-              </Typography>
+              </div>
               <div id="Icon">
                 <FaRegEye
                   style={{ cursor: "pointer", color: "#fff" }}
