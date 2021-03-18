@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { setUserThunk } from "../../store/modules/User/thunks";
-import { motion } from "framer-motion";
 
 const DashBoard = () => {
   const token = localStorage.getItem("token");

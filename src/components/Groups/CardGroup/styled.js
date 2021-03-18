@@ -80,7 +80,12 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "8px ",
     display: "flex",
     justifyContent: "space-between",
-    "& > div#Icon": {},
+    "& div#Icon": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      marginRight: "24px",
+    },
   },
   container: {
     width: "95%",

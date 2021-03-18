@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  useStyles,
-  Container,
-  ContainerTitle,
-  TitleMobile,
-  FaRegEyeStyled,
-  DivIcon,
-} from "./styled";
+import { useStyles } from "./styled";
 import Typography from "@material-ui/core/Typography";
 import { FaRegEye } from "react-icons/fa";
 import { FiGitBranch } from "react-icons/fi";
