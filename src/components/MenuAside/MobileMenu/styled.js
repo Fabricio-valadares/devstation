@@ -86,7 +86,7 @@ export const StyledMenuItem = withStyles((theme) => ({
 export const LinkDashBoard = styled(Link)`
   li {
     background-color: ${(props) =>
-      props.location === "/dashboard" ? "#30336B" : "transparent"};
+      props.location === "/dashboard" ? "#30336B" : "#130F40"};
   }
 
   width: 100%;
@@ -95,7 +95,7 @@ export const LinkDashBoard = styled(Link)`
 export const LinkGroups = styled(Link)`
   li {
     background-color: ${(props) =>
-      props.location === "/groups" ? "#30336B" : "transparent"};
+      props.location === "/groups" ? "#30336B" : "#130F40"};
   }
   width: 100%;
   height: 100%;
@@ -103,7 +103,7 @@ export const LinkGroups = styled(Link)`
 export const LinkUsers = styled(Link)`
   li {
     background-color: ${(props) =>
-      props.location === "/users" ? "#30336B" : "transparent"};
+      props.location === "/users" ? "#30336B" : "#130F40"};
   }
   width: 100%;
   height: 100%;

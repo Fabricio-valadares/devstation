@@ -28,6 +28,15 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  .MuiList-padding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+  .MuiList-root {
+    background-color: #30336B;
+  }
+
   .MuiInputBase-input input:-internal-autofill-selected {
     appearance: menulist-button;
     background-color: white!important;

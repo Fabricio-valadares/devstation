@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useStyles, SpanName, SpanCategory } from "./styled";
-import Typography from "@material-ui/core/Typography";
 import { FaRegEye } from "react-icons/fa";
 import { FiGitBranch } from "react-icons/fi";
 import Modal from "../../Modal";
