@@ -77,6 +77,7 @@ export const DivTextPrincipal = styled.div`
 export const DivButton = styled.div`
   width: 100%;
   height: auto;
+  margin: 0 auto;
 `;
 
 export const ContainerImageOne = styled.div`
@@ -208,6 +209,7 @@ export const Description = styled.div`
 `;
 
 export const Button = styled.button`
+  width: 24vw;
   height: 8vh;
   padding: 0 21px;
 
@@ -231,6 +233,10 @@ export const Button = styled.button`
 
   @media (max-width: 1920px) {
     margin-top: 6vh;
+  }
+
+  @media (max-width: 800px) {
+    width: 280px;
   }
 `;
 

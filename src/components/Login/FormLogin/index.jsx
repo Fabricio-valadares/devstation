@@ -4,6 +4,7 @@ import {
   DivRegister,
   PStyle,
   ButtonStyled,
+  RegisterIcon,
 } from "./styled";
 import { FormHelperText, InputBase } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -108,7 +109,10 @@ const FormLogin = () => {
           Entrar
         </ButtonStyled>
         <DivRegister>
-          <PStyle onClick={() => history.push("/register")}>Registra-se</PStyle>
+          <RegisterIcon />
+          <PStyle onClick={() => history.push("/register")}>
+            Não está registrado? Entra aqui!
+          </PStyle>
         </DivRegister>
       </FormStyled>
     </Container>

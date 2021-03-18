@@ -9,9 +9,13 @@ import {
   RegisterCard,
   StyledSpan,
   useStyles,
+  ArrowIcon,
+  ButtonDiv,
+  Button,
 } from "./styled";
 
-import { Button, FormHelperText, InputBase } from "@material-ui/core";
+import { FormHelperText, InputBase } from "@material-ui/core";
+import RegisterImage from "../../../assets/register.svg";
 
 import api from "../../../services";
 import { toast } from "react-toastify";
@@ -112,16 +116,15 @@ const RegisterForm = () => {
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.email?.message}
           </FormHelperText>
-          <div>
-            <Button type="submit" variant="contained" color="primary">
-              Register
-            </Button>
-          </div>
+          <ButtonDiv>
+            <Button type="submit">Registrar-se</Button>
+          </ButtonDiv>
           <StyledSpan onClick={() => history.push("/login")}>
-            Faça login
+            <ArrowIcon />
+            Já tem uma conta? Faça o login
           </StyledSpan>
         </FormContainer>
-        <Img src={"./assets/register.svg"} alt="Register" />
+        <Img src={RegisterImage} alt="Register" />
       </RegisterCard>
     </>
   );
