@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
-import logoImage from "../../../assets/favicon.png";
-import designNotes from "../../../assets/design-notes.svg";
-import designTools from "../../../assets/design-tools.svg";
-import devWork from "../../../assets/dev-activity.svg";
-import kanban from "../../../assets/kanban.svg";
-import server from "../../../assets/server.svg";
-import versionControl from "../../../assets/version-control.svg";
+// import logoImage from "../../../../assets/favicon.png";
+// import designNotes from "../../../../assets/design-notes.svg";
+// import designTools from "../../../../assets/design-tools.svg";
+// import devWork from "../../../../assets/dev-activity.svg";
+// import kanban from "../../../../assets/kanban.svg";
+// import server from "../../../../assets/server.svg";
+// import versionControl from "../../../../assets/version-control.svg";
 import {
   HomeContainer,
   Content,
@@ -44,7 +44,7 @@ const Homepage = () => {
         <DivContent>
           <DivTitle>
             <Logo>
-              <LogoImage src={logoImage} draggable="false" />
+              <LogoImage src="./assets/favicon.png" draggable="false" />
             </Logo>
             <Title>Dev Station</Title>
           </DivTitle>
@@ -66,16 +66,16 @@ const Homepage = () => {
       </Content>
       <ContainerImageOne>
         <ImagesA>
-          <BikeImage src={designNotes} draggable="false" />
-          <RunImage src={designTools} draggable="false" />
-          <StretchImage src={devWork} draggable="false" />
+          <BikeImage src="./assets/design-notes.svg" draggable="false" />
+          <RunImage src="./assets/design-tools.svg" draggable="false" />
+          <StretchImage src="./assets/dev-activity.svg" draggable="false" />
         </ImagesA>
       </ContainerImageOne>
       <ContainerImagemTwo>
         <ImagesB>
-          <WorkoutImage src={versionControl} draggable="false" />
-          <YogaImage src={server} draggable="false" />
-          <StyleImage src={kanban} draggable="false" />
+          <WorkoutImage src="./assets/version-control.svg" draggable="false" />
+          <YogaImage src="./assets/server.svg" draggable="false" />
+          <StyleImage src="./assets/kanban.svg" draggable="false" />
         </ImagesB>
       </ContainerImagemTwo>
     </HomeContainer>
