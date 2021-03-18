@@ -28,6 +28,13 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  .MuiInputBase-input input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: white!important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important;
+}
+
 
 .MuiSkeleton-text, .MuiSkeleton-circle {
   background-color: #cdcdcd !important;

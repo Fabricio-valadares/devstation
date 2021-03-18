@@ -114,8 +114,8 @@ const FormLogin = () => {
           {!viewIcon ? "Entrar" : <BsCodeStyled size={27} />}
         </ButtonStyled>
         <DivRegister>
-          <RegisterIcon />
-          <PStyle onClick={() => history.push("/register")}>
+          <RegisterIcon  />
+          <PStyle onClick={() => history.push("/register")} >
             Não está registrado? Entra aqui!
           </PStyle>
         </DivRegister>
