@@ -6,7 +6,7 @@ import Modal from "../../../Modal";
 
 import EditGroup from "./EditGroup";
 
-import profilePicture from "../../../../assets/profile-man.svg";
+// import profilePicture from "../../../../../public/assets/profile-man.svg";
 
 import {
   CardUsers,
@@ -104,7 +104,11 @@ const GroupCardUsers = () => {
             group.users.map((user, index) => (
               <UserCardDiv key={index}>
                 <figure>
-                  <img src={profilePicture} alt="Profile" draggable="false" />
+                  <img
+                    src="./assets/profile-man.svg"
+                    alt="Profile"
+                    draggable="false"
+                  />
                 </figure>
                 <UserDiv>
                   <h1>{user.username}</h1>

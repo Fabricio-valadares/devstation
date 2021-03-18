@@ -15,7 +15,7 @@ import {
   LinkGroups,
   LinkUsers,
 } from "./styled";
-import User from "../../../assets/user-avatar.svg";
+// import User from "../../../../assets/user-avatar.svg";
 import UpdateUserForm from "../UpdateUserForm";
 import Modal from "../../Modal";
 import { useHistory } from "react-router-dom";
@@ -75,7 +75,7 @@ const Aside = () => {
             </Modal>
           )}
           <figure>
-            <img src={User} alt="User" draggable="false" />
+            <img src="./assets/user-avatar.svg" alt="User" draggable="false" />
           </figure>
           {user ? (
             <div className="user-info">

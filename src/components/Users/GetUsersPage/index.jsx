@@ -18,7 +18,7 @@ import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import Modal from "../../Modal";
 import CardUser from "../CardUser";
 import { SkeletonGroups } from "../../Groups/SkeletonGroups";
-import UserImage from "../../../assets/user-image.svg";
+// import UserImage from "../../../../assets/user-image.svg";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -112,7 +112,10 @@ const GetUsersPage = () => {
                           borderRadius: "50%",
                         }}
                       >
-                        <UserAvatar src={UserImage} draggable="false"/>
+                        <UserAvatar
+                          src="./assets/user-image.svg"
+                          draggable="false"
+                        />
                       </UserAvatarContainer>
                       <DivPname>
                         <PnameUser>{user.username}</PnameUser>

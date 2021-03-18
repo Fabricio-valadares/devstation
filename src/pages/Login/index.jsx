@@ -1,7 +1,7 @@
 import { Container, DivImage, DivForm, Image, ContainerPages } from "./styled";
 import FormLogin from "../../components/Login/FormLogin";
 import { motion } from "framer-motion";
-import LoginImage from "../../assets/login.svg";
+// import LoginImage from "../../../assets/login.svg";
 
 const Login = () => {
   return (
@@ -13,7 +13,7 @@ const Login = () => {
       <ContainerPages>
         <Container>
           <DivImage>
-            <Image src={LoginImage} draggable="false" />
+            <Image src="./assets/login.svg" draggable="false" />
           </DivImage>
           <DivForm>
             <FormLogin />
