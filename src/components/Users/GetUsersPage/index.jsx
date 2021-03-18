@@ -18,6 +18,7 @@ import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import Modal from "../../Modal";
 import CardUser from "../CardUser";
 import { SkeletonGroups } from "../../Groups/SkeletonGroups";
+import { useHistory } from "react-router";
 // import UserImage from "../../../../assets/user-image.svg";
 
 const GetUsersPage = () => {
@@ -27,6 +28,9 @@ const GetUsersPage = () => {
 
   const [open, setOpen] = useState(false);
 
+  const history = useHistory();
+  const token = JSON.parse(localStorage.getItem("token"));
+
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
   const next = useSelector((state) => state.users.next);
@@ -34,6 +38,9 @@ const GetUsersPage = () => {
   const count = useSelector((state) => state.users.count);
 
   useEffect(() => {
+    if (!token) {
+      history.push("login");
+    }
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

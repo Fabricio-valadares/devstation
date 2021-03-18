@@ -15,11 +15,15 @@ import ModalCreateGroup from "../ModalCreateGroup";
 
 import Modal from "../../Modal";
 import { SkeletonGroups } from "../SkeletonGroups";
+import { useHistory } from "react-router";
 
 const ListGroups = () => {
   const dispatch = useDispatch();
 
   const [valueInput, setValueInput] = useState("");
+
+  const history = useHistory();
+  const token = JSON.parse(localStorage.getItem("token"));
 
   const [open, setOpen] = useState(false);
 
@@ -29,6 +33,9 @@ const ListGroups = () => {
   const next = useSelector((state) => state.groupsReduces.next);
 
   useEffect(() => {
+    if (!token) {
+      history.push("login");
+    }
     setGroupsData([]);
     dispatch(groupsThunks("https://kabit-api.herokuapp.com/groups/"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
