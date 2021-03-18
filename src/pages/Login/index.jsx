@@ -14,7 +14,7 @@ const Login = () => {
       <ContainerPages>
         <Container>
           <DivImage>
-            <Image src={LoginImage} />
+            <Image src={LoginImage} draggable="false" />
           </DivImage>
           <DivForm>
             <FormLogin />
