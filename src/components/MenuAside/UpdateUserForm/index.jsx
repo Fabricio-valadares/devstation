@@ -18,6 +18,8 @@ import {
   SaveIcon,
   CloseButton,
   CloseIcon,
+  DeleteButton,
+  DeleteIcon,
 } from "./styled";
 
 const UpdateUserForm = ({ close }) => {
@@ -52,7 +54,7 @@ const UpdateUserForm = ({ close }) => {
         },
       })
       .then(() => {
-        toast.success("🚀 Nome de usuario alterado !!", {
+        toast.dark("🚀 Nome de usuario alterado !!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -76,6 +78,22 @@ const UpdateUserForm = ({ close }) => {
       });
   };
 
+  const deleteAccount = () => {
+    const id = localStorage.getItem("id");
+
+    api
+      .delete(`/users/${id}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token} `,
+        },
+      })
+      .then((response) => {
+        history.push("/login");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <Main>
       <h1>Atualizar username</h1>
@@ -97,6 +115,12 @@ const UpdateUserForm = ({ close }) => {
             <SaveIcon />
           </IconBox>
           <SaveButton type="submit">Atualizar nome</SaveButton>
+        </InputBox>
+        <InputBox>
+          <IconBox>
+            <DeleteIcon />
+          </IconBox>
+          <DeleteButton onClick={deleteAccount}>Deletar Conta</DeleteButton>
         </InputBox>
       </InputsContainer>
       <CloseButton onClick={close}>

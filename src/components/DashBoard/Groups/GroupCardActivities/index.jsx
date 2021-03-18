@@ -34,7 +34,6 @@ const GroupCardActivities = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    //consumindo rota get activities
     api
       .get(`/activities/?group=${groupId}`, {
         params: { group: groupId },
@@ -42,7 +41,7 @@ const GroupCardActivities = () => {
       .then((response) => {
         setActivities(response.data.results);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => setActivities([]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, groupId]);
 
@@ -79,7 +78,7 @@ const GroupCardActivities = () => {
         )}
       </Modal>
       <ActivitiesHeader>
-        <h3>Activities</h3>
+        <h3>Atividades</h3>
         <button onClick={handleClick}>
           <PlusIcon />
         </button>

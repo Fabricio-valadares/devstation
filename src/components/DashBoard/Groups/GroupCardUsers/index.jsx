@@ -29,20 +29,21 @@ import {
 } from "./SkeletonGroup";
 
 const GroupCardUsers = () => {
-  const [group, setGroup] = useState([]);
+  const [group, setGroup] = useState();
   const [open, setOpen] = useState(false);
 
-  const groupId = localStorage.getItem("groupId");
+  const groupId = JSON.parse(localStorage.getItem("groupId"));
 
   useEffect(() => {
     api
       .get(`groups/${groupId}/`)
-      .then((response) => setGroup(response.data))
-      .catch((e) => console.log(e));
+      .then((response) => {
+        setGroup(response.data);
+      })
+      .catch(() => setGroup({ name: "", category: "", users: [] }));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groupId, open]);
-
-  const { users, name, category } = group;
 
   const handleClick = () => {
     setOpen(true);
@@ -63,26 +64,31 @@ const GroupCardUsers = () => {
             <h4>Seu Grupo</h4>
           </Title>
           <GroupName>
-            {name ? (
+            {group ? (
               <>
-                <h3>
-                  <GroupIcon />
-                  {name}
-                </h3>
-                <Button onClick={handleClick}>
-                  <EditIcon />
-                </Button>
+                {group?.name && (
+                  <>
+                    <h3>{group.name}</h3>
+                    <Button onClick={handleClick}>
+                      <EditIcon />
+                    </Button>
+                  </>
+                )}
               </>
             ) : (
               <SkeletonGroupName />
             )}
           </GroupName>
 
-          {category ? (
+          {group ? (
             <Margin>
-              <h3 id="category">
-                <CategoryIcon /> <span>{category}</span>
-              </h3>
+              {group?.category && (
+                <>
+                  <h3 id="category">
+                    Categoria: <span>{group.category}</span>
+                  </h3>
+                </>
+              )}
             </Margin>
           ) : (
             <SkeletonGroupCategory />
@@ -90,11 +96,11 @@ const GroupCardUsers = () => {
         </div>
 
         <CardUsers>
-          {users ? (
-            users.map((user, index) => (
+          {group ? (
+            group.users.map((user, index) => (
               <UserCardDiv key={index}>
                 <figure>
-                  <img src={profilePicture} alt="Profile" />
+                  <img src={profilePicture} alt="Profile" draggable="false" />
                 </figure>
                 <UserDiv>
                   <h1>{user.username}</h1>

@@ -62,7 +62,7 @@ const EditGroup = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
-        toast.success(`🚀  Grupo editado!!`, {
+        toast.dark(`🚀  Grupo editado!!`, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

@@ -165,6 +165,12 @@ export const Card = styled.div`
 
   div#user {
     margin: 1rem;
+
+    @media (max-width: 700px) {
+      margin: 0.4rem;
+      display: flex;
+      align-items: center;
+    }
   }
 
   @media (min-width: 700px) {
