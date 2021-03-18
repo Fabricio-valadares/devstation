@@ -1,5 +1,6 @@
 import { Menu, MenuItem, withStyles } from "@material-ui/core";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const MobileMenuContainer = styled.div`
   background-color: white;
@@ -74,10 +75,36 @@ export const StyledMenuItem = withStyles((theme) => ({
     },
 
     "&:focus": {
-      backgroundColor: theme.palette.primary.main,
+      // backgroundColor: theme.palette.primary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
       },
     },
   },
 }))(MenuItem);
+
+export const LinkDashBoard = styled(Link)`
+  li {
+    background-color: ${(props) =>
+      props.location === "/dashboard" ? "#30336B" : "transparent"};
+  }
+
+  width: 100%;
+  height: 100%;
+`;
+export const LinkGroups = styled(Link)`
+  li {
+    background-color: ${(props) =>
+      props.location === "/groups" ? "#30336B" : "transparent"};
+  }
+  width: 100%;
+  height: 100%;
+`;
+export const LinkUsers = styled(Link)`
+  li {
+    background-color: ${(props) =>
+      props.location === "/users" ? "#30336B" : "transparent"};
+  }
+  width: 100%;
+  height: 100%;
+`;

@@ -11,6 +11,9 @@ import {
   GroupIcon,
   UsersIcon,
   MobileDiv,
+  LinkDashBoard,
+  LinkGroups,
+  LinkUsers,
 } from "./styled";
 import User from "../../../assets/user-avatar.svg";
 import UpdateUserForm from "../UpdateUserForm";
@@ -40,6 +43,8 @@ const Aside = () => {
     }
   };
 
+  console.log(history.location.pathname);
+
   useEffect(() => {
     getUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,6 +62,7 @@ const Aside = () => {
   const handleClose = () => {
     setUpdateView(false);
   };
+  console.log(history);
 
   return (
     <motion.div
@@ -98,18 +104,30 @@ const Aside = () => {
           <MobileMenu />
         </MobileDiv>
         <Navigation>
-          <Link className="menu-link" to="/dashboard">
+          <LinkDashBoard
+            location={history.location.pathname}
+            className="menu-link"
+            to="/dashboard"
+          >
             <DashIcon />
             <p>Dashboard</p>
-          </Link>
-          <Link className="menu-link" to="/groups">
+          </LinkDashBoard>
+          <LinkGroups
+            location={history.location.pathname}
+            className="menu-link"
+            to="/groups"
+          >
             <GroupIcon />
             <p>Grupos</p>
-          </Link>
-          <Link className="menu-link" to="/users">
+          </LinkGroups>
+          <LinkUsers
+            location={history.location.pathname}
+            className="menu-link"
+            to="/users"
+          >
             <UsersIcon />
             <p>Usuários</p>
-          </Link>
+          </LinkUsers>
         </Navigation>
       </Menu>
     </motion.div>

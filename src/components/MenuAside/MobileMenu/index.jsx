@@ -2,10 +2,16 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import { StyledMenu, StyledMenuItem } from "./styled";
+import {
+  LinkDashBoard,
+  LinkGroups,
+  LinkUsers,
+  StyledMenu,
+  StyledMenuItem,
+} from "./styled";
 import { FiMenu } from "react-icons/fi";
 import { DashIcon, GroupIcon, UsersIcon } from "../Aside/styled";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -13,6 +19,8 @@ export default function CustomizedMenus() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const history = useHistory();
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -36,32 +44,44 @@ export default function CustomizedMenus() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <Link className="menu-link" to="/dashboard">
+        <LinkDashBoard
+          location={history.location.pathname}
+          className="menu-link"
+          to="/dashboard"
+        >
           <StyledMenuItem>
             <ListItemIcon>
               <DashIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard"></ListItemText>
           </StyledMenuItem>
-        </Link>
+        </LinkDashBoard>
 
-        <Link className="menu-link" to="/groups">
+        <LinkGroups
+          location={history.location.pathname}
+          className="menu-link"
+          to="/groups"
+        >
           <StyledMenuItem>
             <ListItemIcon>
               <GroupIcon />
             </ListItemIcon>
             <ListItemText primary="Grupos"></ListItemText>
           </StyledMenuItem>
-        </Link>
+        </LinkGroups>
 
-        <Link className="menu-link" to="/users">
+        <LinkUsers
+          location={history.location.pathname}
+          className="menu-link"
+          to="/users"
+        >
           <StyledMenuItem>
             <ListItemIcon>
               <UsersIcon />
             </ListItemIcon>
             <ListItemText primary="Usuarios"></ListItemText>
           </StyledMenuItem>
-        </Link>
+        </LinkUsers>
       </StyledMenu>
     </div>
   );
