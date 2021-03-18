@@ -1,66 +1,77 @@
 import styled from "styled-components";
 
 export const UsersContainer = styled.div`
-  /* display: block; */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  width: 65vw;
-  height: 93vh;
+  width: 90vw;
+  height: 100vh;
   margin: 4vh auto;
+  padding-bottom: 1rem;
   background-color: var(--dark-primary);
   border-radius: 8px;
   box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
-  /* box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.09),
-    6px 6px 16px rgba(0, 0, 0, 0.2); */
 
-  @media (max-width: 1000px) {
+  h1 {
+    color: #f72585;
+    font-size: 24px;
+    font-weight: bold;
+
+    @media (max-width: 990px) {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 700px) {
+    justify-content: flex-start;
+    width: 76%;
+    height: 93vh;
   }
 `;
 
 export const UserContent = styled.div`
-  /* position: relative; */
-  width: 100%;
+  width: 90%;
+  flex-direction: column;
 
-  /* margin: 10px;
-  padding-left: 35px;
-  padding-right: 30px; */
-  /* background-color: yellow; */
-
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-
-  max-height: 69vh;
-  /* height: 80%; */
   overflow-y: scroll;
+
   ::-webkit-scrollbar {
     border-radius: 50px;
-    /* background-color: 0px 0px 4px 4px rgba(0, 0, 0, 0.50); */
   }
 
-  h1 {
-    top: 0;
-    position: relative;
-    text-align: left;
-    font-size: 1.25rem;
-    width: 30%;
-    background-color: var(--dark-primary);
-    color: var(--text);
-  }
+  @media (min-width: 700px) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
 
-  p {
-    display: block;
-    font-size: 0.7rem;
-    text-align: center;
-    color: var(--text);
+    max-height: 69vh;
+
+    h1 {
+      top: 0;
+      position: relative;
+      text-align: left;
+      font-size: 1.25rem;
+      width: 30%;
+      background-color: var(--dark-primary);
+      color: var(--text);
+    }
+
+    p {
+      display: block;
+      font-size: 0.7rem;
+      text-align: center;
+      color: var(--text);
+    }
   }
 `;
 
 export const DivPname = styled.div`
-  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 `;
 
 export const Pmail = styled.div`
@@ -80,14 +91,8 @@ export const PnameUser = styled.div`
 `;
 
 export const DivHeader = styled.div`
-  /* display: flex; */
   padding: 24px 25px 5px 25px;
   width: 100%;
-  /* height: 20px; */
-
-  /* input {
-    height: 30px;
-  } */
 
   p {
     margin-left: 2px;
@@ -99,8 +104,14 @@ export const DivHeader = styled.div`
   div#dataNumberUser {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-left: 20px;
     width: 60px;
+
+    p {
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 
   div#searchGroup {
@@ -113,7 +124,8 @@ export const DivHeader = styled.div`
     padding: 18px 0 18px 18px;
     border-radius: 5px 0 0 5px;
     background-color: var(--middle-primary);
-    width: 85%;
+    color: var(--text);
+    flex: 1;
 
     ::-webkit-input-placeholder {
       color: #eee;
@@ -133,9 +145,9 @@ export const DivHeader = styled.div`
 
 export const DivH1 = styled.div`
   display: flex;
+  align-items: center;
   width: 60%;
   height: 20px;
-  vertical-align: center;
   font-size: 1.25rem;
   color: var(--text);
   margin-bottom: 20px;
@@ -144,22 +156,37 @@ export const DivH1 = styled.div`
 export const Card = styled.div`
   display: flex;
   align-items: center;
-  /* Rectangle 49 */
-
-  /* height: 15vh; */
-  width: 60.4vw;
-  height: 72px;
-  margin-left: 27px;
-  margin-bottom: 10px;
+  justify-content: space-between;
 
   background-color: var(--middle-primary);
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  margin-bottom: 10px;
+
   border-radius: 5px;
+
+  div#user {
+    margin: 1rem;
+
+    @media (max-width: 700px) {
+      margin: 0.4rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 700px) {
+    align-items: center;
+    width: 95%;
+    height: 72px;
+    margin-left: 27px;
+
+    div#user {
+      display: flex;
+    }
+  }
 `;
 
 export const UserAvatarContainer = styled.div`
   width: 43px;
-  padding: 8px 10px;
   margin-right: 20px;
 `;
 
@@ -171,7 +198,23 @@ export const UserAvatar = styled.img`
 `;
 
 export const ShowIcon = styled.div`
-  width: 80px;
+  display: flex;
+  align-items: center;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  margin-right: 1rem;
+
+  @media (min-width: 700px) {
+    display: block;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
 `;
 
 export const UsersDiv = styled.div`

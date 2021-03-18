@@ -1,6 +1,36 @@
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
+import { FiLogIn } from "react-icons/fi";
+import { BsCode } from "react-icons/bs";
+
+export const BsCodeStyled = styled(BsCode)`
+  animation: rotationIcon 2s linear infinite;
+
+  @keyframes rotationIcon {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export const TitleStyled = styled.h1`
+  margin-top: 4px;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+  font-weight: bold;
+`;
+
+export const ContainerMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -19,15 +49,25 @@ export const FormStyled = styled.form`
 
 export const ButtonStyled = styled(Button)`
   margin-top: 20px;
+  width: 276px;
+  height: 50px;
+  border-radius: 8px;
+`;
+
+export const RegisterIcon = styled(FiLogIn)`
+  color: var(--secondary);
+  margin-right: 4px;
 `;
 
 export const DivRegister = styled.div`
+  display: flex;
+  align-items: center;
   padding-top: 7px;
 `;
 
 export const PStyle = styled.p`
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-left: 3px;
   cursor: pointer;
 

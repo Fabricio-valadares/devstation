@@ -15,6 +15,7 @@ import {
   SaveIcon,
   ErrorIcon,
 } from "../../../CreateHabit/styled";
+import { toast } from "react-toastify";
 
 const CreateActivity = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
@@ -31,7 +32,6 @@ const CreateActivity = ({ groupId, handleClose }) => {
     data["group"] = groupId;
     data["realization_time"] = "2021-03-10T15:00:00Z";
 
-    //consumindo a rota create activity
     api
       .post(`/activities/`, data, {
         headers: {
@@ -39,15 +39,38 @@ const CreateActivity = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Atividade criada!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   return (
     <Main>
       <h1>Criar Atividade</h1>
+
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>
           <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>

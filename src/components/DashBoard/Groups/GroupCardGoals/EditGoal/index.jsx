@@ -21,11 +21,13 @@ import {
   SaveButton,
   SaveIcon,
 } from "../../../EditHabit/styled";
+import { toast } from "react-toastify";
+import { SkeletonForm } from "../../GroupCardUsers/SkeletonGroup";
 
 const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   const token = localStorage.getItem("token");
 
-  const [goal, setGoal] = useState({});
+  const [goal, setGoal] = useState();
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -37,7 +39,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
   });
 
   useEffect(() => {
-    //consumindo rota get one goals
     api
       .get(`/goals/${goalId}/`)
       .then((response) => setGoal(response.data))
@@ -55,8 +56,6 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
       data.how_much_achieved = goal.how_much_achieved;
     }
 
-    //consumindo a rota update goal
-
     api
       .patch(`/goals/${goalId}/`, data, {
         headers: {
@@ -64,14 +63,35 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Objetivo editado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   const handleDelete = () => {
-    //consumindo rota de deletar goals
     api
       .delete(`/goals/${goal.id}/`, {
         headers: {
@@ -79,68 +99,96 @@ const EditGoal = ({ goalId, handleChanged, handleClose }) => {
         },
       })
       .then((response) => {
-        handleChanged();
+        toast.dark(`🚀   Objetivo deletado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
         handleClose();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(e);
+      });
   };
 
   return (
     <Main>
-      <h1>Editar Goal</h1>
-      <InputsContainer onSubmit={handleSubmit(handleForm)}>
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+      <h1>Editar Objetivo</h1>
+      {goal ? (
+        <InputsContainer onSubmit={handleSubmit(handleForm)}>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
 
-          <Input
-            name="title"
-            ref={register}
-            type="text"
-            placeholder={errors.title ? errors.title.message : goal.title}
-          />
-        </InputBox>
+            <Input
+              name="title"
+              ref={register}
+              type="text"
+              placeholder={errors.title ? errors.title.message : goal.title}
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>{errors.category ? <ErrorIcon /> : <BarIcon />}</IconBox>
+          <InputBox>
+            <IconBox>{errors.category ? <ErrorIcon /> : <BarIcon />}</IconBox>
 
-          <Input
-            name="difficulty"
-            ref={register}
-            type="text"
-            placeholder={
-              errors.difficulty ? errors.difficulty.message : goal.difficulty
-            }
-          />
-        </InputBox>
+            <Input
+              name="difficulty"
+              ref={register}
+              type="text"
+              placeholder={
+                errors.difficulty ? errors.difficulty.message : goal.difficulty
+              }
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>{errors.difficulty ? <ErrorIcon /> : <FireIcon />}</IconBox>
-          <Input
-            name="how_much_achieved"
-            ref={register}
-            type="number"
-            placeholder={
-              errors.how_much_achieved
-                ? errors.how_much_achieved.message
-                : goal.how_much_achieved
-            }
-          />
-        </InputBox>
+          <InputBox>
+            <IconBox>
+              {errors.difficulty ? <ErrorIcon /> : <FireIcon />}
+            </IconBox>
+            <Input
+              name="how_much_achieved"
+              ref={register}
+              type="number"
+              placeholder={
+                errors.how_much_achieved
+                  ? errors.how_much_achieved.message
+                  : goal.how_much_achieved
+              }
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>
-            <SaveIcon />
-          </IconBox>
-          <SaveButton type="submit">Atualizar</SaveButton>
-        </InputBox>
-        <InputBox>
-          <IconBox>
-            <DeleteIcon />
-          </IconBox>
-          <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
-        </InputBox>
-      </InputsContainer>
+          <InputBox>
+            <IconBox>
+              <SaveIcon />
+            </IconBox>
+            <SaveButton type="submit">Atualizar</SaveButton>
+          </InputBox>
+          <InputBox>
+            <IconBox>
+              <DeleteIcon />
+            </IconBox>
+            <DeleteButton type="button" onClick={handleDelete}>
+              Deletar
+            </DeleteButton>
+          </InputBox>
+        </InputsContainer>
+      ) : (
+        <SkeletonForm />
+      )}
     </Main>
   );
 };

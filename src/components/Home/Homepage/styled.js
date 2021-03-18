@@ -16,6 +16,7 @@ export const HomeContainer = styled.div`
     linear-gradient(0deg, var(--text), var(--text));
 
   @media (max-width: 1000px) {
+    padding-top: 2rem;
   }
 `;
 
@@ -26,7 +27,12 @@ export const Content = styled.div`
   width: 55vw;
   height: 100vh;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 789px) {
+    width: 80%;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;
 
@@ -36,100 +42,196 @@ export const DivTitle = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 100px;
+
+  @media (max-width: 600px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const DivContent = styled.div`
   width: 395px;
   height: 475px;
+
+  @media (min-width: 1920px) {
+    margin-top: -107px;
+  }
+
+  @media (max-width: 789px) {
+    width: 325px;
+  }
 `;
 
 export const DivTextPrincipal = styled.div`
   width: 100%;
-  height: 305px;
   padding-top: 40px;
+
+  @media (min-width: 1920px) {
+    width: 521px;
+  }
+
+  @media (max-width: 390px) {
+    font-size: 1.8rem;
+    padding: 0 20px;
+  }
 `;
 
 export const DivButton = styled.div`
   width: 100%;
   height: auto;
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const ContainerImageOne = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 789px) {
+    width: 30%;
+  }
+
+  @media (max-width: 600px) {
+    width: 0;
+  }
+`;
+export const ContainerImagemTwo = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 789px) {
+    display: none;
+  }
 `;
 
 export const ImagesA = styled.div`
   width: 160px;
-  height: 100vh;
+  height: 500px;
+
+  @media (min-width: 1920px) {
+    margin-top: -107px;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const ImagesB = styled.div`
   width: 160px;
-  height: 100vh;
+  height: 500px;
   margin-left: 20px;
+
+  @media (min-width: 1920px) {
+    margin-top: -107px;
+  }
 `;
 
 export const Logo = styled.div`
   margin-right: 20px;
-  /* width: 7vw;
-  height: 7vh; */
-  /* margin-left: 15vw;
-  margin-top: 12vh; */
+
+  @media (max-width: 390px) {
+    margin-left: 20px;
+  }
 `;
 
 export const LogoImage = styled.img`
-  width: 75px;
-  height: 72px;
+  width: 100px;
+  height: 100px;
   border: none;
+
+  @media (min-width: 1920px) {
+    width: 120px;
+    height: 120px;
+    margin-left: -26px;
+  }
 `;
 
 export const Title = styled.div`
   width: 48vw;
-  /* height: 3.11vh; */
-  /* margin-left: 22vw;
-  margin-top: -1.5vh; */
-
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 2rem;
 
   color: var(--text);
+
+  @media (min-width: 1920px) {
+    font-size: 2.7rem;
+  }
+
+  @media (max-width: 390px) {
+    width: 65vw;
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 600px) {
+    width: 51vw;
+  }
 `;
 
 export const TextPrincipal = styled.div`
-  /* margin-left: 15vw;
-  margin-top: 6.22vh; */
-
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 2rem;
   line-height: 6vh;
-  /* or 133% */
 
   color: var(--text);
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  @media (min-width: 1920px) {
+    font-size: 2.7rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 600px) {
+    text-align: center;
+    font-size: 1.8rem;
+  }
 `;
 
 export const Description = styled.div`
   margin-top: 25px;
   width: 80%;
   height: 7.5vh;
-  /* margin-left: 15vw;
-  margin-top: 15vh; */
 
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 0.9rem;
-  line-height: 2.5vh;
-  /* or 133% */
+  line-height: 2.8vh;
 
   color: var(--text);
+
+  @media (min-width: 1920px) {
+    font-size: 1.4rem;
+    width: 89%;
+  }
+
+  @media (max-width: 390px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    text-align: center;
+    width: auto;
+  }
 `;
 
 export const Button = styled.button`
-  width: 23vw;
+  width: 24vw;
   height: 8vh;
-  /* margin-left: 15vw;
-  margin-top: 6vh; */
+  padding: 0 21px;
 
   background: var(--secondary);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -143,19 +245,29 @@ export const Button = styled.button`
     background-color: var(--dark-secondary);
     color: pink;
   }
+
+  @media (min-width: 1920px) {
+    margin-top: 6vh;
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 1920px) {
+    margin-top: 6vh;
+  }
+
+  @media (max-width: 800px) {
+    width: 280px;
+  }
 `;
 
-// imagens A
 export const BikeImage = styled.img`
-  /* margin-left: 60px; */
-  margin-top: 55px;
+  margin-top: 8px;
   width: 150px;
   height: 150px;
   border: none;
 `;
 
 export const RunImage = styled.img`
-  /* margin-left: 60px; */
   margin-top: 11px;
   width: 150px;
   height: 150px;
@@ -163,17 +275,15 @@ export const RunImage = styled.img`
 `;
 
 export const StretchImage = styled.img`
-  /* margin-left: 60px; */
   margin-top: 11px;
   width: 150px;
   height: 150px;
   border: none;
 `;
 
-// imagens B
 export const WorkoutImage = styled.img`
   margin-left: 0px;
-  margin-top: 111px;
+  margin-top: 32px;
   width: 150px;
   height: 150px;
   border: none;

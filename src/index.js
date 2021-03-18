@@ -19,9 +19,6 @@ const theme = createMuiTheme({
     },
   },
 });
-// <React.StrictMode>
-// </React.StrictMode>
-// Wesley => removi para parar de dar erro  "FindDom is despreciate"  quando abre o modal
 
 ReactDOM.render(
   <Provider store={store}>

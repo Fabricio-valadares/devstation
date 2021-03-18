@@ -24,6 +24,7 @@ import {
   DeleteButton,
   DeleteIcon,
 } from "./styled";
+import { toast } from "react-toastify";
 
 const EditHabit = ({ close, token, habitId }) => {
   const [habit, setHabit] = useState(async () => {
@@ -36,15 +37,11 @@ const EditHabit = ({ close, token, habitId }) => {
   });
 
   const schema = yup.object().shape({
-    title: yup.string().required("Defina um título"),
-    category: yup.string().required("Defina uma categoria"),
-    difficulty: yup.string().required("Defina uma dificuldade"),
-    frequency: yup.string().required("Defina sua frequência"),
-    how_much_achieved: yup
-      .number()
-      .positive()
-      .integer()
-      .required("Defina quanto já evoluiu nesse hábito"),
+    title: yup.string(),
+    category: yup.string(),
+    difficulty: yup.string(),
+    frequency: yup.string(),
+    how_much_achieved: yup.string().matches(/^[0-9]*$/),
   });
 
   const { register, handleSubmit, errors, reset } = useForm({
@@ -53,7 +50,14 @@ const EditHabit = ({ close, token, habitId }) => {
 
   const handleForm = async (data) => {
     const formData = {
-      ...data,
+      title: data.title === "" ? habit.title : data.title,
+      category: data.category === "" ? habit.category : data.category,
+      difficulty: data.difficulty === "" ? habit.difficulty : data.difficulty,
+      frequency: data.frequency === "" ? habit.frequency : data.frequency,
+      how_much_achieved:
+        data.how_much_achieved === ""
+          ? habit.how_much_achieved
+          : data.how_much_achieved,
       achieved: data.how_much_achieved === 100 ? true : false,
     };
 
@@ -61,9 +65,27 @@ const EditHabit = ({ close, token, habitId }) => {
       await api.patch(`/habits/${habitId}/`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      toast.dark(`🚀   Habito editado!!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       reset();
       close();
     } catch (err) {
+      toast.error(`😵 Sua edição falhou `, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(err);
     }
   };
@@ -73,8 +95,27 @@ const EditHabit = ({ close, token, habitId }) => {
       await api.delete(`/habits/${habitId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      toast.dark(`🚀   Habito deletado!!`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
       close();
     } catch (err) {
+      toast.error(`😵 Habito nao deletado`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(err);
     }
   };
@@ -135,7 +176,7 @@ const EditHabit = ({ close, token, habitId }) => {
           <Input
             name="how_much_achieved"
             ref={register}
-            type="number"
+            type="text"
             placeholder={
               errors.how_much_achieved
                 ? errors.how_much_achieved.message
@@ -153,7 +194,9 @@ const EditHabit = ({ close, token, habitId }) => {
           <IconBox>
             <DeleteIcon />
           </IconBox>
-          <DeleteButton onClick={deleteHabit}>Deletar</DeleteButton>
+          <DeleteButton type="button" onClick={deleteHabit}>
+            Deletar
+          </DeleteButton>
         </InputBox>
       </InputsContainer>
       <CloseButton onClick={close}>

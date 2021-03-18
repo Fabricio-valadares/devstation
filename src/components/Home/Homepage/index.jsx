@@ -1,11 +1,5 @@
 import { useHistory } from "react-router-dom";
-import logoImage from "../../../assets/logo.svg";
-import designNotes from "../../../assets/design-notes.svg";
-import designTools from "../../../assets/design-tools.svg";
-import devWork from "../../../assets/dev-activity.svg";
-import kanban from "../../../assets/kanban.svg";
-import server from "../../../assets/server.svg";
-import versionControl from "../../../assets/version-control.svg";
+
 import {
   HomeContainer,
   Content,
@@ -27,6 +21,8 @@ import {
   DivTextPrincipal,
   DivContent,
   DivButton,
+  ContainerImageOne,
+  ContainerImagemTwo,
 } from "./styled";
 
 const Homepage = () => {
@@ -42,9 +38,9 @@ const Homepage = () => {
         <DivContent>
           <DivTitle>
             <Logo>
-              <LogoImage src={logoImage} />
+              <LogoImage src="./assets/favicon.png" draggable="false" />
             </Logo>
-            <Title>Generic Name</Title>
+            <Title>Dev Station</Title>
           </DivTitle>
 
           <DivTextPrincipal>
@@ -56,23 +52,26 @@ const Homepage = () => {
               Entre na plataforma, defina um conjunto de hábitos, encontre uma
               equipe e realizem suas conquistas
             </Description>
+            <DivButton>
+              <Button onClick={redirectTo}>COMECE A EVOLUIR</Button>
+            </DivButton>
           </DivTextPrincipal>
-
-          <DivButton>
-            <Button onClick={redirectTo}>COMECE A EVOLUIR</Button>
-          </DivButton>
         </DivContent>
       </Content>
-      <ImagesA>
-        <BikeImage src={designNotes} />
-        <RunImage src={designTools} />
-        <StretchImage src={devWork} />
-      </ImagesA>
-      <ImagesB>
-        <WorkoutImage src={versionControl} />
-        <YogaImage src={server} />
-        <StyleImage src={kanban} />
-      </ImagesB>
+      <ContainerImageOne>
+        <ImagesA>
+          <BikeImage src="./assets/design-notes.svg" draggable="false" />
+          <RunImage src="./assets/design-tools.svg" draggable="false" />
+          <StretchImage src="./assets/dev-activity.svg" draggable="false" />
+        </ImagesA>
+      </ContainerImageOne>
+      <ContainerImagemTwo>
+        <ImagesB>
+          <WorkoutImage src="./assets/version-control.svg" draggable="false" />
+          <YogaImage src="./assets/server.svg" draggable="false" />
+          <StyleImage src="./assets/kanban.svg" draggable="false" />
+        </ImagesB>
+      </ContainerImagemTwo>
     </HomeContainer>
   );
 };

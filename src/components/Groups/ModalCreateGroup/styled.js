@@ -1,18 +1,59 @@
 import styled from "styled-components";
-import { FiInfo, FiAlertTriangle, FiFileText, FiTag } from "react-icons/fi";
-import { shade } from "polished";
-import { InputBase } from "@material-ui/core";
+import {
+  FiInfo,
+  FiAlertTriangle,
+  FiFileText,
+  FiTag,
+  FiSave,
+  FiX,
+} from "react-icons/fi";
 
-export const FormStyled = styled.form`
-  /* background-color: red; */
+export const Main = styled.article`
+  width: 30vw;
+  height: auto;
+  background-color: #130f40;
+  border-radius: 8px;
+  color: white;
+  padding: 24px;
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 990px) {
+    width: 320px;
+  }
+
+  h1 {
+    color: #f72585;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+
+    @media (max-width: 990px) {
+      font-size: 20px;
+    }
+  }
+`;
+
+export const InputsContainer = styled.form`
+  width: 100%;
+
+  height: auto;
 `;
 
 export const Message = styled.p`
   color: #1dd1a1;
 `;
 
-export const InputStyled = styled(InputBase)`
-  flex: 1;
+export const InputBox = styled.div`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+`;
+
+export const Input = styled.input`
+  width: 90%;
   height: 40px;
   background-color: #30336b;
   border-radius: 8px;
@@ -22,11 +63,68 @@ export const InputStyled = styled(InputBase)`
   color: white;
 `;
 
-export const Title = styled.div`
-  font-size: 21px;
-  margin: 26px 0;
-  color: #f72585;
-  font-weight: bold;
+export const IconBox = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 8px;
+`;
+
+export const ErrorIcon = styled(FiAlertTriangle)`
+  color: #ff5252;
+  width: 80%;
+  height: 80%;
+`;
+
+export const TagIcon = styled(FiTag)`
+  color: #f0932b;
+  width: 80%;
+  height: 80%;
+`;
+
+export const DescriotionIcon = styled(FiFileText)`
+  color: #e056fd;
+  width: 80%;
+  height: 80%;
+`;
+
+export const InfoIcon = styled(FiInfo)`
+  color: #dff9fb;
+  width: 80%;
+  height: 80%;
+`;
+
+export const SaveIcon = styled(FiSave)`
+  color: #1dd1a1;
+  width: 80%;
+  height: 80%;
+`;
+
+export const CloseIcon = styled(FiX)`
+  color: #ff5252;
+  width: 80%;
+  height: 80%;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #30336b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease-in;
+
+  &:hover {
+    background-color: #f72585;
+  }
 `;
 
 export const SaveButton = styled.button`
@@ -40,54 +138,9 @@ export const SaveButton = styled.button`
   color: white;
   font-weight: bold;
   transition: all 200ms ease-in;
-  background-color: #f72585;
-  margin-top: 12px;
-  width: 204px;
+  border: 2px solid #1dd1a1;
 
   &:hover {
-    background-color: ${shade(0.2, "#f72585")};
+    background-color: #1dd1a1;
   }
-`;
-
-export const InputBox = styled.div`
-  width: 100%;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 24px;
-`;
-
-export const ErrorIcon = styled(FiAlertTriangle)`
-  color: #ff5252;
-  width: 80%;
-  height: 80%;
-`;
-
-export const TagIcon = styled(FiTag)`
-  color: #f72585;
-  width: 80%;
-  height: 80%;
-`;
-
-export const DescriotionIcon = styled(FiFileText)`
-  color: #f72585;
-  width: 80%;
-  height: 80%;
-`;
-
-export const InfoIcon = styled(FiInfo)`
-  color: #f72585;
-  width: 80%;
-  height: 80%;
-`;
-
-export const IconBox = styled.div`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  /* background-color: #30336b; */
-  margin-right: 8px;
 `;

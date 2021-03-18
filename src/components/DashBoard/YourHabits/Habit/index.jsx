@@ -1,21 +1,44 @@
 import React from "react";
 
-import { Card, Title, CardInfo, ProgressBar, EditIcon } from "./styled";
+import {
+  Card,
+  Title,
+  CardInfo,
+  ProgressBar,
+  EditIcon,
+  InfoIcon,
+  BarIcon,
+  TagIcon,
+  FireIcon,
+  ProgressBox,
+} from "./styled";
 
 const Habit = ({ habit, open }) => {
   return (
     <Card>
       <Title>
-        <h4>{habit.title}</h4>
+        <h4>
+          <InfoIcon />
+          {habit.title}
+        </h4>
         <button onClick={() => open(habit.id)}>
           <EditIcon />
         </button>
       </Title>
       <CardInfo>
-        <p>Categoria: {habit.category}</p>
-        <span>Dificuldade: {habit.difficulty}</span>
+        <p>
+          <TagIcon />
+          {habit.category}
+        </p>
+        <span>
+          <BarIcon />
+          {habit.difficulty}
+        </span>
       </CardInfo>
-      <ProgressBar progress={habit.how_much_achieved} />
+      <ProgressBox>
+        <FireIcon />
+        <ProgressBar progress={habit.how_much_achieved} />
+      </ProgressBox>
     </Card>
   );
 };

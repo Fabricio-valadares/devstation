@@ -10,16 +10,20 @@ import {
   ProgressBar,
   GoalsHeader,
   PlusIcon,
+  InfoIcon,
+  BarIcon,
+  FireIcon,
+  ProgressBox,
 } from "./styled";
 
-import { GiStairsGoal } from "react-icons/gi";
 import api from "../../../../services";
 import Modal from "../../../Modal/index";
 import EditGoal from "./EditGoal";
 import CreateGoal from "./CreateGoal";
+import { SkeletonGoals } from "./SkeletonGoals/index";
 
 const GroupCardGoals = () => {
-  const [goals, setGoals] = useState([]);
+  const [goals, setGoals] = useState();
 
   const [editGoal, setEditGoal] = useState(false);
 
@@ -35,14 +39,15 @@ const GroupCardGoals = () => {
   };
 
   useEffect(() => {
-    //consumindo rota get goals
-    api
-      .get(`/goals/?group=${groupId}`)
-      .then((response) => {
-        const results = response.data.results;
-        setGoals(results);
-      })
-      .catch((e) => console.log(e));
+    if (groupId) {
+      api
+        .get(`/goals/?group=${groupId}`)
+        .then((response) => {
+          const results = response.data.results;
+          setGoals(results);
+        })
+        .catch((e) => setGoals([]));
+    }
   }, [open, groupId]);
 
   const handleClick = (goal) => {
@@ -80,31 +85,40 @@ const GroupCardGoals = () => {
         )}
       </Modal>
       <GoalsHeader>
-        <h3>Goals</h3>
+        <h3>Objetivos</h3>
         <button onClick={handleClick}>
           <PlusIcon />
         </button>
       </GoalsHeader>
       <CardGoals>
-        {goals &&
+        {goals ? (
           goals.map((goal, index) => (
             <GoalDiv key={index}>
               <div>
-                <p>{goal.title}</p>
+                <p>
+                  <InfoIcon />
+                  {goal.title}
+                </p>
                 <Button onClick={() => handleClick(goal)}>
                   <EditIcon />
                 </Button>
               </div>
               <p>
-                <GiStairsGoal /> {goal.difficulty}
+                <BarIcon /> {goal.difficulty}
               </p>
-              <ProgressBar
-                progress={
-                  goal.how_much_achieved > 100 ? 100 : goal.how_much_achieved
-                }
-              />
+              <ProgressBox>
+                <FireIcon />
+                <ProgressBar
+                  progress={
+                    goal.how_much_achieved > 100 ? 100 : goal.how_much_achieved
+                  }
+                />
+              </ProgressBox>
             </GoalDiv>
-          ))}
+          ))
+        ) : (
+          <SkeletonGoals />
+        )}
       </CardGoals>
     </Main>
   );

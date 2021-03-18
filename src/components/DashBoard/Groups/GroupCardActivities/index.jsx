@@ -7,41 +7,44 @@ import api from "../../../../services";
 import {
   ActivityDiv,
   CardActivities,
-  WhiteBall,
   ActivitiesHeader,
   PlusIcon,
   Main,
   EditIcon,
   Title,
+  ActivitieIcon,
+  CalendarIcon,
 } from "./styled";
 
 import Modal from "../../../Modal";
 
 import EditActivity from "./EditActivitie";
 import CreateActivity from "./CreateActivity";
+import { SkeletonActivities } from "./SkeletonActivities";
 
 const GroupCardActivities = () => {
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState();
 
   const [activity, setActivity] = useState({});
 
   const [editActivity, setEditActivity] = useState(false);
-  // const [next, setNext] = useState("/activities/");
 
   const groupId = localStorage.getItem("groupId");
 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    //consumindo rota get activities
-    api
-      .get(`/activities/?group=${groupId}`, {
-        params: { group: groupId },
-      })
-      .then((response) => {
-        setActivities(response.data.results);
-      })
-      .catch((e) => console.log(e));
+    if (groupId) {
+      api
+        .get(`/activities/?group=${groupId}`, {
+          params: { group: groupId },
+        })
+        .then((response) => {
+          setActivities(response.data.results);
+        })
+        .catch((e) => setActivities([]));
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, groupId]);
 
@@ -78,18 +81,18 @@ const GroupCardActivities = () => {
         )}
       </Modal>
       <ActivitiesHeader>
-        <h3>Activities</h3>
+        <h3>Atividades</h3>
         <button onClick={handleClick}>
           <PlusIcon />
         </button>
       </ActivitiesHeader>
 
       <CardActivities>
-        {activities &&
+        {activities ? (
           activities.map((activity, index) => (
             <ActivityDiv key={index}>
               <figure>
-                <WhiteBall />
+                <ActivitieIcon />
               </figure>
               <div>
                 <Title>
@@ -99,11 +102,15 @@ const GroupCardActivities = () => {
                   </button>
                 </Title>
                 <p>
+                  <CalendarIcon />
                   {format(new Date(activity.realization_time), "dd/MM/yyy")}
                 </p>
               </div>
             </ActivityDiv>
-          ))}
+          ))
+        ) : (
+          <SkeletonActivities />
+        )}
       </CardActivities>
     </Main>
   );

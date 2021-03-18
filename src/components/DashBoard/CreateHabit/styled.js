@@ -11,7 +11,7 @@ import {
 import { HiOutlineFire } from "react-icons/hi";
 
 export const Main = styled.article`
-  width: 100%;
+  width: 30vw;
   height: auto;
   background-color: #130f40;
   border-radius: 8px;
@@ -20,11 +20,19 @@ export const Main = styled.article`
   z-index: 2;
   position: relative;
 
+  @media (max-width: 990px) {
+    width: 320px;
+  }
+
   h1 {
     color: #f72585;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 24px;
+
+    @media (max-width: 990px) {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -49,36 +57,35 @@ export const IconBox = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  /* background-color: #30336b; */
   margin-right: 8px;
 `;
 
 export const InfoIcon = styled(FiInfo)`
-  color: #f72585;
+  color: #dff9fb;
   width: 80%;
   height: 80%;
 `;
 
 export const TagIcon = styled(FiTag)`
-  color: #f72585;
+  color: #f0932b;
   width: 80%;
   height: 80%;
 `;
 
 export const BarIcon = styled(FiBarChart)`
-  color: #f72585;
+  color: #ff5252;
   width: 80%;
   height: 80%;
 `;
 
 export const FrequencyIcon = styled(FiActivity)`
-  color: #f72585;
+  color: #e056fd;
   width: 80%;
   height: 80%;
 `;
 
 export const FireIcon = styled(HiOutlineFire)`
-  color: #f72585;
+  color: #f9ca24;
   width: 80%;
   height: 80%;
 `;
@@ -102,7 +109,7 @@ export const SaveIcon = styled(FiSave)`
 `;
 
 export const Input = styled.input`
-  flex: 1;
+  width: 90%;
   height: 40px;
   background-color: #30336b;
   border-radius: 8px;

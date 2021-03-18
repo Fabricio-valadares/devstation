@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Habit from "../Habit/index";
-import MyModal from "../../MyModal";
+import Modal from "../../../Modal";
 import CreateHabit from "../../CreateHabit";
 import EditHabit from "../../EditHabit";
 import api from "../../../../services";
@@ -12,12 +12,13 @@ import {
   PlusIcon,
   Habits,
 } from "./styled";
+import { SkeletonHabits } from "../SkeletonHabits";
 
 const UserHabits = ({ user }) => {
   const [createView, setCreateView] = useState(false);
   const [editView, setEditView] = useState(false);
   const [currentHabitId, setCurrentHabitId] = useState({});
-  const [personalHabits, setPersonalHabits] = useState([]);
+  const [personalHabits, setPersonalHabits] = useState();
   const storagedToken = localStorage.getItem("token");
   const token = JSON.parse(storagedToken);
 
@@ -51,18 +52,18 @@ const UserHabits = ({ user }) => {
   return (
     <UserCard>
       {createView && (
-        <MyModal>
+        <Modal open={createView} handleClose={handleCreateClose}>
           <CreateHabit userId={user} close={handleCreateClose} token={token} />
-        </MyModal>
+        </Modal>
       )}
       {editView && (
-        <MyModal>
+        <Modal open={editView} handleClose={handleEditClose}>
           <EditHabit
             close={handleEditClose}
             token={token}
             habitId={currentHabitId}
           />
-        </MyModal>
+        </Modal>
       )}
       <PersonalHabits>
         <HabitsHeader>
@@ -72,14 +73,18 @@ const UserHabits = ({ user }) => {
           </button>
         </HabitsHeader>
         <Habits>
-          {personalHabits.map((habit) => (
-            <Habit
-              key={habit.id}
-              habit={habit}
-              open={handleEditOpen}
-              close={handleEditClose}
-            />
-          ))}
+          {personalHabits ? (
+            personalHabits.map((habit) => (
+              <Habit
+                key={habit.id}
+                habit={habit}
+                open={handleEditOpen}
+                close={handleEditClose}
+              />
+            ))
+          ) : (
+            <SkeletonHabits />
+          )}
         </Habits>
       </PersonalHabits>
     </UserCard>

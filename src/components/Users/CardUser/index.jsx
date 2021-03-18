@@ -1,18 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import userAvatar from "../../../assets/avatardefault.svg";
 import {
   DivCardUser,
   DivDataGroupUser,
   DivUserDataBase,
   DivTitleUser,
   DivTitleGroup,
-  UserAvatar,
-  UserAvatarContainer,
+  InfoIcon,
+  MailIcon,
+  CloseButton,
+  CloseIcon,
+  GroupIcon,
+  TagIcon,
+  DescriptionIcon,
 } from "./styled";
 import { getOneGroupThunk } from "../../../store/modules/get-one-groups/thunks";
 
-const CardUser = ({ user }) => {
+const CardUser = ({ user, close }) => {
   const dispatch = useDispatch();
   let group = useSelector((state) => state.group);
 
@@ -25,16 +29,14 @@ const CardUser = ({ user }) => {
 
   return (
     <DivCardUser>
+      <DivTitleUser>Dados do Usuario</DivTitleUser>
       <DivUserDataBase>
-        <DivTitleUser>Dados do Usuario</DivTitleUser>
         <p>
-          <span style={{ fontWeight: 600, marginRight: "2px", lineHeight: 2 }}>
-            Nome do usuário:
-          </span>{" "}
+          <InfoIcon />
           {user.username}
         </p>
         <p>
-          <span style={{ fontWeight: "600", lineHeight: 2 }}>Email: </span>{" "}
+          <MailIcon />
           {user.email}
         </p>
       </DivUserDataBase>
@@ -44,20 +46,23 @@ const CardUser = ({ user }) => {
           <DivTitleGroup>Dados do Grupo</DivTitleGroup>
           <DivDataGroupUser>
             <p>
-              <span style={{ fontWeight: "600" }}>Name: </span> {group.name}
+              <GroupIcon />
+              {group.name}
             </p>
             <p>
-              <span style={{ fontWeight: "600" }}>Categoria: </span>{" "}
+              <TagIcon />
               {group.category}
             </p>
+            <p>
+              <DescriptionIcon />
+              {group.description}
+            </p>
           </DivDataGroupUser>
-
-          <p>
-            <span style={{ fontWeight: "600" }}>Descrição: </span>{" "}
-            {group.description}
-          </p>
         </>
       )}
+      <CloseButton onClick={close}>
+        <CloseIcon />
+      </CloseButton>
     </DivCardUser>
   );
 };

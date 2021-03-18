@@ -1,31 +1,30 @@
 import { useState } from "react";
+
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import { BsCodeStyled } from "./styled";
 import {
   FormContainer,
   Img,
   RegisterCard,
   StyledSpan,
   useStyles,
+  ArrowIcon,
+  ButtonDiv,
+  Button,
 } from "./styled";
 
-import {
-  Button,
-  FormHelperText,
-  InputBase,
-  TextField,
-} from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
+import { FormHelperText, InputBase } from "@material-ui/core";
 
 import api from "../../../services";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
-  const classes = useStyles();
+  const [viewIcon, setViewIcon] = useState(false);
 
-  const [errorMsg, setErrorMsg] = useState(false);
+  const classes = useStyles();
 
   const history = useHistory();
   const required = "Campo obrigatório";
@@ -48,28 +47,40 @@ const RegisterForm = () => {
   });
 
   const handleForm = (data) => {
+    setViewIcon(true);
+
     api
       .post("/users/", data)
       .then(() => {
+        setViewIcon(false);
+        toast.dark(`🚀 Registro completo, bora fazer login ?`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
         history.push("/login");
       })
       .catch((error) => {
-        setErrorMsg(true);
-        setTimeout(() => {
-          setErrorMsg(false);
-        }, 3000);
-        console.log(error);
+        setViewIcon(false);
+        toast.error(`😵 Seu registro falhou `, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
 
   return (
     <>
-      {errorMsg && (
-        <Alert severity="error">
-          Seu cadastro falhou, verifique os dados e tente novamente.
-        </Alert>
-      )}
       <RegisterCard onSubmit={handleSubmit(handleForm)}>
         <FormContainer>
           <h1>Faça seu cadastro</h1>
@@ -80,10 +91,8 @@ const RegisterForm = () => {
             placeholder="Usuario"
             name="username"
             size="medium"
-            // color="primary"
             inputRef={register}
             error={!!errors.username}
-            // helperText={errors.username?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.username?.message}
@@ -95,10 +104,8 @@ const RegisterForm = () => {
             placeholder="Senha"
             name="password"
             type="password"
-            // color="primary"
             inputRef={register}
             error={!!errors.password}
-            // helperText={errors.password?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.password?.message}
@@ -110,24 +117,24 @@ const RegisterForm = () => {
             placeholder="Email"
             name="email"
             size="medium"
-            // color="primary"
             inputRef={register}
             error={!!errors.email}
-            // helperText={errors.email?.message}
           />
           <FormHelperText className={classes.helper} error={!!errors.email}>
             {errors.email?.message}
           </FormHelperText>
-          <div>
-            <Button type="submit" variant="contained" color="primary">
-              Register
+          <ButtonDiv>
+            <Button type="submit">
+              {!viewIcon ? "Registrar-se" : <BsCodeStyled size={27} />}
             </Button>
-          </div>
+          </ButtonDiv>
+
           <StyledSpan onClick={() => history.push("/login")}>
-            Faça login
+            <ArrowIcon />
+            Já tem uma conta? Faça o login
           </StyledSpan>
         </FormContainer>
-        <Img src={"./assets/register.svg"} alt="Register" />
+        <Img src="./assets/register.svg" alt="Register" draggable="false" />
       </RegisterCard>
     </>
   );

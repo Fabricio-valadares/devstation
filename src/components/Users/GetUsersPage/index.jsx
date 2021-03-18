@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { FcSearch } from "react-icons/fc";
 import { FaUsers, FaSearch, FaRegEye } from "react-icons/fa";
-
-// import { BiShow } from "react-icons/bi";
-// import { FcSearch } from "react-icons/fc";
 import {
   UsersContainer,
   UserAvatarContainer,
@@ -17,40 +13,50 @@ import {
   ShowIcon,
   DivPname,
   DivHeader,
-  UsersDiv,
 } from "./styled";
 import { getUsersThunk } from "../../../store/modules/get-users/thunks";
-import userAvatar from "../../../assets/avatardefault.svg";
 import Modal from "../../Modal";
-import { openModalThunk } from "../../../store/modules/Modal/thunks";
 import CardUser from "../CardUser";
+import { SkeletonGroups } from "../../Groups/SkeletonGroups";
+import { useHistory } from "react-router";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [input, setInput] = useState("");
-  const [number, setNumber] = useState(0);
   const [user, setUser] = useState({});
 
   const [open, setOpen] = useState(false);
 
+  const history = useHistory();
+  const token = JSON.parse(localStorage.getItem("token"));
+
   const dispatch = useDispatch();
   const usersList = useSelector((state) => state.users.results);
-  // const open = useSelector((state) => state.open);
   const next = useSelector((state) => state.users.next);
+  // const previous = useSelector((state) => state.users.previous);
   const count = useSelector((state) => state.users.count);
 
-  console.log(open);
-
   useEffect(() => {
+    if (!token) {
+      history.push("login");
+    }
     dispatch(getUsersThunk("https://kabit-api.herokuapp.com/users/"));
-    setNumber(count);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (next) {
-      dispatch(getUsersThunk(next));
-      setUsers([...users, ...usersList]);
+      setTimeout(() => {
+        dispatch(getUsersThunk(next));
+        setUsers([...users, ...usersList]);
+      }, 1000);
+    } else {
+      if (usersList) {
+        setTimeout(() => {
+          setUsers([...users, ...usersList]);
+        }, 1000);
+      }
     }
     // eslint-disable-next-line
   }, [next]);
@@ -60,7 +66,6 @@ const GetUsersPage = () => {
   };
 
   const handleClick = (user) => {
-    // dispatch(openModalThunk(true));
     setUser(user);
     setOpen(true);
   };
@@ -72,15 +77,15 @@ const GetUsersPage = () => {
   return (
     <>
       <Modal handleClose={handleClose} open={open}>
-        <CardUser user={user} />
+        <CardUser user={user} close={handleClose} />
       </Modal>
       <UsersContainer>
         <DivHeader>
           <DivH1>
             <h1>Usuários</h1>
             <div id="dataNumberUser">
-              <FaUsers />
-              <p>{number && number}</p>
+              <FaUsers color="#f72585" />
+              <p>{count && count}</p>
             </div>
           </DivH1>
           <div id="searchGroup">
@@ -97,7 +102,7 @@ const GetUsersPage = () => {
           </div>
         </DivHeader>
         <UserContent>
-          {usersList &&
+          {users[0] ? (
             users
               .filter((user) =>
                 user.username?.toLowerCase().includes(input.toLowerCase())
@@ -106,13 +111,24 @@ const GetUsersPage = () => {
               .map((user, index) => {
                 return (
                   <Card key={index}>
-                    <UserAvatarContainer>
-                      <UserAvatar src="https://picsum.photos/200/200" />
-                    </UserAvatarContainer>
-                    <DivPname>
-                      <PnameUser>{user.username}</PnameUser>
-                      <Pmail>{user.email}</Pmail>
-                    </DivPname>
+                    <div id="user">
+                      <UserAvatarContainer
+                        style={{
+                          backgroundColor: "#130F40",
+                          borderRadius: "50%",
+                        }}
+                      >
+                        <UserAvatar
+                          src="./assets/user-image.svg"
+                          draggable="false"
+                        />
+                      </UserAvatarContainer>
+                      <DivPname>
+                        <PnameUser>{user.username}</PnameUser>
+                        <Pmail>{user.email}</Pmail>
+                      </DivPname>
+                    </div>
+
                     <ShowIcon>
                       <FaRegEye
                         onClick={() => handleClick(user)}
@@ -123,7 +139,10 @@ const GetUsersPage = () => {
                     </ShowIcon>
                   </Card>
                 );
-              })}
+              })
+          ) : (
+            <SkeletonGroups />
+          )}
         </UserContent>
       </UsersContainer>
     </>

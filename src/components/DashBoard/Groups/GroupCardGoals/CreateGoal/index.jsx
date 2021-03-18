@@ -16,6 +16,7 @@ import {
   InputsContainer,
   Main,
 } from "../../../CreateHabit/styled";
+import { toast } from "react-toastify";
 
 const CreateGoal = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
@@ -30,7 +31,6 @@ const CreateGoal = ({ groupId, handleClose }) => {
   });
 
   const handleForm = (data) => {
-    //consumindo a rota create goal
     data["group"] = groupId;
     data["how_much_achieved"] = 0;
 
@@ -41,15 +41,37 @@ const CreateGoal = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Objetivo criado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   return (
     <Main>
-      <h1>Criar Goal</h1>
+      <h1>Criar objetivo</h1>
 
       <InputsContainer onSubmit={handleSubmit(handleForm)}>
         <InputBox>

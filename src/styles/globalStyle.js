@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 export default createGlobalStyle`
 
@@ -25,6 +27,31 @@ export default createGlobalStyle`
 
     -webkit-font-smoothing: antialiased;
   }
+
+  .MuiList-padding {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+  .MuiList-root {
+    background-color: #30336B;
+  }
+
+  .MuiInputBase-input input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: white!important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important;
+}
+
+
+.MuiSkeleton-text, .MuiSkeleton-circle {
+  background-color: #cdcdcd !important;
+}
+
+.MuiSkeleton-rect {
+  background-color: #30336B !important;
+}
 
   .makeStyles-paper-2:focus {
     outline: none ;
@@ -55,33 +82,13 @@ export default createGlobalStyle`
       border-radius: 5px;
   }
 
-  .MuiPaper-root {
-    background-color: #130F40 !important
-  }
 
-  .MuiAccordionDetails-root {
-    background-color: #fff;
+  .makeStyles-container-11 {
+    width: 98%;
     display: flex;
-    border-radius: 0 0 3px 3px;
-    margin-top: 5px;
-    padding: 8px 16px 16px;
-  }
-
-  .MuiAccordion-root:before {
-    left: none;
-  }
-
-  .MuiAccordion-root.Mui-expanded {
-    margin: 0 !important;
-  }
-
-  .MuiAccordionDetails-root {
-    justify-content: space-between;
-  }
-
-  .MuiAccordionSummary-content {
-    margin: 7px 0 !important;
-  }
+    border-bottom: none;
+    justify-content: center;
+}
 
 .MuiTypography-body1 {
     display: flex;
@@ -92,4 +99,13 @@ export default createGlobalStyle`
     color: #fff;
     border-radius: 5px;
 }
+`;
+
+export const StyledContainer = styled(ToastContainer).attrs({})`
+  .Toastify__toast--error {
+    background-color: #600;
+  }
+  .Toastify__toast--success {
+    background-color: #060;
+  }
 `;

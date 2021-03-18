@@ -35,7 +35,6 @@ export const Container = styled.main`
 
 export const DivImage = styled.section`
   width: 50%;
-  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +46,6 @@ export const DivImage = styled.section`
 
 export const DivForm = styled.section`
   width: 50%;
-  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;

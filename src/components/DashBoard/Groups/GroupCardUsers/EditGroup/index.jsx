@@ -20,22 +20,21 @@ import {
 } from "../../../EditHabit/styled";
 
 import { FiActivity } from "react-icons/fi";
+import { toast } from "react-toastify";
+import { SkeletonForm } from "../SkeletonGroup";
 
 const EditGroup = ({ groupId, handleClose }) => {
   const token = localStorage.getItem("token");
 
-  const [group, setGroup] = useState({});
+  const [group, setGroup] = useState();
 
-  const schema = yup.object().shape({
-    // title: yup.string(),
-  });
+  const schema = yup.object().shape({});
 
   const { handleSubmit, register, errors, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
   useEffect(() => {
-    //consumindo rota get one group
     api
       .get(`/groups/${groupId}/`)
       .then((response) => setGroup(response.data))
@@ -56,7 +55,6 @@ const EditGroup = ({ groupId, handleClose }) => {
       data.category = group.category;
     }
 
-    //consumindo a rota update group
     api
       .patch(`/groups/${groupId}/`, data, {
         headers: {
@@ -64,61 +62,85 @@ const EditGroup = ({ groupId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀  Grupo editado!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        console.log(error);
+      });
   };
 
   return (
     <Main>
       <h1>Editar Grupo</h1>
+      {group ? (
+        <InputsContainer onSubmit={handleSubmit(handleForm)}>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
+            <Input
+              name="name"
+              ref={register}
+              type="text"
+              placeholder={errors.name ? errors.name.message : group.name}
+            />
+          </InputBox>
 
-      <InputsContainer onSubmit={handleSubmit(handleForm)}>
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <InfoIcon />}</IconBox>
-          <Input
-            name="name"
-            ref={register}
-            type="text"
-            placeholder={errors.name ? errors.name.message : group.name}
-          />
-        </InputBox>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <TagIcon />}</IconBox>
+            <Input
+              name="description"
+              ref={register}
+              type="text"
+              placeholder={
+                errors.description
+                  ? errors.description.message
+                  : group.description
+              }
+            />
+          </InputBox>
 
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <TagIcon />}</IconBox>
-          <Input
-            name="description"
-            ref={register}
-            type="text"
-            placeholder={
-              errors.description
-                ? errors.description.message
-                : group.description
-            }
-          />
-        </InputBox>
+          <InputBox>
+            <IconBox>{errors.title ? <ErrorIcon /> : <FiActivity />}</IconBox>
 
-        <InputBox>
-          <IconBox>{errors.title ? <ErrorIcon /> : <FiActivity />}</IconBox>
+            <Input
+              name="category"
+              ref={register}
+              type="text"
+              placeholder={
+                errors.category ? errors.category.message : group.category
+              }
+            />
+          </InputBox>
 
-          <Input
-            name="category"
-            ref={register}
-            type="text"
-            placeholder={
-              errors.category ? errors.category.message : group.category
-            }
-          />
-        </InputBox>
-
-        <InputBox>
-          <IconBox>
-            <SaveIcon />
-          </IconBox>
-          <SaveButton type="submit">Atualizar</SaveButton>
-        </InputBox>
-      </InputsContainer>
+          <InputBox>
+            <IconBox>
+              <SaveIcon />
+            </IconBox>
+            <SaveButton type="submit">Atualizar</SaveButton>
+          </InputBox>
+        </InputsContainer>
+      ) : (
+        <SkeletonForm />
+      )}
     </Main>
   );
 };

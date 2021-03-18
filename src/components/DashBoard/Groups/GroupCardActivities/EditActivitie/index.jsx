@@ -18,11 +18,13 @@ import {
   SaveButton,
   SaveIcon,
 } from "../../../EditHabit/styled";
+import { toast } from "react-toastify";
+import { SkeletonForm } from "../../GroupCardUsers/SkeletonGroup";
 
 const EditActivity = ({ activityId, handleClose }) => {
   const token = localStorage.getItem("token");
 
-  const [activity, setActivity] = useState({});
+  const [activity, setActivity] = useState();
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -33,7 +35,6 @@ const EditActivity = ({ activityId, handleClose }) => {
   });
 
   useEffect(() => {
-    //consumindo rota get one activity
     api
       .get(`/activities/${activityId}/`)
       .then((response) => setActivity(response.data))
@@ -45,8 +46,6 @@ const EditActivity = ({ activityId, handleClose }) => {
       data.title = activity.title;
     }
 
-    //consumindo a rota update activity
-
     api
       .patch(`/activities/${activityId}/`, data, {
         headers: {
@@ -54,55 +53,104 @@ const EditActivity = ({ activityId, handleClose }) => {
         },
       })
       .then(() => {
+        toast.dark(`🚀   Atividade alterada!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         reset();
         handleClose();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        console.log(error);
+      });
   };
 
   const handleDelete = () => {
-    //consumindo rota de deletar activity
     api
       .delete(`/activities/${activity.id}/`, {
         headers: {
           Authorization: `Bearer  ${JSON.parse(token)}`,
         },
       })
-      .then((response) => {
+      .then(() => {
+        toast.dark(`🚀   Atividade deletada!!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         handleClose();
-        console.log(response);
       })
-      .catch((e) => console.log(e));
+      .catch(() => {
+        toast.error(`😵 Ocorreu um erro`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   return (
     <Main>
       <h1>Editar Atividade</h1>
-      <InputsContainer onSubmit={handleSubmit(handleForm)}>
-        <InputBox>
-          <IconBox>
-            {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
-          </IconBox>
-          <Input
-            name="title"
-            ref={register}
-            placeholder={errors.title ? errors.title.message : activity.title}
-          />
-        </InputBox>
 
-        <InputBox>
-          <IconBox>
-            <SaveIcon />
-          </IconBox>
-          <SaveButton type="submit">Atualizar</SaveButton>
-        </InputBox>
-        <InputBox>
-          <IconBox>
-            <DeleteIcon />
-          </IconBox>
-          <DeleteButton onClick={handleDelete}>Deletar</DeleteButton>
-        </InputBox>
-      </InputsContainer>
+      {activity ? (
+        <>
+          <InputsContainer onSubmit={handleSubmit(handleForm)}>
+            <InputBox>
+              <IconBox>
+                {errors.how_much_achieved ? <ErrorIcon /> : <InfoIcon />}
+              </IconBox>
+              <Input
+                name="title"
+                ref={register}
+                placeholder={
+                  errors.title ? errors.title.message : activity.title
+                }
+              />
+            </InputBox>
+
+            <InputBox>
+              <IconBox>
+                <SaveIcon />
+              </IconBox>
+              <SaveButton type="submit">Atualizar</SaveButton>
+            </InputBox>
+            <InputBox>
+              <IconBox>
+                <DeleteIcon />
+              </IconBox>
+              <DeleteButton type="button" onClick={handleDelete}>
+                Deletar
+              </DeleteButton>
+            </InputBox>
+          </InputsContainer>
+        </>
+      ) : (
+        <SkeletonForm />
+      )}
     </Main>
   );
 };

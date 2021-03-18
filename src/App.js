@@ -1,7 +1,14 @@
 import Routes from "./router";
+import "react-toastify/dist/ReactToastify.css";
+import { StyledContainer } from "./styles/globalStyle";
 
 const App = () => {
-  return <Routes />;
+  return (
+    <>
+      <StyledContainer />
+      <Routes />
+    </>
+  );
 };
 
 export default App;
