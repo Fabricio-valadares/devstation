@@ -1,4 +1,13 @@
-import { Content, DivButtonAdd } from "./styled";
+import {
+  Content,
+  DivButtonAdd,
+  ContainerCard,
+  DivH1,
+  ContaineOne,
+  DivHeader,
+  UserContent,
+  GroupsContainer,
+} from "./styled";
 import { useEffect, useState } from "react";
 import CardGroup from "../CardGroup";
 import { FaSearch } from "react-icons/fa";
@@ -64,12 +73,26 @@ const ListGroups = () => {
           close={handleClose}
         />
       </Modal>
-      <Content>
-        <div id="container">
-          <div id="containerButton"></div>
-          <DivButtonAdd onClick={handleOpen}>+</DivButtonAdd>
-        </div>
-        <div id="group-users">
+      <GroupsContainer>
+        <DivHeader>
+          <DivH1>
+            <div
+              style={{
+                color: "#f72585",
+                fontSize: "24px",
+                fontWeight: "bold",
+              }}
+              id="containerButton"
+            >
+              Grupos
+            </div>
+            <DivButtonAdd
+              style={{ backgroundColor: "#30336B" }}
+              onClick={handleOpen}
+            >
+              +
+            </DivButtonAdd>
+          </DivH1>
           <div id="searchGroup">
             <input
               id="search"
@@ -81,14 +104,16 @@ const ListGroups = () => {
               <FaSearch size="20" color="#fff" />
             </div>
           </div>
+        </DivHeader>
 
+        <UserContent>
           {groupsData[0] ? (
             <CardGroup groupsData={groupsData} valueInput={valueInput} />
           ) : (
             <SkeletonGroups />
           )}
-        </div>
-      </Content>
+        </UserContent>
+      </GroupsContainer>
     </>
   );
 };

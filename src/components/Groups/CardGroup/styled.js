@@ -72,11 +72,31 @@ export const FaRegEyeStyled = styled(FaRegEye)`
   color: "#fff";
 `;
 
+export const SpanName = styled.span`
+  text-align: left;
+  margin-top: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: #fff;
+`;
+
+export const SpanCategory = styled.span`
+  margin-top: 5px;
+  text-align: left;
+
+  font-size: 1rem;
+  text-align: left;
+  color: #fff;
+  font-weight: 100;
+`;
+
 export const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "20px",
+    width: "100%",
+    marginTop: "10px",
     backgroundColor: "var(--middle-primary)",
-    padding: "4px 8px",
+    // padding: "4px 8px",
     borderRadius: "8px ",
     display: "flex",
     justifyContent: "space-between",
@@ -93,13 +113,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   heading: {
     display: "flex",
-    flexDirection: "column",
+    // flexDirection: "column",
     padding: "10px",
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
 
     "& span#groupImage": {
       width: "60px",
+      marginRight: "10px",
       height: "60px",
       borderRadius: "50%",
       backgroundColor: "#130F40",

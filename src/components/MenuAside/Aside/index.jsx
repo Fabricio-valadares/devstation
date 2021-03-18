@@ -100,6 +100,7 @@ const Aside = () => {
         <Navigation>
           <Link className="menu-link" to="/dashboard">
             <DashIcon />
+
             <p>Dashboard</p>
           </Link>
           <Link className="menu-link" to="/groups">
