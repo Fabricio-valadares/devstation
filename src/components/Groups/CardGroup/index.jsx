@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useStyles } from "./styled";
 import Typography from "@material-ui/core/Typography";
 import { FaRegEye } from "react-icons/fa";
+import { FiGitBranch } from "react-icons/fi";
 import Modal from "../../Modal";
 import ModalGroup from "../ModalGroup";
 
@@ -33,11 +34,9 @@ const CardGroup = ({ groupsData, valueInput }) => {
           <div key={index} className={classes.container}>
             <div className={classes.root}>
               <Typography className={classes.heading}>
-                <img
-                  id="imgAccordon"
-                  src="https://picsum.photos/40/40"
-                  alt="imgRandom"
-                />
+                <span id="groupImage">
+                  <FiGitBranch />
+                </span>
                 <div id="groupInfo">
                   <span id="nameGroups">{ele.name}</span>{" "}
                   <span>Categoria: {ele.category}</span>{" "}

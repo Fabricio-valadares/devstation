@@ -37,6 +37,21 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
 
+    "& span#groupImage": {
+      width: "60px",
+      height: "60px",
+      borderRadius: "50%",
+      backgroundColor: "#130F40",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+
+    "& span#groupImage > svg": {
+      color: "#F72585",
+      fontSize: "24px",
+    },
+
     "& div#groupInfo": {
       display: "flex",
       flexDirection: "column",
