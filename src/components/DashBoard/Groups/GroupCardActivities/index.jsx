@@ -34,14 +34,17 @@ const GroupCardActivities = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    api
-      .get(`/activities/?group=${groupId}`, {
-        params: { group: groupId },
-      })
-      .then((response) => {
-        setActivities(response.data.results);
-      })
-      .catch((e) => setActivities([]));
+    if (groupId) {
+      api
+        .get(`/activities/?group=${groupId}`, {
+          params: { group: groupId },
+        })
+        .then((response) => {
+          setActivities(response.data.results);
+        })
+        .catch((e) => setActivities([]));
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, groupId]);
 

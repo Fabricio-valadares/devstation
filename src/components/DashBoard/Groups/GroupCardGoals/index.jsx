@@ -39,13 +39,15 @@ const GroupCardGoals = () => {
   };
 
   useEffect(() => {
-    api
-      .get(`/goals/?group=${groupId}`)
-      .then((response) => {
-        const results = response.data.results;
-        setGoals(results);
-      })
-      .catch((e) => setGoals([]));
+    if (groupId) {
+      api
+        .get(`/goals/?group=${groupId}`)
+        .then((response) => {
+          const results = response.data.results;
+          setGoals(results);
+        })
+        .catch((e) => setGoals([]));
+    }
   }, [open, groupId]);
 
   const handleClick = (goal) => {

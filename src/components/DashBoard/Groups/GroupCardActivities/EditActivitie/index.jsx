@@ -101,7 +101,6 @@ const EditActivity = ({ activityId, handleClose }) => {
           progress: undefined,
         });
         handleClose();
-        console.log(response);
       })
       .catch((e) => {
         toast.error(`😵 Ocorreu um erro`, {
@@ -113,8 +112,6 @@ const EditActivity = ({ activityId, handleClose }) => {
           draggable: true,
           progress: undefined,
         });
-
-        console.log(e);
       });
   };
 

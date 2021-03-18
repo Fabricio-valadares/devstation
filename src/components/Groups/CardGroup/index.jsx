@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useStyles } from "./styled";
-import Typography from "@material-ui/core/Typography";
 import { FaRegEye } from "react-icons/fa";
 import { FiGitBranch } from "react-icons/fi";
 import Modal from "../../Modal";
@@ -10,7 +9,8 @@ const CardGroup = ({ groupsData, valueInput }) => {
   const classes = useStyles();
 
   const [dataGroup, setDataGroup] = useState({});
-  const [open, setOpen] = useState();
+
+  const [open, setOpen] = useState(false);
 
   const handleClick = (ele) => {
     setDataGroup(ele);
@@ -33,15 +33,16 @@ const CardGroup = ({ groupsData, valueInput }) => {
         .map((ele, index) => (
           <div key={index} className={classes.container}>
             <div className={classes.root}>
-              <Typography className={classes.heading}>
+              <div className={classes.heading}>
                 <span id="groupImage">
                   <FiGitBranch />
                 </span>
+
                 <div id="groupInfo">
                   <span id="nameGroups">{ele.name}</span>{" "}
                   <span>Categoria: {ele.category}</span>{" "}
                 </div>
-              </Typography>
+              </div>
               <div id="Icon">
                 <FaRegEye
                   style={{ cursor: "pointer", color: "#fff" }}
