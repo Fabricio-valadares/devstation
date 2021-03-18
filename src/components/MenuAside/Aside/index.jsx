@@ -18,7 +18,7 @@ import {
 import User from "../../../assets/user-avatar.svg";
 import UpdateUserForm from "../UpdateUserForm";
 import Modal from "../../Modal";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import api from "../../../services";
 
@@ -43,8 +43,6 @@ const Aside = () => {
     }
   };
 
-  console.log(history.location.pathname);
-
   useEffect(() => {
     getUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,7 +60,6 @@ const Aside = () => {
   const handleClose = () => {
     setUpdateView(false);
   };
-  console.log(history);
 
   return (
     <motion.div
