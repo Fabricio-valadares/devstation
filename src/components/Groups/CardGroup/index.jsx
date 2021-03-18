@@ -1,13 +1,8 @@
 import { useState } from "react";
-import {
-  useStyles,
-  Container,
-  ContainerTitle,
-  TitleMobile,
-  FaRegEyeStyled,
-  DivIcon,
-} from "./styled";
+import { useStyles } from "./styled";
 import Typography from "@material-ui/core/Typography";
+import { FaRegEye } from "react-icons/fa";
+import { FiGitBranch } from "react-icons/fi";
 import Modal from "../../Modal";
 import ModalGroup from "../ModalGroup";
 
@@ -29,46 +24,34 @@ const CardGroup = ({ groupsData, valueInput }) => {
   return (
     <>
       <Modal open={open} handleClose={handleClose}>
-        <ModalGroup ele={dataGroup} />
+        <ModalGroup ele={dataGroup} close={handleClose} />
       </Modal>
-      <Container>
-        {groupsData
-          .filter((user) =>
-            user.name?.toLowerCase().includes(valueInput.toLowerCase())
-          )
-          .map((ele, index) => (
-            <div key={index} className={classes.container}>
-              <div className={classes.root}>
-                <ContainerTitle>
-                  <Typography className={classes.heading}>
-                    <img
-                      id="imgAccordon"
-                      src="https://picsum.photos/40/40"
-                      alt="imgRandom"
-                    />
-                  </Typography>
-                  <TitleMobile>
-                    <span id="nameGroups" style={{ marginRight: "16px" }}>
-                      {ele.name}
-                    </span>
-
-                    <span style={{ fontWeight: "600" }}>
-                      Categoria: {ele.category}
-                    </span>
-                  </TitleMobile>
-                </ContainerTitle>
-
-                <DivIcon>
-                  <FaRegEyeStyled
-                    color={"#fff"}
-                    size="22"
-                    onClick={() => handleClick(ele)}
-                  />
-                </DivIcon>
+      {groupsData
+        .filter((user) =>
+          user.name?.toLowerCase().includes(valueInput.toLowerCase())
+        )
+        .map((ele, index) => (
+          <div key={index} className={classes.container}>
+            <div className={classes.root}>
+              <Typography className={classes.heading}>
+                <span id="groupImage">
+                  <FiGitBranch />
+                </span>
+                <div id="groupInfo">
+                  <span id="nameGroups">{ele.name}</span>{" "}
+                  <span>Categoria: {ele.category}</span>{" "}
+                </div>
+              </Typography>
+              <div id="Icon">
+                <FaRegEye
+                  style={{ cursor: "pointer", color: "#fff" }}
+                  size="22"
+                  onClick={() => handleClick(ele)}
+                />
               </div>
             </div>
-          ))}
-      </Container>
+          </div>
+        ))}
     </>
   );
 };

@@ -61,6 +61,7 @@ const ListGroups = () => {
         <ModalCreateGroup
           groupsData={groupsData}
           setGroupsData={setGroupsData}
+          close={handleClose}
         />
       </Modal>
       <Content>

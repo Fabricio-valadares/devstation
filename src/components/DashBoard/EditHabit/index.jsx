@@ -65,7 +65,7 @@ const EditHabit = ({ close, token, habitId }) => {
       await api.patch(`/habits/${habitId}/`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      toast.success(`🚀   Habito editado!!`, {
+      toast.dark(`🚀   Habito editado!!`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,

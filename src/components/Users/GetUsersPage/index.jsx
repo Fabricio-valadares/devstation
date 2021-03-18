@@ -18,6 +18,7 @@ import { getUsersThunk } from "../../../store/modules/get-users/thunks";
 import Modal from "../../Modal";
 import CardUser from "../CardUser";
 import { SkeletonGroups } from "../../Groups/SkeletonGroups";
+import UserImage from "../../../assets/user-image.svg";
 
 const GetUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -72,14 +73,14 @@ const GetUsersPage = () => {
   return (
     <>
       <Modal handleClose={handleClose} open={open}>
-        <CardUser user={user} />
+        <CardUser user={user} close={handleClose} />
       </Modal>
       <UsersContainer>
         <DivHeader>
           <DivH1>
             <h1>Usuários</h1>
             <div id="dataNumberUser">
-              <FaUsers />
+              <FaUsers color="#f72585" />
               <p>{count && count}</p>
             </div>
           </DivH1>
@@ -107,8 +108,13 @@ const GetUsersPage = () => {
                 return (
                   <Card key={index}>
                     <div id="user">
-                      <UserAvatarContainer>
-                        <UserAvatar src="https://picsum.photos/200/200" draggable="false" />
+                      <UserAvatarContainer
+                        style={{
+                          backgroundColor: "#130F40",
+                          borderRadius: "50%",
+                        }}
+                      >
+                        <UserAvatar src={UserImage} />
                       </UserAvatarContainer>
                       <DivPname>
                         <PnameUser>{user.username}</PnameUser>

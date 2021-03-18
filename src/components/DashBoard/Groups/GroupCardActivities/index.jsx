@@ -7,12 +7,13 @@ import api from "../../../../services";
 import {
   ActivityDiv,
   CardActivities,
-  WhiteBall,
   ActivitiesHeader,
   PlusIcon,
   Main,
   EditIcon,
   Title,
+  ActivitieIcon,
+  CalendarIcon,
 } from "./styled";
 
 import Modal from "../../../Modal";
@@ -33,7 +34,6 @@ const GroupCardActivities = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    //consumindo rota get activities
     api
       .get(`/activities/?group=${groupId}`, {
         params: { group: groupId },
@@ -41,7 +41,7 @@ const GroupCardActivities = () => {
       .then((response) => {
         setActivities(response.data.results);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => setActivities([]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, groupId]);
 
@@ -89,7 +89,7 @@ const GroupCardActivities = () => {
           activities.map((activity, index) => (
             <ActivityDiv key={index}>
               <figure>
-                <WhiteBall />
+                <ActivitieIcon />
               </figure>
               <div>
                 <Title>
@@ -99,6 +99,7 @@ const GroupCardActivities = () => {
                   </button>
                 </Title>
                 <p>
+                  <CalendarIcon />
                   {format(new Date(activity.realization_time), "dd/MM/yyy")}
                 </p>
               </div>
