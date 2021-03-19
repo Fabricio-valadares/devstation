@@ -17,38 +17,61 @@ export const Main = styled.div`
     linear-gradient(0deg, var(--text), var(--text));
 
   header {
-    width: 70%;
+    width: 75%;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 64px;
 
     h1 {
       font-size: 48px;
       color: var(--text);
       font-weight: bold;
       letter-spacing: 2px;
+      color: #f72585;
+
+      @media (max-width: 1030px) {
+        font-size: 2rem;
+      }
+
+      @media (max-width: 430px) {
+        font-size: 0.8rem;
+      }
     }
 
     .fi-log {
-      width: 40px;
-      height: 100%;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 8px;
-      background-color: lightblue;
-      box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      color: #3498db;
+      box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      color: #f72585;
       transition: all 200ms ease-in;
       &:hover {
-        background-color: ${shade(0.1, "lightblue")};
+        background-color: ${shade(0.4, "#F72585")};
+      }
+
+      @media (max-width: 930px) {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      > svg {
+        width: 40px;
+        height: 40px;
       }
     }
   }
 
   img {
     width: 900px;
+
+    @media (max-width: 930px) {
+      width: 80%;
+    }
   }
 `;
