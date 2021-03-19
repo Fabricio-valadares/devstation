@@ -94,7 +94,7 @@ const RegisterForm = () => {
             inputRef={register}
             error={!!errors.username}
           />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
+          <FormHelperText className={classes.helper}>
             {errors.username?.message}
           </FormHelperText>
           <InputBase
@@ -107,7 +107,7 @@ const RegisterForm = () => {
             inputRef={register}
             error={!!errors.password}
           />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
+          <FormHelperText className={classes.helper}>
             {errors.password?.message}
           </FormHelperText>
           <InputBase
@@ -120,7 +120,7 @@ const RegisterForm = () => {
             inputRef={register}
             error={!!errors.email}
           />
-          <FormHelperText className={classes.helper} error={!!errors.email}>
+          <FormHelperText className={classes.helper}>
             {errors.email?.message}
           </FormHelperText>
           <ButtonDiv>
