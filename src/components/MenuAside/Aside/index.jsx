@@ -123,7 +123,7 @@ const Aside = () => {
             to="/users"
           >
             <UsersIcon />
-            <p>Usuários</p>
+            <p>Devs</p>
           </LinkUsers>
         </Navigation>
       </Menu>

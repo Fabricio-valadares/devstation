@@ -79,7 +79,7 @@ export default function CustomizedMenus() {
             <ListItemIcon>
               <UsersIcon />
             </ListItemIcon>
-            <ListItemText primary="Usuarios"></ListItemText>
+            <ListItemText primary="Devs"></ListItemText>
           </StyledMenuItem>
         </LinkUsers>
       </StyledMenu>

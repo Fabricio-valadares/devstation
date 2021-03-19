@@ -120,6 +120,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   helper: {
     marginLeft: "0.4rem",
+    color: "#fff",
   },
 }));
 

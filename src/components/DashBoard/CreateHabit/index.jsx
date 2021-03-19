@@ -16,7 +16,6 @@ import {
   TagIcon,
   BarIcon,
   FrequencyIcon,
-  FireIcon,
   SaveIcon,
   SaveButton,
   ErrorIcon,
@@ -33,11 +32,6 @@ const CreateHabit = ({ userId, close, token }) => {
     category: yup.string().required("Defina uma categoria"),
     difficulty: yup.string().required("Defina uma dificuldade"),
     frequency: yup.string().required("Defina sua frequência"),
-    how_much_achieved: yup
-      .number()
-      .positive()
-      .integer()
-      .required("Defina quanto já evoluiu nesse hábito"),
   });
 
   const { register, handleSubmit, errors, reset } = useForm({
@@ -49,6 +43,7 @@ const CreateHabit = ({ userId, close, token }) => {
       ...data,
       achieved: false,
       user: userId,
+      how_much_achieved: 1,
     };
 
     try {
@@ -137,21 +132,7 @@ const CreateHabit = ({ userId, close, token }) => {
             }
           />
         </InputBox>
-        <InputBox>
-          <IconBox>
-            {errors.how_much_achieved ? <ErrorIcon /> : <FireIcon />}
-          </IconBox>
-          <Input
-            name="how_much_achieved"
-            ref={register}
-            type="number"
-            placeholder={
-              errors.how_much_achieved
-                ? errors.how_much_achieved.message
-                : "Quanto já evoliu"
-            }
-          />
-        </InputBox>
+
         <InputBox>
           <IconBox>
             <SaveIcon />

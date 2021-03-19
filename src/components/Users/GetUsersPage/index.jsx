@@ -82,7 +82,7 @@ const GetUsersPage = () => {
       <UsersContainer>
         <DivHeader>
           <DivH1>
-            <h1>Usuários</h1>
+            <h1>Devs</h1>
             <div id="dataNumberUser">
               <FaUsers color="#f72585" />
               <p>{count && count}</p>
