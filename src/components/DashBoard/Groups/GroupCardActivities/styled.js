@@ -64,7 +64,7 @@ export const Title = styled.div`
   margin-bottom: 5px;
 
   h4 {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 500;
     color: var(--text);
     @media (max-width: 900px) {
@@ -116,8 +116,8 @@ export const ActivityDiv = styled.div`
   font-size: 0.8rem;
   figure {
     background-color: var(--soft-primary);
-    width: 45px;
-    height: 45px;
+    min-width: 45px;
+    min-height: 45px;
     border-radius: 50%;
     margin-right: 0.7rem;
     display: flex;
