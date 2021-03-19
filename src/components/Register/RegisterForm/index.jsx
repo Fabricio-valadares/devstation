@@ -36,7 +36,7 @@ const RegisterForm = () => {
       .min(8, "Mínimo de 8 dígitos")
       .matches(
         /^((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        "Senha deve conter ao menos uma letra maiúscula, uma minúscula, um número e um caracter especial!"
+        "Senha precisa ter caracter especial  e numeros"
       )
       .required(required),
     email: yup.string().email("Email Invalido").required(required),
