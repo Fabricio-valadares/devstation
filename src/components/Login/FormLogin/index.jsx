@@ -67,7 +67,7 @@ const FormLogin = () => {
       setError(false);
     }
     if (valid) {
-      toast.dark(`🚀   Bem vindo `, {
+      toast.dark(`🚀   Hello Dev  `, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
