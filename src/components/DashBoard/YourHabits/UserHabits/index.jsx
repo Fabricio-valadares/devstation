@@ -14,7 +14,7 @@ import {
 } from "./styled";
 import { SkeletonHabits } from "../SkeletonHabits";
 
-const UserHabits = ({ user }) => {
+const UserHabits = ({ user, setFilteredHabits, setHabits }) => {
   const [createView, setCreateView] = useState(false);
   const [editView, setEditView] = useState(false);
   const [currentHabitId, setCurrentHabitId] = useState({});
@@ -57,11 +57,13 @@ const UserHabits = ({ user }) => {
         </Modal>
       )}
       {editView && (
-        <Modal open={editView} handleClose={handleEditClose}>
+        <Modal open={editView} handleClose={handleEditClose} >
           <EditHabit
             close={handleEditClose}
             token={token}
             habitId={currentHabitId}
+            setFilteredHabits={setFilteredHabits}
+            setHabits={setHabits}
           />
         </Modal>
       )}

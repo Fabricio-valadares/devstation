@@ -46,12 +46,12 @@ const ListGroups = () => {
       setTimeout(() => {
         dispatch(groupsThunks(`${next}`));
         setGroupsData([...groupsData, ...results]);
-      }, 1000);
+      }, 0.0001);
     } else {
       if (results) {
         setTimeout(() => {
           setGroupsData([...groupsData, ...results]);
-        }, 1000);
+        }, 0.0001);
       }
     }
 
