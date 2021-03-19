@@ -32,7 +32,7 @@ const CreateGoal = ({ groupId, handleClose }) => {
 
   const handleForm = (data) => {
     data["group"] = groupId;
-    data["how_much_achieved"] = 0;
+    data["how_much_achieved"] = 1;
 
     api
       .post(`/goals/`, data, {
