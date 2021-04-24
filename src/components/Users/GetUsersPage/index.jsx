@@ -50,12 +50,12 @@ const GetUsersPage = () => {
       setTimeout(() => {
         dispatch(getUsersThunk(next));
         setUsers([...users, ...usersList]);
-      }, 1000);
+      }, 0.0001);
     } else {
       if (usersList) {
         setTimeout(() => {
           setUsers([...users, ...usersList]);
-        }, 1000);
+        }, 0.0001);
       }
     }
     // eslint-disable-next-line

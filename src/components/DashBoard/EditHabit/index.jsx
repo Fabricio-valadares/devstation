@@ -26,7 +26,13 @@ import {
 } from "./styled";
 import { toast } from "react-toastify";
 
-const EditHabit = ({ close, token, habitId }) => {
+const EditHabit = ({
+  close,
+  token,
+  habitId,
+  setFilteredHabits,
+  setHabits,
+}) => {
   const [habit, setHabit] = useState(async () => {
     try {
       const response = await api.get(`/habits/${habitId}/`);
@@ -74,8 +80,13 @@ const EditHabit = ({ close, token, habitId }) => {
         draggable: true,
         progress: undefined,
       });
+
       reset();
       close();
+
+      setHabits([]);  //------------- Aqui
+      setFilteredHabits();
+
     } catch (err) {
       toast.error(`😵 Sua edição falhou `, {
         position: "top-right",

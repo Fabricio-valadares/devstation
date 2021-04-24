@@ -12,29 +12,45 @@ import GroupCardActivities from "../Groups/GroupCardActivities";
 const DashboardPanel = () => {
   const [next, setNext] = useState("/habits/");
   const [habits, setHabits] = useState([]);
+  const [filterHabits, setFilterHabits] = useState([]);
+  
   const storagedId = localStorage.getItem("id");
   const userId = JSON.parse(storagedId);
+  const filteredHabits = habits.filter((habit) => habit.user === userId);
+
+
+  const setFilteredHabits = async () => {
+    setTimeout(() => {
+      setNext("/habits/");
+      setFilterHabits([]);
+      setFilterHabits(filteredHabits);
+    }, 10);
+  };
 
   useEffect(() => {
     if (next) {
       api
         .get(`${next}`)
         .then((response) => {
-          setHabits([...habits, ...response.data.results]);
-          setNext(response.data.next);
+          setTimeout(() => {
+            setHabits([...habits, ...response.data.results]);
+            setNext(response.data.next);
+          }, 10);
         })
         .catch((error) => console.log(error));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  const filteredHabits = habits.filter((habit) => habit.user === userId);
-
   return (
     <Content>
       <div id="habits-card">
         <Container>
-          <UserHabits user={userId} />
+          <UserHabits
+            user={userId}
+            setFilteredHabits={setFilteredHabits}
+            setHabits={setHabits}
+          />
         </Container>
       </div>
       <div id="graphic-card">

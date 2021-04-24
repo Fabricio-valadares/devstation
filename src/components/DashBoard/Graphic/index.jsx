@@ -24,18 +24,20 @@ const Graphic = ({ habits }) => {
           )}, ${Math.floor(Math.random() * 255)}, 0.8)`
       );
 
-      const data = {
-        labels: labels,
-        datasets: [
-          {
-            data: progress,
-            backgroundColor: backgroundColors,
-            hoverBackgroundColor: hoverColors,
-          },
-        ],
-      };
+      
+        const data = {
+          labels: labels,
+          datasets: [
+            {
+              data: progress,
+              backgroundColor: backgroundColors,
+              hoverBackgroundColor: hoverColors,
+            },
+          ],
+        };
 
-      setHabitData(data);
+        setHabitData(data);
+      
     }
   }, [habits]);
 
